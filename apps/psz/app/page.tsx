@@ -1,10 +1,12 @@
 import {
-  TONO,
-  SITE_URLS,
+  INVERSIA,
   MORTGAGE_FORM_URL,
+  SITE_URLS,
+  SOCIAL_LINKS,
   TELEGRAM_INVESTORS_URL,
+  TONO,
 } from '@psz/seo'
-import { Button, Container, CredentialBadge, Section } from '@psz/ui'
+import { Button, Container, CredentialBadge, Section, SocialIcon } from '@psz/ui'
 import { WHY_TONO_BULLETS } from './_data/whyTono'
 
 const PODCAST_URL = 'https://www.youtube.com/@hipobrokers'
@@ -29,12 +31,6 @@ export default function HomePage() {
                 value="ANICI"
                 href={SITE_URLS.anici}
                 hint="institucional"
-                className="border-navy-700 bg-navy-800 text-paper"
-              />
-              <CredentialBadge
-                label="Asociado nº"
-                value={TONO.credentials.aniciId}
-                hint="miembro fundador"
                 className="border-navy-700 bg-navy-800 text-paper"
               />
             </div>
@@ -127,6 +123,7 @@ export default function HomePage() {
               cta="Ver oportunidades"
               ctaHref={TELEGRAM_INVESTORS_URL}
               accent="gold"
+              external
             />
             <ServiceCard
               title="Pillar broker hipotecario"
@@ -171,6 +168,46 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* REDES SOCIALES */}
+      <Section
+        id="redes"
+        tone="paper"
+        padding="md"
+        eyebrow="Sígueme en redes"
+        title="Donde te muevas, ahí estoy"
+        lead={
+          <span>
+            Comparto casos reales, análisis del sector y novedades regulatorias en formato corto.
+            Cada red para su momento.
+          </span>
+        }
+      >
+        <Container size="lg">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.platform}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card transition-all hover:-translate-y-1 no-underline"
+                style={{ borderTopColor: s.brandColor, borderTopWidth: 3 }}
+              >
+                <div
+                  className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg group-hover:scale-110 transition-transform"
+                  style={{ color: s.brandColor, backgroundColor: `${s.brandColor}12` }}
+                >
+                  <SocialIcon platform={s.platform} size={28} />
+                </div>
+                <h3 className="text-lg font-semibold text-navy-800">{s.label}</h3>
+                <p className="text-sm text-ink-muted mb-2">{s.handle}</p>
+                <p className="text-sm text-ink-soft">{s.description}</p>
+              </a>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* PODCAST */}
       <Section id="podcast" tone="soft" padding="md">
         <Container size="md">
@@ -199,23 +236,109 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* FOOTER provisional */}
+      {/* FOOTER */}
       <footer className="bg-navy-900 text-paper/80 py-12">
         <Container size="xl">
-          <div className="flex flex-col md:flex-row justify-between gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-10">
             <div>
-              <p className="text-paper font-semibold mb-2">{TONO.shortName}</p>
+              <p className="text-paper font-semibold mb-2 text-lg">{TONO.shortName}</p>
               <p className="text-sm">Broker hipotecario nº {TONO.credentials.bdeId}</p>
-              <p className="text-sm">Presidente de ANICI · Asociado {TONO.credentials.aniciId}</p>
+              <p className="text-sm">Presidente de ANICI · {TONO.credentials.aniciId}</p>
+              <div className="flex gap-3 mt-5">
+                {SOCIAL_LINKS.map((s) => (
+                  <a
+                    key={s.platform}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="text-paper/60 hover:text-gold-300 transition-colors"
+                  >
+                    <SocialIcon platform={s.platform} size={22} />
+                  </a>
+                ))}
+              </div>
             </div>
+
+            <div className="text-sm space-y-2">
+              <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
+                Servicios
+              </p>
+              <p>
+                <a href="/broker-hipotecario" className="text-paper/70 hover:text-paper no-underline">
+                  Broker hipotecario
+                </a>
+              </p>
+              <p>
+                <a href="/sobre-mi" className="text-paper/70 hover:text-paper no-underline">
+                  Sobre Toño y el equipo
+                </a>
+              </p>
+              <p>
+                <a href="/contacto" className="text-paper/70 hover:text-paper no-underline">
+                  Contacto
+                </a>
+              </p>
+              <p>
+                <a
+                  href={SITE_URLS.anici}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  ANICI ↗
+                </a>
+              </p>
+            </div>
+
             <div className="text-sm">
-              <p>Inversia Global Digital S.L. · CIF B75281394</p>
-              <p>Polígono Alcoz Alto 21, 50410 Cuarte de Huerva, Zaragoza</p>
-              <p>+34 876 280 545 · info@inversiadigital.es</p>
+              <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
+                Empresa operativa
+              </p>
+              <p>{INVERSIA.displayName}</p>
+              <p>CIF {INVERSIA.taxId}</p>
+              <p>
+                {INVERSIA.address.street}
+                <br />
+                {INVERSIA.address.postalCode} {INVERSIA.address.city}, {INVERSIA.address.region}
+              </p>
+              <p className="mt-2">
+                <a
+                  href={`tel:${INVERSIA.phone}`}
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  {INVERSIA.phone}
+                </a>
+                {' · '}
+                <a
+                  href={`mailto:${INVERSIA.email}`}
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  {INVERSIA.email}
+                </a>
+              </p>
             </div>
           </div>
-          <div className="border-t border-navy-700 mt-8 pt-6 text-sm text-paper/60">
-            © {new Date().getFullYear()} Inversia Global Digital S.L. Todos los derechos reservados.
+
+          <div className="border-t border-navy-700 pt-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-paper/60">
+            <p>
+              © {new Date().getFullYear()} Inversia Global Digital S.L. Todos los derechos
+              reservados.
+            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
+              <a href="/aviso-legal" className="text-paper/60 hover:text-paper no-underline">
+                Aviso legal
+              </a>
+              <a href="/politica-privacidad" className="text-paper/60 hover:text-paper no-underline">
+                Privacidad
+              </a>
+              <a href="/cookies" className="text-paper/60 hover:text-paper no-underline">
+                Cookies
+              </a>
+              <a href="/terminos" className="text-paper/60 hover:text-paper no-underline">
+                Términos
+              </a>
+            </div>
           </div>
         </Container>
       </footer>
@@ -229,18 +352,23 @@ function ServiceCard({
   cta,
   ctaHref,
   accent,
+  external,
 }: {
   title: string
   description: string
   cta: string
   ctaHref: string
   accent: 'primary' | 'gold' | 'secondary'
+  external?: boolean
 }) {
+  const extraProps = external
+    ? { target: '_blank', rel: 'noopener noreferrer' as const }
+    : {}
   return (
     <article className="bg-paper-card rounded-xl border border-navy-100 p-8 shadow-card hover:shadow-hover transition-shadow">
       <h3 className="text-2xl font-semibold mb-3">{title}</h3>
       <p className="text-ink-soft mb-6">{description}</p>
-      <Button href={ctaHref} variant={accent} size="md">
+      <Button href={ctaHref} variant={accent} size="md" {...extraProps}>
         {cta} →
       </Button>
     </article>

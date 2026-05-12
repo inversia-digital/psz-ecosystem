@@ -60,7 +60,7 @@ export const PILLAR_BROKER = {
     title: 'Servicio en toda España',
     paragraphs: [
       'Trabajo con clientes en las 17 comunidades autónomas. La gestión hipotecaria es 100% digital salvo la firma en notaría: análisis del perfil, preparación del dossier, negociación con bancos, revisión del contrato, todo se hace por videollamada, email y firma electrónica.',
-      'Para la firma final tienes dos opciones: te acompaño en persona si te viene bien (a cualquier punto de España, gastos cubiertos en mis honorarios) o utilizamos firma notarial telemática si tu notario la admite.',
+      'Para la firma final te acompaño físicamente a la notaría que elijas, en cualquier punto de España. Los gastos de desplazamiento están incluidos en mis honorarios.',
       'Mis clientes operativos en este momento están en Madrid, Barcelona, Valencia, Sevilla, Bilbao, Málaga, Zaragoza, Alicante, Murcia, Las Palmas y otras ciudades. La ubicación no es un obstáculo; la banca es la misma en toda España.',
     ],
   },
@@ -107,8 +107,7 @@ export const PILLAR_BROKER = {
     title: 'Honorarios transparentes',
     paragraphs: [
       'Mis honorarios son fijos, los conoces antes de empezar y solo se cobran si conseguimos la hipoteca. Ni un euro adelantado.',
-      'El honorario base por gestión hipotecaria oscila entre **3.000 € y 4.500 €** según complejidad del caso (importe, garantías, perfil). Es un servicio exento de IVA según el Art. 20.1.18º de la Ley 37/1992 del IVA.',
-      'Si llegas a mí a través de un broker colaborador externo (otro profesional del sector), la tarifa cambia a 1.500 € porque parte del trabajo ya viene hecho. Tienes el mismo servicio final, pero la captación y filtrado inicial los hace tu broker de confianza.',
+      'El honorario base por gestión hipotecaria oscila entre **tres mil y cuatro mil quinientos euros** según complejidad del caso (importe, garantías, perfil). Es un servicio exento de IVA según el artículo 20.1.18º de la Ley 37/1992 del IVA.',
       'Lo único que pago yo: nada hasta el éxito. Lo único que pagas tú: lo acordado por escrito antes de firmar. Sin sorpresas.',
     ],
   },
@@ -144,7 +143,7 @@ export const PILLAR_BROKER = {
       {
         n: '06',
         title: 'Firma en notaría',
-        body: 'Te acompaño físicamente o por videoconferencia notarial. Aclaro cualquier cláusula en directo. Cuando firmas, mi trabajo está hecho.',
+        body: 'Te acompaño físicamente a la notaría. Aclaro cualquier cláusula en directo. Cuando firmas, mi trabajo está hecho.',
       },
       {
         n: '07',
@@ -185,7 +184,7 @@ export const PILLAR_BROKER = {
     {
       question: '¿Cuánto cuesta contratar a Toño Palacios como broker hipotecario?',
       answer:
-        'Mis honorarios son fijos y a éxito (solo cobro si conseguimos la hipoteca). El rango va de 3.000 € a 4.500 € según complejidad del caso. Es un servicio exento de IVA según el Art. 20.1.18º de la Ley 37/1992. Si vienes derivado por un broker colaborador externo, la tarifa cambia a 1.500 €. En cualquier caso, el importe lo conoces y firmas antes de empezar a trabajar. Ni un euro adelantado.',
+        'Mis honorarios son fijos y a éxito (solo cobro si conseguimos la hipoteca). El rango va de tres mil a cuatro mil quinientos euros según complejidad del caso. Es un servicio exento de IVA según el artículo 20.1.18º de la Ley 37/1992. En cualquier caso, el importe lo conoces y firmas antes de empezar a trabajar. Ni un euro adelantado.',
     },
     {
       question: '¿Cómo verifico que mi broker está registrado en Banco de España?',
@@ -200,7 +199,7 @@ export const PILLAR_BROKER = {
     {
       question: '¿Trabajas solo con clientes en Zaragoza o en toda España?',
       answer:
-        'Atiendo en toda España. Mi oficina legal está en Cuarte de Huerva (Zaragoza) pero el servicio es 100% digital salvo la firma en notaría. Tengo clientes operativos en Madrid, Barcelona, Valencia, Sevilla, Bilbao, Málaga, Alicante, Murcia, Las Palmas y otras ciudades. Para la firma final te acompaño físicamente o usamos firma notarial telemática si tu notario la admite.',
+        'Atiendo en toda España. Mi oficina legal está en Cuarte de Huerva (Zaragoza) pero el servicio es 100% digital salvo la firma en notaría. Tengo clientes operativos en Madrid, Barcelona, Valencia, Sevilla, Bilbao, Málaga, Alicante, Murcia, Las Palmas y otras ciudades. Para la firma final te acompaño físicamente a la notaría que elijas — los gastos de desplazamiento están incluidos en mis honorarios.',
     },
     {
       question: '¿Cuánto se tarda en conseguir una hipoteca con un broker?',

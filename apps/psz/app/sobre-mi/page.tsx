@@ -59,12 +59,7 @@ export default function SobreMiPage() {
               label="Presidente"
               value="ANICI"
               href={SITE_URLS.anici}
-              className="border-navy-700 bg-navy-800 text-paper"
-            />
-            <CredentialBadge
-              label="Asociado"
-              value={TONO.credentials.aniciId}
-              hint="fundador"
+              hint="institucional"
               className="border-navy-700 bg-navy-800 text-paper"
             />
           </div>

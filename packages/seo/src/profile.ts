@@ -21,6 +21,48 @@ export const MORTGAGE_FORM_URL =
 /** Canal Telegram de oportunidades para inversores */
 export const TELEGRAM_INVESTORS_URL = 'https://t.me/+SB3qrIEnuScxNjgy'
 
+/**
+ * Redes sociales públicas de Toño Palacios.
+ * Orden por relevancia estratégica para la marca personal.
+ * Mantener handles y URLs sincronizados con sameAs del schema Person.
+ */
+export const SOCIAL_LINKS = [
+  {
+    platform: 'instagram' as const,
+    label: 'Instagram',
+    handle: '@palacios.psz',
+    url: 'https://www.instagram.com/palacios.psz/',
+    description: 'Casos cerrados y día a día',
+    brandColor: '#E4405F',
+  },
+  {
+    platform: 'tiktok' as const,
+    label: 'TikTok',
+    handle: '@palacios.psz',
+    url: 'https://www.tiktok.com/@palacios.psz',
+    description: 'Hipotecas en píldoras de 60 s',
+    brandColor: '#000000',
+  },
+  {
+    platform: 'youtube' as const,
+    label: 'YouTube',
+    handle: '@hipobrokers',
+    url: 'https://www.youtube.com/@hipobrokers',
+    description: 'Podcast Hipobrokers',
+    brandColor: '#FF0000',
+  },
+  {
+    platform: 'linkedin' as const,
+    label: 'LinkedIn',
+    handle: 'anici',
+    url: 'https://www.linkedin.com/in/anici',
+    description: 'Posición profesional',
+    brandColor: '#0A66C2',
+  },
+]
+
+export type SocialPlatform = (typeof SOCIAL_LINKS)[number]['platform']
+
 export const TONO = {
   fullName: 'Antonio Palacios Cambero',
   alternateNames: ['Toño Palacios', 'Antonio Palacios'],
@@ -44,10 +86,10 @@ export const TONO = {
     SITE_URLS.anici,
     SITE_URLS.inarpa,
     SITE_URLS.hipobrokers,
-    'https://www.linkedin.com/in/palacios-psz',
+    'https://www.linkedin.com/in/anici',
     'https://www.instagram.com/palacios.psz',
     'https://www.tiktok.com/@palacios.psz',
-    'https://www.youtube.com/@palacios_psz',
+    'https://www.youtube.com/@hipobrokers',
   ],
   expertise: [
     'Intermediación de crédito inmobiliario',

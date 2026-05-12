@@ -17,11 +17,11 @@ export const WHY_TONO_BULLETS: WhyTonoBullet[] = [
   },
   {
     title: 'Presidente de ANICI',
-    body: 'Soy presidente de la Asociación Nacional de Intermediarios en Crédito Inmobiliario y miembro fundador (ANICI-001). No soy un intermediario más: represento institucionalmente al sector. Si fallo, el sector falla.',
+    body: 'Soy presidente de la Asociación Nacional de Intermediarios en Crédito Inmobiliario y miembro fundador (ANICI-001). No soy un intermediario más: represento institucionalmente al sector.',
   },
   {
     title: 'Servicio en toda España, oficina en Zaragoza',
-    body: 'Atiendo clientes en cualquier comunidad autónoma. La gestión es 100% digital salvo la firma en notaría, donde te acompaño físicamente o por videoconferencia notarial. Mi sede legal está en Cuarte de Huerva (Zaragoza), donde también puedes venir a verme si lo prefieres.',
+    body: 'Atiendo clientes en cualquier comunidad autónoma. La gestión es 100% digital salvo la firma en notaría, donde te acompaño físicamente. Mi sede legal está en Cuarte de Huerva (Zaragoza), donde también puedes venir a verme si lo prefieres.',
   },
   {
     title: 'Más de 100 operaciones cerradas en 2025',

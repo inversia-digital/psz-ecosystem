@@ -36,9 +36,8 @@ export default function TerminosPage() {
               para cada operación.
             </p>
             <ul>
-              <li><strong>Intermediación hipotecaria directa:</strong> honorarios entre 3.000 € y 4.500 €, atendiendo a la complejidad de la operación. Servicio exento de IVA conforme al artículo 20.1.18º de la Ley 37/1992 del IVA.</li>
-              <li><strong>Intermediación derivada por broker colaborador:</strong> 1.500 € por operación resuelta.</li>
-              <li><strong>Personal Shopper Inmobiliario:</strong> honorarios desde 4.000 € + IVA 21%, en función de la operación.</li>
+              <li><strong>Intermediación hipotecaria:</strong> honorarios entre tres mil y cuatro mil quinientos euros, atendiendo a la complejidad de la operación. Servicio exento de IVA conforme al artículo 20.1.18º de la Ley 37/1992 del IVA.</li>
+              <li><strong>Personal Shopper Inmobiliario:</strong> honorarios desde cuatro mil euros más IVA al 21%, en función de la operación.</li>
               <li><strong>Cláusula de éxito:</strong> los honorarios de intermediación hipotecaria solo se devengan si la operación finaliza con la firma del contrato hipotecario. En caso contrario, no se cobra cantidad alguna por el trabajo realizado.</li>
             </ul>
 
