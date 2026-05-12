@@ -318,11 +318,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="border-t border-navy-700 pt-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-paper/60">
-            <p>
-              © {new Date().getFullYear()} Inversia Global Digital S.L. Todos los derechos
-              reservados.
-            </p>
+          <div className="border-t border-navy-700 pt-6 flex flex-col gap-4 text-sm text-paper/60">
             <div className="flex flex-wrap gap-x-4 gap-y-2">
               <a href="/aviso-legal" className="text-paper/60 hover:text-paper no-underline">
                 Aviso legal
@@ -336,7 +332,26 @@ export default function HomePage() {
               <a href="/terminos" className="text-paper/60 hover:text-paper no-underline">
                 Términos
               </a>
+              <a href="/tarifas-y-comisiones" className="text-paper/60 hover:text-paper no-underline">
+                Tarifas
+              </a>
+              <a href="/informacion-pre-contractual" className="text-paper/60 hover:text-paper no-underline">
+                Info pre-contractual
+              </a>
+              <a href="/reclamaciones" className="text-paper/60 hover:text-paper no-underline">
+                Reclamaciones
+              </a>
+              <a href="/codigo-de-conducta" className="text-paper/60 hover:text-paper no-underline">
+                Código de conducta
+              </a>
+              <a href="/disclaimer-estructuras-internacionales" className="text-paper/60 hover:text-paper no-underline">
+                Aviso estructuras internacionales
+              </a>
             </div>
+            <p>
+              © {new Date().getFullYear()} Inversia Global Digital S.L. Todos los derechos
+              reservados.
+            </p>
           </div>
         </Container>
       </footer>

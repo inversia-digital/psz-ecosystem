@@ -102,11 +102,64 @@ export default function AvisoLegalPage() {
               normativa de consumidores y usuarios establezca otro distinto.
             </p>
 
-            <h2>9. Legislación aplicable</h2>
+            <h2>9. Hosting y proveedores tecnológicos</h2>
             <p>
-              El presente aviso legal se rige por la legislación española, en particular por la Ley
-              5/2019 de Contratos de Crédito Inmobiliario, el Real Decreto 309/2019 y la normativa
-              complementaria.
+              El sitio web psz.es se sirve a través de la plataforma Vercel Inc. (sede en Estados
+              Unidos de América), con la que el responsable mantiene relación bajo cláusulas tipo
+              de la Comisión Europea para transferencias internacionales de datos. Los servicios
+              tecnológicos auxiliares (Resend para email transaccional, PostHog Cloud EU para
+              analítica web, Google Analytics 4) actúan como encargados del tratamiento conforme
+              a la <a href="/politica-privacidad">Política de Privacidad</a>.
+            </p>
+
+            <h2>10. Supervisión y autoridades competentes</h2>
+            <p>El titular está sometido a la supervisión de las siguientes autoridades:</p>
+            <ul>
+              <li>
+                <strong>Banco de España</strong> — supervisor de la actividad de intermediación
+                de crédito inmobiliario (art. 27 Ley 5/2019).
+              </li>
+              <li>
+                <strong>SEPBLAC</strong> (Servicio Ejecutivo de la Comisión de Prevención del
+                Blanqueo de Capitales) — supervisor del cumplimiento de las obligaciones de
+                prevención del blanqueo (Ley 10/2010).
+              </li>
+              <li>
+                <strong>Agencia Española de Protección de Datos (AEPD)</strong> — supervisor del
+                tratamiento de datos personales (RGPD + LOPDGDD).
+              </li>
+              <li>
+                <strong>ANICI</strong> (Asociación Nacional de Intermediarios en Crédito
+                Inmobiliario) — autoridad deontológica voluntaria asumida por el titular como
+                miembro fundador (ANICI-001) y presidente.
+              </li>
+            </ul>
+
+            <h2>11. Documentación complementaria publicada</h2>
+            <p>
+              Esta web publica adicionalmente los siguientes documentos legalmente requeridos o
+              recomendables:
+            </p>
+            <ul>
+              <li><a href="/politica-privacidad">Política de Privacidad</a></li>
+              <li><a href="/cookies">Política de Cookies</a></li>
+              <li><a href="/terminos">Condiciones generales de contratación</a></li>
+              <li><a href="/tarifas-y-comisiones">Tarifas y comisiones máximas</a></li>
+              <li><a href="/informacion-pre-contractual">Información pre-contractual (Ley 5/2019)</a></li>
+              <li><a href="/reclamaciones">Procedimiento de reclamaciones</a></li>
+              <li><a href="/codigo-de-conducta">Código de conducta profesional</a></li>
+              <li>
+                <a href="/disclaimer-estructuras-internacionales">
+                  Aviso legal — Estructuras societarias internacionales
+                </a>
+              </li>
+            </ul>
+
+            <h2>12. Legislación aplicable</h2>
+            <p>
+              El presente aviso legal se rige por la legislación española, en particular por la
+              Ley 5/2019 de Contratos de Crédito Inmobiliario, el Real Decreto 309/2019 y la
+              normativa complementaria.
             </p>
 
             <p className="text-sm text-ink-muted mt-12">
