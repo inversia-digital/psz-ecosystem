@@ -21,15 +21,15 @@ export const WHY_TONO_BULLETS: WhyTonoBullet[] = [
   },
   {
     title: 'Servicio en toda España, oficina en Zaragoza',
-    body: 'Atiendo clientes en cualquier comunidad autónoma. La gestión es 100% digital salvo la firma en notaría, donde te acompaño físicamente. Mi sede legal está en Cuarte de Huerva (Zaragoza), donde también puedes venir a verme si lo prefieres.',
+    body: 'Atiendo clientes en cualquier comunidad autónoma. La gestión es 100% digital salvo la firma en notaría, a la que te acompaño físicamente si lo necesitas. Mi sede legal está en Cuarte de Huerva (Zaragoza), donde también puedes venir a verme si lo prefieres.',
   },
   {
     title: 'Más de 100 operaciones cerradas en 2025',
     body: 'Casos de todo tipo a nivel nacional: hipotecas para autónomos con ingresos variables, eliminación de avalistas, subrogaciones complejas, financiación para inversores con varias propiedades, reunificación de deudas, no residentes, perfiles rechazados previamente por bancos. Si tu caso no es estándar, mi experiencia tampoco lo es.',
   },
   {
-    title: 'Reserva profesional + honorarios a éxito',
-    body: 'Una reserva profesional de seiscientos euros al firmar el contrato de intermediación (compromiso real de ambas partes), y el resto de honorarios solo si conseguimos la hipoteca. Cifras fijas, conocidas y firmadas antes de empezar. Ni comisiones ocultas, ni vinculaciones encubiertas, ni productos cruzados.',
+    title: 'Honorarios transparentes y a éxito',
+    body: 'Mis honorarios son fijos y los conoces antes de empezar a trabajar. Sin comisiones ocultas, sin vinculaciones encubiertas, sin productos cruzados. Las cifras están en blanco y negro desde el primer minuto.',
   },
   {
     title: 'Fundador del instituto INARPA',

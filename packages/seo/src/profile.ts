@@ -99,9 +99,9 @@ export const TONO = {
     'Hipotecas para inversores',
     'Reunificación de deudas',
     'Eliminación de avalistas',
+    'Contratos de arras penitenciales',
     'Fiscalidad inmobiliaria',
-    'Diseño de holdings y estructuras societarias',
-    'Estructuras internacionales LLC',
+    'Diseño de holdings y estructuras societarias internacionales',
   ],
 } as const
 

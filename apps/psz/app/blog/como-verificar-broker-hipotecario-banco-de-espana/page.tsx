@@ -47,11 +47,6 @@ const FAQ_ITEMS = [
       'No de la misma forma. Los asesores que trabajan dentro de la oficina de un banco (empleados directos) no necesitan estar en el registro de intermediarios — están bajo otra supervisión bancaria. La normativa de intermediarios solo aplica a profesionales externos al banco que intermedian con varias entidades. Si tu interlocutor es empleado del banco, no esperes encontrarlo en este registro.',
   },
   {
-    question: '¿Qué hago si mi broker está registrado en una comunidad y yo vivo en otra?',
-    answer:
-      'Un intermediario inscrito solo en una comunidad autónoma no puede operar legalmente fuera de ella. Si vives en otra comunidad, busca un intermediario con inscripción estatal (número Exxx) o pide al broker autonómico que demuestre algún tipo de convenio con un intermediario estatal. En la práctica, lo más limpio es elegir uno con ámbito nacional.',
-  },
-  {
     question: '¿El número de registro caduca?',
     answer:
       'La inscripción no caduca, pero el intermediario puede causar baja por incumplimiento, renuncia o por no renovar el seguro de responsabilidad civil profesional. Por eso vale la pena verificar el estado actualizado del registro, no fiarse de un número que viste hace dos años.',
@@ -191,15 +186,14 @@ export default function ArticlePage() {
             </p>
             <ul>
               <li>Nombre completo o razón social.</li>
-              <li>Número de inscripción (formato Exxx para intermediarios estatales).</li>
-              <li>Tipo de inscripción y comunidad autónoma desde la que opera.</li>
-              <li>Si hay representantes designados.</li>
+              <li>Número de inscripción (formato Exxx).</li>
+              <li>Tipo de inscripción y si hay representantes designados.</li>
+              <li>Estado: activo o de baja.</li>
             </ul>
             <p>
               <strong>Qué buscar:</strong> que coincida el nombre o la empresa que te ofrece
-              servicios; que el número de registro esté activo; que el ámbito territorial cubra
-              donde tú vas a operar (si la inscripción es solo autonómica, no puede operar en otras
-              comunidades).
+              servicios; que el número de registro esté activo (sin baja); que la persona/empresa
+              esté operando hoy.
             </p>
             <p>
               Si la persona o empresa no aparece, <strong>no está registrada</strong> y por tanto no

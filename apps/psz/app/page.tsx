@@ -96,7 +96,7 @@ export default function HomePage() {
             {WHY_TONO_BULLETS.map((b, i) => (
               <article
                 key={i}
-                className="bg-paper-card rounded-xl border border-navy-100 p-6 shadow-soft"
+                className="bg-paper-card rounded-xl border border-navy-100 border-t-4 border-t-gold-400 p-6 shadow-soft hover:shadow-card transition-shadow"
               >
                 <h3 className="text-xl font-semibold mb-3 text-navy-800">{b.title}</h3>
                 <p className="text-ink-soft text-sm">{b.body}</p>
@@ -127,7 +127,7 @@ export default function HomePage() {
             />
             <ServiceCard
               title="Estructuras societarias"
-              description="Diseño de holdings nacionales y estructuras internacionales (LLC) para integrar tu operativa inmobiliaria con la protección patrimonial. Asesoría aprendida operando para mí mismo."
+              description="Diseño de holdings nacionales y estructuras societarias internacionales para integrar tu operativa inmobiliaria con la protección patrimonial."
               cta="Hablamos del tema"
               ctaHref="/contacto"
               accent="secondary"
@@ -243,7 +243,7 @@ export default function HomePage() {
             <div>
               <p className="text-paper font-semibold mb-2 text-lg">{TONO.shortName}</p>
               <p className="text-sm">Broker hipotecario nº {TONO.credentials.bdeId}</p>
-              <p className="text-sm">Presidente de ANICI · {TONO.credentials.aniciId}</p>
+              <p className="text-sm">Presidente de ANICI</p>
               <div className="flex gap-3 mt-5">
                 {SOCIAL_LINKS.map((s) => (
                   <a
@@ -308,13 +308,6 @@ export default function HomePage() {
                 {INVERSIA.address.postalCode} {INVERSIA.address.city}, {INVERSIA.address.region}
               </p>
               <p className="mt-2">
-                <a
-                  href={`tel:${INVERSIA.phone}`}
-                  className="text-paper/70 hover:text-paper no-underline"
-                >
-                  {INVERSIA.phone}
-                </a>
-                {' · '}
                 <a
                   href={`mailto:${INVERSIA.email}`}
                   className="text-paper/70 hover:text-paper no-underline"

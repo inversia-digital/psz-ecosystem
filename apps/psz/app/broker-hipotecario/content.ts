@@ -59,8 +59,8 @@ export const PILLAR_BROKER = {
   national: {
     title: 'Servicio en toda España',
     paragraphs: [
-      'Trabajo con clientes en las 17 comunidades autónomas. La gestión hipotecaria es 100% digital salvo la firma en notaría: análisis del perfil, preparación del dossier, negociación con bancos, revisión del contrato, todo se hace por videollamada, email y firma electrónica.',
-      'Para la firma final te acompaño físicamente a la notaría que elijas, en cualquier punto de España. Los gastos de desplazamiento están incluidos en mis honorarios.',
+      'Trabajo con clientes en las 17 comunidades autónomas. La gestión hipotecaria es 100% digital: análisis del perfil, preparación del dossier, negociación con bancos, revisión del contrato, todo se hace por videollamada, email y firma electrónica.',
+      'Para la firma en notaría te acompaño físicamente si me lo pides — a cualquier punto de España, con los gastos de desplazamiento incluidos en mis honorarios. Cuando no es necesario, la firma se hace con normalidad sin mi presencia.',
       'Mis clientes operativos en este momento están en Madrid, Barcelona, Valencia, Sevilla, Bilbao, Málaga, Zaragoza, Alicante, Murcia, Las Palmas y otras ciudades. La ubicación no es un obstáculo; la banca es la misma en toda España.',
     ],
   },
@@ -134,7 +134,7 @@ export const PILLAR_BROKER = {
       {
         n: '04',
         title: 'Comparativa final y elección',
-        body: 'Te entrego una comparativa clara con las 3-4 mejores ofertas. Tú decides cuál te convence. Yo te asesoro pero no te empujo: la firma es tuya.',
+        body: 'Te entrego una comparativa clara con las 2 o 3 mejores ofertas. Tú decides cuál te convence. Yo te asesoro pero no te empujo: la firma es tuya.',
       },
       {
         n: '05',
@@ -144,7 +144,7 @@ export const PILLAR_BROKER = {
       {
         n: '06',
         title: 'Firma en notaría',
-        body: 'Te acompaño físicamente a la notaría. Aclaro cualquier cláusula en directo. Cuando firmas, mi trabajo está hecho.',
+        body: 'Si me lo pides, te acompaño físicamente a la notaría y aclaro cualquier cláusula en directo. Si no lo necesitas, la firma se hace con normalidad. Cuando firmas, mi trabajo está hecho.',
       },
       {
         n: '07',
@@ -200,7 +200,7 @@ export const PILLAR_BROKER = {
     {
       question: '¿Trabajas solo con clientes en Zaragoza o en toda España?',
       answer:
-        'Atiendo en toda España. Mi oficina legal está en Cuarte de Huerva (Zaragoza) pero el servicio es 100% digital salvo la firma en notaría. Tengo clientes operativos en Madrid, Barcelona, Valencia, Sevilla, Bilbao, Málaga, Alicante, Murcia, Las Palmas y otras ciudades. Para la firma final te acompaño físicamente a la notaría que elijas — los gastos de desplazamiento están incluidos en mis honorarios.',
+        'Atiendo en toda España. Mi oficina legal está en Cuarte de Huerva (Zaragoza) pero el servicio es 100% digital. Tengo clientes operativos en Madrid, Barcelona, Valencia, Sevilla, Bilbao, Málaga, Alicante, Murcia, Las Palmas y otras ciudades. Si necesitas que te acompañe a la firma en notaría, lo hago en cualquier punto de España con los gastos de desplazamiento incluidos en mis honorarios; si no lo necesitas, la firma se hace con normalidad sin mi presencia.',
     },
     {
       question: '¿Cuánto se tarda en conseguir una hipoteca con un broker?',

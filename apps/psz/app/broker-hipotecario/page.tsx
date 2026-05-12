@@ -122,7 +122,10 @@ export default function BrokerHipotecarioPage() {
         <Container size="lg">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {WHY_TONO_BULLETS.map((b, i) => (
-              <article key={i} className="bg-paper-card rounded-xl border border-navy-100 p-6 shadow-soft">
+              <article
+                key={i}
+                className="bg-paper-card rounded-xl border border-navy-100 border-t-4 border-t-gold-400 p-6 shadow-soft hover:shadow-card transition-shadow"
+              >
                 <h3 className="text-xl font-semibold mb-3 text-navy-800">{b.title}</h3>
                 <p className="text-ink-soft">{b.body}</p>
               </article>
