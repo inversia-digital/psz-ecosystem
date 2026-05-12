@@ -73,7 +73,13 @@ export default function BrokerHipotecarioPage() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg">
+            <Button
+              href={MORTGAGE_FORM_URL}
+              variant="gold"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Solicitar mi hipoteca →
             </Button>
             <Button href="#proceso" variant="ghost" size="lg" className="text-paper hover:bg-navy-800">
@@ -253,7 +259,13 @@ export default function BrokerHipotecarioPage() {
             Primera llamada gratis. Te digo en 30 minutos si tu caso es viable y a qué bancos podemos
             presentarlo. Sin compromiso, sin coste, sin presión.
           </p>
-          <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg">
+          <Button
+            href={MORTGAGE_FORM_URL}
+            variant="gold"
+            size="lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Solicitar mi hipoteca →
           </Button>
         </Container>

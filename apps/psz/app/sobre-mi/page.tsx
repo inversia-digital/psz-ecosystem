@@ -189,7 +189,13 @@ export default function SobreMiPage() {
             <p className="text-lg leading-relaxed mb-8 text-paper/90 text-left max-w-prose mx-auto">
               {SOBRE_MI.podcast.body}
             </p>
-            <Button href={SOBRE_MI.podcast.url} variant="gold" size="lg">
+            <Button
+              href={SOBRE_MI.podcast.url}
+              variant="gold"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {SOBRE_MI.podcast.cta} →
             </Button>
           </div>
@@ -238,14 +244,22 @@ export default function SobreMiPage() {
             oportunidades inmobiliarias y conocernos por ahí.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg">
+            <Button
+              href={MORTGAGE_FORM_URL}
+              variant="gold"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Solicitar mi hipoteca →
             </Button>
             <Button
               href={TELEGRAM_INVESTORS_URL}
-              variant="ghost"
+              variant="primary"
               size="lg"
-              className="text-paper hover:bg-navy-800 border border-navy-700"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-sky-500 text-white border-sky-500 hover:bg-sky-600"
             >
               Canal Telegram inversores
             </Button>

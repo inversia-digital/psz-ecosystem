@@ -52,14 +52,22 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg">
+              <Button
+                href={MORTGAGE_FORM_URL}
+                variant="gold"
+                size="lg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Quiero mi hipoteca →
               </Button>
               <Button
                 href={TELEGRAM_INVESTORS_URL}
-                variant="secondary"
+                variant="primary"
                 size="lg"
-                className="bg-navy-800 text-paper border-navy-600 hover:bg-navy-700"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-sky-500 text-white border-sky-500 hover:bg-sky-600"
               >
                 Canal Telegram inversores
               </Button>
@@ -73,9 +81,9 @@ export default function HomePage() {
         <Container size="lg">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <Stat value="+100" label="Operaciones cerradas en 2025" />
-            <Stat value="E242" label="Registro Banco de España" />
-            <Stat value="ANICI-001" label="Asociado fundador" />
+            <Stat value="+20" label="Bancos negociados" />
             <Stat value="100%" label="Cobertura nacional" />
+            <Stat value="0 €" label="Si no firmamos hipoteca" />
           </div>
         </Container>
       </section>
@@ -178,7 +186,13 @@ export default function HomePage() {
               hipotecario, regulación, conversaciones con notarios, asesores fiscales y otros
               brokers asociados en ANICI.
             </p>
-            <Button href={PODCAST_URL} variant="gold" size="lg">
+            <Button
+              href={PODCAST_URL}
+              variant="gold"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Ver en YouTube →
             </Button>
           </div>

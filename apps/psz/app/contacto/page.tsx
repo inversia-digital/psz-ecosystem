@@ -60,7 +60,13 @@ export default function ContactoPage() {
                 Rellena el formulario del CRM de Hipobrokers. Te llamo en menos de 24 horas
                 laborables para una primera evaluación gratuita y sin compromiso.
               </p>
-              <Button href={MORTGAGE_FORM_URL} variant="gold" size="md">
+              <Button
+                href={MORTGAGE_FORM_URL}
+                variant="gold"
+                size="md"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Ir al formulario →
               </Button>
             </article>
@@ -74,7 +80,14 @@ export default function ContactoPage() {
                 Comparto oportunidades inmobiliarias seleccionadas y análisis del mercado. Acceso
                 libre, contenido depurado, cero spam.
               </p>
-              <Button href={TELEGRAM_INVESTORS_URL} variant="primary" size="md">
+              <Button
+                href={TELEGRAM_INVESTORS_URL}
+                variant="primary"
+                size="md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-sky-500 text-white border-sky-500 hover:bg-sky-600"
+              >
                 Unirme al canal →
               </Button>
             </article>
