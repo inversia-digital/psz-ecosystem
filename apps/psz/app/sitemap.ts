@@ -105,5 +105,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    { url: `${SITE_URLS.psz}/tarifas-y-comisiones`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URLS.psz}/informacion-pre-contractual`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URLS.psz}/reclamaciones`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URLS.psz}/codigo-de-conducta`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URLS.psz}/disclaimer-estructuras-internacionales`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
   ]
 }
