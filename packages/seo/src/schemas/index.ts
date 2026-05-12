@@ -1,0 +1,5 @@
+export { personSchema } from './person'
+export { organizationSchema } from './organization'
+export { professionalServiceSchema } from './professionalService'
+export { faqPageSchema, type FAQItem } from './faqPage'
+export { breadcrumbSchema, type BreadcrumbItem } from './breadcrumb'

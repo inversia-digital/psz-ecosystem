@@ -47,3 +47,6 @@ generated-schema.graphql
 
 # Misc
 .cache/
+
+# Deployment artifacts (no fuente, generados o subidos manualmente)
+to-upload/
