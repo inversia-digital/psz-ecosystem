@@ -23,7 +23,7 @@ export const SOBRE_MI = {
     },
     {
       title: 'Fundación del instituto INARPA',
-      body: 'Fundé INARPA (Instituto de Arquitectura Patrimonial) para formar a inversores y a otros profesionales del sector en lo que sé hacer. Si no puedes enseñarlo, probablemente no lo entiendes del todo.',
+      body: 'Fundé INARPA (Instituto de Arquitectura Patrimonial) para formar a inversores y a otros profesionales del sector en lo que sé hacer. El instituto está en construcción y abriremos en cuanto esté listo.',
     },
     {
       title: 'Estructura patrimonial propia',

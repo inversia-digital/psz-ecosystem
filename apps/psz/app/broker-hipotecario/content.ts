@@ -26,28 +26,7 @@ export const PILLAR_BROKER = {
 
   whyTono: {
     title: 'Por qué Toño Palacios y no otro broker',
-    bullets: [
-      {
-        title: 'Registro verificable en Banco de España',
-        body: 'Mi número E242 está publicado en la web oficial del Banco de España. Cualquiera puede comprobarlo. No tengo nada que ocultar; al contrario: invito siempre a verificarlo antes de contratar.',
-      },
-      {
-        title: 'Presidente de ANICI',
-        body: 'Soy presidente de la Asociación Nacional de Intermediarios en Crédito Inmobiliario y miembro fundador (ANICI-001). No soy un intermediario más: represento institucionalmente al sector. Si fallo, el sector falla.',
-      },
-      {
-        title: 'Servicio en toda España, oficina física en Zaragoza',
-        body: 'Atiendo clientes en cualquier comunidad autónoma. Toda la gestión es 100% digital salvo la firma en notaría (donde te acompaño físicamente o por videoconferencia notarial). Mi sede legal es Cuarte de Huerva (Zaragoza), donde puedes venir a verme si lo prefieres.',
-      },
-      {
-        title: 'Honorarios transparentes y a éxito',
-        body: 'Solo cobro si conseguimos la hipoteca. Mis honorarios son fijos y los conoces antes de empezar. Ni comisiones ocultas, ni vinculaciones encubiertas, ni productos cruzados.',
-      },
-      {
-        title: 'Instituto formativo propio',
-        body: 'Dirijo INARPA, el Instituto de Arquitectura Patrimonial. Si quiero formar a otros profesionales en lo que hago, es porque puedo explicarlo. Mi conocimiento es transferible y verificable.',
-      },
-    ],
+    // Datos consumidos desde el módulo compartido @/app/_data/whyTono
   },
 
   differences: {

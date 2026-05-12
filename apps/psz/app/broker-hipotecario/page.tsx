@@ -7,6 +7,7 @@ import {
   faqPageSchema,
 } from '@psz/seo'
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/ui'
+import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import { PILLAR_BROKER } from './content'
 
 const URL = `${SITE_URLS.psz}/broker-hipotecario`
@@ -118,8 +119,8 @@ export default function BrokerHipotecarioPage() {
       {/* POR QUÉ TOÑO */}
       <Section id="por-que" tone="soft" padding="md" title={PILLAR_BROKER.whyTono.title}>
         <Container size="lg">
-          <div className="grid md:grid-cols-2 gap-6">
-            {PILLAR_BROKER.whyTono.bullets.map((b, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {WHY_TONO_BULLETS.map((b, i) => (
               <article key={i} className="bg-paper-card rounded-xl border border-navy-100 p-6 shadow-soft">
                 <h3 className="text-xl font-semibold mb-3 text-navy-800">{b.title}</h3>
                 <p className="text-ink-soft">{b.body}</p>

@@ -4,7 +4,10 @@ import {
   MORTGAGE_FORM_URL,
   TELEGRAM_INVESTORS_URL,
 } from '@psz/seo'
-import { Button, Container, CredentialBadge } from '@psz/ui'
+import { Button, Container, CredentialBadge, Section } from '@psz/ui'
+import { WHY_TONO_BULLETS } from './_data/whyTono'
+
+const PODCAST_URL = 'https://www.youtube.com/@hipobrokers'
 
 export default function HomePage() {
   return (
@@ -65,10 +68,43 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* SERVICIOS */}
-      <section className="bg-paper py-20">
+      {/* STAT STRIP */}
+      <section className="bg-paper-soft border-y border-navy-100 py-8">
         <Container size="lg">
-          <h2 className="text-4xl font-bold mb-12 text-center">Qué hago</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <Stat value="+100" label="Operaciones cerradas en 2025" />
+            <Stat value="E242" label="Registro Banco de España" />
+            <Stat value="ANICI-001" label="Asociado fundador" />
+            <Stat value="100%" label="Cobertura nacional" />
+          </div>
+        </Container>
+      </section>
+
+      {/* POR QUÉ TOÑO */}
+      <Section
+        id="por-que"
+        tone="paper"
+        padding="md"
+        title="Por qué Toño Palacios y no otro broker"
+      >
+        <Container size="lg">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {WHY_TONO_BULLETS.map((b, i) => (
+              <article
+                key={i}
+                className="bg-paper-card rounded-xl border border-navy-100 p-6 shadow-soft"
+              >
+                <h3 className="text-xl font-semibold mb-3 text-navy-800">{b.title}</h3>
+                <p className="text-ink-soft text-sm">{b.body}</p>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* SERVICIOS */}
+      <Section id="servicios" tone="soft" padding="md" title="Qué hago">
+        <Container size="lg">
           <div className="grid md:grid-cols-3 gap-6">
             <ServiceCard
               title="Broker hipotecario"
@@ -85,18 +121,18 @@ export default function HomePage() {
               accent="gold"
             />
             <ServiceCard
-              title="Formación INARPA"
-              description="Instituto propio de formación en inversión patrimonial. 8 escuelas, casos reales, mentorías."
-              cta="Ir a INARPA"
-              ctaHref={SITE_URLS.inarpa}
+              title="Pillar broker hipotecario"
+              description="¿Qué hace un broker, en qué se diferencia de un comparador o un banco, comisiones, proceso paso a paso, FAQ y casos."
+              cta="Leer la guía completa"
+              ctaHref="/broker-hipotecario"
               accent="secondary"
             />
           </div>
         </Container>
-      </section>
+      </Section>
 
       {/* PROOF / AUTORIDAD */}
-      <section className="bg-paper-soft py-20">
+      <section className="bg-paper py-20">
         <Container size="md">
           <div className="text-center">
             <p className="text-sm uppercase tracking-wider text-ink-muted mb-4">
@@ -110,11 +146,11 @@ export default function HomePage() {
             <p className="text-lg text-ink-soft mb-8">
               Toño Palacios es presidente de <strong>ANICI</strong> (Asociación Nacional de Intermediarios
               en Crédito Inmobiliario) y asociado fundador {TONO.credentials.aniciId}. Esto es
-              comprobable en {' '}
+              comprobable en{' '}
               <a href={SITE_URLS.anici} target="_blank" rel="noopener noreferrer">
                 anici.es
               </a>
-              {' '}y en el {' '}
+              {' '}y en el{' '}
               <a href={TONO.credentials.bdeUrl} target="_blank" rel="noopener noreferrer">
                 registro oficial del Banco de España
               </a>
@@ -126,6 +162,28 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* PODCAST */}
+      <Section id="podcast" tone="soft" padding="md">
+        <Container size="md">
+          <div className="bg-navy-900 text-paper rounded-2xl p-8 md:p-12 shadow-card">
+            <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
+              Podcast Hipobrokers · YouTube
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-paper">
+              La voz del intermediario también necesita altavoz
+            </h2>
+            <p className="text-paper/80 text-lg leading-relaxed mb-6 max-w-prose">
+              Dirijo y produzco el podcast Hipobrokers, donde abordamos casos reales del sector
+              hipotecario, regulación, conversaciones con notarios, asesores fiscales y otros
+              brokers asociados en ANICI.
+            </p>
+            <Button href={PODCAST_URL} variant="gold" size="lg">
+              Ver en YouTube →
+            </Button>
+          </div>
+        </Container>
+      </Section>
 
       {/* FOOTER provisional */}
       <footer className="bg-navy-900 text-paper/80 py-12">
@@ -172,5 +230,14 @@ function ServiceCard({
         {cta} →
       </Button>
     </article>
+  )
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="text-3xl md:text-4xl font-bold text-navy-800 leading-tight">{value}</p>
+      <p className="text-xs md:text-sm text-ink-muted mt-1">{label}</p>
+    </div>
   )
 }
