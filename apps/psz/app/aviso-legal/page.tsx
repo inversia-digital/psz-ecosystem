@@ -77,17 +77,36 @@ export default function AvisoLegalPage() {
               psz.es.
             </p>
 
-            <h2>6. Modificaciones</h2>
+            <h2>6. Firma electrónica</h2>
+            <p>
+              Los contratos profesionales suscritos con el titular se formalizan mediante firma
+              electrónica a través de plataforma certificada (DocuSign), conforme al Reglamento (UE)
+              nº 910/2014 (eIDAS) y a la Ley 6/2020 de servicios electrónicos de confianza. La firma
+              electrónica tiene plena eficacia jurídica equivalente a la firma manuscrita.
+            </p>
+
+            <h2>7. Modificaciones</h2>
             <p>
               El titular se reserva el derecho a modificar este aviso legal en cualquier momento. Las
               modificaciones surtirán efecto desde su publicación en el sitio web.
             </p>
 
-            <h2>7. Legislación aplicable y jurisdicción</h2>
+            <h2>8. Mediación previa y jurisdicción</h2>
             <p>
-              El presente aviso legal se rige por la legislación española. Para la resolución de
-              cualquier controversia, las partes se someten a los Juzgados y Tribunales de Zaragoza,
-              salvo que la normativa de consumidores y usuarios establezca otro fuero distinto.
+              Con carácter previo al ejercicio de cualquier acción judicial, las partes se comprometen
+              a intentar resolver la controversia mediante mediación civil ante un mediador
+              certificado en Zaragoza, conforme a la Ley 5/2012 de mediación en asuntos civiles y
+              mercantiles. Si en el plazo de treinta (30) días naturales desde la solicitud escrita
+              no se alcanzara acuerdo, cualquiera de las partes podrá acudir a los Juzgados y
+              Tribunales de Zaragoza, con renuncia expresa a cualquier otro fuero, salvo que la
+              normativa de consumidores y usuarios establezca otro distinto.
+            </p>
+
+            <h2>9. Legislación aplicable</h2>
+            <p>
+              El presente aviso legal se rige por la legislación española, en particular por la Ley
+              5/2019 de Contratos de Crédito Inmobiliario, el Real Decreto 309/2019 y la normativa
+              complementaria.
             </p>
 
             <p className="text-sm text-ink-muted mt-12">

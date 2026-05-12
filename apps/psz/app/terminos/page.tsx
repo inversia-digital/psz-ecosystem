@@ -91,28 +91,60 @@ export default function TerminosPage() {
 
             <h2>7. Protección de datos</h2>
             <p>
-              El tratamiento de datos personales en el marco de la prestación del servicio se rige por
-              la <a href="/politica-privacidad">Política de Privacidad</a> del prestador.
+              El tratamiento de datos personales en el marco de la prestación del servicio se rige
+              por la <a href="/politica-privacidad">Política de Privacidad</a> del prestador, que
+              reproduce el Anexo I de protección de datos (art. 13 RGPD) que se firma con cada cliente
+              al inicio del servicio. El prestador dispone de un seguro de responsabilidad civil
+              específico para el tratamiento de datos personales como medida adicional de garantía.
             </p>
 
-            <h2>8. Resolución y desistimiento</h2>
+            <h2>8. Firma electrónica</h2>
+            <p>
+              Los contratos profesionales se formalizan mediante firma electrónica a través de
+              DocuSign, conforme al Reglamento (UE) nº 910/2014 (eIDAS) y a la Ley 6/2020 de
+              servicios electrónicos de confianza. La firma electrónica tiene plena eficacia jurídica
+              equivalente a la firma manuscrita. La firma del cliente implica la aceptación plena e
+              irrevocable de todas las condiciones contractuales.
+            </p>
+
+            <h2>9. Duración y resolución</h2>
+            <p>
+              El contrato de intermediación hipotecaria estará vigente hasta la formalización de la
+              operación o, en su defecto, transcurridos doce (12) meses desde la firma, salvo prórroga
+              acordada por escrito. Cualquiera de las partes podrá resolver el contrato por
+              incumplimiento grave de la otra. La resolución por causa imputable al cliente no
+              generará derecho a devolución de la reserva profesional abonada.
+            </p>
             <p>
               El cliente puede desistir del contrato de intermediación en cualquier momento mediante
               comunicación escrita. Si el desistimiento se produce una vez iniciada la negociación
-              activa con entidades, no se devengarán honorarios salvo que se hubiera firmado oferta
-              vinculante.
+              activa con entidades, no se devengarán los honorarios a éxito salvo que se hubiera
+              firmado oferta vinculante; la reserva profesional ya abonada cubre el trabajo invertido.
             </p>
 
-            <h2>9. Ley aplicable y jurisdicción</h2>
+            <h2>10. Mediación previa y jurisdicción</h2>
             <p>
-              Las presentes condiciones se rigen por la legislación española, en particular por la Ley
-              5/2019, de 15 de marzo, reguladora de los contratos de crédito inmobiliario.
+              Con carácter previo al ejercicio de cualquier acción judicial, las partes se comprometen
+              a intentar resolver la controversia mediante mediación civil ante un mediador
+              certificado en Zaragoza, conforme a la Ley 5/2012 de mediación en asuntos civiles y
+              mercantiles. Si en el plazo de treinta (30) días naturales desde la solicitud escrita
+              no se alcanzara acuerdo, cualquiera de las partes podrá acudir a los Juzgados y
+              Tribunales de Zaragoza, con renuncia expresa a cualquier otro fuero, salvo que la
+              normativa de consumidores y usuarios establezca otro distinto.
             </p>
+
+            <h2>11. Nulidad parcial</h2>
             <p>
-              Para la resolución de cualquier controversia, las partes se someten a los Juzgados y
-              Tribunales de Zaragoza, salvo que la normativa de consumidores y usuarios establezca otro
-              fuero distinto. Es aplicable la posibilidad de mediación o arbitraje cuando así se acuerde
-              de mutuo acuerdo.
+              Si alguna cláusula del presente contrato fuera declarada nula o ineficaz, dicha nulidad
+              no afectará al resto, que permanecerá plenamente vigente y se adaptará en lo necesario
+              para preservar los efectos más próximos a los originalmente pactados.
+            </p>
+
+            <h2>12. Ley aplicable</h2>
+            <p>
+              Las presentes condiciones se rigen por la legislación española, en particular por la
+              Ley 5/2019, de 15 de marzo, reguladora de los contratos de crédito inmobiliario, el
+              Real Decreto 309/2019 y la normativa complementaria.
             </p>
 
             <p className="text-sm text-ink-muted mt-12">

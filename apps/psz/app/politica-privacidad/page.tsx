@@ -4,7 +4,8 @@ import { Container, Section } from '@psz/ui'
 
 export const metadata: Metadata = {
   title: 'Política de privacidad',
-  description: 'Política de privacidad de Inversia Global Digital S.L. — Cómo tratamos los datos personales de nuestros clientes conforme al RGPD y la LOPDGDD.',
+  description:
+    'Política de privacidad de Inversia Global Digital S.L. — Cómo tratamos los datos personales conforme al RGPD, la LOPDGDD y los contratos de servicios que firmamos con clientes.',
   alternates: { canonical: `${SITE_URLS.psz}/politica-privacidad` },
   robots: { index: true, follow: true },
 }
@@ -16,16 +17,22 @@ export default function PoliticaPrivacidadPage() {
         <Container size="md">
           <div className="prose-psz">
             <p>
-              En INVERSIA GLOBAL DIGITAL, S.L.U. (en adelante, "el responsable") nos comprometemos a
-              proteger los datos personales de quienes navegan, contactan o contratan con nosotros, de
-              conformidad con el Reglamento (UE) 2016/679 (RGPD), la Ley Orgánica 3/2018 de Protección
-              de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD) y demás normativa
-              vigente.
+              En INVERSIA GLOBAL DIGITAL, S.L.U. (en adelante, "el responsable") tratamos los datos
+              personales de quienes navegan, contactan o contratan con nosotros conforme al
+              Reglamento (UE) 2016/679 (RGPD), la Ley Orgánica 3/2018 de Protección de Datos
+              Personales y Garantía de los Derechos Digitales (LOPDGDD) y la Ley 5/2019 de
+              Contratos de Crédito Inmobiliario.
+            </p>
+            <p>
+              Esta política refleja literalmente el tratamiento que aparece en los contratos de
+              servicios que firmamos con nuestros clientes (Anexo I de protección de datos personales,
+              art. 13 RGPD).
             </p>
 
             <h2>1. Responsable del tratamiento</h2>
             <ul>
-              <li><strong>Identidad:</strong> INVERSIA GLOBAL DIGITAL, S.L.U. — CIF B-75281394</li>
+              <li><strong>Identidad:</strong> INVERSIA GLOBAL DIGITAL, S.L.U.</li>
+              <li><strong>CIF:</strong> B-75281394</li>
               <li><strong>Domicilio:</strong> Polígono Alcoz Alto 21, 1-1, 50410 Cuarte de Huerva (Zaragoza)</li>
               <li><strong>Correo electrónico:</strong> info@inversiadigital.es</li>
               <li><strong>Actividad regulada:</strong> Intermediario de Crédito Inmobiliario inscrito en el Banco de España con el número E242</li>
@@ -34,80 +41,117 @@ export default function PoliticaPrivacidadPage() {
             <h2>2. Finalidades del tratamiento</h2>
             <p>Tratamos los datos personales con las siguientes finalidades:</p>
             <ul>
-              <li>Atender consultas, solicitudes de información y preparar presupuestos.</li>
-              <li>Prestar servicios de intermediación hipotecaria, Personal Shopper Inmobiliario y formación.</li>
-              <li>Tramitar expedientes hipotecarios ante entidades financieras, tasadoras, gestorías y notarías.</li>
-              <li>Cumplir obligaciones legales y fiscales (en particular, las derivadas de la Ley 5/2019, la Ley 10/2010 de prevención del blanqueo de capitales, y la normativa fiscal).</li>
-              <li>Enviar comunicaciones informativas o comerciales propias cuando se haya prestado consentimiento explícito.</li>
+              <li>Gestión, prestación y seguimiento de los servicios de intermediación contratados (hipotecaria, Personal Shopper Inmobiliario, estructuras societarias).</li>
+              <li>Comunicaciones necesarias para el desarrollo de la operación.</li>
+              <li>Coordinación con terceros intervinientes (notarios, entidades financieras, registradores, técnicos, aseguradoras, gestorías y agencias) bajo el principio de minimización de datos.</li>
+              <li>Cumplimiento de obligaciones legales aplicables, incluidas las derivadas de la Ley 10/2010 de prevención del blanqueo de capitales y de la financiación del terrorismo.</li>
+              <li>Gestión documental y contractual derivada de la relación profesional.</li>
             </ul>
 
-            <h2>3. Base legal del tratamiento</h2>
+            <h2>3. Base jurídica del tratamiento</h2>
             <ul>
-              <li><strong>Ejecución del contrato</strong> y medidas precontractuales solicitadas por el interesado (art. 6.1.b RGPD).</li>
-              <li><strong>Cumplimiento de obligaciones legales</strong> aplicables al responsable (art. 6.1.c RGPD).</li>
-              <li><strong>Consentimiento</strong> del interesado para comunicaciones comerciales y para datos no estrictamente necesarios (art. 6.1.a RGPD), revocable en cualquier momento.</li>
-              <li><strong>Interés legítimo</strong> del responsable en proteger su actividad y los sistemas (art. 6.1.f RGPD).</li>
+              <li>Ejecución del contrato suscrito entre las partes (art. 6.1.b RGPD).</li>
+              <li>Cumplimiento de obligaciones legales aplicables al responsable (art. 6.1.c RGPD).</li>
+              <li>Interés legítimo del responsable en la gestión y seguimiento de la operación (art. 6.1.f RGPD).</li>
+              <li>
+                Para comunicaciones comerciales o tratamientos no estrictamente necesarios:
+                consentimiento del interesado (art. 6.1.a RGPD), revocable en cualquier momento.
+              </li>
             </ul>
 
             <h2>4. Datos tratados</h2>
-            <p>
-              Según el servicio solicitado, podemos tratar: datos identificativos (nombre, DNI/NIE),
-              datos de contacto (email, teléfono, dirección), datos económicos y patrimoniales (nóminas,
-              IRPF, propiedades), datos del inmueble objeto de financiación, y cualquier otro dato
-              proporcionado voluntariamente.
-            </p>
-
-            <h2>5. Destinatarios y cesiones</h2>
-            <p>Los datos podrán comunicarse a:</p>
+            <p>Según el servicio solicitado, tratamos las siguientes categorías:</p>
             <ul>
-              <li>Entidades financieras a las que se presente la solicitud de hipoteca, previa autorización expresa.</li>
-              <li>Tasadoras homologadas, gestorías y notarías que intervengan en la operación.</li>
-              <li>Asesorías fiscales y jurídicas externas, en su caso.</li>
-              <li>Administraciones públicas, cuando exista obligación legal (Hacienda, SEPBLAC, Banco de España).</li>
-              <li>Proveedores tecnológicos (hosting Vercel Inc., email transaccional Resend, analítica PostHog Cloud EU y Google Analytics) que actúan como encargados del tratamiento con garantías equivalentes al RGPD.</li>
+              <li>Datos identificativos: nombre, apellidos, DNI/NIE.</li>
+              <li>Datos de contacto: email, teléfono, dirección postal.</li>
+              <li>Datos económicos y patrimoniales: nóminas, declaraciones de la renta, vida laboral, propiedades, deudas, ratios de endeudamiento.</li>
+              <li>Datos del inmueble objeto de financiación o adquisición.</li>
+              <li>Cualquier otro dato proporcionado voluntariamente o necesario para la prestación del servicio.</li>
             </ul>
-            <p>No se realizan transferencias internacionales fuera del Espacio Económico Europeo sin garantías adecuadas (cláusulas tipo de la Comisión Europea, en su caso).</p>
+
+            <h2>5. Destinatarios de los datos</h2>
+            <p>
+              Los datos podrán ser comunicados, de forma estrictamente necesaria, a los siguientes
+              destinatarios. Todos quedan sujetos a obligaciones de confidencialidad equivalentes a
+              las del responsable:
+            </p>
+            <ul>
+              <li>Notarios y registradores intervinientes en la operación.</li>
+              <li>Organismos públicos (Hacienda, SEPBLAC, Banco de España, Registro Mercantil).</li>
+              <li>Entidades financieras a las que se presente la solicitud de financiación, previa autorización expresa del cliente.</li>
+              <li>Agencias inmobiliarias colaboradoras en la búsqueda y negociación.</li>
+              <li>Empresas de reforma y técnicos (cuando el servicio incluya estos colaboradores).</li>
+              <li>Entidades aseguradoras (tasadoras homologadas y seguros del inmueble).</li>
+              <li>Asesorías fiscales y jurídicas externas, en su caso.</li>
+              <li>
+                Proveedores tecnológicos que actúan como encargados del tratamiento con garantías
+                equivalentes al RGPD: Vercel Inc. (hosting), Resend (email transaccional), PostHog
+                Cloud EU (analítica) y Google Analytics 4 (analítica web).
+              </li>
+            </ul>
 
             <h2>6. Plazo de conservación</h2>
             <p>
-              Los datos se conservarán mientras dure la relación profesional y, posteriormente, durante
-              los plazos legales aplicables (entre 5 y 10 años, según la obligación: fiscal, contable,
-              de prevención de blanqueo, etc.). Una vez cumplidos los plazos, los datos serán suprimidos
-              o anonimizados.
+              Los datos se conservarán durante la vigencia de la relación contractual y, con
+              posterioridad, durante los plazos de prescripción de las acciones civiles, mercantiles
+              y fiscales aplicables, o mientras sean necesarios para la defensa ante posibles
+              reclamaciones. Una vez cumplidos los plazos, los datos serán suprimidos o anonimizados.
             </p>
 
-            <h2>7. Derechos del interesado</h2>
-            <p>Cualquier persona puede ejercer sus derechos de:</p>
+            <h2>7. Derechos de los interesados</h2>
+            <p>Cualquier persona puede ejercer en cualquier momento los siguientes derechos:</p>
             <ul>
               <li>Acceso, rectificación y supresión.</li>
-              <li>Limitación del tratamiento.</li>
-              <li>Oposición al tratamiento.</li>
-              <li>Portabilidad de los datos.</li>
+              <li>Oposición, limitación y portabilidad.</li>
               <li>Retirada del consentimiento prestado, sin afectar la licitud del tratamiento previo.</li>
               <li>No ser objeto de decisiones automatizadas con efectos jurídicos.</li>
             </ul>
             <p>
               Para ejercerlos, escriba a <strong>info@inversiadigital.es</strong> adjuntando copia de
-              su documento identificativo. Si considera que el tratamiento no se ajusta a la normativa,
-              puede presentar una reclamación ante la Agencia Española de Protección de Datos
+              su documento identificativo. Si considera que el tratamiento no se ajusta a la
+              normativa, puede presentar reclamación ante la Agencia Española de Protección de Datos
               (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).
             </p>
 
             <h2>8. Medidas de seguridad</h2>
             <p>
-              El responsable aplica las medidas técnicas y organizativas apropiadas conforme al
-              artículo 32 RGPD para garantizar la confidencialidad, integridad y disponibilidad de los
-              datos personales tratados.
+              El responsable ha adoptado las medidas técnicas y organizativas apropiadas para
+              garantizar la seguridad, integridad y confidencialidad de los datos personales conforme
+              al artículo 32 del RGPD.
+            </p>
+            <p>
+              Como medida adicional, <strong>el responsable tiene contratado un seguro de
+              responsabilidad civil específico para el tratamiento de datos personales</strong> que
+              cubre posibles incidencias derivadas de su actividad. Esta garantía supera lo exigido
+              por la normativa y refleja el compromiso del responsable con la protección efectiva de
+              los datos de sus clientes.
             </p>
 
-            <h2>9. Modificaciones</h2>
+            <h2>9. Transferencias internacionales</h2>
             <p>
-              Esta política puede ser actualizada para adaptarla a cambios normativos u operativos. Las
-              modificaciones surtirán efecto desde su publicación en el sitio web.
+              El responsable no realiza transferencias internacionales de datos a países u
+              organizaciones fuera del Espacio Económico Europeo (EEE) que no cuenten con el nivel
+              adecuado de protección reconocido por la Comisión Europea o con garantías apropiadas
+              (cláusulas tipo aprobadas por la Comisión, normas corporativas vinculantes, etc.).
+            </p>
+
+            <h2>10. Comunicaciones por correo electrónico</h2>
+            <p>
+              Las comunicaciones que mantenemos contigo a través de las direcciones de correo
+              electrónico facilitadas en este sitio web o en los contratos firmados tienen plena
+              validez jurídica.
+            </p>
+
+            <h2>11. Modificaciones</h2>
+            <p>
+              Esta política puede ser actualizada para adaptarla a cambios normativos u operativos.
+              Las modificaciones surtirán efecto desde su publicación en el sitio web. Te
+              recomendamos revisar periódicamente esta página.
             </p>
 
             <p className="text-sm text-ink-muted mt-12">
-              Última actualización: mayo de 2026.
+              Última actualización: mayo de 2026. Esta política refleja el Anexo I de protección de
+              datos que firmamos con cada cliente al inicio del servicio.
             </p>
           </div>
         </Container>
