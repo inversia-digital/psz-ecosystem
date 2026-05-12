@@ -1,8 +1,16 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URLS } from '@psz/seo'
+import { POSTS } from './blog/_posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
+  const blogPosts: MetadataRoute.Sitemap = POSTS.map((p) => ({
+    url: `${SITE_URLS.psz}/blog/${p.slug}`,
+    lastModified: new Date(p.datePublished),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
   return [
     { url: SITE_URLS.psz, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     {
@@ -33,8 +41,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URLS.psz}/blog`,
       lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.7,
+      priority: 0.85,
     },
+    ...blogPosts,
     {
       url: `${SITE_URLS.psz}/contacto`,
       lastModified: now,

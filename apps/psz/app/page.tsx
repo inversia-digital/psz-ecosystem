@@ -275,6 +275,11 @@ export default function HomePage() {
                 </a>
               </p>
               <p>
+                <a href="/blog" className="text-paper/70 hover:text-paper no-underline">
+                  Blog
+                </a>
+              </p>
+              <p>
                 <a href="/contacto" className="text-paper/70 hover:text-paper no-underline">
                   Contacto
                 </a>
