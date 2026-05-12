@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URLS.psz}/sobre-mi`,
       lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${SITE_URLS.psz}/broker-hipotecario`,

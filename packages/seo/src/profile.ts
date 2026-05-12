@@ -110,26 +110,36 @@ export const HIPOBROKERS = {
   currency: 'EUR',
 } as const
 
-/** Colaboradores autónomos visibles en la web (Génesis NO incluida — sin alta de autónoma) */
+/**
+ * Equipo de brokers que se presenta públicamente en psz.es.
+ * Todos asociados en ANICI — refuerza la autoridad institucional del presidente.
+ * Génesis no aparece (no es autónoma). Antonio Doménech opera por separado en adgbrokers.es.
+ */
 export const TEAM = [
   {
     name: 'Antonio Palacios Cambero',
     shortName: 'Toño Palacios',
-    role: 'Broker hipotecario y Presidente de ANICI',
+    role: 'Fundador · Broker hipotecario nº E242 · Presidente de ANICI',
+    bio: 'Más de [X] operaciones hipotecarias cerradas en toda España. Presidente de ANICI desde su fundación. Fundador del instituto INARPA. Productor y conductor del podcast Hipobrokers.',
     email: 'palacios@anici.es',
     isFounder: true,
+    aniciAssociate: true,
   },
   {
-    name: 'Antonio Doménech Gómez',
-    shortName: 'Antonio Doménech',
-    role: 'Broker hipotecario (autónomo colaborador) · Socio en Hipobrokers',
-    email: 'adg@anici.es',
-  },
-  {
-    name: 'Lucía',
-    shortName: 'Lucía',
-    role: 'Gestora hipotecaria (autónoma colaboradora)',
+    name: 'Lucía Toro',
+    shortName: 'Lucía Toro',
+    role: 'Analista y broker hipotecaria · Asociada ANICI',
+    bio: 'Análisis financiero y broker hipotecaria. Se ocupa del estudio de viabilidad y la negociación bancaria. Asociada en ANICI.',
     email: 'lucia@hipobrokers.com',
+    aniciAssociate: true,
+  },
+  {
+    name: 'Irene Vidal',
+    shortName: 'Irene Vidal',
+    role: 'Departamento jurídico y broker hipotecaria · Asociada ANICI',
+    bio: 'Abogada especializada en derecho hipotecario e inmobiliario. Revisa cláusulas y representa al cliente ante el banco y la notaría. Profesora de derecho en el instituto INARPA. Asociada en ANICI.',
+    email: 'irene@hipobrokers.com',
+    aniciAssociate: true,
   },
 ] as const
 
