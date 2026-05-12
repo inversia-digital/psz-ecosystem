@@ -430,6 +430,9 @@ export default function HomePage() {
               <a href="/disclaimer-estructuras-internacionales" className="text-paper/60 hover:text-paper no-underline">
                 Aviso estructuras internacionales
               </a>
+              <a href="/condiciones-inarpa" className="text-paper/60 hover:text-paper no-underline">
+                Condiciones INARPA
+              </a>
             </div>
             <p>
               © {new Date().getFullYear()} Inversia Global Digital S.L. Todos los derechos

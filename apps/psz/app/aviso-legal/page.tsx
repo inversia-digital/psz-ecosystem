@@ -153,6 +153,11 @@ export default function AvisoLegalPage() {
                   Aviso legal — Estructuras societarias internacionales
                 </a>
               </li>
+              <li>
+                <a href="/condiciones-inarpa">
+                  Condiciones de contratación — INARPA (formación)
+                </a>
+              </li>
             </ul>
 
             <h2>12. Legislación aplicable</h2>

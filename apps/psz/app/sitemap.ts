@@ -110,5 +110,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URLS.psz}/reclamaciones`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${SITE_URLS.psz}/codigo-de-conducta`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${SITE_URLS.psz}/disclaimer-estructuras-internacionales`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${SITE_URLS.psz}/condiciones-inarpa`, lastModified: now, changeFrequency: 'yearly', priority: 0.5 },
   ]
 }
