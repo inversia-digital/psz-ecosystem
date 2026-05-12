@@ -236,6 +236,69 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      {/* FORMACIÓN INARPA */}
+      <Section
+        id="inarpa"
+        tone="paper"
+        padding="md"
+        eyebrow="Formación · INARPA"
+        title="El método de un broker en activo, convertido en programa"
+        lead={
+          <span>
+            Fundé <strong>INARPA</strong> (Instituto de Arquitectura Patrimonial) para que el método con el
+            que negocio hipotecas, diseño estructuras societarias y compro inmuebles para clientes pueda
+            estudiarse de forma ordenada por inversores, profesionales y curiosos del sector.
+          </span>
+        }
+      >
+        <Container size="lg">
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-paper-card rounded-xl border border-navy-100 border-t-4 border-t-gold-400 p-6 shadow-soft">
+              <p className="text-3xl font-bold text-navy-800 mb-1">7</p>
+              <p className="text-sm text-ink-muted uppercase tracking-wider">Escuelas especializadas</p>
+              <p className="text-sm text-ink-soft mt-3">
+                Análisis de operación, fiscalidad, estructuras societarias, financiación, PSI, compliance y laboratorio de casos.
+              </p>
+            </div>
+            <div className="bg-paper-card rounded-xl border border-navy-100 border-t-4 border-t-navy-700 p-6 shadow-soft">
+              <p className="text-3xl font-bold text-navy-800 mb-1">186</p>
+              <p className="text-sm text-ink-muted uppercase tracking-wider">Vídeos · 58 h de contenido</p>
+              <p className="text-sm text-ink-soft mt-3">
+                Material grabado desde casos reales del despacho, con cifras, contratos y errores documentados.
+              </p>
+            </div>
+            <div className="bg-paper-card rounded-xl border border-navy-100 border-t-4 border-t-gold-500 p-6 shadow-soft">
+              <p className="text-3xl font-bold text-navy-800 mb-1">230+</p>
+              <p className="text-sm text-ink-muted uppercase tracking-wider">Alumnos activos</p>
+              <p className="text-sm text-ink-soft mt-3">
+                Inversores, brokers asociados ANICI, asesores fiscales y profesionales inmobiliarios.
+              </p>
+            </div>
+          </div>
+          <div className="bg-navy-900 text-paper rounded-2xl p-8 md:p-10 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <p className="text-gold-300 text-sm uppercase tracking-wider mb-2">Próxima cohorte abierta</p>
+              <p className="text-2xl md:text-3xl font-bold text-paper mb-2">
+                Estudia el método que uso cada día con clientes
+              </p>
+              <p className="text-paper/70 text-base">
+                Acceso inmediato, factura con IVA, contenido actualizado con cada cambio normativo.
+              </p>
+            </div>
+            <Button
+              href={SITE_URLS.inarpa}
+              variant="gold"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0"
+            >
+              Ir a INARPA →
+            </Button>
+          </div>
+        </Container>
+      </Section>
+
       {/* FOOTER */}
       <footer className="bg-navy-900 text-paper/80 py-12">
         <Container size="xl">
@@ -292,6 +355,26 @@ export default function HomePage() {
                   className="text-paper/70 hover:text-paper no-underline"
                 >
                   ANICI ↗
+                </a>
+              </p>
+              <p>
+                <a
+                  href={SITE_URLS.inarpa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  INARPA · Formación ↗
+                </a>
+              </p>
+              <p>
+                <a
+                  href={SITE_URLS.hipobrokers}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  Hipobrokers · Podcast ↗
                 </a>
               </p>
             </div>
