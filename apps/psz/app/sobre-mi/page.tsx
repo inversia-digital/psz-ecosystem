@@ -64,10 +64,15 @@ export default function SobreMiPage() {
             />
           </div>
 
-          {/* Foto placeholder — pendiente fotos generadas con IA basadas en reales */}
-          <figure className="bg-navy-800 border border-navy-700 rounded-xl p-6 inline-block">
-            <div className="w-32 h-32 md:w-40 md:h-40 bg-navy-700 rounded-full flex items-center justify-center text-gold-300 text-sm">
-              [foto Toño]
+          {/* Retrato institucional */}
+          <figure className="bg-navy-800 border border-navy-700 rounded-xl p-3 inline-block shadow-card">
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-gold-400/30">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/tono-formal.jpg"
+                alt="Antonio (Toño) Palacios Cambero, broker hipotecario nº E242 y presidente de ANICI"
+                className="w-full h-full object-cover"
+              />
             </div>
           </figure>
         </Container>
@@ -134,19 +139,38 @@ export default function SobreMiPage() {
             {SOBRE_MI.team.intro}
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            {SOBRE_MI.team.members.map((m, i) => (
-              <article
-                key={i}
-                className="bg-paper-card rounded-xl border border-navy-100 p-6 shadow-card text-center"
-              >
-                <div className="w-24 h-24 mx-auto bg-paper-soft border border-navy-100 rounded-full flex items-center justify-center text-ink-muted text-xs mb-4">
-                  [foto]
-                </div>
-                <h3 className="text-xl font-semibold mb-1 text-navy-800">{m.name}</h3>
-                <p className="text-sm text-gold-600 mb-3 font-medium">{m.role}</p>
-                <p className="text-ink-soft text-sm">{m.body}</p>
-              </article>
-            ))}
+            {SOBRE_MI.team.members.map((m, i) => {
+              const initials = m.name
+                .split(' ')
+                .map((p) => p[0])
+                .slice(0, 2)
+                .join('')
+                .toUpperCase()
+              return (
+                <article
+                  key={i}
+                  className="bg-paper-card rounded-xl border border-navy-100 p-6 shadow-card text-center"
+                >
+                  <div className="w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-gold-300/50 mb-4 bg-paper-soft flex items-center justify-center">
+                    {m.photo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={m.photo}
+                        alt={`${m.name}, ${m.role}`}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-navy-700 font-bold text-2xl tracking-wider">
+                        {initials}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-1 text-navy-800">{m.name}</h3>
+                  <p className="text-sm text-gold-600 mb-3 font-medium">{m.role}</p>
+                  <p className="text-ink-soft text-sm">{m.body}</p>
+                </article>
+              )
+            })}
           </div>
         </Container>
       </Section>
