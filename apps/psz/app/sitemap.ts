@@ -26,7 +26,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${SITE_URLS.psz}/estructuras-societarias`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URLS.psz}/broker-hipotecario-zaragoza`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URLS.psz}/broker-hipotecario-madrid`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URLS.psz}/broker-hipotecario-barcelona`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URLS.psz}/broker-hipotecario-valencia`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URLS.psz}/broker-hipotecario-sevilla`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.85,

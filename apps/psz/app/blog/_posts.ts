@@ -18,6 +18,15 @@ export interface PostMeta {
 
 export const POSTS: PostMeta[] = [
   {
+    slug: 'contrato-arras-penitenciales',
+    title: 'Contrato de arras penitenciales: cómo te protege antes de la hipoteca',
+    description:
+      'Las arras penitenciales son el contrato que firma la mayoría de compradores antes de la hipoteca, sin saber del todo qué firman. Esta guía explica qué son, qué tipos hay, cómo te protegen y los errores que veo cada semana.',
+    category: 'Contratos previos a la hipoteca',
+    datePublished: '2026-05-12',
+    readingTime: '7 min',
+  },
+  {
     slug: 'como-verificar-broker-hipotecario-banco-de-espana',
     title:
       '¿Cómo verificar si un broker hipotecario está registrado en Banco de España?',

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import {
   personSchema,
@@ -10,6 +11,8 @@ import {
 } from '@psz/seo'
 import { JsonLd } from '@psz/ui'
 import './globals.css'
+
+const GTM_ID = 'GTM-562TXZDP'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -77,6 +80,11 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
+  verification: {
+    other: {
+      'msvalidate.01': '4EF22D6E29D1B1314C7B4C756EA7799C',
+    },
+  },
 }
 
 export const viewport: Viewport = {
@@ -88,6 +96,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
+      <GoogleTagManager gtmId={GTM_ID} />
       <head>
         <JsonLd data={personSchema()} />
         <JsonLd data={organizationSchema()} />
