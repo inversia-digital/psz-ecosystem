@@ -79,7 +79,7 @@ export default function HomePage() {
             <Stat value="+100" label="Operaciones cerradas en 2025" />
             <Stat value="+20" label="Bancos negociados" />
             <Stat value="100%" label="Cobertura nacional" />
-            <Stat value="0 €" label="Si no firmamos hipoteca" />
+            <Stat value="Gratis" label="Llamada inicial sin compromiso" />
           </div>
         </Container>
       </section>
@@ -126,10 +126,10 @@ export default function HomePage() {
               external
             />
             <ServiceCard
-              title="Pillar broker hipotecario"
-              description="¿Qué hace un broker, en qué se diferencia de un comparador o un banco, comisiones, proceso paso a paso, FAQ y casos."
-              cta="Leer la guía completa"
-              ctaHref="/broker-hipotecario"
+              title="Estructuras societarias"
+              description="Diseño de holdings nacionales y estructuras internacionales (LLC) para integrar tu operativa inmobiliaria con la protección patrimonial. Asesoría aprendida operando para mí mismo."
+              cta="Hablamos del tema"
+              ctaHref="/contacto"
               accent="secondary"
             />
           </div>

@@ -254,11 +254,6 @@ export default function ArticlePage() {
               quién está detrás (empresa, CIF, dirección), no es transparente.
             </p>
             <p>
-              🚩 <strong>Pide dinero antes de empezar.</strong> La inmensa mayoría de brokers
-              regulados cobran a éxito (solo si firmas la hipoteca). Cobrar adelantado sin
-              justificación contractual clara es señal de riesgo.
-            </p>
-            <p>
               🚩 <strong>Garantiza la aprobación del banco.</strong> Ningún broker puede garantizar
               que un banco te apruebe — la decisión es del banco. Quien lo "garantiza" miente o
               cobra por adelantado.
@@ -307,8 +302,11 @@ export default function ArticlePage() {
                 Mercantil.
               </li>
               <li>
-                <strong>Cobro a éxito:</strong> solo se cobra si firmas la hipoteca. Los honorarios
-                los conoces y firmas antes de empezar.
+                <strong>Modelo reserva + éxito:</strong> al firmar el contrato de intermediación se
+                abona una reserva profesional de seiscientos euros (compromiso real de ambas partes);
+                el resto de honorarios solo se cobra cuando firmas la hipoteca. Si no consigo la
+                hipoteca por causa imputable a mí, la reserva se devuelve íntegra. Conoces y firmas
+                las cifras antes de empezar.
               </li>
               <li>
                 <strong>Equipo identificable:</strong> yo, Lucía Toro (analista) e Irene Vidal

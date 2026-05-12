@@ -28,8 +28,8 @@ export const WHY_TONO_BULLETS: WhyTonoBullet[] = [
     body: 'Casos de todo tipo a nivel nacional: hipotecas para autónomos con ingresos variables, eliminación de avalistas, subrogaciones complejas, financiación para inversores con varias propiedades, reunificación de deudas, no residentes, perfiles rechazados previamente por bancos. Si tu caso no es estándar, mi experiencia tampoco lo es.',
   },
   {
-    title: 'Honorarios transparentes y a éxito',
-    body: 'Solo cobro si conseguimos la hipoteca. Mis honorarios son fijos y los conoces antes de empezar. Ni comisiones ocultas, ni vinculaciones encubiertas, ni productos cruzados.',
+    title: 'Reserva profesional + honorarios a éxito',
+    body: 'Una reserva profesional de seiscientos euros al firmar el contrato de intermediación (compromiso real de ambas partes), y el resto de honorarios solo si conseguimos la hipoteca. Cifras fijas, conocidas y firmadas antes de empezar. Ni comisiones ocultas, ni vinculaciones encubiertas, ni productos cruzados.',
   },
   {
     title: 'Fundador del instituto INARPA',

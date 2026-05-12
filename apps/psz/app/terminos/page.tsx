@@ -33,12 +33,30 @@ export default function TerminosPage() {
             <h2>3. Honorarios y forma de pago</h2>
             <p>
               Los honorarios se establecen por escrito antes del inicio del servicio y son específicos
-              para cada operación.
+              para cada operación. El modelo de cobro en la intermediación hipotecaria consta de dos
+              tramos:
             </p>
             <ul>
-              <li><strong>Intermediación hipotecaria:</strong> honorarios entre tres mil y cuatro mil quinientos euros, atendiendo a la complejidad de la operación. Servicio exento de IVA conforme al artículo 20.1.18º de la Ley 37/1992 del IVA.</li>
-              <li><strong>Personal Shopper Inmobiliario:</strong> honorarios desde cuatro mil euros más IVA al 21%, en función de la operación.</li>
-              <li><strong>Cláusula de éxito:</strong> los honorarios de intermediación hipotecaria solo se devengan si la operación finaliza con la firma del contrato hipotecario. En caso contrario, no se cobra cantidad alguna por el trabajo realizado.</li>
+              <li>
+                <strong>Reserva profesional:</strong> al firmar el contrato de intermediación, el
+                cliente abona una reserva de seiscientos euros. Este importe cubre el inicio del
+                trabajo (estudio del expediente, dossier ejecutivo, presentación a entidades
+                financieras, coordinación inicial). Si el prestador no consigue la hipoteca por
+                causa imputable a él, la reserva se devuelve íntegra. Si el cliente desiste
+                voluntariamente o no continúa por causa no imputable al prestador, la reserva no se
+                reembolsa.
+              </li>
+              <li>
+                <strong>Honorarios a éxito:</strong> entre tres mil y cuatro mil quinientos euros,
+                atendiendo a la complejidad de la operación. Se devengan únicamente si la operación
+                finaliza con la firma del contrato hipotecario. Servicio exento de IVA conforme al
+                artículo 20.1.18º de la Ley 37/1992 del IVA.
+              </li>
+              <li>
+                <strong>Personal Shopper Inmobiliario:</strong> honorarios desde cuatro mil euros
+                más IVA al 21%, en función de la operación. Régimen de cobro específico que se
+                acuerda por escrito antes del inicio del servicio.
+              </li>
             </ul>
 
             <h2>4. Proceso de contratación</h2>

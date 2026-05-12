@@ -40,7 +40,7 @@ export const SOCIAL_LINKS = [
     label: 'TikTok',
     handle: '@palacios.psz',
     url: 'https://www.tiktok.com/@palacios.psz',
-    description: 'Hipotecas en píldoras de 60 s',
+    description: 'Hipotecas en píldoras',
     brandColor: '#000000',
   },
   {
@@ -100,6 +100,8 @@ export const TONO = {
     'Reunificación de deudas',
     'Eliminación de avalistas',
     'Fiscalidad inmobiliaria',
+    'Diseño de holdings y estructuras societarias',
+    'Estructuras internacionales LLC',
   ],
 } as const
 
