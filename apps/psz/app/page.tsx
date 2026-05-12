@@ -268,21 +268,21 @@ export default function HomePage() {
               </p>
             </div>
             <div className="bg-paper-card rounded-xl border border-navy-100 border-t-4 border-t-gold-500 p-6 shadow-soft">
-              <p className="text-3xl font-bold text-navy-800 mb-1">230+</p>
-              <p className="text-sm text-ink-muted uppercase tracking-wider">Alumnos activos</p>
+              <p className="text-3xl font-bold text-navy-800 mb-1">4</p>
+              <p className="text-sm text-ink-muted uppercase tracking-wider">Rutas de aprendizaje</p>
               <p className="text-sm text-ink-soft mt-3">
-                Inversores, brokers asociados ANICI, asesores fiscales y profesionales inmobiliarios.
+                Pensadas para perfiles distintos: inversor, broker hipotecario, profesional inmobiliario y asesor patrimonial. Cohorte fundadora con plazas limitadas.
               </p>
             </div>
           </div>
           <div className="bg-navy-900 text-paper rounded-2xl p-8 md:p-10 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="max-w-2xl">
-              <p className="text-gold-300 text-sm uppercase tracking-wider mb-2">Próxima cohorte abierta</p>
+              <p className="text-gold-300 text-sm uppercase tracking-wider mb-2">Cohorte fundadora · Inscripción abierta</p>
               <p className="text-2xl md:text-3xl font-bold text-paper mb-2">
                 Estudia el método que uso cada día con clientes
               </p>
               <p className="text-paper/70 text-base">
-                Acceso inmediato, factura con IVA, contenido actualizado con cada cambio normativo.
+                Plazas limitadas en la primera cohorte. Factura con IVA. Contenido actualizado con cada cambio normativo.
               </p>
             </div>
             <Button
