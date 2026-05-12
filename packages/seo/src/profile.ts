@@ -144,6 +144,23 @@ export const ANICI = {
   url: SITE_URLS.anici,
 } as const
 
+/**
+ * INARPA — instituto formativo del grupo.
+ * Slogan oficial = identidad de marca. Aparece en schema, llms.txt y metadata.
+ */
+export const INARPA = {
+  legalName: 'INARPA — Instituto de Arquitectura Patrimonial',
+  shortName: 'INARPA',
+  alternateName: 'Instituto de Arquitectura Patrimonial',
+  url: SITE_URLS.inarpa,
+  slogan: 'Invierte. Financia. Estructura. Crece.',
+  description:
+    'Instituto de Arquitectura Patrimonial. Formación práctica en inversión inmobiliaria, financiación estratégica, estructuración societaria y fiscalidad patrimonial, impartida por profesionales en activo del sector.',
+  founderName: TONO.fullName,
+  operator: 'Inversia Global Digital, S.L.U.',
+  operatorTaxId: 'B75281394',
+} as const
+
 export const HIPOBROKERS = {
   legalName: 'HIPOBROKERS, SL',
   displayName: 'Hipobrokers',
