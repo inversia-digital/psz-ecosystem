@@ -14,12 +14,14 @@ export function professionalServiceSchema(
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Toño Palacios — Broker Hipotecario en Zaragoza',
+    name: 'Toño Palacios — Broker Hipotecario',
     image: TONO.image,
     url: siteUrl,
     telephone: INVERSIA.phone,
     email: INVERSIA.email,
     priceRange: '€€',
+    // Dirección fiscal de la empresa operativa (Cuarte de Huerva, Zaragoza).
+    // No significa que solo opere allí — el servicio es nacional (ver areaServed).
     address: {
       '@type': 'PostalAddress',
       streetAddress: INVERSIA.address.street,
@@ -33,10 +35,11 @@ export function professionalServiceSchema(
       latitude: INVERSIA.geo.latitude,
       longitude: INVERSIA.geo.longitude,
     },
+    // Servicio nacional — España como primario, Zaragoza/Aragón secundarios para SEO local.
     areaServed: [
-      { '@type': 'City', name: 'Zaragoza' },
-      { '@type': 'AdministrativeArea', name: 'Aragón' },
       { '@type': 'Country', name: 'España' },
+      { '@type': 'AdministrativeArea', name: 'Aragón' },
+      { '@type': 'City', name: 'Zaragoza' },
     ],
     serviceType: [
       'Intermediación hipotecaria',

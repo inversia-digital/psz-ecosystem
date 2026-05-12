@@ -39,14 +39,13 @@ export default function HomePage() {
             <h1 className="text-5xl md:text-7xl font-bold leading-tight text-paper">
               {TONO.shortName},
               <br />
-              <span className="text-gold-400">broker hipotecario</span>
-              <br />
-              en Zaragoza
+              <span className="text-gold-400">tu broker hipotecario</span>
             </h1>
 
             <p className="max-w-2xl text-xl text-paper/80">
-              Registrado en Banco de España con el número {TONO.credentials.bdeId}.
-              Presidente de ANICI. <strong className="text-paper">Las hipotecas que tu banco no te cuenta.</strong>
+              Asesoría hipotecaria en toda España. Registrado en Banco de España con el número{' '}
+              {TONO.credentials.bdeId}. Presidente de ANICI.{' '}
+              <strong className="text-paper">Las hipotecas que tu banco no te cuenta.</strong>
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -73,14 +72,14 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6">
             <ServiceCard
               title="Broker hipotecario"
-              description="Negocio tu hipoteca con +20 bancos. Acceso a productos que no son públicos. Tarifa transparente."
+              description="Negocio tu hipoteca con +20 bancos en toda España. Acceso a productos que no son públicos. Tarifa transparente."
               cta="Solicitar hipoteca"
               ctaHref={MORTGAGE_FORM_URL}
               accent="primary"
             />
             <ServiceCard
               title="Personal Shopper Inmobiliario"
-              description="Localizo oportunidades de inversión no públicas en Zaragoza. Análisis de rentabilidad y negociación."
+              description="Localizo oportunidades de inversión no públicas. Análisis de rentabilidad y negociación de la operación completa."
               cta="Ver oportunidades"
               ctaHref={TELEGRAM_INVESTORS_URL}
               accent="gold"
@@ -104,7 +103,7 @@ export default function HomePage() {
               Autoridad verificable
             </p>
             <h2 className="text-4xl font-bold mb-6">
-              El único broker hipotecario en Zaragoza
+              El único broker hipotecario
               <br />
               <span className="text-navy-700">que es presidente de la asociación nacional</span>
             </h2>

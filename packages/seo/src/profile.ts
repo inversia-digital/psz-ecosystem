@@ -26,8 +26,12 @@ export const TONO = {
   alternateNames: ['Toño Palacios', 'Antonio Palacios'],
   shortName: 'Toño Palacios',
   jobTitle: 'Broker hipotecario y Presidente de ANICI',
+  /**
+   * Descripción corta nacional. Toño opera en toda España.
+   * NO sobreenfatizar Zaragoza — la oficina está allí pero el servicio es nacional.
+   */
   shortDescription:
-    'Broker hipotecario en Zaragoza registrado en Banco de España con el número E242. Presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario) y asociado ANICI-001.',
+    'Broker hipotecario registrado en Banco de España con el número E242. Presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario) y asociado ANICI-001. Asesoría hipotecaria en toda España.',
   image: 'https://psz.es/images/tono-palacios.jpg',
   credentials: {
     bdeId: 'E242',

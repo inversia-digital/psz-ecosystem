@@ -19,20 +19,21 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URLS.psz),
   title: {
-    default: `${TONO.shortName} | Broker hipotecario nº ${TONO.credentials.bdeId} en Zaragoza`,
+    default: `${TONO.shortName} | Broker hipotecario nº ${TONO.credentials.bdeId} · Presidente ANICI`,
     template: `%s | ${TONO.shortName}`,
   },
   description:
-    'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Hipotecas y oportunidades inmobiliarias en Zaragoza, sin promesas vacías.',
+    'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Asesoría hipotecaria en toda España. Las hipotecas que tu banco no te cuenta.',
   applicationName: 'PSZ',
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
   generator: 'Next.js',
   keywords: [
-    'broker hipotecario Zaragoza',
+    'broker hipotecario',
+    'broker hipotecario España',
     'intermediario crédito inmobiliario',
     'Toño Palacios',
     'Antonio Palacios',
-    'hipoteca Zaragoza',
+    'mejor broker hipotecario',
     'personal shopper inmobiliario',
     'ANICI',
     'E242',
@@ -45,23 +46,23 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: SITE_URLS.psz,
     siteName: 'Toño Palacios — PSZ',
-    title: `${TONO.shortName} | Broker hipotecario nº ${TONO.credentials.bdeId} en Zaragoza`,
+    title: `${TONO.shortName} | Broker hipotecario nº ${TONO.credentials.bdeId} · Presidente ANICI`,
     description:
-      'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Hipotecas y oportunidades inmobiliarias en Zaragoza.',
+      'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Asesoría hipotecaria en toda España.',
     images: [
       {
         url: '/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: 'Toño Palacios, broker hipotecario en Zaragoza',
+        alt: 'Toño Palacios, broker hipotecario en España',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${TONO.shortName} | Broker hipotecario E242 Zaragoza`,
+    title: `${TONO.shortName} | Broker hipotecario E242 · Presidente ANICI`,
     description:
-      'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI.',
+      'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Servicio nacional.',
     images: ['/og-default.jpg'],
   },
   robots: {
