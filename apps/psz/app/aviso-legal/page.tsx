@@ -1,0 +1,101 @@
+import type { Metadata } from 'next'
+import { SITE_URLS } from '@psz/seo'
+import { Container, Section } from '@psz/ui'
+
+export const metadata: Metadata = {
+  title: 'Aviso legal',
+  description: 'Aviso legal de Inversia Global Digital S.L. (CIF B75281394), broker hipotecario nº E242 en el registro del Banco de España.',
+  alternates: { canonical: `${SITE_URLS.psz}/aviso-legal` },
+  robots: { index: true, follow: true },
+}
+
+export default function AvisoLegalPage() {
+  return (
+    <main>
+      <Section tone="paper" padding="md" title="Aviso legal">
+        <Container size="md">
+          <div className="prose-psz">
+            <h2>1. Datos identificativos del titular</h2>
+            <p>
+              En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la
+              Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa de los datos del titular del sitio web psz.es:
+            </p>
+            <ul>
+              <li><strong>Denominación social:</strong> INVERSIA GLOBAL DIGITAL, S.L.U.</li>
+              <li><strong>CIF:</strong> B-75281394</li>
+              <li><strong>Domicilio social:</strong> Polígono Alcoz Alto 21, 1-1, 50410 Cuarte de Huerva (Zaragoza), España</li>
+              <li><strong>Teléfono:</strong> +34 876 280 545</li>
+              <li><strong>Correo electrónico:</strong> info@inversiadigital.es</li>
+              <li><strong>Registro Mercantil de Zaragoza</strong></li>
+            </ul>
+
+            <h2>2. Actividad regulada</h2>
+            <p>
+              La sociedad titular del sitio web está inscrita en el Registro de Intermediarios de
+              Crédito Inmobiliario del Banco de España con el número <strong>E242</strong>, conforme
+              a lo dispuesto en la Ley 5/2019, de 15 de marzo, reguladora de los contratos de crédito
+              inmobiliario y su normativa de desarrollo. Esta inscripción puede ser consultada y
+              verificada de forma pública y gratuita en la sede electrónica del Banco de España
+              (<a href="https://app.bde.es/cgi/cgi/registroPublic" target="_blank" rel="noopener noreferrer">app.bde.es</a>).
+            </p>
+            <p>
+              El titular es además fundador y presidente de la Asociación Nacional de Intermediarios
+              en Crédito Inmobiliario (<a href="https://anici.es/" target="_blank" rel="noopener noreferrer">ANICI</a>),
+              con NIF G-21975008.
+            </p>
+
+            <h2>3. Objeto del sitio web</h2>
+            <p>
+              psz.es informa de los servicios de intermediación hipotecaria, Personal Shopper
+              Inmobiliario y formación financiera prestados por el titular. La información publicada
+              tiene carácter informativo y no constituye, por sí misma, oferta vinculante de servicios
+              ni compromiso de contratación. La prestación efectiva del servicio requerirá la firma
+              previa del correspondiente contrato y, cuando proceda, la entrega de la Ficha Europea
+              de Información Normalizada (FEIN) según prescribe la Ley 5/2019.
+            </p>
+
+            <h2>4. Propiedad intelectual e industrial</h2>
+            <p>
+              Los textos, imágenes, gráficos, marca personal "Toño Palacios", marca comercial "PSZ",
+              logotipos, código fuente y demás elementos del sitio web son titularidad exclusiva de
+              Inversia Global Digital, S.L.U. o de terceros que han autorizado su uso. Queda prohibida
+              su reproducción, distribución, comunicación pública o transformación, salvo autorización
+              expresa por escrito. El uso de citas con fines informativos o académicos requiere
+              atribución expresa y enlace al contenido original.
+            </p>
+
+            <h2>5. Responsabilidad</h2>
+            <p>
+              El titular se compromete a mantener la información del sitio web actualizada y veraz.
+              No obstante, no se responsabiliza de errores tipográficos, omisiones puntuales o
+              desactualizaciones temporales que puedan producirse. Cualquier información sobre
+              condiciones hipotecarias publicada con carácter general en este sitio web está sujeta
+              a las condiciones particulares del banco financiador y al perfil del cliente concreto.
+            </p>
+            <p>
+              El titular no se responsabiliza del contenido de sitios web de terceros enlazados desde
+              psz.es.
+            </p>
+
+            <h2>6. Modificaciones</h2>
+            <p>
+              El titular se reserva el derecho a modificar este aviso legal en cualquier momento. Las
+              modificaciones surtirán efecto desde su publicación en el sitio web.
+            </p>
+
+            <h2>7. Legislación aplicable y jurisdicción</h2>
+            <p>
+              El presente aviso legal se rige por la legislación española. Para la resolución de
+              cualquier controversia, las partes se someten a los Juzgados y Tribunales de Zaragoza,
+              salvo que la normativa de consumidores y usuarios establezca otro fuero distinto.
+            </p>
+
+            <p className="text-sm text-ink-muted mt-12">
+              Última actualización: mayo de 2026.
+            </p>
+          </div>
+        </Container>
+      </Section>
+    </main>
+  )
+}

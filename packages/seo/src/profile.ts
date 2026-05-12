@@ -138,7 +138,7 @@ export const TEAM = [
     shortName: 'Irene Vidal',
     role: 'Departamento jurídico y broker hipotecaria · Asociada ANICI',
     bio: 'Abogada especializada en derecho hipotecario e inmobiliario. Revisa cláusulas y representa al cliente ante el banco y la notaría. Profesora de derecho en el instituto INARPA. Asociada en ANICI.',
-    email: 'irene@hipobrokers.com',
+    email: 'vidalmiralles@gmail.com',
     aniciAssociate: true,
   },
 ] as const

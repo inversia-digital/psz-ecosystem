@@ -38,8 +38,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${SITE_URLS.psz}/contacto`,
       lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // Legales — incluidas pero baja prioridad
+    {
+      url: `${SITE_URLS.psz}/aviso-legal`,
+      lastModified: now,
       changeFrequency: 'yearly',
-      priority: 0.5,
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URLS.psz}/politica-privacidad`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URLS.psz}/cookies`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URLS.psz}/terminos`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ]
 }
