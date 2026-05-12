@@ -1,5 +1,8 @@
 export { Button } from './Button'
 export { Container } from './Container'
 export { CredentialBadge } from './CredentialBadge'
+export { Faq, type FaqEntry } from './Faq'
 export { JsonLd } from './JsonLd'
+export { Prose } from './Prose'
+export { Section } from './Section'
 export { cn } from './cn'

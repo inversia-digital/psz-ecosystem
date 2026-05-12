@@ -12,10 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URLS.psz}/broker-hipotecario-zaragoza`,
+      url: `${SITE_URLS.psz}/broker-hipotecario`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.95,
+    },
+    {
+      url: `${SITE_URLS.psz}/broker-hipotecario-zaragoza`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
     },
     {
       url: `${SITE_URLS.psz}/personal-shopper-inmobiliario-zaragoza`,
