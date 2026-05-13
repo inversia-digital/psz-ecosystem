@@ -50,8 +50,8 @@ export default function SiteFooter() {
   return (
     <footer className="bg-navy-900 text-paper/80 pt-14 pb-8">
       <Container size="xl">
-        {/* Bloque superior: identidad + servicios + empresa */}
-        <div className="grid md:grid-cols-3 gap-10 mb-12">
+        {/* Bloque superior: identidad + servicios + recursos + empresa */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 mb-12">
           {/* Columna 1 — identidad */}
           <div>
             <p className="text-paper font-bold text-lg mb-2">{TONO.shortName}</p>
@@ -73,7 +73,7 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          {/* Columna 2 — servicios + ecosistema */}
+          {/* Columna 2 — Servicios (qué vendo + cómo me conoces) */}
           <div className="text-sm space-y-2">
             <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
               Servicios
@@ -99,6 +99,18 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
+              <a href="/contacto" className="text-paper/70 hover:text-paper no-underline">
+                Contacto
+              </a>
+            </p>
+          </div>
+
+          {/* Columna 3 — Recursos y ecosistema (contenido + herramientas + marcas hermanas) */}
+          <div className="text-sm space-y-2">
+            <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
+              Recursos y ecosistema
+            </p>
+            <p>
               <a href="/blog" className="text-paper/70 hover:text-paper no-underline">
                 Blog
               </a>
@@ -116,11 +128,6 @@ export default function SiteFooter() {
             <p>
               <a href="/calculadora-rentabilidad-inmobiliaria" className="text-paper/70 hover:text-paper no-underline">
                 Calculadora rentabilidad
-              </a>
-            </p>
-            <p>
-              <a href="/contacto" className="text-paper/70 hover:text-paper no-underline">
-                Contacto
               </a>
             </p>
             <p>
