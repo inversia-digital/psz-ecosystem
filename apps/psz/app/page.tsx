@@ -167,6 +167,41 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* HERRAMIENTAS GRATIS — value-give entre Proof y Redes */}
+      <Section
+        id="herramientas"
+        tone="soft"
+        padding="md"
+        eyebrow="Herramientas gratis · Usa sin compromiso"
+        title="Calcula antes de hablar conmigo"
+        lead={
+          <span>
+            Dos herramientas propietarias para que entiendas tu operación antes de que hablemos.
+            La lógica corre en servidor — los rangos críticos que dispara son trabajo de años de
+            práctica del despacho, no un script genérico.
+          </span>
+        }
+      >
+        <Container size="lg">
+          <div className="grid md:grid-cols-2 gap-6">
+            <ToolCard
+              icon="🏠"
+              title="Calculadora de hipoteca"
+              description="Cuota mensual, intereses totales, LTV y ratio de esfuerzo. Avisos automáticos sobre rangos que afectarían al scoring bancario."
+              href="/calculadora-hipoteca"
+              cta="Calcular cuota"
+            />
+            <ToolCard
+              icon="📈"
+              title="Calculadora de rentabilidad inmobiliaria"
+              description="Rentabilidad bruta, neta, flujo neto mensual y payback en 3 escenarios paralelos (pesimista, probable, optimista). Para no enamorarte de la renta del anuncio."
+              href="/calculadora-rentabilidad-inmobiliaria"
+              cta="Calcular rentabilidad"
+            />
+          </div>
+        </Container>
+      </Section>
+
       {/* REDES SOCIALES */}
       <Section
         id="redes"
@@ -338,5 +373,39 @@ function Stat({ value, label }: { value: string; label: string }) {
       <p className="text-3xl md:text-4xl font-bold text-navy-800 leading-tight">{value}</p>
       <p className="text-xs md:text-sm text-ink-muted mt-1">{label}</p>
     </div>
+  )
+}
+
+function ToolCard({
+  icon,
+  title,
+  description,
+  href,
+  cta,
+}: {
+  icon: string
+  title: string
+  description: string
+  href: string
+  cta: string
+}) {
+  return (
+    <a
+      href={href}
+      className="group block bg-paper-card rounded-xl border border-navy-100 p-8 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
+    >
+      <div
+        aria-hidden
+        className="text-5xl mb-5 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gold-50 border border-gold-200"
+      >
+        {icon}
+      </div>
+      <h3 className="text-2xl font-semibold mb-3 text-navy-800">{title}</h3>
+      <p className="text-ink-soft mb-6 leading-relaxed">{description}</p>
+      <span className="inline-flex items-center gap-1 text-gold-700 group-hover:text-gold-600 font-bold text-sm">
+        {cta}
+        <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+      </span>
+    </a>
   )
 }
