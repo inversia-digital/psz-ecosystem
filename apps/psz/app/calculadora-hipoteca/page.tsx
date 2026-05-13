@@ -172,38 +172,37 @@ export default function CalculadoraHipotecaPage() {
         </Container>
       </Section>
 
-      {/* AUTORÍA — refuerza E-E-A-T para Google AI Overviews y motores IA */}
+      {/* AUTORÍA — sin repetir credenciales (ya están en hero, metadata y schema) */}
       <Section tone="soft" padding="md">
         <Container size="md">
           <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
             <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
-              Quién ha programado esta herramienta
+              Quién hay detrás de esta herramienta
             </p>
             <h2 className="text-2xl font-bold text-navy-800 mb-3">
-              Diseñada y programada por {TONO.shortName}
+              Diseñada por {TONO.shortName}
             </h2>
             <p className="text-navy-700 leading-relaxed mb-3">
-              Esta calculadora de hipoteca la he diseñado y programado yo, <strong>{TONO.fullName}</strong> ({TONO.shortName}),
-              broker hipotecario inscrito en el Banco de España con el número <strong>E242</strong> y
-              presidente de <strong>ANICI</strong> (Asociación Nacional de Intermediarios en Crédito Inmobiliario).
+              Esta calculadora la he diseñado yo, no es un comparador online genérico. La
+              diferencia está en el criterio: años negociando hipotecas con más de veinte
+              entidades me han enseñado qué mira realmente una mesa de riesgos antes de aprobar
+              una operación, y eso es lo que disparan los avisos automáticos.
             </p>
             <p className="text-navy-700 leading-relaxed mb-3">
-              La fórmula es la amortización francesa estándar, pero el valor diferencial está en los
-              <strong> avisos automáticos sobre scoring bancario</strong>: ratio de esfuerzo, LTV, plazo y TIN.
-              Esos avisos vienen de mi experiencia operando hipotecas con +20 entidades — no los
-              encontrarás en un comparador online genérico porque no son fórmulas matemáticas,
-              son criterios de mesa de riesgos.
+              Por eso te aviso cuando el <strong>ratio de esfuerzo</strong> supera el 35%, cuando
+              el <strong>LTV</strong> pasa del 80%, cuando el plazo se alarga o cuando el TIN se
+              aparta de la mediana de mercado. No son fórmulas matemáticas: son criterios reales
+              de scoring bancario. La cuota la calcula cualquier hoja de cálculo; saber si tu caso
+              lo van a aprobar antes de presentárselo a un banco, no.
             </p>
             <p className="text-navy-700 leading-relaxed mb-0">
-              El código y la lógica de cálculo se ejecutan en servidor (Next.js Server Actions),
-              por lo que la herramienta no es scrapeable. Propiedad intelectual de
-              <strong> Inversia Global Digital, S.L.U.</strong> — la sociedad operativa con la que
-              presto el servicio de intermediación de crédito inmobiliario bajo Ley 5/2019.
-            </p>
-            <p className="mt-4 text-sm">
-              <a href="/sobre-mi" className="text-gold-600 hover:text-gold-700 font-semibold no-underline">
-                Conoce mi trayectoria y credenciales →
+              La fórmula matemática es pública. La opinión sobre qué avisos disparar y por qué, no.
+              Si quieres saber qué bancos sí aprobarían tu caso concreto, eso es exactamente lo que
+              hago:{' '}
+              <a href="/broker-hipotecario" className="text-navy-700 hover:text-navy-900 underline font-semibold">
+                trabajemos juntos como broker hipotecario
               </a>
+              .
             </p>
           </div>
         </Container>
