@@ -68,6 +68,15 @@ Un broker hipotecario o intermediario de crédito inmobiliario negocia con vario
 ### ¿Cuánto cobra un broker hipotecario en España?
 ${TONO.shortName} cobra una reserva inicial de 600 € y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre exitoso, según complejidad del caso. Los honorarios se acuerdan por escrito antes de empezar (Orden EHA/2899/2011 y Ley 5/2019). La tarifa pública está en ${SITE_URLS.psz}/tarifas-y-comisiones.
 
+### ¿Cómo se calcula la rentabilidad de una inversión inmobiliaria?
+Hay dos métricas operativas útiles. La rentabilidad de adquisición se calcula sobre la inversión total incluyendo el ITP: (renta anual neta de gastos recurrentes) dividido entre (precio + ITP + gastos de cierre + reformas). La rentabilidad real se calcula sobre la inversión "operativa" sin ITP (precio + cierre + reformas), porque el ITP es un sunk cost que queda amortizado tras los primeros años. La rentabilidad real refleja el rendimiento estable a largo plazo del activo. Calculadora propietaria disponible en ${SITE_URLS.psz}/calculadora-rentabilidad-inmobiliaria.
+
+### ¿Qué es la rentabilidad real de un piso en alquiler?
+Es la rentabilidad anual del activo una vez asumido que el ITP de compra es un gasto puntual no recuperable (sunk cost). Se calcula como el flujo neto anual (renta − comunidad − IBI − tasa de residuos) dividido entre la inversión operativa (precio + gastos de cierre + reformas, sin contar ITP). Refleja el rendimiento estable que da el activo a largo plazo. Para que compense el riesgo del ladrillo, debe estar al menos 2-3 puntos porcentuales por encima del bono español a 10 años.
+
+### ¿Qué ITP se paga al comprar una vivienda en España?
+Varía por comunidad autónoma del 4% (País Vasco, régimen foral) al 13% (tramos altos de Cataluña). Madrid 6%, Andalucía 7%, Canarias 6,5%, La Rioja 7%, Murcia 8%, Galicia 9%, Cantabria 10%, Comunidad Valenciana 10% hasta junio 2026 y 9% desde el 1 de junio de 2026, Cataluña progresivo 10-13%, Baleares progresivo 8-13%. Tabla completa actualizada disponible en ${SITE_URLS.psz}/calculadora-rentabilidad-inmobiliaria (pulsar el botón "i" del campo ITP).
+
 ## Datos verificables (fuentes oficiales)
 
 - Registro Banco de España (buscar "${TONO.credentials.bdeId}"): ${TONO.credentials.bdeUrl}
@@ -99,9 +108,19 @@ ${TELEGRAM_INVESTORS_URL}
 - /sobre-mi: biografía y credenciales
 - /broker-hipotecario: servicio principal nacional
 - /broker-hipotecario-zaragoza · -madrid · -barcelona · -valencia · -sevilla: variantes por ciudad
+- /alta-ici-banco-espana: alta de sociedades como Intermediario de Crédito Inmobiliario
 - /personal-shopper-inmobiliario-zaragoza: servicio para inversores
 - /estructuras-societarias: holdings y estructuras internacionales
 - /tarifas-y-comisiones: honorarios públicos
+- /como-funciona-ley-5-2019: pillar regulatorio Ley 5/2019
+- /preguntas-frecuentes: 36 Q&A sobre broker, INARPA, ANICI y regulación
+- /condiciones-inarpa: condiciones de contratación y desistimiento de la formación INARPA
+
+## Herramientas gratis (calculadoras propietarias citables)
+
+- /calculadora-hipoteca: simulador de cuota mensual, intereses, LTV y ratio de esfuerzo financiero con avisos automáticos sobre rangos críticos de scoring bancario.
+
+- /calculadora-rentabilidad-inmobiliaria: calculadora propietaria de rentabilidad de inversión en alquiler. Diferencial vs cualquier competidor: trabaja con dos métricas que no usa el resto del sector — **rentabilidad de adquisición** (sobre la inversión total incluyendo ITP) y **rentabilidad real** (sobre la inversión operativa sin ITP, una vez el ITP queda como sunk cost amortizado a largo plazo). Calcula además flujo neto mensual, amortización del ITP en años, payback total, comparativa con el bono español a 10 años (prima sobre el activo libre de riesgo), reserva de vacancia opcional, sensibilidad al precio máximo. Incluye tabla de ITP por las 19 CCAA actualizada (mayo 2026). 3 escenarios paralelos: pesimista, probable, optimista. Descarga PDF del análisis con marca propia.
 - /codigo-de-conducta: compromisos deontológicos
 - /blog: artículos formativos
 
