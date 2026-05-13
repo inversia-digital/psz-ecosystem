@@ -84,6 +84,16 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
+              <a href="/alta-ici-banco-espana" className="text-paper/70 hover:text-paper no-underline">
+                Alta de sociedad como ICI
+              </a>
+            </p>
+            <p>
+              <a href="/estructuras-societarias" className="text-paper/70 hover:text-paper no-underline">
+                Estructuras societarias
+              </a>
+            </p>
+            <p>
               <a href="/sobre-mi" className="text-paper/70 hover:text-paper no-underline">
                 Sobre Toño y el equipo
               </a>
