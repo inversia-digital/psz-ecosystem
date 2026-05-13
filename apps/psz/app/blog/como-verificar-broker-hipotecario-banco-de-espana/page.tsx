@@ -6,6 +6,7 @@ import {
   articleSchema,
   breadcrumbSchema,
   faqPageSchema,
+  howToSchema,
 } from '@psz/seo'
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
@@ -72,6 +73,44 @@ export default function ArticlePage() {
         })}
       />
       <JsonLd data={faqPageSchema(FAQ_ITEMS)} />
+      <JsonLd
+        data={howToSchema({
+          name: 'Cómo verificar un broker hipotecario en el Banco de España',
+          description:
+            'Procedimiento oficial para comprobar si un broker o intermediario de crédito inmobiliario está registrado en el Banco de España conforme a la Ley 5/2019.',
+          url: URL,
+          totalTime: 'PT3M',
+          estimatedCost: { currency: 'EUR', value: 0 },
+          steps: [
+            {
+              name: 'Accede al registro público del Banco de España',
+              text:
+                'Entra en app.bde.es/cgi/cgi/registroPublic — sede electrónica oficial del Banco de España. El registro es gratuito y de acceso público, no requiere identificación.',
+              url: 'https://app.bde.es/cgi/cgi/registroPublic',
+            },
+            {
+              name: 'Selecciona el Registro de Intermediarios de Crédito Inmobiliario',
+              text:
+                'Dentro del buscador, elige el registro correspondiente a intermediarios de crédito inmobiliario y prestamistas inmobiliarios (Ley 5/2019).',
+            },
+            {
+              name: 'Busca por número de registro o razón social',
+              text:
+                'Introduce el número de registro que te ha facilitado el broker (formato Exxx para ámbito estatal) o el nombre comercial de la empresa intermediaria. La búsqueda es exacta.',
+            },
+            {
+              name: 'Comprueba los datos devueltos por el registro',
+              text:
+                'Verifica que coinciden: razón social, CIF, domicilio social, ámbito de actuación (estatal o autonómico) y estado de la inscripción (activa, no suspendida ni cancelada).',
+            },
+            {
+              name: 'Pide al broker su número antes de contratar',
+              text:
+                'Si el broker no quiere darte su número de registro, no aparece en el registro o el estado no es "activa", no contrates. Está fuera de la regulación de la Ley 5/2019 y operas sin garantías.',
+            },
+          ],
+        })}
+      />
 
       {/* HEADER */}
       <Section tone="navy" padding="lg">
