@@ -74,6 +74,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URLS.psz}/como-funciona-ley-5-2019`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.85,
+    },
+    {
       url: `${SITE_URLS.psz}/blog`,
       lastModified: now,
       changeFrequency: 'weekly',
