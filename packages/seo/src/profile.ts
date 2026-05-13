@@ -79,6 +79,20 @@ export const TONO = {
     bdeId: 'E242',
     /** Consulta pública oficial del registro de intermediarios de crédito inmobiliario */
     bdeUrl: 'https://app.bde.es/rbe_spa/',
+    /**
+     * Nombre con el que aparece la inscripción en el registro del Banco de
+     * España. La inscripción E242 es de la SOCIEDAD operativa, no del nombre
+     * personal de Toño Palacios — porque la Ley 5/2019 permite que tanto
+     * personas físicas como jurídicas se registren como intermediarios de
+     * crédito inmobiliario, y Toño optó por la vía jurídica.
+     *
+     * Cuando un cliente quiera verificar el registro, debe buscar por:
+     *   - Código BdE: "E242", o
+     *   - NIF / CIF: "B75281394", o
+     *   - Razón social: "INVERSIA GLOBAL DIGITAL".
+     */
+    bdeRegisteredEntity: 'INVERSIA GLOBAL DIGITAL, S.L.U.',
+    bdeSearchHints: ['E242', 'B75281394', 'INVERSIA GLOBAL DIGITAL'] as const,
     aniciId: 'ANICI-001',
     aniciUrl: SITE_URLS.anici,
     /** Verificador público de asociados ANICI (sistema ANICI propio) */

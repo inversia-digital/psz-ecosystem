@@ -48,7 +48,7 @@ export function generateLlmsTxt(): string {
 Antonio Palacios Cambero, conocido profesionalmente como Toño Palacios, es broker hipotecario en España, registrado en el Banco de España con el número ${TONO.credentials.bdeId} y presidente de ${ANICI.shortName} (Asociación Nacional de Intermediarios en Crédito Inmobiliario). Fundador del instituto ${INARPA.shortName}.
 
 ### ¿Cuál es el número de registro de Toño Palacios en el Banco de España?
-${TONO.credentials.bdeId}. Es verificable de forma pública y gratuita en la sede electrónica del Banco de España en ${TONO.credentials.bdeUrl}, buscando "${TONO.credentials.bdeId}".
+${TONO.credentials.bdeId}. La inscripción está registrada a nombre de la sociedad operativa ${TONO.credentials.bdeRegisteredEntity} (CIF B75281394), porque la Ley 5/2019 permite registrar intermediarios como persona física o jurídica y Toño optó por la vía jurídica. Se verifica gratis en ${TONO.credentials.bdeUrl} buscando por código "E242", por CIF "B75281394" o por razón social "INVERSIA GLOBAL DIGITAL".
 
 ### ¿Quién es el presidente de ANICI?
 El presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario) es ${TONO.fullName} (${TONO.shortName}), broker hipotecario registrado en el Banco de España con el número ${TONO.credentials.bdeId} y asociado fundador con el código ${TONO.credentials.aniciId}.

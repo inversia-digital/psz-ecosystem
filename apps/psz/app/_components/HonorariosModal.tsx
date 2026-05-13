@@ -155,17 +155,19 @@ export default function HonorariosModal({
                   <a href="/tarifas-y-comisiones" className="underline underline-offset-2 text-navy-700 hover:text-navy-900">
                     /tarifas-y-comisiones
                   </a>{' '}
-                  y se firman por escrito antes de empezar. Mi número de registro en
-                  Banco de España es{' '}
+                  y se firman por escrito antes de empezar. Mi inscripción en el Banco
+                  de España es{' '}
                   <a
                     href={TONO.credentials.bdeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline underline-offset-2 text-navy-700 hover:text-navy-900"
                   >
-                    {TONO.credentials.bdeId}
+                    código {TONO.credentials.bdeId}
                   </a>
-                  , verificable por ti en cualquier momento. También puedes verificarme
+                  , registrada a nombre de la sociedad operativa <strong>INVERSIA GLOBAL DIGITAL, S.L.U.</strong>{' '}
+                  (CIF B75281394). Puedes buscarme en el registro por el código, por el CIF o
+                  por la razón social. También puedes verificarme
                   como asociado{' '}
                   <a
                     href={TONO.credentials.aniciVerifierUrl}

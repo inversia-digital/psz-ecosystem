@@ -39,7 +39,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: '¿Cuál es el número de registro de Toño Palacios en el Banco de España?',
         answer:
-          'E242. Es verificable de forma pública y gratuita en la sede electrónica del Banco de España (app.bde.es/rbe_spa/), buscando "E242".',
+          'E242. La inscripción está registrada a nombre de INVERSIA GLOBAL DIGITAL, S.L.U. (CIF B75281394), la sociedad operativa, porque la Ley 5/2019 permite registrar intermediarios como persona física o jurídica y se optó por la vía jurídica. Se verifica gratis en app.bde.es/rbe_spa buscando "E242", "B75281394" o "INVERSIA GLOBAL DIGITAL".',
       },
       {
         question: '¿Toño Palacios es presidente de ANICI?',

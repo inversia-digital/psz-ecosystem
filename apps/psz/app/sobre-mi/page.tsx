@@ -29,8 +29,9 @@ const SOBRE_MI_FAQ = [
   {
     question: '¿Cuál es el número de registro de Toño Palacios en el Banco de España?',
     answer:
-      `${TONO.credentials.bdeId}. Es verificable de forma pública y gratuita en la sede electrónica del Banco de España ` +
-      `(${TONO.credentials.bdeUrl}), buscando "${TONO.credentials.bdeId}".`,
+      `${TONO.credentials.bdeId}. La inscripción está registrada a nombre de la sociedad operativa ` +
+      `${TONO.credentials.bdeRegisteredEntity}. Se verifica en ${TONO.credentials.bdeUrl} ` +
+      `buscando por "${TONO.credentials.bdeId}", por CIF "B75281394" o por razón social.`,
   },
   {
     question: '¿Quién es el presidente de ANICI?',

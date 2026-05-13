@@ -190,7 +190,7 @@ export const PILLAR_BROKER = {
     {
       question: '¿Cómo verifico que mi broker está registrado en Banco de España?',
       answer:
-        'En la web oficial del Banco de España existe el Registro de Intermediarios de Crédito Inmobiliario y Prestamistas Inmobiliarios. Cualquier ciudadano puede consultarlo de forma gratuita. Mi número de registro es E242. Si un broker no quiere darte su número o no aparece en ese registro, no es un intermediario legal y la operación está fuera de la regulación de la Ley 5/2019.',
+        'En la web oficial del Banco de España existe el Registro de Intermediarios de Crédito Inmobiliario y Prestamistas Inmobiliarios. Cualquier ciudadano puede consultarlo de forma gratuita. Mi número de registro es E242 y la inscripción está a nombre de la sociedad operativa INVERSIA GLOBAL DIGITAL, S.L.U. (CIF B75281394); si me buscas, hazlo por E242, por el CIF o por la razón social. Si un broker no quiere darte su número o no aparece en ese registro, no es un intermediario legal y la operación está fuera de la regulación de la Ley 5/2019.',
     },
     {
       question: '¿En qué se diferencia un broker hipotecario de un comparador o un intermediario?',

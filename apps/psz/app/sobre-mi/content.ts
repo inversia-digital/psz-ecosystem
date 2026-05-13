@@ -112,7 +112,7 @@ export const SOBRE_MI = {
     items: [
       {
         label: 'Registro Banco de España',
-        value: 'Intermediario de Crédito Inmobiliario nº E242',
+        value: 'Intermediario de Crédito Inmobiliario nº E242 · INVERSIA GLOBAL DIGITAL, S.L.U. (CIF B75281394) — buscar por código E242, CIF o razón social',
         verifyUrl: 'https://app.bde.es/rbe_spa/',
         verifyText: 'Consultar registro BdE',
       },

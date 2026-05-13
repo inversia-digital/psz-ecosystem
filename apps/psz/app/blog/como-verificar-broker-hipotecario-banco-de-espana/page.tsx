@@ -94,9 +94,9 @@ export default function ArticlePage() {
                 'Dentro del buscador, elige el registro correspondiente a intermediarios de crédito inmobiliario y prestamistas inmobiliarios (Ley 5/2019).',
             },
             {
-              name: 'Busca por número de registro o razón social',
+              name: 'Busca por código, CIF o razón social',
               text:
-                'Introduce el número de registro que te ha facilitado el broker (formato Exxx para ámbito estatal) o el nombre comercial de la empresa intermediaria. La búsqueda es exacta.',
+                'El broker puede estar registrado como persona física o como sociedad (Ley 5/2019 permite ambas). Si el código es Exxx para ámbito estatal, búscalo. Si te ha dado el CIF o el nombre de la empresa, también vale. Ejemplo real: Toño Palacios opera bajo INVERSIA GLOBAL DIGITAL, S.L.U. (CIF B75281394) con código E242, así que cualquiera de los tres datos te lleva a la inscripción.',
             },
             {
               name: 'Comprueba los datos devueltos por el registro',
