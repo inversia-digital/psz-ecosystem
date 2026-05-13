@@ -330,6 +330,63 @@ function ErrorBox({ text }: { text: string }) {
   )
 }
 
+function DownloadPdfButton({ result }: { result: import('./actions').RoiResult }) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  async function handleDownload() {
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/pdf/rentabilidad', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ result }),
+      })
+      if (!res.ok) {
+        throw new Error(`Servidor devolvió ${res.status}`)
+      }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      const today = new Date().toISOString().slice(0, 10)
+      a.download = `analisis-rentabilidad-psz-${today}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Error desconocido')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-navy-900 text-paper rounded-xl p-4">
+      <div className="flex-1">
+        <p className="font-bold text-paper">Descargar este análisis en PDF</p>
+        <p className="text-sm text-paper/70">
+          Incluye los 3 escenarios, los avisos y tu marca de referencia. Útil para llevártelo a la
+          negociación, al asesor fiscal o a tu socio.
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={handleDownload}
+        disabled={loading}
+        className="bg-gold-400 hover:bg-gold-300 disabled:bg-gold-200 text-navy-900 font-bold px-5 py-2.5 rounded-lg text-sm whitespace-nowrap"
+      >
+        {loading ? 'Generando…' : 'Descargar PDF →'}
+      </button>
+      {error && (
+        <p className="text-xs text-red-200 sm:ml-3">No se pudo generar: {error}</p>
+      )}
+    </div>
+  )
+}
+
 function Results({ result }: { result: import('./actions').RoiResult }) {
   return (
     <div className="space-y-6">
@@ -385,6 +442,9 @@ function Results({ result }: { result: import('./actions').RoiResult }) {
 
       {/* Sensibilidad al precio — calculadora inversa */}
       <SensibilidadPrecio result={result} />
+
+      {/* Descarga PDF con marca propia */}
+      <DownloadPdfButton result={result} />
 
       <p className="text-xs text-ink-muted italic leading-relaxed">
         © Inversia Global Digital S.L. — Los rangos críticos, las interpretaciones de mercado y los
