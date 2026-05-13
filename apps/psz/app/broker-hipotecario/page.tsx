@@ -11,9 +11,15 @@ import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import { PILLAR_BROKER } from './content'
 import HonorariosModal from '../_components/HonorariosModal'
 
-/** Detecta FAQs cuya respuesta menciona honorarios → inyectamos el trigger del modal */
-const HONORARIOS_PATTERN =
-  /honorario|reserva|cuesta contratar|cu[aá]nto cobra|tarif|comisi[oó]n/i
+/**
+ * Detecta FAQs cuya respuesta cita CIFRAS concretas de honorarios.
+ * No basta con que mencione "honorarios" — debe haber importe explícito
+ * (en letras: seiscientos / tres mil / cuatro mil, o numérico XXX€).
+ * Política: solo aparece "¿Por qué estos honorarios?" donde se nombra
+ * el precio. Si solo se menciona la palabra honorarios sin cifra, no.
+ */
+const HONORARIOS_AMOUNT_PATTERN =
+  /(?:seiscientos\s+euros|trescientos\s+euros|tres\s+mil|cuatro\s+mil|\b\d{3,5}\s*€|€\s*\d{3,5})/i
 
 const URL = `${SITE_URLS.psz}/broker-hipotecario`
 
@@ -254,7 +260,7 @@ export default function BrokerHipotecarioPage() {
           <Faq
             items={PILLAR_BROKER.faq.map((item) => ({
               ...item,
-              extra: HONORARIOS_PATTERN.test(item.question + ' ' + item.answer)
+              extra: HONORARIOS_AMOUNT_PATTERN.test(item.answer)
                 ? <HonorariosModal inline triggerLabel="¿Por qué estos honorarios?" />
                 : undefined,
             }))}

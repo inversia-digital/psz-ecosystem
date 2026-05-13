@@ -10,9 +10,13 @@ import { Container, JsonLd, Section } from '@psz/ui'
 import { FAQ_GROUPS, ALL_FAQS } from './content'
 import HonorariosModal from '../_components/HonorariosModal'
 
-/** Detecta FAQs cuya respuesta menciona honorarios → inyectamos el trigger del modal */
-const HONORARIOS_PATTERN =
-  /honorario|reserva|cuesta contratar|cu[aá]nto cobra|tarif|comisi[oó]n/i
+/**
+ * Detecta FAQs cuya respuesta cita CIFRAS concretas de honorarios.
+ * No basta con la palabra "honorarios": debe haber importe explícito
+ * (letras: seiscientos / tres mil / cuatro mil, o numérico XXX€).
+ */
+const HONORARIOS_AMOUNT_PATTERN =
+  /(?:seiscientos\s+euros|trescientos\s+euros|tres\s+mil|cuatro\s+mil|\b\d{3,5}\s*€|€\s*\d{3,5})/i
 
 const URL = `${SITE_URLS.psz}/preguntas-frecuentes`
 
@@ -109,7 +113,7 @@ export default function FaqHubPage() {
           <Container size="md">
             <div className="divide-y divide-navy-100">
               {group.items.map((item, i) => {
-                const mentionsHonorarios = HONORARIOS_PATTERN.test(item.question + ' ' + item.answer)
+                const mentionsHonorarios = HONORARIOS_AMOUNT_PATTERN.test(item.answer)
                 return (
                   <article key={i} className="py-6">
                     <h3 className="faq-question text-xl font-semibold text-navy-800 mb-3">

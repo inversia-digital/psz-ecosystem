@@ -8,7 +8,6 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import MortgageForm from './MortgageForm'
-import HonorariosModal from '../_components/HonorariosModal'
 
 const URL = `${SITE_URLS.psz}/calculadora-hipoteca`
 
@@ -77,6 +76,40 @@ export default function CalculadoraHipotecaPage() {
         </Container>
       </Section>
 
+      {/* AVISO LEGAL — obligatorio en herramientas de cálculo financiero */}
+      <Section tone="paper" padding="md">
+        <Container size="md">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 text-sm leading-relaxed text-amber-900">
+            <p className="font-bold text-amber-950 mb-2">Aviso legal — léelo antes de tomar decisiones</p>
+            <p className="mb-2">
+              Esta herramienta es una calculadora orientativa. <strong>No constituye oferta
+              vinculante</strong> de hipoteca ni asesoramiento financiero personalizado en los términos
+              del artículo 19 de la Ley 5/2019 de Contratos de Crédito Inmobiliario.
+            </p>
+            <p className="mb-2">
+              La fórmula utilizada es la de amortización francesa estándar, sin tener en cuenta:
+              comisiones de apertura, comisión de estudio, gastos de notaría, registro,
+              tasación, AJD, ni el coste real de las vinculaciones (seguros, planes de pensiones,
+              tarjetas) que pueda exigir la entidad financiera. Por todo ello, la TAE real y el
+              coste efectivo de tu hipoteca serán distintos del resultado mostrado.
+            </p>
+            <p className="mb-2">
+              El único documento <strong>vinculante</strong> es la Ficha Europea de Información
+              Normalizada (FEIN) que el banco entrega antes de la firma, conforme al artículo 14
+              de la Ley 5/2019, con un periodo de reflexión obligatorio de diez (10) días naturales.
+            </p>
+            <p>
+              Los avisos automáticos que disparan los rangos (ratio de esfuerzo, LTV, plazo, TIN,
+              importe) son orientativos, basados en la práctica habitual del sector hipotecario
+              español, y no implican garantía alguna de concesión o rechazo. Cada entidad
+              financiera tiene sus propios criterios de scoring que pueden variar caso a caso.
+              La determinación final de viabilidad solo la realiza la entidad financiera tras
+              análisis del expediente completo.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
       {/* EXPLICACIÓN */}
       <Section tone="soft" padding="md" title="¿Qué hace esta calculadora?">
         <Container size="md">
@@ -96,7 +129,7 @@ export default function CalculadoraHipotecaPage() {
             <p>
               Si la calculadora te dispara un aviso y quieres saber qué bancos sí aprobarían tu
               caso, eso es exactamente lo que hago como broker. La calculadora te dice si vas a
-              tener fricción; el broker la resuelve. <HonorariosModal inline triggerLabel="¿Por qué estos honorarios?" />
+              tener fricción; el broker la resuelve.
             </p>
           </div>
         </Container>

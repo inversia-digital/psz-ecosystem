@@ -118,7 +118,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: '¿Cuánto cobra un broker hipotecario en España?',
         answer:
-          'Toño Palacios cobra una reserva inicial de 600€ al firmar el contrato de intermediación y honorarios a éxito desde 3.000€ al cierre de la operación. La tarifa pública completa está en psz.es/tarifas-y-comisiones, conforme a la Orden EHA/2899/2011.',
+          'Toño Palacios cobra una reserva inicial de seiscientos euros al firmar el contrato de intermediación y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre de la operación, según complejidad del caso. La tarifa pública completa está en psz.es/tarifas-y-comisiones, conforme a la Orden EHA/2899/2011.',
         deeperUrl: '/tarifas-y-comisiones',
       },
       {

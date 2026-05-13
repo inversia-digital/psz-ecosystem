@@ -129,8 +129,9 @@ export default function CalculadoraRentabilidadPage() {
               </li>
               <li>
                 <strong>Impacto fiscal</strong> — el alquiler tributa en IRPF (rendimientos del
-                capital inmobiliario) con reducción del 60% si es vivienda habitual del inquilino.
-                La fiscalidad ajusta significativamente el resultado y se analiza caso por caso.
+                capital inmobiliario) con reducciones aplicables según ley vigente cuando es
+                vivienda habitual del inquilino. La fiscalidad ajusta significativamente el
+                resultado y se analiza caso por caso.
               </li>
               <li>
                 <strong>Revalorización del activo</strong> — si compras barato y la zona sube, el
@@ -138,6 +139,39 @@ export default function CalculadoraRentabilidadPage() {
                 el día a día.
               </li>
             </ul>
+          </div>
+        </Container>
+      </Section>
+
+      {/* AVISO LEGAL */}
+      <Section tone="paper" padding="md">
+        <Container size="md">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 text-sm leading-relaxed text-amber-900">
+            <p className="font-bold text-amber-950 mb-2">Aviso legal — léelo antes de tomar decisiones de inversión</p>
+            <p className="mb-2">
+              Esta herramienta es una calculadora orientativa de rentabilidad operativa
+              bruta y neta de un activo inmobiliario en arrendamiento. <strong>No constituye
+              asesoramiento financiero, fiscal ni de inversión personalizado</strong>, ni
+              recomendación de compra o venta de activos.
+            </p>
+            <p className="mb-2">
+              Los resultados son aproximaciones basadas exclusivamente en los datos introducidos
+              por el usuario. No se tienen en cuenta: impacto fiscal en IRPF o IS, riesgo de
+              morosidad, riesgo de vacancia, mantenimiento ordinario, derramas extraordinarias de
+              comunidad, revalorización o depreciación del activo, costes de gestión, ni cualquier
+              otro factor que pueda afectar a la rentabilidad real.
+            </p>
+            <p className="mb-2">
+              Los avisos automáticos sobre rangos críticos (rentabilidad bruta, neta, payback,
+              ratio de gastos) son orientativos, basados en la práctica habitual del mercado
+              inmobiliario español, y no implican recomendación de operar o no operar en una
+              inversión concreta.
+            </p>
+            <p>
+              Antes de adoptar una decisión de inversión inmobiliaria, recomendamos consultar con
+              un asesor fiscal colegiado y, cuando proceda, con un profesional regulado en
+              servicios de inversión.
+            </p>
           </div>
         </Container>
       </Section>

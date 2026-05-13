@@ -74,8 +74,23 @@ function generarWarnings(
   ratioEsfuerzoPct: number,
   plazoAnios: number,
   tinPct: number,
+  importeFinanciar: number,
 ): MortgageWarning[] {
   const warnings: MortgageWarning[] = []
+
+  // Importe pequeño → menos entidades dispuestas, peor TIN
+  if (importeFinanciar < 60000 && importeFinanciar > 0) {
+    warnings.push({
+      severity: 'warning',
+      title: `Importe a financiar = ${new Intl.NumberFormat('es-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+      }).format(importeFinanciar)} — operación pequeña`,
+      body:
+        'Por debajo de sesenta mil euros se reducen mucho las entidades dispuestas a entrar. Al banco no le compensa el coste fijo de tramitar (tasación, análisis, escritura) sobre un importe bajo, así que suben el TIN o exigen vinculaciones que en operaciones más grandes no exigirían. La negociación con varias entidades es aún más relevante en estos casos.',
+    })
+  }
 
   // Ratio de esfuerzo (cuota sobre ingresos)
   if (ratioEsfuerzoPct > 50) {
@@ -202,7 +217,7 @@ export async function calculateMortgage(
   const ltvPct = (importeFinanciar / precioInmueble) * 100
   const ratioEsfuerzoPct = (cuotaMensual / ingresosNetosMensuales) * 100
 
-  const warnings = generarWarnings(ltvPct, ratioEsfuerzoPct, plazoAnios, tinPct)
+  const warnings = generarWarnings(ltvPct, ratioEsfuerzoPct, plazoAnios, tinPct, importeFinanciar)
 
   return {
     ok: true,
