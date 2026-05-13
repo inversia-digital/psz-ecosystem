@@ -55,8 +55,8 @@ export default function HonorariosModal({
   const triggerClass = children
     ? 'cursor-pointer no-underline'
     : inline
-      ? 'underline underline-offset-2 decoration-dotted text-navy-700 hover:text-navy-900 cursor-pointer bg-transparent border-0 p-0 font-medium'
-      : 'inline-flex items-center gap-2 bg-navy-800 hover:bg-navy-700 text-paper text-sm font-semibold px-4 py-2 rounded-lg border border-navy-600 transition-colors'
+      ? 'underline underline-offset-2 decoration-dotted text-gold-600 hover:text-gold-700 cursor-pointer bg-transparent border-0 p-0 font-semibold'
+      : 'inline-flex items-center gap-2 bg-navy-800 hover:bg-navy-700 text-gold-300 hover:text-gold-200 text-sm font-semibold px-4 py-2 rounded-lg border border-navy-600 transition-colors'
 
   return (
     <>

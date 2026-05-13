@@ -11,6 +11,10 @@ import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import { PILLAR_BROKER } from './content'
 import HonorariosModal from '../_components/HonorariosModal'
 
+/** Detecta FAQs cuya respuesta menciona honorarios → inyectamos el trigger del modal */
+const HONORARIOS_PATTERN =
+  /honorario|reserva|cuesta contratar|cu[aá]nto cobra|tarif|comisi[oó]n/i
+
 const URL = `${SITE_URLS.psz}/broker-hipotecario`
 
 export const metadata: Metadata = {
@@ -247,7 +251,14 @@ export default function BrokerHipotecarioPage() {
       {/* FAQ */}
       <Section id="faq" tone="paper" padding="md" title="Preguntas frecuentes">
         <Container size="md">
-          <Faq items={[...PILLAR_BROKER.faq]} />
+          <Faq
+            items={PILLAR_BROKER.faq.map((item) => ({
+              ...item,
+              extra: HONORARIOS_PATTERN.test(item.question + ' ' + item.answer)
+                ? <HonorariosModal inline triggerLabel="¿Por qué estos honorarios?" />
+                : undefined,
+            }))}
+          />
         </Container>
       </Section>
 
