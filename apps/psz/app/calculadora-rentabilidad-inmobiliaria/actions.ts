@@ -7,6 +7,20 @@
  * pesimista, probable y optimista. Sin hipoteca por ahora — preparado
  * para añadir financiación en una segunda iteración.
  *
+ * CONCEPTOS DIFERENCIALES (no los usa la competencia):
+ *
+ *  · Rentabilidad de adquisición: rendimiento sobre la inversión total
+ *    INCLUYENDO ITP. Es lo que rinde el dinero en el momento de comprar.
+ *
+ *  · Rentabilidad real: rendimiento una vez el ITP queda como gasto
+ *    sunk (no recuperable vía alquiler, queda amortizado a largo plazo).
+ *    Refleja el rendimiento estable a largo plazo del activo, sobre el
+ *    capital "operativo" (precio + gastos cierre + reformas, SIN ITP).
+ *
+ *  · Tiempo de amortización del ITP: años de flujo neto necesarios para
+ *    recuperar el ITP pagado. Es la barrera mental que distingue una
+ *    operación rápida vs una de horizonte largo.
+ *
  * Toda la lógica vive aquí (server-only). El cliente recibe solo los
  * resultados ya calculados y los textos de los warnings.
  *
@@ -33,25 +47,34 @@ export interface ScenarioResult {
   /** Gastos mensuales prorrateados (comunidad + IBI/12 + residuos/12) */
   gastosMensualesProrrateados: number
   gastosAnualesTotales: number
-  /** Renta mensual − gastos mensuales prorrateados. No incluye luz/gas/agua (inquilino). */
+  /** Renta mensual − gastos mensuales prorrateados. No incluye suministros. */
   flujoNetoMensual: number
   flujoNetoAnual: number
-  rentabilidadBrutaPct: number
-  rentabilidadNetaPct: number
-  /** Años hasta recuperar la inversión total con la renta neta. */
+  /** Rentabilidad de adquisición: sobre la inversión TOTAL incluyendo ITP */
+  rentabilidadAdquisicionPct: number
+  /** Rentabilidad real: sobre la inversión operativa SIN ITP (largo plazo) */
+  rentabilidadRealPct: number
+  /** Años hasta recuperar TODA la inversión (incluyendo ITP) con flujo neto. */
   paybackAnios: number
+  /** Años de flujo neto necesarios para 'amortizar' el ITP. */
+  amortizacionItpAnios: number
   warnings: RoiWarning[]
 }
 
 export interface RoiResult {
   inputs: {
     precioCompra: number
+    itpPct: number
+    itpImporte: number
     gastosCierre: number
     reformas: number
     ibiAnual: number
     comunidadMensual: number
     residuosAnual: number
-    inversionTotal: number
+    /** Suma de TODO (precio + ITP + cierre + reformas) */
+    inversionTotalAdquisicion: number
+    /** SIN ITP (precio + cierre + reformas) — base para rentabilidad real */
+    inversionOperativa: number
   }
   escenarios: ScenarioResult[]
 }
@@ -68,14 +91,16 @@ export type ActionState =
 function calcEscenario(
   name: ScenarioName,
   rentaMensual: number,
-  inversionTotal: number,
+  inversionTotalAdquisicion: number,
+  inversionOperativa: number,
+  itpImporte: number,
   comunidadMensual: number,
   ibiAnual: number,
   residuosAnual: number,
 ): ScenarioResult {
   const rentaAnual = rentaMensual * 12
 
-  // Gastos mensuales prorrateados — NO incluye luz/gas/agua (a nombre del inquilino).
+  // Gastos mensuales prorrateados — NO incluye suministros (a nombre del inquilino).
   const gastosMensualesProrrateados =
     comunidadMensual + ibiAnual / 12 + residuosAnual / 12
   const gastosAnualesTotales = comunidadMensual * 12 + ibiAnual + residuosAnual
@@ -83,9 +108,16 @@ function calcEscenario(
   const flujoNetoMensual = rentaMensual - gastosMensualesProrrateados
   const flujoNetoAnual = rentaAnual - gastosAnualesTotales
 
-  const rentabilidadBrutaPct = inversionTotal > 0 ? (rentaAnual / inversionTotal) * 100 : 0
-  const rentabilidadNetaPct = inversionTotal > 0 ? (flujoNetoAnual / inversionTotal) * 100 : 0
-  const paybackAnios = flujoNetoAnual > 0 ? inversionTotal / flujoNetoAnual : Infinity
+  const rentabilidadAdquisicionPct =
+    inversionTotalAdquisicion > 0
+      ? (flujoNetoAnual / inversionTotalAdquisicion) * 100
+      : 0
+  const rentabilidadRealPct =
+    inversionOperativa > 0 ? (flujoNetoAnual / inversionOperativa) * 100 : 0
+  const paybackAnios =
+    flujoNetoAnual > 0 ? inversionTotalAdquisicion / flujoNetoAnual : Infinity
+  const amortizacionItpAnios =
+    flujoNetoAnual > 0 && itpImporte > 0 ? itpImporte / flujoNetoAnual : 0
 
   const ratioGastosSobreRenta = rentaAnual > 0 ? (gastosAnualesTotales / rentaAnual) * 100 : 0
 
@@ -97,13 +129,13 @@ function calcEscenario(
     gastosAnualesTotales: round2(gastosAnualesTotales),
     flujoNetoMensual: round2(flujoNetoMensual),
     flujoNetoAnual: round2(flujoNetoAnual),
-    rentabilidadBrutaPct: round2(rentabilidadBrutaPct),
-    rentabilidadNetaPct: round2(rentabilidadNetaPct),
-    paybackAnios:
-      paybackAnios === Infinity ? Infinity : round2(paybackAnios),
+    rentabilidadAdquisicionPct: round2(rentabilidadAdquisicionPct),
+    rentabilidadRealPct: round2(rentabilidadRealPct),
+    paybackAnios: paybackAnios === Infinity ? Infinity : round2(paybackAnios),
+    amortizacionItpAnios: round2(amortizacionItpAnios),
     warnings: generarWarnings({
-      rentabilidadBrutaPct,
-      rentabilidadNetaPct,
+      rentabilidadAdquisicionPct,
+      rentabilidadRealPct,
       paybackAnios,
       ratioGastosSobreRenta,
       flujoNetoMensual,
@@ -116,73 +148,79 @@ function calcEscenario(
 // ─────────────────────────────────────────────────────────────────────────
 
 function generarWarnings({
-  rentabilidadBrutaPct,
-  rentabilidadNetaPct,
+  rentabilidadAdquisicionPct,
+  rentabilidadRealPct,
   paybackAnios,
   ratioGastosSobreRenta,
   flujoNetoMensual,
 }: {
-  rentabilidadBrutaPct: number
-  rentabilidadNetaPct: number
+  rentabilidadAdquisicionPct: number
+  rentabilidadRealPct: number
   paybackAnios: number
   ratioGastosSobreRenta: number
   flujoNetoMensual: number
 }): RoiWarning[] {
   const warnings: RoiWarning[] = []
 
-  // Flujo neto mensual negativo → operación que pierde dinero cada mes
+  // Flujo neto mensual negativo
   if (flujoNetoMensual < 0) {
     warnings.push({
       severity: 'danger',
       title: 'Flujo neto mensual NEGATIVO',
       body:
-        'Con esta renta, los gastos de comunidad, IBI y tasas se comen más de lo que entra. Cada mes pones dinero de tu bolsillo. Solo justificable si el plan es revalorización pura (capital gains) o reforma y reventa. Si es buy-and-hold, no compensa.',
+        'Con esta renta, los gastos prorrateados de comunidad, IBI y residuos se comen más de lo que entra. Cada mes pones dinero de tu bolsillo. Solo justificable si el plan es revalorización pura (capital gains) o reforma y reventa. Si es buy-and-hold, no compensa.',
     })
   }
 
-  // Rentabilidad bruta
-  if (rentabilidadBrutaPct >= 8) {
+  // Rentabilidad REAL (largo plazo) — el número que de verdad importa
+  if (rentabilidadRealPct >= 8) {
     warnings.push({
       severity: 'success',
-      title: `Rentabilidad bruta = ${rentabilidadBrutaPct.toFixed(2).replace('.', ',')}%`,
-      body: 'Adelante con ello, ganas seguro. Por encima del 8% bruto en 2026 es zona muy buena. Confirma que la zona no tiene problemas de morosidad estructural y verifica que la renta es realista (no la del anuncio, la del mercado real).',
+      title: `Rentabilidad real = ${rentabilidadRealPct.toFixed(2).replace('.', ',')}%`,
+      body: 'A largo plazo, una vez asumido el ITP como sunk cost, el activo rinde por encima del 8% sobre el capital operativo. Excelente zona financiera siempre que la renta sea sostenible.',
     })
-  } else if (rentabilidadBrutaPct < 5) {
+  } else if (rentabilidadRealPct < 4 && rentabilidadRealPct >= 0) {
     warnings.push({
       severity: 'warning',
-      title: `Rentabilidad bruta = ${rentabilidadBrutaPct.toFixed(2).replace('.', ',')}%`,
-      body: 'Zona difícil de defender financieramente. Por debajo del 5% bruto necesitas que la revalorización del activo compense la rentabilidad mediocre. Solo justificable si compras en zona de fuerte revalorización confirmada.',
+      title: `Rentabilidad real = ${rentabilidadRealPct.toFixed(2).replace('.', ',')}%`,
+      body: 'Incluso descontando el ITP como sunk cost, el rendimiento operativo a largo plazo se queda por debajo del bono del estado a 10 años. La operación depende de que el activo se revalorice al vender — riesgo de ciclo.',
     })
   }
-
-  // Rentabilidad neta
-  if (rentabilidadNetaPct < 4 && rentabilidadNetaPct >= 0) {
-    warnings.push({
-      severity: 'warning',
-      title: `Rentabilidad neta = ${rentabilidadNetaPct.toFixed(2).replace('.', ',')}%`,
-      body: 'Por debajo del bono del estado a 10 años, no compensa. Estás asumiendo riesgo inmobiliario (morosidad, vacancia, desperfectos, gestión) para obtener menos que el bono soberano sin riesgo. Revisa la operación.',
-    })
-  }
-  if (rentabilidadNetaPct < 0) {
+  if (rentabilidadRealPct < 0) {
     warnings.push({
       severity: 'danger',
-      title: `Rentabilidad neta NEGATIVA (${rentabilidadNetaPct.toFixed(2).replace('.', ',')}%)`,
-      body: 'La operación es deficitaria sobre papel. Solo tiene sentido como vehículo de revalorización pura. Para alquiler buy-and-hold convencional, no.',
+      title: `Rentabilidad real NEGATIVA (${rentabilidadRealPct.toFixed(2).replace('.', ',')}%)`,
+      body: 'Incluso descontando el ITP, la operación pierde dinero sobre papel a largo plazo. Solo tiene sentido como vehículo de revalorización pura — no es una inversión por renta.',
     })
   }
 
-  // Payback
+  // Rentabilidad de adquisición (rentabilidad sobre la inversión total real)
+  if (rentabilidadAdquisicionPct < 4 && rentabilidadAdquisicionPct >= 0) {
+    warnings.push({
+      severity: 'info',
+      title: `Rentabilidad de adquisición = ${rentabilidadAdquisicionPct.toFixed(2).replace('.', ',')}%`,
+      body: 'En el momento de comprar, el dinero invertido rinde por debajo del bono del estado. Es habitual en operaciones donde el ITP es alto. Mira la rentabilidad real (a largo plazo) para evaluar si el activo paga la espera.',
+    })
+  }
+
+  // Payback total
   if (paybackAnios === Infinity) {
     warnings.push({
       severity: 'danger',
       title: 'Payback infinito',
       body: 'Con el flujo neto actual nunca recuperas la inversión solo por rentas. La operación depende íntegramente de la revalorización al vender.',
     })
-  } else if (paybackAnios > 25) {
+  } else if (paybackAnios > 30) {
     warnings.push({
       severity: 'warning',
       title: `Payback = ${paybackAnios.toFixed(1).replace('.', ',')} años`,
-      body: 'Horizonte largo, exige plan de salida claro. Tendrás que vender el activo para realizar la rentabilidad, lo que introduce dependencia del ciclo inmobiliario. Asegúrate de tener un plan B si el ciclo no acompaña.',
+      body: 'Horizonte muy largo, exige plan de salida claro. Tendrías que mantener el activo más de 30 años solo con rentas — dependes del ciclo inmobiliario para salir bien.',
+    })
+  } else if (paybackAnios > 25) {
+    warnings.push({
+      severity: 'info',
+      title: `Payback = ${paybackAnios.toFixed(1).replace('.', ',')} años`,
+      body: 'Horizonte largo. Asegúrate de tener un plan B si el mercado del alquiler de la zona se ablanda durante ese tiempo.',
     })
   } else if (paybackAnios < 15) {
     warnings.push({
@@ -213,6 +251,7 @@ export async function calculateRoi(
   formData: FormData,
 ): Promise<ActionState> {
   const precioCompra = num(formData.get('precioCompra'))
+  const itpPct = num(formData.get('itpPct')) ?? 10
   const gastosCierre = num(formData.get('gastosCierre')) ?? 0
   const reformas = num(formData.get('reformas')) ?? 0
   const ibiAnual = num(formData.get('ibiAnual')) ?? 0
@@ -240,26 +279,44 @@ export async function calculateRoi(
       error: 'Las rentas deben estar ordenadas: pesimista ≤ probable ≤ optimista.',
     }
   }
+  if (itpPct < 0 || itpPct > 25) {
+    return { ok: false, error: 'El tipo de ITP debe estar entre 0% y 25%.' }
+  }
 
-  const inversionTotal = precioCompra + gastosCierre + reformas
+  const itpImporte = precioCompra * (itpPct / 100)
+  const inversionTotalAdquisicion = precioCompra + itpImporte + gastosCierre + reformas
+  const inversionOperativa = precioCompra + gastosCierre + reformas
 
-  const escenarios: ScenarioResult[] = [
-    calcEscenario('pesimista', rentaPesimista, inversionTotal, comunidadMensual, ibiAnual, residuosAnual),
-    calcEscenario('probable', rentaProbable, inversionTotal, comunidadMensual, ibiAnual, residuosAnual),
-    calcEscenario('optimista', rentaOptimista, inversionTotal, comunidadMensual, ibiAnual, residuosAnual),
-  ]
+  const escenarios: ScenarioResult[] = (
+    ['pesimista', 'probable', 'optimista'] as const
+  ).map((name, idx) => {
+    const renta = [rentaPesimista, rentaProbable, rentaOptimista][idx]!
+    return calcEscenario(
+      name,
+      renta,
+      inversionTotalAdquisicion,
+      inversionOperativa,
+      itpImporte,
+      comunidadMensual,
+      ibiAnual,
+      residuosAnual,
+    )
+  })
 
   return {
     ok: true,
     result: {
       inputs: {
         precioCompra,
+        itpPct,
+        itpImporte: round2(itpImporte),
         gastosCierre,
         reformas,
         ibiAnual,
         comunidadMensual,
         residuosAnual,
-        inversionTotal,
+        inversionTotalAdquisicion: round2(inversionTotalAdquisicion),
+        inversionOperativa: round2(inversionOperativa),
       },
       escenarios,
     },

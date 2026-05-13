@@ -7,6 +7,7 @@
  * el server action devuelve éxito. Toda la lógica está en actions.ts (server).
  */
 
+import { useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 import {
   calculateRoi,
@@ -14,6 +15,7 @@ import {
   type ScenarioResult,
   type RoiWarning,
 } from './actions'
+import ItpInfoButton from './ItpInfoButton'
 
 const eur = (n: number) =>
   new Intl.NumberFormat('es-ES', {
@@ -39,6 +41,7 @@ const ESCENARIO_META = {
 
 export default function RoiForm() {
   const [state, action] = useFormState<ActionState, FormData>(calculateRoi, null)
+  const [itpPct, setItpPct] = useState(10)
 
   return (
     <div className="space-y-8">
@@ -54,8 +57,8 @@ export default function RoiForm() {
               name="gastosCierre"
               label="Gastos de cierre"
               suffix="€"
-              placeholder="22000"
-              help="Notaría, registro, AJD/ITP, gestoría. ~10-12% del precio"
+              placeholder="3500"
+              help="Notaría, registro, AJD, gestoría. ~2-3% del precio"
             />
             <Input
               name="reformas"
@@ -64,6 +67,41 @@ export default function RoiForm() {
               placeholder="0"
               help="Opcional"
             />
+          </div>
+
+          {/* Slider ITP con info tooltip */}
+          <div className="mt-4 bg-paper-soft border border-navy-100 rounded-lg p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <label htmlFor="itpPct" className="text-sm font-semibold text-navy-800">
+                ITP (Impuesto sobre Transmisiones Patrimoniales)
+              </label>
+              <ItpInfoButton />
+            </div>
+            <div className="flex items-center gap-4">
+              <input
+                id="itpPct"
+                name="itpPct"
+                type="range"
+                min="4"
+                max="20"
+                step="0.5"
+                value={itpPct}
+                onChange={(e) => setItpPct(Number(e.target.value))}
+                className="flex-1 accent-gold-500"
+              />
+              <output
+                htmlFor="itpPct"
+                className="font-bold text-navy-800 tabular-nums w-16 text-right"
+              >
+                {itpPct.toString().replace('.', ',')}%
+              </output>
+            </div>
+            <p className="text-xs text-ink-muted mt-2">
+              <span className="text-gold-600">*</span> El ITP varía del 4% al 20% según comunidad
+              autónoma, tramo, bonificaciones y tipo de inmueble. Pulsa la{' '}
+              <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-navy-100 text-navy-700 text-[10px] font-bold align-middle">i</span>{' '}
+              para ver la tabla por CCAA actualizada.
+            </p>
           </div>
         </fieldset>
 
@@ -135,8 +173,8 @@ export default function RoiForm() {
         <Submit />
 
         <p className="text-xs text-ink-muted leading-relaxed">
-          Cálculo orientativo. No incluye morosidad, vacancia, mantenimiento ni revalorización del
-          activo. No incluye impacto fiscal ni hipoteca (próximamente). Solo orienta la rentabilidad
+          Cálculo orientativo. No incluye vacancia, mantenimiento ni revalorización del activo.
+          No incluye impacto fiscal ni hipoteca (próximamente). Solo orienta la rentabilidad
           operativa pura.
         </p>
       </form>
@@ -229,15 +267,27 @@ function Results({ result }: { result: import('./actions').RoiResult }) {
     <div className="space-y-6">
       {/* Resumen de inversión */}
       <div className="bg-navy-900 text-paper rounded-xl p-6 shadow-card">
-        <p className="text-xs uppercase tracking-wider text-gold-300 mb-2">Inversión total considerada</p>
+        <p className="text-xs uppercase tracking-wider text-gold-300 mb-2">
+          Inversión total de adquisición (precio + ITP + cierre + reformas)
+        </p>
         <p className="text-3xl font-bold text-paper mb-3 select-none" data-protected>
-          {eurDec(result.inputs.inversionTotal)}
+          {eurDec(result.inputs.inversionTotalAdquisicion)}
         </p>
-        <p className="text-sm text-paper/70">
-          {eur(result.inputs.precioCompra)} compra
-          {result.inputs.gastosCierre > 0 && ` + ${eur(result.inputs.gastosCierre)} cierre`}
-          {result.inputs.reformas > 0 && ` + ${eur(result.inputs.reformas)} reformas`}
-        </p>
+        <div className="text-sm text-paper/75 space-y-1">
+          <p>
+            {eur(result.inputs.precioCompra)} precio
+            {' + '}
+            {eur(result.inputs.itpImporte)} ITP ({result.inputs.itpPct.toString().replace('.', ',')}%)
+            {result.inputs.gastosCierre > 0 && ` + ${eur(result.inputs.gastosCierre)} cierre`}
+            {result.inputs.reformas > 0 && ` + ${eur(result.inputs.reformas)} reformas`}
+          </p>
+          <p className="text-paper/55 text-xs pt-1">
+            Inversión operativa (sin ITP, base de la rentabilidad real):{' '}
+            <span className="text-paper/90 font-semibold">
+              {eur(result.inputs.inversionOperativa)}
+            </span>
+          </p>
+        </div>
       </div>
 
       {/* 3 escenarios en columnas */}
@@ -271,13 +321,22 @@ function ScenarioCard({ e }: { e: ScenarioResult }) {
       <hr className="my-4 border-current/15" />
 
       <dl className="space-y-2 text-sm">
-        <Row label="Rentabilidad bruta" value={pct(e.rentabilidadBrutaPct)} />
-        <Row label="Rentabilidad neta"  value={pct(e.rentabilidadNetaPct)} bold />
+        <Row
+          label="Rentabilidad de adquisición"
+          value={pct(e.rentabilidadAdquisicionPct)}
+          help="Sobre la inversión total incluyendo ITP"
+        />
+        <Row
+          label="Rentabilidad real"
+          value={pct(e.rentabilidadRealPct)}
+          bold
+          help="A largo plazo, una vez el ITP queda amortizado"
+        />
         <Row
           label="Flujo neto mensual"
           value={eurDec(e.flujoNetoMensual)}
           valueClass={`font-bold ${flujoColor}`}
-          help="Renta − gastos prorrateados (sin luz/gas/agua)"
+          help="Renta menos gastos prorrateados (sin suministros)"
         />
         <Row
           label="Flujo neto anual"
@@ -289,8 +348,18 @@ function ScenarioCard({ e }: { e: ScenarioResult }) {
           help="IBI/12 + comunidad + residuos/12"
         />
         <Row
-          label="Payback (años)"
+          label="Amortización del ITP"
+          value={
+            e.amortizacionItpAnios === 0
+              ? '—'
+              : `${e.amortizacionItpAnios.toFixed(1).replace('.', ',')} años`
+          }
+          help="Años de flujo neto necesarios para recuperar el ITP"
+        />
+        <Row
+          label="Payback total (años)"
           value={e.paybackAnios === Infinity ? '∞' : e.paybackAnios.toFixed(1).replace('.', ',')}
+          help="Incluye precio + ITP + gastos"
         />
       </dl>
 
