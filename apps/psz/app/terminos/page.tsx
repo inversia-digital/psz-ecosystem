@@ -39,7 +39,7 @@ export default function TerminosPage() {
             <ul>
               <li>
                 <strong>Reserva profesional:</strong> al firmar el contrato de intermediación, el
-                cliente abona una reserva de seiscientos euros. Este importe cubre el inicio del
+                cliente abona una reserva de 600 €. Este importe cubre el inicio del
                 trabajo (estudio del expediente, dossier ejecutivo, presentación a entidades
                 financieras, coordinación inicial). Si el prestador no consigue la hipoteca por
                 causa imputable a él, la reserva se devuelve íntegra. Si el cliente desiste

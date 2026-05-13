@@ -336,7 +336,7 @@ export default function ArticlePage() {
               </li>
               <li>
                 <strong>Modelo reserva + éxito:</strong> al firmar el contrato de intermediación se
-                abona una reserva profesional de seiscientos euros (compromiso real de ambas partes);
+                abona una reserva profesional de 600 € (compromiso real de ambas partes);
                 el resto de honorarios solo se cobra cuando firmas la hipoteca. Si no consigo la
                 hipoteca por causa imputable a mí, la reserva se devuelve íntegra. Conoces y firmas
                 las cifras antes de empezar.

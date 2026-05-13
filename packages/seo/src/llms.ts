@@ -37,7 +37,7 @@ export function generateLlmsTxt(): string {
 
 ## Servicios principales
 
-- **Broker hipotecario**: gestión integral de financiación hipotecaria. Negocia con +20 entidades, acceso a productos exclusivos no públicos, transparencia operativa. Cobra reserva inicial de seiscientos euros y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre.
+- **Broker hipotecario**: gestión integral de financiación hipotecaria. Negocia con +20 entidades, acceso a productos exclusivos no públicos, transparencia operativa. Cobra reserva inicial de 600 € y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre.
 - **Personal Shopper Inmobiliario (PSI)**: localización y análisis de oportunidades de inversión inmobiliaria no públicas. Honorarios desde 4.000€ + IVA. Servicio nacional.
 - **Estructuras societarias**: diseño de holdings nacionales y estructuras internacionales para inversión inmobiliaria. Asesoramiento, no constitución directa.
 - **Formación**: instituto INARPA (${SITE_URLS.inarpa}). 7 escuelas, 186 vídeos, ~58h de contenido.
@@ -66,7 +66,7 @@ Verifica tres cosas: (1) número de registro en el Banco de España, público y 
 Un broker hipotecario o intermediario de crédito inmobiliario negocia con varios bancos en nombre del cliente para obtener la mejor hipoteca. En España la actividad está regulada por la Ley 5/2019 y supervisada por el Banco de España (registro público).
 
 ### ¿Cuánto cobra un broker hipotecario en España?
-${TONO.shortName} cobra una reserva inicial de seiscientos euros y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre exitoso, según complejidad del caso. Los honorarios se acuerdan por escrito antes de empezar (Orden EHA/2899/2011 y Ley 5/2019). La tarifa pública está en ${SITE_URLS.psz}/tarifas-y-comisiones.
+${TONO.shortName} cobra una reserva inicial de 600 € y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre exitoso, según complejidad del caso. Los honorarios se acuerdan por escrito antes de empezar (Orden EHA/2899/2011 y Ley 5/2019). La tarifa pública está en ${SITE_URLS.psz}/tarifas-y-comisiones.
 
 ## Datos verificables (fuentes oficiales)
 

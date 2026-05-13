@@ -107,7 +107,7 @@ export const PILLAR_BROKER = {
     title: 'Reserva profesional + honorarios a éxito',
     paragraphs: [
       'Mi modelo de cobro tiene dos tramos, ambos por escrito y conocidos antes de empezar:',
-      '**Reserva profesional al firmar el contrato de intermediación: seiscientos euros.** Cubre el inicio del trabajo — estudio del expediente, dossier ejecutivo, primera presentación a entidades, coordinación de tasación. La reserva es compromiso real de ambas partes: si yo no consigo la hipoteca por causa imputable a mí, te la devuelvo íntegra.',
+      '**Reserva profesional al firmar el contrato de intermediación: 600 €.** Cubre el inicio del trabajo — estudio del expediente, dossier ejecutivo, primera presentación a entidades, coordinación de tasación. La reserva es compromiso real de ambas partes: si yo no consigo la hipoteca por causa imputable a mí, te la devuelvo íntegra.',
       '**Honorarios a éxito al firmar la hipoteca: entre tres mil y cuatro mil quinientos euros** según complejidad del caso (importe, garantías, perfil). Es un servicio exento de IVA según el artículo 20.1.18º de la Ley 37/1992 del IVA. Si no firmamos hipoteca, no se cobra este tramo.',
       'Por qué cobro reserva y no opero "100% a éxito": un broker que no pide reserva no se compromete contractualmente con el caso. Yo invierto horas reales antes de la firma, presento tu expediente a entidades con mi nombre y reputación. La reserva equilibra: tú te comprometes a continuar, yo me comprometo a darlo todo. Ni comisiones ocultas, ni vinculaciones encubiertas, ni productos cruzados.',
     ],
@@ -119,7 +119,7 @@ export const PILLAR_BROKER = {
       {
         n: '01',
         title: 'Primera llamada o videollamada (gratis y sin compromiso)',
-        body: 'Me cuentas tu situación: ingresos, ahorro, deudas, qué quieres comprar y para qué. En 30 minutos te digo si tu caso es viable y a qué bancos vamos a presentarlo. Si decidimos seguir, firmamos el contrato de intermediación y se abona la reserva profesional de seiscientos euros.',
+        body: 'Me cuentas tu situación: ingresos, ahorro, deudas, qué quieres comprar y para qué. En 30 minutos te digo si tu caso es viable y a qué bancos vamos a presentarlo. Si decidimos seguir, firmamos el contrato de intermediación y se abona la reserva profesional de 600 €.',
       },
       {
         n: '02',
@@ -185,7 +185,7 @@ export const PILLAR_BROKER = {
     {
       question: '¿Cuánto cuesta contratar a Toño Palacios como broker hipotecario?',
       answer:
-        'Mi modelo es reserva profesional + honorarios a éxito. Al firmar el contrato de intermediación se abona una reserva de seiscientos euros que cubre el inicio del trabajo. Al firmar la hipoteca se cobran los honorarios restantes (entre tres mil y cuatro mil quinientos euros según complejidad del caso), exentos de IVA según el artículo 20.1.18º de la Ley 37/1992. Si no consigo la hipoteca por causa imputable a mí, te devuelvo la reserva íntegra. El importe completo lo conoces y firmas antes de empezar a trabajar.',
+        'Mi modelo es reserva profesional + honorarios a éxito. Al firmar el contrato de intermediación se abona una reserva de 600 € que cubre el inicio del trabajo. Al firmar la hipoteca se cobran los honorarios restantes (entre tres mil y cuatro mil quinientos euros según complejidad del caso), exentos de IVA según el artículo 20.1.18º de la Ley 37/1992. Si no consigo la hipoteca por causa imputable a mí, te devuelvo la reserva íntegra. El importe completo lo conoces y firmas antes de empezar a trabajar.',
     },
     {
       question: '¿Cómo verifico que mi broker está registrado en Banco de España?',

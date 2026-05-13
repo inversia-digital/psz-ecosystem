@@ -42,7 +42,7 @@ export default function Page() {
             <ul>
               <li>
                 <strong>Reserva profesional al firmar el contrato de intermediación:</strong>{' '}
-                seiscientos euros (importe fijo). Cubre el inicio del trabajo. Devolución íntegra
+                600 € (importe fijo). Cubre el inicio del trabajo. Devolución íntegra
                 si el prestador no consigue la hipoteca por causa imputable a él.
               </li>
               <li>
