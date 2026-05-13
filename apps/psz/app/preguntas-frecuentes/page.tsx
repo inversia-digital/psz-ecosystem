@@ -8,6 +8,7 @@ import {
 } from '@psz/seo'
 import { Container, JsonLd, Section } from '@psz/ui'
 import { FAQ_GROUPS, ALL_FAQS } from './content'
+import HonorariosModal from '../_components/HonorariosModal'
 
 const URL = `${SITE_URLS.psz}/preguntas-frecuentes`
 
@@ -124,6 +125,15 @@ export default function FaqHubPage() {
                 </article>
               ))}
             </div>
+            {group.id === 'honorarios' && (
+              <div className="mt-8 bg-paper-card border border-navy-100 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <p className="font-semibold text-navy-800 mb-1">¿Quieres ver exactamente qué hace el broker?</p>
+                  <p className="text-sm text-ink-soft">Lista detallada de 13 grupos de servicios, paso a paso de principio a fin.</p>
+                </div>
+                <HonorariosModal />
+              </div>
+            )}
           </Container>
         </Section>
       ))}

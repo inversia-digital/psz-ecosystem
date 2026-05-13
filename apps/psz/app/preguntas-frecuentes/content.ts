@@ -39,7 +39,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: '¿Cuál es el número de registro de Toño Palacios en el Banco de España?',
         answer:
-          'E242. Es verificable de forma pública y gratuita en la sede electrónica del Banco de España (app.bde.es/cgi/cgi/registroPublic), buscando "E242".',
+          'E242. Es verificable de forma pública y gratuita en la sede electrónica del Banco de España (app.bde.es/rbe_spa/), buscando "E242".',
       },
       {
         question: '¿Toño Palacios es presidente de ANICI?',

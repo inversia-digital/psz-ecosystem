@@ -36,7 +36,7 @@ export default function AvisoLegalPage() {
               a lo dispuesto en la Ley 5/2019, de 15 de marzo, reguladora de los contratos de crédito
               inmobiliario y su normativa de desarrollo. Esta inscripción puede ser consultada y
               verificada de forma pública y gratuita en la sede electrónica del Banco de España
-              (<a href="https://app.bde.es/cgi/cgi/registroPublic" target="_blank" rel="noopener noreferrer">app.bde.es</a>).
+              (<a href="https://app.bde.es/rbe_spa/" target="_blank" rel="noopener noreferrer">app.bde.es</a>).
             </p>
             <p>
               El titular es además fundador y presidente de la Asociación Nacional de Intermediarios

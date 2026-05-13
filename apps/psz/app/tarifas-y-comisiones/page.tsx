@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { SITE_URLS } from '@psz/seo'
 import { Container, Section } from '@psz/ui'
+import HonorariosModal from '../_components/HonorariosModal'
 
 export const metadata: Metadata = {
   title: 'Tarifas y comisiones',
@@ -59,6 +60,10 @@ export default function Page() {
                 cobra cantidad alguna por ese tramo.
               </li>
             </ul>
+
+            <div className="not-prose my-6">
+              <HonorariosModal />
+            </div>
 
             <h2>2. Servicio de Personal Shopper Inmobiliario (PSI)</h2>
             <p>

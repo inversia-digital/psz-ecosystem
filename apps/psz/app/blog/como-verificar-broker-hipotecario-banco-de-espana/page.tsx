@@ -86,7 +86,7 @@ export default function ArticlePage() {
               name: 'Accede al registro público del Banco de España',
               text:
                 'Entra en app.bde.es/cgi/cgi/registroPublic — sede electrónica oficial del Banco de España. El registro es gratuito y de acceso público, no requiere identificación.',
-              url: 'https://app.bde.es/cgi/cgi/registroPublic',
+              url: 'https://app.bde.es/rbe_spa/',
             },
             {
               name: 'Selecciona el Registro de Intermediarios de Crédito Inmobiliario',
@@ -196,7 +196,7 @@ export default function ArticlePage() {
             <p>
               <strong>URL directa:</strong>{' '}
               <a
-                href="https://app.bde.es/cgi/cgi/registroPublic"
+                href="https://app.bde.es/rbe_spa/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -312,7 +312,7 @@ export default function ArticlePage() {
               <li>
                 <strong>Registro BdE:</strong> mi número es <strong>E242</strong>. Si entras en{' '}
                 <a
-                  href="https://app.bde.es/cgi/cgi/registroPublic"
+                  href="https://app.bde.es/rbe_spa/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -11,7 +11,7 @@ import { Button, Container, JsonLd, Section } from '@psz/ui'
 const URL = `${SITE_URLS.psz}/como-funciona-ley-5-2019`
 
 const BOE_URL = 'https://www.boe.es/buscar/act.php?id=BOE-A-2019-3814'
-const BDE_REGISTRO = 'https://app.bde.es/cgi/cgi/registroPublic'
+const BDE_REGISTRO = 'https://app.bde.es/rbe_spa/'
 
 export const metadata: Metadata = {
   title: 'Cómo funciona la Ley 5/2019 de Contratos de Crédito Inmobiliario',

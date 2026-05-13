@@ -9,6 +9,7 @@ import {
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/ui'
 import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import { PILLAR_BROKER } from './content'
+import HonorariosModal from '../_components/HonorariosModal'
 
 const URL = `${SITE_URLS.psz}/broker-hipotecario`
 
@@ -201,6 +202,9 @@ export default function BrokerHipotecarioPage() {
                 }}
               />
             ))}
+          </div>
+          <div className="not-prose mt-6 flex justify-center">
+            <HonorariosModal />
           </div>
         </Container>
       </Section>

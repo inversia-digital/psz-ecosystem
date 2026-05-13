@@ -113,14 +113,14 @@ export const SOBRE_MI = {
       {
         label: 'Registro Banco de España',
         value: 'Intermediario de Crédito Inmobiliario nº E242',
-        verifyUrl: 'https://app.bde.es/cgi/cgi/registroPublic',
-        verifyText: 'Verificar en sede.bde.es',
+        verifyUrl: 'https://app.bde.es/rbe_spa/',
+        verifyText: 'Consultar registro BdE',
       },
       {
         label: 'ANICI',
         value: 'Presidente y asociado nº ANICI-001 (fundador)',
-        verifyUrl: 'https://anici.es/',
-        verifyText: 'Ver en anici.es',
+        verifyUrl: 'https://asociados.anici.es/verificar',
+        verifyText: 'Verificador público ANICI',
       },
       {
         label: 'Ley 5/2019',

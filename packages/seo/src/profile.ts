@@ -77,9 +77,12 @@ export const TONO = {
   image: 'https://psz.es/images/tono-palacios.jpg',
   credentials: {
     bdeId: 'E242',
-    bdeUrl: 'https://app.bde.es/cgi/cgi/registroPublic',
+    /** Consulta pública oficial del registro de intermediarios de crédito inmobiliario */
+    bdeUrl: 'https://app.bde.es/rbe_spa/',
     aniciId: 'ANICI-001',
     aniciUrl: SITE_URLS.anici,
+    /** Verificador público de asociados ANICI (sistema ANICI propio) */
+    aniciVerifierUrl: 'https://asociados.anici.es/verificar',
   },
   socialProfiles: [
     SITE_URLS.bio,
