@@ -109,6 +109,16 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
+              <a href="/calculadora-hipoteca" className="text-paper/70 hover:text-paper no-underline">
+                Calculadora hipoteca
+              </a>
+            </p>
+            <p>
+              <a href="/calculadora-rentabilidad-inmobiliaria" className="text-paper/70 hover:text-paper no-underline">
+                Calculadora rentabilidad
+              </a>
+            </p>
+            <p>
               <a href="/contacto" className="text-paper/70 hover:text-paper no-underline">
                 Contacto
               </a>
