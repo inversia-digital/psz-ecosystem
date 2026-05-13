@@ -9,7 +9,7 @@ import {
   speakableWebPageSchema,
   webApplicationSchema,
 } from '@psz/seo'
-import { Button, Container, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import RoiForm from './RoiForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-rentabilidad-inmobiliaria`
@@ -124,6 +124,40 @@ const FAQ = [
 ] as const
 
 // ─────────────────────────────────────────────────────────────────────────
+// Bloques educativos en acordeón ("Cómo lee un inversor profesional…")
+// Se renderizan con el mismo componente <Faq> que las FAQ — mismo accordion
+// nativo <details>/<summary> que usamos en el resto del sitio.
+// ─────────────────────────────────────────────────────────────────────────
+
+const COMO_LEE_INVERSOR = [
+  {
+    question: 'Rentabilidad de adquisición vs rentabilidad real',
+    answer:
+      'Las calculadoras del mercado suelen hablar de rentabilidad bruta y rentabilidad neta. Estos conceptos no captan lo que de verdad importa para un inversor. Esta herramienta introduce dos métricas más útiles.\n\nRentabilidad de adquisición es lo que rinde tu dinero en el momento de comprar, sobre la inversión total incluyendo el ITP. Es el número honesto: lo que ganas el primer año, sin maquillar. Si el ITP de tu comunidad es alto (10-13%), esta rentabilidad baja de forma significativa frente a la "bruta" tradicional.\n\nRentabilidad real es lo que el activo rinde a largo plazo, una vez asumido que el ITP es un gasto puntual de compra no recuperable vía alquiler — un sunk cost que queda amortizado a lo largo de los primeros años. A partir de ese punto, lo que rinde el dinero "operativo" (precio + gastos de cierre + reformas, sin ITP) es lo que de verdad capta el inversor con horizonte largo.\n\nLa diferencia entre ambas la marca el ITP. En Madrid (6% ITP) las dos rentabilidades quedan muy cerca; en Cataluña o Cantabria (10-13% ITP) la diferencia es notable.',
+  },
+  {
+    question: 'Comparativa con el bono del estado',
+    answer:
+      'El bono español a 10 años es la inversión libre de riesgo de referencia para un residente español. La calculadora calcula la prima sobre ese bono (en puntos porcentuales). Una operación inmobiliaria razonable debería pagar al menos 2-3 puntos por encima del bono para compensar el riesgo añadido: vacancia, ciclo del mercado, gestión, derramas, mantenimiento. Si la prima es negativa, la operación no compensa.',
+  },
+  {
+    question: 'Amortización del ITP',
+    answer:
+      'Una métrica que no verás en otras calculadoras: cuántos años de flujo neto necesitas para recuperar lo pagado en ITP. Te da la perspectiva temporal de cuándo deja tu inversión de cargar con ese sunk cost. Habitualmente entre 5 y 12 años en operaciones razonables.',
+  },
+  {
+    question: 'Flujo neto mensual',
+    answer:
+      'La pregunta operativa: cada mes, ¿esta operación te pone dinero en el bolsillo o te lo saca? Es la métrica que separa una inversión que se gestiona sola de una que te exige aportar capital constantemente. No incluye suministros (luz, gas, agua) porque se ponen a nombre del inquilino. Lo que sí entra: comunidad, IBI y tasa de residuos.',
+  },
+  {
+    question: 'Sensibilidad al precio',
+    answer:
+      'La calculadora inversa: dado un target de rentabilidad real, ¿qué precio máximo deberías pagar por el inmueble? Útil para no enamorarte de un precio y mantener disciplina en la negociación.',
+  },
+] as const
+
+// ─────────────────────────────────────────────────────────────────────────
 // HowTo (steps de uso) — alimenta el rich snippet de Google
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -229,7 +263,7 @@ export default function CalculadoraRentabilidadPage() {
           name: 'Calculadora de rentabilidad inmobiliaria',
           description:
             'Rentabilidad de adquisición, rentabilidad real, flujo neto mensual y payback en 3 escenarios paralelos con ITP por CCAA.',
-          cssSelectors: ['h1', '.speakable-summary', '.faq-question'],
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
         })}
       />
 
@@ -270,77 +304,17 @@ export default function CalculadoraRentabilidadPage() {
         </Container>
       </Section>
 
-      {/* SECCIÓN EDUCATIVA — refuerza autoridad + cobertura semántica */}
+      {/* SECCIÓN EDUCATIVA — accordion para no apabullar al lector */}
       <Section tone="soft" padding="md" title="Cómo lee un inversor profesional este resultado">
         <Container size="md">
-          <div className="prose-psz">
-            <p>
-              El error más común al evaluar una inversión inmobiliaria es enamorarse de la renta
-              del anuncio. La renta optimista que pone el vendedor o el portal inmobiliario es el
-              techo, no el suelo. Por eso esta calculadora exige los tres escenarios: te obliga a
-              pensar qué pasa si el mercado se ablanda, si encaja con la mediana de la zona o si
-              todo sale a tu favor.
-            </p>
-
-            <h3>Rentabilidad de adquisición vs rentabilidad real</h3>
-            <p>
-              Las calculadoras del mercado suelen hablar de <em>rentabilidad bruta</em> y{' '}
-              <em>rentabilidad neta</em>. Estos conceptos no captan lo que de verdad importa para
-              un inversor. Esta herramienta introduce dos métricas más útiles:
-            </p>
-            <p>
-              <strong>Rentabilidad de adquisición</strong> es lo que rinde tu dinero{' '}
-              <em>en el momento de comprar</em>, sobre la inversión total incluyendo el ITP. Es
-              el número honesto: lo que ganas el primer año, sin maquillar. Si el ITP de tu
-              comunidad es alto (10-13%), esta rentabilidad baja de forma significativa frente a
-              la "bruta" tradicional.
-            </p>
-            <p>
-              <strong>Rentabilidad real</strong> es lo que el activo rinde{' '}
-              <em>a largo plazo</em>, una vez asumido que el ITP es un gasto puntual de compra
-              no recuperable vía alquiler — un sunk cost que queda amortizado a lo largo de los
-              primeros años. A partir de ese punto, lo que rinde el dinero "operativo" (precio +
-              gastos de cierre + reformas, sin ITP) es lo que de verdad capta el inversor con
-              horizonte largo.
-            </p>
-            <p>
-              La diferencia entre ambas la marca el ITP. En Madrid (6% ITP) las dos rentabilidades
-              quedan muy cerca; en Cataluña o Cantabria (10-13% ITP) la diferencia es notable.
-            </p>
-
-            <h3>Comparativa con el bono del estado</h3>
-            <p>
-              El bono español a 10 años es la inversión libre de riesgo de referencia para un
-              residente español. La calculadora calcula la prima sobre ese bono (en puntos
-              porcentuales). Una operación inmobiliaria razonable debería pagar al menos 2-3
-              puntos por encima del bono para compensar el riesgo añadido: vacancia, morosidad,
-              ciclo del mercado, gestión, derramas, mantenimiento. Si la prima es negativa, la
-              operación no compensa.
-            </p>
-
-            <h3>Amortización del ITP</h3>
-            <p>
-              Una métrica que no verás en otras calculadoras: cuántos años de flujo neto necesitas
-              para recuperar lo pagado en ITP. Te da la perspectiva temporal de cuándo deja tu
-              inversión de cargar con ese sunk cost. Habitualmente entre 5 y 12 años en
-              operaciones razonables.
-            </p>
-
-            <h3>Flujo neto mensual</h3>
-            <p>
-              La pregunta operativa: cada mes, ¿esta operación te pone dinero en el bolsillo o te
-              lo saca? Es la métrica que separa una inversión que se gestiona sola de una que te
-              exige aportar capital constantemente. No incluye suministros (luz, gas, agua) porque
-              se ponen a nombre del inquilino. Lo que sí entra: comunidad, IBI y tasa de residuos.
-            </p>
-
-            <h3>Sensibilidad al precio</h3>
-            <p>
-              La calculadora inversa: dado un target de rentabilidad real, ¿qué precio máximo
-              deberías pagar por el inmueble? Útil para no enamorarte de un precio y mantener
-              disciplina en la negociación.
-            </p>
-          </div>
+          <p className="text-ink-soft leading-relaxed mb-6">
+            El error más común al evaluar una inversión inmobiliaria es enamorarse de la renta del
+            anuncio. La renta optimista que pone el vendedor o el portal inmobiliario es el techo,
+            no el suelo. Por eso esta calculadora exige los tres escenarios: te obliga a pensar qué
+            pasa si el mercado se ablanda, si encaja con la mediana de la zona o si todo sale a tu
+            favor. Despliega cada bloque para entender cómo se interpreta cada métrica.
+          </p>
+          <Faq items={[...COMO_LEE_INVERSOR]} />
         </Container>
       </Section>
 
@@ -351,16 +325,7 @@ export default function CalculadoraRentabilidadPage() {
         title="Preguntas frecuentes sobre rentabilidad inmobiliaria"
       >
         <Container size="md">
-          <div className="divide-y divide-navy-100">
-            {FAQ.map((q, i) => (
-              <article key={i} className="py-6">
-                <h3 className="faq-question text-xl font-semibold text-navy-800 mb-3">
-                  {q.question}
-                </h3>
-                <p className="text-ink-soft leading-relaxed">{q.answer}</p>
-              </article>
-            ))}
-          </div>
+          <Faq items={[...FAQ]} />
         </Container>
       </Section>
 
