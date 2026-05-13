@@ -105,24 +105,28 @@ export async function middleware(req: NextRequest) {
   console.log(JSON.stringify({ type: 'visit', ...visit }))
 
   // 2b. Si hay endpoint de ingest, mandar la visita ahí (Supabase, etc.)
+  // Fire-and-forget puro: la fetch arranca, no se espera. Vercel Edge mantiene
+  // el worker vivo brevemente tras devolver respuesta, así que en la mayoría
+  // de los casos la POST llega a completarse antes del cleanup del worker.
+  // No se usa waitUntil porque su binding al request es delicado en Edge y
+  // hacía crashear el middleware con MIDDLEWARE_INVOCATION_FAILED.
   const ingestUrl = process.env.VISITS_INGEST_URL
   const ingestSecret = process.env.VISITS_INGEST_SECRET
   if (ingestUrl && ingestSecret) {
-    // Fire-and-forget — no bloqueamos la respuesta al usuario
-    const ingestPromise = fetch(ingestUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-ingest-secret': ingestSecret,
-      },
-      body: JSON.stringify(visit),
-    }).catch(() => {
-      /* fallar silenciosamente — no romper la web */
-    })
-
-    // waitUntil garantiza que la fetch termina aunque la respuesta ya se haya servido
-    const ev = (req as unknown as { waitUntil?: (p: Promise<unknown>) => void }).waitUntil
-    if (typeof ev === 'function') ev(ingestPromise)
+    try {
+      fetch(ingestUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-ingest-secret': ingestSecret,
+        },
+        body: JSON.stringify(visit),
+      }).catch(() => {
+        /* fallar silenciosamente — no romper la web */
+      })
+    } catch {
+      /* fallar silenciosamente */
+    }
   }
 
   return NextResponse.next()
