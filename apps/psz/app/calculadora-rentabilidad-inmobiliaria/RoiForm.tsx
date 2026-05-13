@@ -70,7 +70,7 @@ export default function RoiForm() {
         {/* Bloque 2 — Gastos recurrentes */}
         <fieldset>
           <legend className="text-sm font-bold text-navy-800 mb-3 uppercase tracking-wider">
-            Gastos recurrentes (no incluyen luz/gas/agua — a nombre del inquilino)
+            Gastos recurrentes
           </legend>
           <div className="grid md:grid-cols-3 gap-4">
             <Input
@@ -94,6 +94,9 @@ export default function RoiForm() {
               help="Opcional, se prorratea"
             />
           </div>
+          <p className="text-xs text-ink-muted italic mt-2">
+            <span className="text-gold-600">*</span> Los suministros (luz, gas, agua) los paga el inquilino y no entran en este cálculo.
+          </p>
         </fieldset>
 
         {/* Bloque 3 — 3 rentas */}
