@@ -11,6 +11,7 @@ import {
   TONO,
 } from '@psz/seo'
 import { JsonLd } from '@psz/ui'
+import CookieBanner from './_components/CookieBanner'
 import './globals.css'
 
 const GTM_ID = 'GTM-562TXZDP'
@@ -125,6 +126,7 @@ gtag('set', 'url_passthrough', true);`}
       </head>
       <body>
         {children}
+        <CookieBanner />
         <SpeedInsights />
       </body>
     </html>

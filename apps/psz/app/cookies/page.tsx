@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { SITE_URLS } from '@psz/seo'
 import { Container, Section } from '@psz/ui'
+import CookiePrefsButton from '../_components/CookiePrefsButton'
 
 export const metadata: Metadata = {
   title: 'Política de cookies',
@@ -99,7 +100,17 @@ export default function CookiesPage() {
               entonces empieza la medición consentida.
             </p>
 
-            <h2>5. Gestión y desactivación</h2>
+            <h2>5. Cambiar tu decisión en cualquier momento</h2>
+            <p>
+              Si quieres revocar o modificar tu consentimiento, pulsa el botón siguiente. Se
+              borrará tu decisión actual y volverá a aparecer el banner de cookies para que
+              elijas de nuevo:
+            </p>
+            <p>
+              <CookiePrefsButton />
+            </p>
+
+            <h2>6. Gestión y desactivación</h2>
             <p>
               Puedes aceptar, rechazar o configurar las cookies en el banner de consentimiento al
               acceder al sitio. También puedes gestionarlas desde la configuración de tu navegador:
@@ -115,7 +126,7 @@ export default function CookiesPage() {
               nuestra capacidad de mejorarlo.
             </p>
 
-            <h2>6. Más información</h2>
+            <h2>7. Más información</h2>
             <p>
               Para más información sobre el uso de cookies en España, puede consultar la guía oficial
               de la Agencia Española de Protección de Datos:{' '}
