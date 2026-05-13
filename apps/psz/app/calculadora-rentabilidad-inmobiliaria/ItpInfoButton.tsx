@@ -52,7 +52,7 @@ export default function ItpInfoButton() {
         <div
           role="dialog"
           aria-label="Tipos ITP por comunidad autónoma"
-          className="absolute left-0 top-7 z-30 w-[min(92vw,600px)] bg-paper-card border border-navy-200 rounded-xl shadow-hover p-5 text-sm"
+          className="absolute left-0 top-7 z-30 w-[min(94vw,760px)] bg-paper-card border border-navy-200 rounded-xl shadow-hover p-5 text-sm"
         >
           <div className="flex justify-between items-start gap-3 mb-3">
             <div>
@@ -77,16 +77,21 @@ export default function ItpInfoButton() {
           </div>
 
           <div className="max-h-[60vh] overflow-y-auto pr-1 -mr-1">
-            <table className="w-full text-left">
+            <table className="w-full text-left" style={{ tableLayout: 'fixed' }}>
+              <colgroup>
+                <col style={{ width: '22%' }} />
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '66%' }} />
+              </colgroup>
               <thead className="sticky top-0 bg-paper-card border-b border-navy-100">
                 <tr>
-                  <th className="py-2 pr-3 text-xs uppercase tracking-wider text-ink-muted font-semibold">
+                  <th className="py-2 pr-2 text-xs uppercase tracking-wider text-ink-muted font-semibold">
                     Comunidad
                   </th>
-                  <th className="py-2 px-3 text-xs uppercase tracking-wider text-ink-muted font-semibold text-right">
+                  <th className="py-2 px-2 text-xs uppercase tracking-wider text-ink-muted font-semibold text-right">
                     Tipo
                   </th>
-                  <th className="py-2 pl-3 text-xs uppercase tracking-wider text-ink-muted font-semibold">
+                  <th className="py-2 pl-2 text-xs uppercase tracking-wider text-ink-muted font-semibold">
                     Notas
                   </th>
                 </tr>
@@ -94,13 +99,15 @@ export default function ItpInfoButton() {
               <tbody className="divide-y divide-navy-100">
                 {ITP_TABLE.map((c) => (
                   <tr key={c.code} className="hover:bg-paper-soft">
-                    <td className="py-2 pr-3 font-medium text-navy-800 align-top">{c.name}</td>
-                    <td className="py-2 px-3 text-right align-top whitespace-nowrap">
-                      <span className="font-bold text-navy-800">
+                    <td className="py-2 pr-2 font-medium text-navy-800 align-top leading-snug">
+                      {c.name}
+                    </td>
+                    <td className="py-2 px-2 text-right align-top">
+                      <span className="font-bold text-navy-800 text-[11px] leading-snug">
                         {c.range ?? `${c.rate}%`}
                       </span>
                     </td>
-                    <td className="py-2 pl-3 text-xs text-ink-soft align-top leading-snug">
+                    <td className="py-2 pl-2 text-xs text-ink-soft align-top leading-snug">
                       {c.notes ?? '—'}
                     </td>
                   </tr>
