@@ -12,6 +12,8 @@ import {
 } from '@psz/seo'
 import { JsonLd } from '@psz/ui'
 import CookieBanner from './_components/CookieBanner'
+import SiteHeader from './_components/SiteHeader'
+import SiteFooter from './_components/SiteFooter'
 import './globals.css'
 
 const GTM_ID = 'GTM-562TXZDP'
@@ -125,7 +127,9 @@ gtag('set', 'url_passthrough', true);`}
         <JsonLd data={professionalServiceSchema()} />
       </head>
       <body>
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <CookieBanner />
         <SpeedInsights />
       </body>
