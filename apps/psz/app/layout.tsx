@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import {
@@ -96,6 +97,26 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
+      {/* CONSENT MODE V2 — defaults DENIED por RGPD + LSSI. Tiene que ir
+          ANTES de GoogleTagManager para que el primer hit lleve las señales
+          de consentimiento al servidor. Cuando aparezca el banner de
+          cookies, en accept se llamará a gtag('consent','update',{...}). */}
+      <Script id="consent-mode-default" strategy="beforeInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'granted',
+  'personalization_storage': 'denied',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});
+gtag('set', 'ads_data_redaction', true);
+gtag('set', 'url_passthrough', true);`}
+      </Script>
       <GoogleTagManager gtmId={GTM_ID} />
       <head>
         <JsonLd data={personSchema()} />
