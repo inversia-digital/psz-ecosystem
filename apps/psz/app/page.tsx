@@ -198,7 +198,7 @@ export default function HomePage() {
               description="Rentabilidad bruta, neta, flujo neto mensual y payback en 3 escenarios paralelos (pesimista, probable, optimista). Para no enamorarte de la renta del anuncio."
               href="/calculadora-rentabilidad-inmobiliaria"
               cta="Calcular rentabilidad"
-              ribeteClass="bg-green-500"
+              ribeteClass="bg-sky-500"
             />
           </div>
         </Container>
