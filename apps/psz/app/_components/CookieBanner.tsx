@@ -111,9 +111,11 @@ export default function CookieBanner() {
             mejorar el sitio. No usamos cookies publicitarias.{' '}
             <a
               href="/cookies"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gold-300 hover:text-gold-200 underline underline-offset-2"
             >
-              Más información
+              Más información ↗
             </a>
             .
           </p>
