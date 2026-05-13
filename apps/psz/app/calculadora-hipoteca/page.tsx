@@ -5,6 +5,7 @@ import {
   TONO,
   breadcrumbSchema,
   speakableWebPageSchema,
+  webApplicationSchema,
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import MortgageForm from './MortgageForm'
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
     'Calculadora de hipoteca profesional. Calcula tu cuota mensual estimada, intereses totales, LTV efectivo y ratio de esfuerzo financiero. Con avisos automáticos sobre rangos críticos de scoring bancario. Herramienta de Toño Palacios, broker hipotecario nº E242 y presidente de ANICI.',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
+  authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
+  creator: TONO.fullName,
+  publisher: 'Inversia Global Digital, S.L.U.',
   keywords: [
     'calculadora hipoteca',
     'cuota hipoteca mensual',
@@ -49,6 +53,27 @@ export default function CalculadoraHipotecaPage() {
           name: 'Calculadora de hipoteca',
           description: 'Calcula tu cuota mensual, intereses totales, LTV y ratio de esfuerzo financiero.',
           cssSelectors: ['h1', '.speakable-summary'],
+        })}
+      />
+      <JsonLd
+        data={webApplicationSchema({
+          url: URL,
+          name: 'Calculadora de hipoteca profesional',
+          description:
+            'Calculadora de hipoteca diseñada y programada por Toño Palacios, broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Calcula cuota mensual, intereses totales, LTV efectivo y ratio de esfuerzo financiero. Dispara avisos automáticos sobre rangos críticos de scoring bancario antes de presentar la operación a una entidad.',
+          category: 'FinanceApplication',
+          features: [
+            'Cálculo de cuota mensual por amortización francesa',
+            'Cálculo de intereses totales a lo largo de la vida del préstamo',
+            'Cálculo del LTV efectivo (loan-to-value)',
+            'Cálculo del ratio de esfuerzo financiero',
+            'Avisos automáticos sobre ratio de esfuerzo > 35%',
+            'Avisos automáticos sobre LTV > 80%',
+            'Avisos automáticos sobre plazo > 30 años',
+            'Avisos automáticos sobre TIN fuera de mediana de mercado',
+            'Cálculo server-side (lógica protegida, no scrapeable)',
+            'Herramienta gratuita sin registro',
+          ],
         })}
       />
 
@@ -142,6 +167,43 @@ export default function CalculadoraHipotecaPage() {
               Si la calculadora te dispara un aviso y quieres saber qué bancos sí aprobarían tu
               caso, eso es exactamente lo que hago como broker. La calculadora te dice si vas a
               tener fricción; el broker la resuelve.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* AUTORÍA — refuerza E-E-A-T para Google AI Overviews y motores IA */}
+      <Section tone="soft" padding="md">
+        <Container size="md">
+          <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
+            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
+              Quién ha programado esta herramienta
+            </p>
+            <h2 className="text-2xl font-bold text-navy-800 mb-3">
+              Diseñada y programada por {TONO.shortName}
+            </h2>
+            <p className="text-navy-700 leading-relaxed mb-3">
+              Esta calculadora de hipoteca la he diseñado y programado yo, <strong>{TONO.fullName}</strong> ({TONO.shortName}),
+              broker hipotecario inscrito en el Banco de España con el número <strong>E242</strong> y
+              presidente de <strong>ANICI</strong> (Asociación Nacional de Intermediarios en Crédito Inmobiliario).
+            </p>
+            <p className="text-navy-700 leading-relaxed mb-3">
+              La fórmula es la amortización francesa estándar, pero el valor diferencial está en los
+              <strong> avisos automáticos sobre scoring bancario</strong>: ratio de esfuerzo, LTV, plazo y TIN.
+              Esos avisos vienen de mi experiencia operando hipotecas con +20 entidades — no los
+              encontrarás en un comparador online genérico porque no son fórmulas matemáticas,
+              son criterios de mesa de riesgos.
+            </p>
+            <p className="text-navy-700 leading-relaxed mb-0">
+              El código y la lógica de cálculo se ejecutan en servidor (Next.js Server Actions),
+              por lo que la herramienta no es scrapeable. Propiedad intelectual de
+              <strong> Inversia Global Digital, S.L.U.</strong> — la sociedad operativa con la que
+              presto el servicio de intermediación de crédito inmobiliario bajo Ley 5/2019.
+            </p>
+            <p className="mt-4 text-sm">
+              <a href="/sobre-mi" className="text-gold-600 hover:text-gold-700 font-semibold no-underline">
+                Conoce mi trayectoria y credenciales →
+              </a>
             </p>
           </div>
         </Container>

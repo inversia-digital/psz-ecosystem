@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     'Calcula la rentabilidad real y de adquisición de tu inversión inmobiliaria con 3 escenarios, ITP por comunidad autónoma, vacancia opcional, flujo neto mensual, amortización del ITP, payback y comparativa con el bono del estado. PDF descargable. Por Toño Palacios, broker hipotecario nº E242.',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
+  authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
+  creator: TONO.fullName,
+  publisher: 'Inversia Global Digital, S.L.U.',
   keywords: [
     'calculadora rentabilidad inmobiliaria',
     'calcular rentabilidad alquiler',
@@ -446,6 +449,54 @@ export default function CalculadoraRentabilidadPage() {
                 instituto INARPA.
               </p>
             </a>
+          </div>
+        </Container>
+      </Section>
+
+      {/* AUTORÍA — refuerza E-E-A-T para Google AI Overviews y motores IA */}
+      <Section tone="soft" padding="md">
+        <Container size="md">
+          <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
+            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
+              Quién ha programado esta herramienta
+            </p>
+            <h2 className="text-2xl font-bold text-navy-800 mb-3">
+              Diseñada y programada por {TONO.shortName}
+            </h2>
+            <p className="text-ink-soft leading-relaxed mb-3">
+              Esta calculadora la he diseñado y programado yo, <strong>{TONO.fullName}</strong>{' '}
+              ({TONO.shortName}), broker hipotecario registrado en el Banco de España con el
+              número <strong>{TONO.credentials.bdeId}</strong> y presidente de{' '}
+              <strong>ANICI</strong> (Asociación Nacional de Intermediarios en Crédito
+              Inmobiliario, asociado fundador {TONO.credentials.aniciId}). La herramienta es
+              propiedad intelectual de Inversia Global Digital, S.L.U. (CIF B75281394).
+            </p>
+            <p className="text-ink-soft leading-relaxed mb-3">
+              No es una calculadora genérica. Los <strong>rangos críticos</strong> que disparan
+              cada aviso, los conceptos diferenciales (rentabilidad de adquisición vs rentabilidad
+              real, amortización del ITP, prima sobre el bono del estado) y la lógica de
+              sensibilidad al precio son trabajo aprendido en más de una década operando como
+              broker hipotecario y Personal Shopper Inmobiliario en toda España. La fórmula
+              matemática es pública; la lectura de los resultados es propietaria.
+            </p>
+            <p className="text-ink-soft leading-relaxed">
+              Si quieres trabajar conmigo en tu próxima operación —{' '}
+              <a href="/broker-hipotecario" className="text-navy-700 hover:text-navy-900 underline">
+                como broker hipotecario
+              </a>{' '}
+              o{' '}
+              <a
+                href="/personal-shopper-inmobiliario-zaragoza"
+                className="text-navy-700 hover:text-navy-900 underline"
+              >
+                como Personal Shopper Inmobiliario
+              </a>
+              {' '}— o conocerme con más detalle, pasa por{' '}
+              <a href="/sobre-mi" className="text-navy-700 hover:text-navy-900 underline">
+                /sobre-mi
+              </a>
+              .
+            </p>
           </div>
         </Container>
       </Section>

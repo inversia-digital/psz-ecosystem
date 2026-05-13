@@ -46,6 +46,14 @@ export function webApplicationSchema(input: WebAppInput) {
       name: TONO.fullName,
       alternateName: TONO.shortName,
       url: 'https://psz.es/sobre-mi',
+      jobTitle: TONO.jobTitle,
+    },
+    author: {
+      '@type': 'Person',
+      '@id': 'https://psz.es/sobre-mi#person',
+      name: TONO.fullName,
+      alternateName: TONO.shortName,
+      url: 'https://psz.es/sobre-mi',
     },
     publisher: {
       '@type': 'Organization',
@@ -53,5 +61,11 @@ export function webApplicationSchema(input: WebAppInput) {
       identifier: INVERSIA.taxId,
       url: 'https://psz.es',
     },
+    copyrightHolder: {
+      '@type': 'Organization',
+      name: INVERSIA.displayName,
+      identifier: INVERSIA.taxId,
+    },
+    copyrightYear: new Date().getFullYear(),
   }
 }
