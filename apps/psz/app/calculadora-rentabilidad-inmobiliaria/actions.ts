@@ -1,5 +1,7 @@
 'use server'
 
+import { BONO_10Y_ES } from './benchmarks'
+
 /**
  * Server Action: calculateRoi
  *
@@ -42,18 +44,23 @@ export interface RoiWarning {
 
 export interface ScenarioResult {
   name: ScenarioName
+  /** Renta mensual nominal del escenario (sin descontar vacancia) */
   rentaMensual: number
+  /** Renta anual EFECTIVA tras aplicar reserva de vacancia */
+  rentaAnualEfectiva: number
   rentaAnual: number
   /** Gastos mensuales prorrateados (comunidad + IBI/12 + residuos/12) */
   gastosMensualesProrrateados: number
   gastosAnualesTotales: number
-  /** Renta mensual − gastos mensuales prorrateados. No incluye suministros. */
+  /** Renta mensual EFECTIVA − gastos mensuales prorrateados. No incluye suministros. */
   flujoNetoMensual: number
   flujoNetoAnual: number
   /** Rentabilidad de adquisición: sobre la inversión TOTAL incluyendo ITP */
   rentabilidadAdquisicionPct: number
   /** Rentabilidad real: sobre la inversión operativa SIN ITP (largo plazo) */
   rentabilidadRealPct: number
+  /** Diferencia entre rentabilidad real y bono español a 10 años. Puede ser negativa. */
+  primaSobreBonoPp: number
   /** Años hasta recuperar TODA la inversión (incluyendo ITP) con flujo neto. */
   paybackAnios: number
   /** Años de flujo neto necesarios para 'amortizar' el ITP. */
@@ -71,10 +78,15 @@ export interface RoiResult {
     ibiAnual: number
     comunidadMensual: number
     residuosAnual: number
+    vacanciaPct: number
     /** Suma de TODO (precio + ITP + cierre + reformas) */
     inversionTotalAdquisicion: number
     /** SIN ITP (precio + cierre + reformas) — base para rentabilidad real */
     inversionOperativa: number
+  }
+  benchmark: {
+    bono10yPct: number
+    bono10yAsOf: string
   }
   escenarios: ScenarioResult[]
 }
@@ -97,16 +109,23 @@ function calcEscenario(
   comunidadMensual: number,
   ibiAnual: number,
   residuosAnual: number,
+  vacanciaPct: number,
 ): ScenarioResult {
-  const rentaAnual = rentaMensual * 12
+  const rentaAnualNominal = rentaMensual * 12
+  // Aplicamos la reserva de vacancia opcional. Default 0%.
+  const factorOcupacion = Math.max(0, 1 - vacanciaPct / 100)
+  const rentaAnualEfectiva = rentaAnualNominal * factorOcupacion
 
   // Gastos mensuales prorrateados — NO incluye suministros (a nombre del inquilino).
   const gastosMensualesProrrateados =
     comunidadMensual + ibiAnual / 12 + residuosAnual / 12
   const gastosAnualesTotales = comunidadMensual * 12 + ibiAnual + residuosAnual
 
+  // Flujo mensual: usamos la renta NOMINAL para el flujo, ya que el visitante
+  // razona "esto es lo que entra los meses en que cobro". La vacancia
+  // se refleja en la rentabilidad anual (renta efectiva).
   const flujoNetoMensual = rentaMensual - gastosMensualesProrrateados
-  const flujoNetoAnual = rentaAnual - gastosAnualesTotales
+  const flujoNetoAnual = rentaAnualEfectiva - gastosAnualesTotales
 
   const rentabilidadAdquisicionPct =
     inversionTotalAdquisicion > 0
@@ -114,28 +133,33 @@ function calcEscenario(
       : 0
   const rentabilidadRealPct =
     inversionOperativa > 0 ? (flujoNetoAnual / inversionOperativa) * 100 : 0
+  const primaSobreBonoPp = rentabilidadRealPct - BONO_10Y_ES.yieldPct
   const paybackAnios =
     flujoNetoAnual > 0 ? inversionTotalAdquisicion / flujoNetoAnual : Infinity
   const amortizacionItpAnios =
     flujoNetoAnual > 0 && itpImporte > 0 ? itpImporte / flujoNetoAnual : 0
 
-  const ratioGastosSobreRenta = rentaAnual > 0 ? (gastosAnualesTotales / rentaAnual) * 100 : 0
+  const ratioGastosSobreRenta =
+    rentaAnualEfectiva > 0 ? (gastosAnualesTotales / rentaAnualEfectiva) * 100 : 0
 
   return {
     name,
     rentaMensual,
-    rentaAnual,
+    rentaAnual: round2(rentaAnualNominal),
+    rentaAnualEfectiva: round2(rentaAnualEfectiva),
     gastosMensualesProrrateados: round2(gastosMensualesProrrateados),
     gastosAnualesTotales: round2(gastosAnualesTotales),
     flujoNetoMensual: round2(flujoNetoMensual),
     flujoNetoAnual: round2(flujoNetoAnual),
     rentabilidadAdquisicionPct: round2(rentabilidadAdquisicionPct),
     rentabilidadRealPct: round2(rentabilidadRealPct),
+    primaSobreBonoPp: round2(primaSobreBonoPp),
     paybackAnios: paybackAnios === Infinity ? Infinity : round2(paybackAnios),
     amortizacionItpAnios: round2(amortizacionItpAnios),
     warnings: generarWarnings({
       rentabilidadAdquisicionPct,
       rentabilidadRealPct,
+      primaSobreBonoPp,
       paybackAnios,
       ratioGastosSobreRenta,
       flujoNetoMensual,
@@ -150,12 +174,14 @@ function calcEscenario(
 function generarWarnings({
   rentabilidadAdquisicionPct,
   rentabilidadRealPct,
+  primaSobreBonoPp,
   paybackAnios,
   ratioGastosSobreRenta,
   flujoNetoMensual,
 }: {
   rentabilidadAdquisicionPct: number
   rentabilidadRealPct: number
+  primaSobreBonoPp: number
   paybackAnios: number
   ratioGastosSobreRenta: number
   flujoNetoMensual: number
@@ -179,11 +205,26 @@ function generarWarnings({
       title: `Rentabilidad real = ${rentabilidadRealPct.toFixed(2).replace('.', ',')}%`,
       body: 'A largo plazo, una vez asumido el ITP como sunk cost, el activo rinde por encima del 8% sobre el capital operativo. Excelente zona financiera siempre que la renta sea sostenible.',
     })
-  } else if (rentabilidadRealPct < 4 && rentabilidadRealPct >= 0) {
+  }
+
+  // Prima sobre el bono del estado — separa "compensa el riesgo" de "no compensa"
+  if (primaSobreBonoPp < 0) {
+    warnings.push({
+      severity: 'danger',
+      title: `Por debajo del bono del estado (${primaSobreBonoPp.toFixed(2).replace('.', ',')}pp)`,
+      body: `Tu rentabilidad real está por debajo del bono español a 10 años (${BONO_10Y_ES.yieldPct.toFixed(2).replace('.', ',')}%). Estás asumiendo riesgo inmobiliario (vacancia, gestión, ciclo, derramas) para obtener menos rendimiento que la inversión sin riesgo. No compensa salvo plan de revalorización claro.`,
+    })
+  } else if (primaSobreBonoPp >= 0 && primaSobreBonoPp < 1.5) {
     warnings.push({
       severity: 'warning',
-      title: `Rentabilidad real = ${rentabilidadRealPct.toFixed(2).replace('.', ',')}%`,
-      body: 'Incluso descontando el ITP como sunk cost, el rendimiento operativo a largo plazo se queda por debajo del bono del estado a 10 años. La operación depende de que el activo se revalorice al vender — riesgo de ciclo.',
+      title: `Prima sobre bono = +${primaSobreBonoPp.toFixed(2).replace('.', ',')}pp`,
+      body: `Por encima del bono pero por margen estrecho. La prima de riesgo histórica del ladrillo sobre el bono suele estar en 2-3pp. Por debajo de 1,5pp, el riesgo adicional no se está pagando bien.`,
+    })
+  } else if (primaSobreBonoPp >= 3) {
+    warnings.push({
+      severity: 'success',
+      title: `Prima sobre bono = +${primaSobreBonoPp.toFixed(2).replace('.', ',')}pp`,
+      body: `Excelente prima sobre el activo libre de riesgo. El mercado te está pagando por encima de la media histórica para asumir el riesgo del inmobiliario. Adelante.`,
     })
   }
   if (rentabilidadRealPct < 0) {
@@ -283,6 +324,11 @@ export async function calculateRoi(
     return { ok: false, error: 'El tipo de ITP debe estar entre 0% y 25%.' }
   }
 
+  const vacanciaPct = num(formData.get('vacanciaPct')) ?? 0
+  if (vacanciaPct < 0 || vacanciaPct > 50) {
+    return { ok: false, error: 'La reserva de vacancia debe estar entre 0% y 50%.' }
+  }
+
   const itpImporte = precioCompra * (itpPct / 100)
   const inversionTotalAdquisicion = precioCompra + itpImporte + gastosCierre + reformas
   const inversionOperativa = precioCompra + gastosCierre + reformas
@@ -300,6 +346,7 @@ export async function calculateRoi(
       comunidadMensual,
       ibiAnual,
       residuosAnual,
+      vacanciaPct,
     )
   })
 
@@ -315,8 +362,13 @@ export async function calculateRoi(
         ibiAnual,
         comunidadMensual,
         residuosAnual,
+        vacanciaPct,
         inversionTotalAdquisicion: round2(inversionTotalAdquisicion),
         inversionOperativa: round2(inversionOperativa),
+      },
+      benchmark: {
+        bono10yPct: BONO_10Y_ES.yieldPct,
+        bono10yAsOf: BONO_10Y_ES.asOf,
       },
       escenarios,
     },

@@ -16,6 +16,7 @@ import {
   type RoiWarning,
 } from './actions'
 import ItpInfoButton from './ItpInfoButton'
+import InfoTooltip from './InfoTooltip'
 
 const eur = (n: number) =>
   new Intl.NumberFormat('es-ES', {
@@ -42,6 +43,8 @@ const ESCENARIO_META = {
 export default function RoiForm() {
   const [state, action] = useFormState<ActionState, FormData>(calculateRoi, null)
   const [itpPct, setItpPct] = useState(10)
+  const [vacanciaOn, setVacanciaOn] = useState(false)
+  const [vacanciaPct, setVacanciaPct] = useState(5)
 
   return (
     <div className="space-y-8">
@@ -135,12 +138,77 @@ export default function RoiForm() {
           <p className="text-xs text-ink-muted italic mt-2">
             <span className="text-gold-600">*</span> Los suministros (luz, gas, agua) los paga el inquilino y no entran en este cálculo.
           </p>
+
+          {/* Reserva de vacancia OPCIONAL (opt-in) */}
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={() => setVacanciaOn((p) => !p)}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-navy-700 hover:text-navy-900"
+              aria-expanded={vacanciaOn}
+            >
+              <span
+                className={`inline-flex items-center justify-center w-5 h-5 rounded-full border transition-colors ${
+                  vacanciaOn
+                    ? 'bg-gold-400 border-gold-400 text-navy-900'
+                    : 'bg-paper-soft border-navy-200 text-ink-muted'
+                }`}
+              >
+                {vacanciaOn ? '✓' : '+'}
+              </span>
+              <span>Considerar reserva de vacancia entre contratos (opcional)</span>
+              <InfoTooltip title="¿Qué es la reserva de vacancia?">
+                La vacancia es el porcentaje de meses al año en que el piso no genera renta entre
+                contratos. Si tienes inquilinos estables a largo plazo, puede ser 0%. En zonas con
+                rotación habitual los inversores prudentes reservan entre un 5% y un 10%. Te lo
+                dejo configurable porque tus circunstancias mandan: si tus pisos están al 100% de
+                ocupación, déjalo desactivado.
+              </InfoTooltip>
+            </button>
+
+            {vacanciaOn && (
+              <div className="mt-3 bg-paper-soft border border-navy-100 rounded-lg p-4">
+                <div className="flex items-center gap-4">
+                  <input
+                    type="range"
+                    name="vacanciaPct"
+                    min="0"
+                    max="15"
+                    step="0.5"
+                    value={vacanciaPct}
+                    onChange={(e) => setVacanciaPct(Number(e.target.value))}
+                    className="flex-1 accent-gold-500"
+                  />
+                  <output className="font-bold text-navy-800 tabular-nums w-16 text-right">
+                    {vacanciaPct.toString().replace('.', ',')}%
+                  </output>
+                </div>
+                <p className="text-xs text-ink-muted mt-2">
+                  Equivale a aproximadamente{' '}
+                  <strong className="text-navy-800">
+                    {((vacanciaPct / 100) * 12).toFixed(1).replace('.', ',')} meses al año
+                  </strong>{' '}
+                  sin cobrar renta.
+                </p>
+              </div>
+            )}
+            {!vacanciaOn && (
+              <input type="hidden" name="vacanciaPct" value="0" />
+            )}
+          </div>
         </fieldset>
 
         {/* Bloque 3 — 3 rentas */}
         <fieldset>
-          <legend className="text-sm font-bold text-navy-800 mb-3 uppercase tracking-wider">
+          <legend className="text-sm font-bold text-navy-800 mb-3 uppercase tracking-wider flex items-center gap-2">
             3 escenarios de renta mensual
+            <InfoTooltip title="¿Por qué tres escenarios?">
+              Calcular con una sola renta es engañarte. El mercado del alquiler oscila — y la
+              renta que pone el vendedor o el portal inmobiliario suele ser la optimista. Esta
+              calculadora te obliga a pensar qué pasa si el mercado se ablanda (pesimista), si
+              encaja con la media de la zona (probable) o si todo sale a tu favor (optimista).
+              Toma decisiones con el rango, no con un único número.
+            </InfoTooltip>
           </legend>
           <div className="grid md:grid-cols-3 gap-4">
             <Input
@@ -287,6 +355,24 @@ function Results({ result }: { result: import('./actions').RoiResult }) {
               {eur(result.inputs.inversionOperativa)}
             </span>
           </p>
+          <p className="text-paper/55 text-xs pt-2 border-t border-paper/10 mt-3">
+            Benchmark de referencia:{' '}
+            <span className="text-paper/90 font-semibold">
+              bono español 10y al {result.benchmark.bono10yPct.toFixed(2).replace('.', ',')}%
+            </span>{' '}
+            ({result.benchmark.bono10yAsOf}). Tu rentabilidad real debe estar claramente por
+            encima para compensar el riesgo del ladrillo.
+          </p>
+          {result.inputs.vacanciaPct > 0 && (
+            <p className="text-paper/55 text-xs pt-2">
+              Vacancia aplicada:{' '}
+              <span className="text-paper/90 font-semibold">
+                {result.inputs.vacanciaPct.toString().replace('.', ',')}%
+              </span>{' '}
+              (~{((result.inputs.vacanciaPct / 100) * 12).toFixed(1).replace('.', ',')} meses/año
+              sin renta)
+            </p>
+          )}
         </div>
       </div>
 
@@ -296,6 +382,9 @@ function Results({ result }: { result: import('./actions').RoiResult }) {
           <ScenarioCard key={e.name} e={e} />
         ))}
       </div>
+
+      {/* Sensibilidad al precio — calculadora inversa */}
+      <SensibilidadPrecio result={result} />
 
       <p className="text-xs text-ink-muted italic leading-relaxed">
         © Inversia Global Digital S.L. — Los rangos críticos, las interpretaciones de mercado y los
@@ -331,6 +420,22 @@ function ScenarioCard({ e }: { e: ScenarioResult }) {
           value={pct(e.rentabilidadRealPct)}
           bold
           help="A largo plazo, una vez el ITP queda amortizado"
+        />
+        <Row
+          label="Prima sobre bono 10y"
+          value={
+            e.primaSobreBonoPp >= 0
+              ? `+${e.primaSobreBonoPp.toFixed(2).replace('.', ',')}pp`
+              : `${e.primaSobreBonoPp.toFixed(2).replace('.', ',')}pp`
+          }
+          valueClass={
+            e.primaSobreBonoPp < 0
+              ? 'font-bold text-red-700'
+              : e.primaSobreBonoPp >= 3
+                ? 'font-bold text-emerald-700'
+                : 'font-semibold'
+          }
+          help="Rentabilidad real menos el bono español a 10 años"
         />
         <Row
           label="Flujo neto mensual"
@@ -399,6 +504,120 @@ function Row({
       >
         {value}
       </dd>
+    </div>
+  )
+}
+
+/**
+ * Calculadora inversa: dado un target de rentabilidad real, calcula el
+ * precio máximo de compra. El cálculo es client-side porque la fórmula
+ * es aritmética inversa simple, sin rangos críticos propietarios.
+ */
+function SensibilidadPrecio({ result }: { result: import('./actions').RoiResult }) {
+  const [targetPct, setTargetPct] = useState(6)
+
+  // Gastos anuales fijos (independientes del precio)
+  const gastosAnuales =
+    result.inputs.comunidadMensual * 12 +
+    result.inputs.ibiAnual +
+    result.inputs.residuosAnual
+
+  // Factor ocupación si hay vacancia
+  const factorOcupacion = Math.max(0, 1 - (result.inputs.vacanciaPct ?? 0) / 100)
+
+  // Para cada escenario, calcular el precio máximo de compra para sacar
+  // target% de rentabilidad real (sobre inversión operativa = precio + cierre + reformas).
+  // target/100 = (rentaAnualEfectiva - gastosAnuales) / (precio + cierre + reformas)
+  // → precio = (rentaAnualEfectiva - gastosAnuales) / (target/100) - cierre - reformas
+  const calcularPrecioMaximo = (rentaMensual: number): number => {
+    if (targetPct <= 0) return 0
+    const rentaAnualEfectiva = rentaMensual * 12 * factorOcupacion
+    const flujoNetoAnual = rentaAnualEfectiva - gastosAnuales
+    if (flujoNetoAnual <= 0) return 0
+    const inversionOperativaMax = flujoNetoAnual / (targetPct / 100)
+    const precioMax = inversionOperativaMax - result.inputs.gastosCierre - result.inputs.reformas
+    return Math.max(0, precioMax)
+  }
+
+  const eur = (n: number) =>
+    new Intl.NumberFormat('es-ES', {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0,
+    }).format(n)
+
+  return (
+    <div className="bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft">
+      <div className="flex items-center gap-2 mb-2">
+        <h3 className="text-lg font-bold text-navy-800">
+          Sensibilidad al precio · ¿A qué precio máximo deberías comprar?
+        </h3>
+        <InfoTooltip title="Calculadora inversa">
+          A veces lo que necesitas no es saber qué rinde un precio, sino qué precio aceptar para
+          rendir lo que quieres. Esta calculadora invierte el cálculo: tú fijas la rentabilidad
+          real objetivo, ella te devuelve el precio máximo de compra en cada escenario. Úsalo
+          para no enamorarte de un precio y mantener disciplina en la negociación.
+        </InfoTooltip>
+      </div>
+      <p className="text-sm text-ink-soft mb-4 leading-relaxed">
+        Fija tu rentabilidad real objetivo a largo plazo y mira cuál es el precio máximo de compra
+        que te permite alcanzarla en cada escenario de renta.
+      </p>
+
+      <div className="bg-paper-soft border border-navy-100 rounded-lg p-4 mb-5">
+        <div className="flex items-center justify-between mb-2">
+          <label htmlFor="targetPct" className="text-sm font-semibold text-navy-800">
+            Rentabilidad real objetivo
+          </label>
+          <output htmlFor="targetPct" className="font-bold text-navy-800 tabular-nums">
+            {targetPct.toString().replace('.', ',')}%
+          </output>
+        </div>
+        <input
+          id="targetPct"
+          type="range"
+          min="3"
+          max="12"
+          step="0.5"
+          value={targetPct}
+          onChange={(e) => setTargetPct(Number(e.target.value))}
+          className="w-full accent-gold-500"
+        />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-3">
+        {result.escenarios.map((e) => {
+          const precioMax = calcularPrecioMaximo(e.rentaMensual)
+          const meta = ESCENARIO_META[e.name]
+          const diff = precioMax - result.inputs.precioCompra
+          const isBetter = precioMax >= result.inputs.precioCompra
+          return (
+            <div key={e.name} className={`border rounded-lg p-4 ${meta.color}`}>
+              <p className="text-xs uppercase tracking-wider font-bold mb-1">
+                Escenario {meta.label}
+              </p>
+              <p className="text-xs opacity-80 mb-2">
+                Renta {new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(e.rentaMensual)}/mes
+              </p>
+              <p className="text-xs opacity-80 mb-1">Precio máximo de compra</p>
+              <p className={`text-xl font-bold ${meta.kpiClass} mb-1 select-none`} data-protected>
+                {precioMax > 0 ? eur(precioMax) : 'No alcanzable'}
+              </p>
+              {precioMax > 0 && (
+                <p className="text-xs opacity-75">
+                  {isBetter ? '+' : ''}
+                  {eur(diff)} vs tu precio actual
+                </p>
+              )}
+            </div>
+          )
+        })}
+      </div>
+
+      <p className="text-xs text-ink-muted italic mt-4">
+        Cálculo inverso a partir de tus gastos recurrentes, ITP y vacancia configurados. Cambia
+        el target con el slider para ver cómo se mueve el precio máximo.
+      </p>
     </div>
   )
 }
