@@ -190,6 +190,7 @@ export default function HomePage() {
               description="Cuota mensual, intereses totales, LTV y ratio de esfuerzo. Avisos automáticos sobre rangos que afectarían al scoring bancario."
               href="/calculadora-hipoteca"
               cta="Calcular cuota"
+              ribeteClass="bg-gold-400"
             />
             <ToolCard
               icon="📈"
@@ -197,6 +198,7 @@ export default function HomePage() {
               description="Rentabilidad bruta, neta, flujo neto mensual y payback en 3 escenarios paralelos (pesimista, probable, optimista). Para no enamorarte de la renta del anuncio."
               href="/calculadora-rentabilidad-inmobiliaria"
               cta="Calcular rentabilidad"
+              ribeteClass="bg-green-500"
             />
           </div>
         </Container>
@@ -382,21 +384,29 @@ function ToolCard({
   description,
   href,
   cta,
+  ribeteClass,
 }: {
   icon: string
   title: string
   description: string
   href: string
   cta: string
+  /** Tailwind bg-* class para el ribete superior de color de la card */
+  ribeteClass: string
 }) {
   return (
     <a
       href={href}
-      className="group block bg-paper-card rounded-xl border border-navy-100 p-8 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
+      className="group relative block bg-paper-card rounded-xl border border-navy-100 p-8 pt-9 shadow-soft hover:shadow-card hover:border-navy-200 transition-all no-underline overflow-hidden"
     >
+      {/* Ribete superior de color */}
+      <span
+        aria-hidden
+        className={`absolute top-0 left-0 right-0 h-1.5 ${ribeteClass}`}
+      />
       <div
         aria-hidden
-        className="text-5xl mb-5 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gold-50 border border-gold-200"
+        className="text-2xl mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-paper-soft border border-navy-100"
       >
         {icon}
       </div>

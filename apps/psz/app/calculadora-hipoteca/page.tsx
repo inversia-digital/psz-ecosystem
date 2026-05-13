@@ -55,6 +55,18 @@ export default function CalculadoraHipotecaPage() {
       {/* HERO */}
       <Section tone="navy" padding="lg">
         <Container size="lg">
+          {/* Breadcrumb visible — refuerza navegación de vuelta a home */}
+          <nav aria-label="Migas de pan" className="mb-6">
+            <a
+              href="/"
+              className="inline-flex items-center gap-1.5 text-sm text-paper/65 hover:text-gold-300 no-underline transition-colors"
+            >
+              <span aria-hidden>←</span> Inicio
+            </a>
+            <span className="text-paper/30 mx-2" aria-hidden>›</span>
+            <span className="text-sm text-paper/85">Calculadora hipoteca</span>
+          </nav>
+
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
             Herramienta propietaria · Cálculo server-side
           </p>
