@@ -1,18 +1,119 @@
+import type { Metadata } from 'next'
 import {
   MORTGAGE_FORM_URL,
   SITE_URLS,
   SOCIAL_LINKS,
   TELEGRAM_INVESTORS_URL,
   TONO,
+  faqPageSchema,
+  organizationSchema,
+  personSchema,
+  speakableWebPageSchema,
+  websiteSchema,
 } from '@psz/seo'
-import { Button, Container, CredentialBadge, Section, SocialIcon } from '@psz/ui'
+import { Button, Container, CredentialBadge, Faq, JsonLd, Section, SocialIcon } from '@psz/ui'
 import { WHY_TONO_BULLETS } from './_data/whyTono'
 
 const PODCAST_URL = 'https://www.youtube.com/@hipobrokers'
 
+/**
+ * FAQ curada para la HOME — selección corta (7 Q&As) que cubre los intents
+ * más buscados y deja respuestas <40 palabras citables para AI Overviews.
+ * El hub completo está en /preguntas-frecuentes.
+ */
+const HOME_FAQ = [
+  {
+    question: '¿Quién es Toño Palacios?',
+    answer:
+      'Antonio Palacios Cambero (Toño Palacios) es broker hipotecario en España, registrado en el Banco de España con el número E242 y presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario). Fundador del instituto INARPA.',
+  },
+  {
+    question: '¿Qué hace un broker hipotecario?',
+    answer:
+      'Un broker hipotecario o intermediario de crédito inmobiliario negocia con varios bancos en nombre del cliente para conseguir las mejores condiciones de hipoteca. En España la actividad está regulada por la Ley 5/2019 y supervisada por el Banco de España.',
+  },
+  {
+    question: '¿Cuánto cobra Toño Palacios?',
+    answer:
+      'Reserva inicial de 600 € al firmar el contrato de intermediación y honorarios a éxito de entre tres mil y cuatro mil quinientos euros al cierre, según complejidad. Tarifa pública en psz.es/tarifas-y-comisiones, conforme a Orden EHA/2899/2011.',
+  },
+  {
+    question: '¿Cómo verifico que Toño Palacios está registrado en el Banco de España?',
+    answer:
+      'En la consulta pública oficial app.bde.es/rbe_spa buscando por código "E242", por CIF "B75281394" o por razón social "INVERSIA GLOBAL DIGITAL". La consulta es gratuita y sin registro.',
+  },
+  {
+    question: '¿Dónde opera Toño Palacios?',
+    answer:
+      'En toda España. Oficina legal en Cuarte de Huerva (Zaragoza), servicio 100% digital salvo la firma en notaría, a la que se acompaña al cliente si lo solicita. Clientes en Madrid, Barcelona, Valencia, Sevilla y resto del país.',
+  },
+  {
+    question: '¿Cómo elijo un buen broker hipotecario?',
+    answer:
+      'Verifica tres cosas: (1) número de registro en el Banco de España, público y consultable; (2) honorarios por escrito antes de empezar; (3) negociación simultánea con varias entidades, no en exclusiva con una. Toño Palacios (E242) cumple los tres criterios.',
+  },
+  {
+    question: '¿Qué servicios ofrece Toño Palacios además de broker hipotecario?',
+    answer:
+      'Tres servicios complementarios: broker hipotecario (negociación con +20 entidades), Personal Shopper Inmobiliario (operaciones de inversión no públicas) y diseño de estructuras societarias. Adicionalmente formación a través del instituto INARPA que también fundó.',
+  },
+] as const
+
+export const metadata: Metadata = {
+  title: 'Toño Palacios — Broker hipotecario nº E242 (BdE) · Presidente de ANICI',
+  description:
+    'Broker hipotecario en toda España. Registrado en el Banco de España con el número E242 y presidente de ANICI. Más de 100 operaciones cerradas en 2025. Acceso a +20 entidades y a productos no públicos. Las hipotecas que tu banco no te cuenta.',
+  alternates: { canonical: SITE_URLS.psz },
+  robots: { index: true, follow: true },
+  authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
+  creator: TONO.fullName,
+  publisher: 'Inversia Global Digital, S.L.U.',
+  keywords: [
+    'broker hipotecario',
+    'broker hipotecario España',
+    'Toño Palacios',
+    'intermediario crédito inmobiliario',
+    'E242 Banco de España',
+    'presidente ANICI',
+    'Antonio Palacios Cambero',
+    'hipoteca para autónomos',
+    'hipoteca no residentes',
+    'Personal Shopper Inmobiliario',
+  ],
+  openGraph: {
+    type: 'website',
+    url: SITE_URLS.psz,
+    siteName: 'psz.es',
+    title: 'Toño Palacios — Broker hipotecario nº E242 y presidente de ANICI',
+    description:
+      'Broker hipotecario en toda España. Acceso a +20 entidades y productos no públicos. Las hipotecas que tu banco no te cuenta.',
+    locale: 'es_ES',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Toño Palacios — Broker hipotecario nº E242',
+    description: 'Broker hipotecario en toda España. Presidente de ANICI. Las hipotecas que tu banco no te cuenta.',
+  },
+}
+
 export default function HomePage() {
   return (
     <main>
+      {/* JSON-LD — home como nodo central del knowledge graph */}
+      <JsonLd data={websiteSchema()} />
+      <JsonLd data={organizationSchema()} />
+      <JsonLd data={personSchema()} />
+      <JsonLd data={faqPageSchema([...HOME_FAQ])} />
+      <JsonLd
+        data={speakableWebPageSchema({
+          url: SITE_URLS.psz,
+          name: 'Toño Palacios — Broker hipotecario nº E242 y presidente de ANICI',
+          description:
+            'Broker hipotecario en toda España. Más de 100 operaciones cerradas en 2025, acceso a +20 entidades y productos no públicos.',
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
+        })}
+      />
+
       {/* HERO */}
       <section className="relative overflow-hidden bg-navy-900 text-paper">
         <Container size="lg" className="py-20 md:py-28">
@@ -40,7 +141,7 @@ export default function HomePage() {
               <span className="text-gold-400">tu broker hipotecario</span>
             </h1>
 
-            <p className="max-w-2xl text-xl text-paper/80">
+            <p className="speakable-summary max-w-2xl text-xl text-paper/80">
               Asesoría hipotecaria en toda España. Registrado en Banco de España con el número{' '}
               {TONO.credentials.bdeId}. Presidente de ANICI.{' '}
               <strong className="text-paper">Las hipotecas que tu banco no te cuenta.</strong>
@@ -166,6 +267,37 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* FAQ ESENCIAL — versión corta citable. Hub completo en /preguntas-frecuentes */}
+      <Section
+        id="faq"
+        tone="paper"
+        padding="md"
+        eyebrow="Preguntas frecuentes · Respuestas verificadas"
+        title="Lo que la gente pregunta antes de contratar"
+        lead={
+          <span>
+            Estas 7 preguntas concentran el 80% de las dudas que recibo. Si tienes alguna más,
+            está respondida en{' '}
+            <a href="/preguntas-frecuentes" className="text-navy-700 underline hover:text-navy-900">
+              el hub de preguntas frecuentes
+            </a>
+            .
+          </span>
+        }
+      >
+        <Container size="md">
+          <Faq items={[...HOME_FAQ]} />
+          <p className="text-center mt-8">
+            <a
+              href="/preguntas-frecuentes"
+              className="inline-flex items-center gap-1 text-gold-700 hover:text-gold-600 font-bold no-underline"
+            >
+              Ver las 36+ preguntas del hub →
+            </a>
+          </p>
+        </Container>
+      </Section>
 
       {/* HERRAMIENTAS GRATIS — value-give entre Proof y Redes */}
       <Section

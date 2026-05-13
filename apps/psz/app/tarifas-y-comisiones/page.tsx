@@ -1,21 +1,57 @@
 import type { Metadata } from 'next'
-import { SITE_URLS } from '@psz/seo'
-import { Container, Section } from '@psz/ui'
+import {
+  SITE_URLS,
+  TONO,
+  breadcrumbSchema,
+  speakableWebPageSchema,
+} from '@psz/seo'
+import { Container, JsonLd, Section } from '@psz/ui'
+import { AnswerCard } from '../_components/AnswerCard'
 import HonorariosModal from '../_components/HonorariosModal'
 
+const URL = `${SITE_URLS.psz}/tarifas-y-comisiones`
+
 export const metadata: Metadata = {
-  title: 'Tarifas y comisiones',
+  title: 'Tarifas y comisiones · Toño Palacios broker hipotecario E242',
   description:
-    'Publicación oficial de tarifas y comisiones de Inversia Global Digital S.L. para los servicios de intermediación hipotecaria y Personal Shopper Inmobiliario.',
-  alternates: { canonical: `${SITE_URLS.psz}/tarifas-y-comisiones` },
+    'Publicación oficial de tarifas y comisiones de Inversia Global Digital S.L. (Toño Palacios, broker E242 y presidente de ANICI) para los servicios de intermediación hipotecaria y Personal Shopper Inmobiliario. Conforme a Orden EHA/2899/2011 y Ley 5/2019.',
+  alternates: { canonical: URL },
   robots: { index: true, follow: true },
+  authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
+  openGraph: {
+    type: 'article',
+    url: URL,
+    title: 'Tarifas y comisiones · Toño Palacios',
+    description: 'Tarifa pública de intermediación hipotecaria y Personal Shopper Inmobiliario.',
+    locale: 'es_ES',
+  },
 }
 
 export default function Page() {
   return (
     <main>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Inicio', url: SITE_URLS.psz },
+          { name: 'Tarifas y comisiones', url: URL },
+        ])}
+      />
+      <JsonLd
+        data={speakableWebPageSchema({
+          url: URL,
+          name: 'Tarifas y comisiones — Toño Palacios broker hipotecario',
+          description: 'Tarifa pública de intermediación hipotecaria y Personal Shopper Inmobiliario conforme a Orden EHA/2899/2011 y Ley 5/2019.',
+          cssSelectors: ['h1', '.speakable-summary'],
+        })}
+      />
       <Section tone="paper" padding="md" title="Tarifas y comisiones">
         <Container size="md">
+          <AnswerCard question="¿Cuánto cobra Toño Palacios como broker hipotecario?">
+            Reserva inicial de 600 € al firmar el contrato de intermediación y honorarios a éxito
+            de entre tres mil y cuatro mil quinientos euros al cierre de la operación, según
+            complejidad. Servicio exento de IVA (Ley 37/1992 art. 20.1.18º). Tarifa publicada
+            conforme a la Orden EHA/2899/2011 y la Ley 5/2019.
+          </AnswerCard>
           <div className="prose-psz">
             <p>
               En cumplimiento de las obligaciones de transparencia previstas en la Orden

@@ -264,6 +264,85 @@ export const FAQ_GROUPS: FaqGroup[] = [
   },
 
   {
+    id: 'glosario-hipotecario',
+    title: 'Glosario hipotecario',
+    intro:
+      'Términos operativos que aparecen en cualquier hipoteca española. Respuestas <40 palabras autocontenidas, para citar literal.',
+    items: [
+      {
+        question: '¿Qué es el LTV (Loan-to-Value) en una hipoteca?',
+        answer:
+          'El LTV es el porcentaje del valor del inmueble que financia el banco. En España la banca típica concede hasta 80% LTV en primera vivienda y 60-70% LTV en inversión o segunda residencia. Por encima del 80% requiere garantía adicional.',
+      },
+      {
+        question: '¿Qué diferencia hay entre TIN y TAE?',
+        answer:
+          'El TIN (Tipo de Interés Nominal) es el tipo de interés del préstamo sin comisiones ni gastos. La TAE (Tasa Anual Equivalente) incluye TIN + comisiones (apertura, estudio) + coste de productos vinculados. La TAE es la métrica oficial de comparación entre ofertas.',
+      },
+      {
+        question: '¿Qué es la FEIN y cuándo me la debe entregar el banco?',
+        answer:
+          'La FEIN (Ficha Europea de Información Normalizada) es el documento oficial que resume la oferta hipotecaria. Por Ley 5/2019 el banco debe entregarla con un mínimo de 10 días naturales antes de la firma en notaría. Es vinculante para el banco durante esos 10 días.',
+      },
+      {
+        question: '¿Qué es el ratio de esfuerzo en una hipoteca?',
+        answer:
+          'El ratio de esfuerzo es el porcentaje de los ingresos netos mensuales destinados al pago de la cuota hipotecaria (y otras deudas). La banca española típica acepta hasta 35-40% como máximo. Por encima del 40% la operación suele rechazarse en scoring automático.',
+      },
+      {
+        question: '¿Qué es la amortización francesa?',
+        answer:
+          'La amortización francesa es el sistema de amortización estándar en hipotecas residenciales españolas. Cuotas mensuales iguales durante toda la vida del préstamo (asumiendo TIN fijo), con mayor peso de intereses al principio y mayor peso de amortización al final.',
+      },
+      {
+        question: '¿Qué es el Euríbor y cómo afecta a mi hipoteca?',
+        answer:
+          'El Euríbor (Euro Interbank Offered Rate) es el tipo interbancario al que las hipotecas variables españolas se referencian habitualmente al Euríbor 12M más un diferencial pactado. La revisión es semestral o anual según contrato. Si sube el Euríbor, sube tu cuota.',
+      },
+      {
+        question: '¿Qué es el ITP (Impuesto de Transmisiones Patrimoniales)?',
+        answer:
+          'El ITP grava la compra de vivienda usada (segunda mano). Tipo impositivo variable por comunidad autónoma del 4% (País Vasco) al 13% (tramos altos de Cataluña). Madrid 6%, Andalucía 7%. En vivienda nueva no se paga ITP sino IVA (10%) + AJD.',
+      },
+      {
+        question: '¿Qué es el AJD (Actos Jurídicos Documentados)?',
+        answer:
+          'El AJD es el impuesto sobre la escritura notarial de compraventa y de hipoteca. Tipo variable por comunidad autónoma (0,5%-1,5%). Desde el RDL 17/2018, el AJD de la hipoteca lo paga el banco, no el cliente. El de compraventa lo sigue pagando el comprador.',
+      },
+      {
+        question: '¿Qué es la tasación hipotecaria y cuánto cuesta?',
+        answer:
+          'La tasación hipotecaria es la valoración pericial del inmueble realizada por una sociedad de tasación homologada por el Banco de España. El cliente paga entre 250 € y 600 € según inmueble. El banco usa el menor entre tasación y precio de compraventa como base del LTV.',
+      },
+      {
+        question: '¿Qué son las vinculaciones en una hipoteca?',
+        answer:
+          'Las vinculaciones son productos asociados (seguros de hogar, seguros de vida, planes de pensiones, tarjetas, nómina) que el banco exige o usa para bonificar la hipoteca. Por Ley 5/2019, el banco debe ofrecer también la hipoteca sin vinculaciones y reflejarlo en la FEIN.',
+      },
+      {
+        question: '¿Qué es una subrogación de hipoteca?',
+        answer:
+          'La subrogación de acreedor es el cambio del banco titular de la hipoteca, manteniendo el cliente las mismas condiciones del préstamo con un banco distinto. Útil cuando otro banco ofrece mejor TIN. Coste limitado por ley a 0,5% del capital pendiente como máximo.',
+      },
+      {
+        question: '¿Qué es una novación hipotecaria?',
+        answer:
+          'La novación es la modificación de las condiciones de la hipoteca con el mismo banco (cambio de TIN, ampliación de plazo, cambio de fija a variable). El cliente paga una comisión por novación según contrato. No implica cambio de banco.',
+      },
+      {
+        question: '¿Cuál es la diferencia entre hipoteca fija, variable y mixta?',
+        answer:
+          'La hipoteca fija mantiene el mismo TIN durante toda la vida del préstamo. La variable se referencia al Euríbor + diferencial y revisa cada 6 o 12 meses. La mixta combina ambas: tipo fijo durante los primeros años (típicamente 3-10) y variable después.',
+      },
+      {
+        question: '¿Qué es la comisión de amortización anticipada?',
+        answer:
+          'Es la penalización que cobra el banco si pagas anticipadamente parte o todo del capital pendiente. Por Ley 5/2019 está limitada: máximo 2% en variable durante los primeros 3 años (1,5% del 4º al 5º) o 2% durante los 10 primeros años en hipoteca fija (1,5% después).',
+      },
+    ],
+  },
+
+  {
     id: 'regulacion',
     title: 'Regulación y normativa',
     intro: 'Marco legal aplicable a la intermediación hipotecaria en España.',

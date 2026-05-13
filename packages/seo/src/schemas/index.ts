@@ -8,3 +8,4 @@ export { localFinancialServiceSchema, type CitySchemaInput } from './localBusine
 export { speakableWebPageSchema, type SpeakablePageProps } from './speakable'
 export { howToSchema, type HowToStep } from './howTo'
 export { webApplicationSchema, type WebAppInput } from './webApplication'
+export { websiteSchema } from './website'

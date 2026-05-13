@@ -10,6 +10,7 @@ import {
   speakableWebPageSchema,
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
+import { AnswerCard } from '../_components/AnswerCard'
 import { ALTA_ICI } from './content'
 
 const URL = `${SITE_URLS.psz}/alta-ici-banco-espana`
@@ -56,7 +57,7 @@ export default function AltaICIPage() {
           url: URL,
           name: ALTA_ICI.hero.h1,
           description: 'Servicio de inscripción de sociedades como Intermediario de Crédito Inmobiliario en el Banco de España.',
-          cssSelectors: ['h1', '.speakable-summary', '.faq-question'],
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
         })}
       />
       <JsonLd
@@ -109,6 +110,13 @@ export default function AltaICIPage() {
       {/* INTRO */}
       <Section tone="paper" padding="md" title={ALTA_ICI.intro.title}>
         <Container size="md">
+          <AnswerCard question="¿Cómo se da de alta una sociedad como Intermediario de Crédito Inmobiliario (ICI) en el Banco de España?">
+            La inscripción de una persona jurídica como ICI en el Banco de España requiere
+            constitución social adecuada, formación específica de administradores, seguro de
+            responsabilidad civil profesional, manual de cumplimiento normativo y trámites bajo
+            Ley 5/2019 y Real Decreto 309/2019. Plazo medio: 4-6 meses. Toño Palacios acompaña
+            todo el proceso desde su propia experiencia inscribiendo Inversia Global Digital (E242).
+          </AnswerCard>
           <div className="prose-psz">
             {ALTA_ICI.intro.body.split('\n\n').map((p, i) => (
               <p key={i}>{p}</p>

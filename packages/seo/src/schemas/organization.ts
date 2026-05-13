@@ -5,6 +5,7 @@ export function organizationSchema(siteUrl: string = SITE_URLS.psz): WithContext
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
     name: INVERSIA.displayName,
     legalName: INVERSIA.legalName,
     alternateName: [...INVERSIA.alternateNames],

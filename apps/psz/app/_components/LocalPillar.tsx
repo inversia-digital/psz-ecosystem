@@ -5,10 +5,12 @@ import {
   breadcrumbSchema,
   faqPageSchema,
   localFinancialServiceSchema,
+  speakableWebPageSchema,
 } from '@psz/seo'
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/ui'
 import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import type { CityData } from '../_data/cities'
+import { AnswerCard } from './AnswerCard'
 
 /**
  * Template compartido para los 5 pillars locales /broker-hipotecario-[ciudad].
@@ -37,6 +39,14 @@ export function LocalPillar({ city }: { city: CityData }) {
         })}
       />
       <JsonLd data={faqPageSchema([...city.faq])} />
+      <JsonLd
+        data={speakableWebPageSchema({
+          url,
+          name: `Broker hipotecario en ${city.name}`,
+          description: city.angle,
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
+        })}
+      />
 
       {/* HERO */}
       <Section tone="navy" padding="lg">
@@ -83,6 +93,12 @@ export function LocalPillar({ city }: { city: CityData }) {
         title={`Mi enfoque en ${city.name}`}
       >
         <Container size="md">
+          <AnswerCard question={`¿Quién es el broker hipotecario de referencia en ${city.name}?`}>
+            Toño Palacios, broker hipotecario nº E242 (Banco de España) y presidente de ANICI,
+            opera en {city.name} como en el resto de España. Negocia con +20 entidades, conoce
+            qué bancos son receptivos al perfil típico de {city.name} y acompaña al cliente
+            hasta la firma en notaría si se solicita.
+          </AnswerCard>
           <div className="prose-psz">
             <p className="text-lg">{city.intro}</p>
             <p className="text-ink-muted text-sm mt-6">

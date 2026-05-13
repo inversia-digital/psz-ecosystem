@@ -6,8 +6,10 @@ import {
   TONO,
   breadcrumbSchema,
   faqPageSchema,
+  speakableWebPageSchema,
 } from '@psz/seo'
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/ui'
+import { AnswerCard } from '../_components/AnswerCard'
 import { ESTRUCTURAS } from './content'
 
 const URL = `${SITE_URLS.psz}/estructuras-societarias`
@@ -37,6 +39,14 @@ export default function Page() {
         ])}
       />
       <JsonLd data={faqPageSchema([...ESTRUCTURAS.faq])} />
+      <JsonLd
+        data={speakableWebPageSchema({
+          url: URL,
+          name: 'Estructuras societarias para inversores',
+          description: 'Diseño de holdings nacionales y estructuras societarias internacionales para inversores con patrimonio inmobiliario.',
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
+        })}
+      />
 
       {/* HERO */}
       <Section tone="navy" padding="lg">
@@ -77,6 +87,12 @@ export default function Page() {
       {/* POR QUÉ IMPORTA */}
       <Section tone="paper" padding="md" title={ESTRUCTURAS.whyMatters.title}>
         <Container size="md">
+          <AnswerCard question="¿Qué es una estructura societaria patrimonial y para qué sirve?">
+            Una estructura societaria patrimonial es un esquema de sociedades (holding + filiales)
+            que un inversor utiliza para separar operativa de patrimonio, optimizar fiscalidad
+            (régimen ETVE, SOCIMI) y facilitar la sucesión. Toño Palacios asesora el diseño y
+            coordina con abogados locales autorizados que constituyen las sociedades.
+          </AnswerCard>
           <div className="prose-psz">
             {ESTRUCTURAS.whyMatters.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>

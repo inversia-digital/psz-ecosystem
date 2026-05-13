@@ -5,10 +5,12 @@ import {
   TONO,
   breadcrumbSchema,
   faqPageSchema,
+  speakableWebPageSchema,
 } from '@psz/seo'
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/ui'
 import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import { PILLAR_BROKER } from './content'
+import { AnswerCard } from '../_components/AnswerCard'
 import HonorariosModal from '../_components/HonorariosModal'
 
 /**
@@ -49,6 +51,15 @@ export default function BrokerHipotecarioPage() {
         ])}
       />
       <JsonLd data={faqPageSchema([...PILLAR_BROKER.faq])} />
+      <JsonLd
+        data={speakableWebPageSchema({
+          url: URL,
+          name: 'Broker hipotecario en España',
+          description:
+            'Broker hipotecario registrado en Banco de España nº E242 y presidente de ANICI. Negociación con +20 entidades. Servicio nacional.',
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
+        })}
+      />
 
       {/* HERO */}
       <Section tone="navy" padding="lg">
@@ -115,6 +126,12 @@ export default function BrokerHipotecarioPage() {
       {/* QUÉ HACE */}
       <Section id="que-es" tone="paper" padding="md" title={PILLAR_BROKER.whatIsIt.title}>
         <Container size="md">
+          <AnswerCard question="¿Qué es un broker hipotecario y qué hace?">
+            Un broker hipotecario o intermediario de crédito inmobiliario negocia con varios
+            bancos en nombre del cliente para conseguir las mejores condiciones de hipoteca.
+            En España la actividad está regulada por la Ley 5/2019 y supervisada por el Banco
+            de España. Toño Palacios opera bajo el número E242 y es presidente de ANICI.
+          </AnswerCard>
           <div className="prose-psz">
             {PILLAR_BROKER.whatIsIt.paragraphs.map((p, i) => (
               <p

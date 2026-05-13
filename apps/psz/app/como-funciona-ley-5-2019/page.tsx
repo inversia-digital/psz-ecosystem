@@ -7,6 +7,7 @@ import {
   speakableWebPageSchema,
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
+import { AnswerCard } from '../_components/AnswerCard'
 
 const URL = `${SITE_URLS.psz}/como-funciona-ley-5-2019`
 
@@ -79,7 +80,7 @@ export default function LeyPage() {
           url: URL,
           name: 'Ley 5/2019 de Contratos de Crédito Inmobiliario',
           description: 'Guía completa de la regulación hipotecaria española.',
-          cssSelectors: ['h1', '.speakable-summary'],
+          cssSelectors: ['h1', '.speakable-summary', 'summary'],
         })}
       />
 
@@ -110,6 +111,12 @@ export default function LeyPage() {
       {/* CONTEXTO */}
       <Section tone="paper" padding="md" title="Qué es y por qué existe">
         <Container size="md">
+          <AnswerCard question="¿Qué regula la Ley 5/2019 de Contratos de Crédito Inmobiliario?">
+            La Ley 5/2019, de 15 de marzo, regula la actividad de prestamistas e intermediarios
+            de crédito inmobiliario en España. Transpone la directiva europea 2014/17/UE,
+            establece el plazo mínimo de 10 días de reflexión con FEIN previa, el acta notarial
+            obligatoria y el régimen sancionador supervisado por el Banco de España.
+          </AnswerCard>
           <div className="prose-psz">
             <p>
               La <strong>Ley 5/2019, de 15 de marzo, reguladora de los contratos de crédito
