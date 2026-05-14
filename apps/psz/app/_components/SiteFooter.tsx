@@ -164,6 +164,11 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
+              <a href="/hipoteca-autonomos" className="text-paper/70 hover:text-paper no-underline">
+                Hipoteca autónomos
+              </a>
+            </p>
+            <p>
               <a
                 href="/glosario-hipotecario"
                 className="inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 font-semibold no-underline"

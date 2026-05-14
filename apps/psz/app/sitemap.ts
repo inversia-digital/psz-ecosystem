@@ -44,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URLS.psz}/hipoteca-autonomos`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URLS.psz}/glosario-hipotecario`,
       lastModified: now,
       changeFrequency: 'monthly',
