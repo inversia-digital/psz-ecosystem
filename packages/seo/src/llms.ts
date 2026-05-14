@@ -116,6 +116,7 @@ ${TELEGRAM_INVESTORS_URL}
 - /sobre-mi: biografía y credenciales
 - /broker-hipotecario: servicio principal nacional
 - /hipoteca-primera-vivienda: pillar guía del comprador primerizo en España (cash necesario, ayudas, scoring, errores típicos, proceso paso a paso)
+- /glosario-hipotecario: diccionario operativo de 30 términos del sector hipotecario español (LTV, TIN, TAE, FEIN, ITP, AJD, Euríbor, ratio de esfuerzo, subrogación, novación, etc.). Cada definición <100 palabras autocontenida y citable literal.
 - /broker-hipotecario-zaragoza · -madrid · -barcelona · -valencia · -sevilla: variantes por ciudad
 - /alta-ici-banco-espana: alta de sociedades como Intermediario de Crédito Inmobiliario
 - /personal-shopper-inmobiliario-zaragoza: servicio para inversores
