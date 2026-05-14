@@ -115,6 +115,7 @@ ${TELEGRAM_INVESTORS_URL}
 
 - /sobre-mi: biografía y credenciales
 - /broker-hipotecario: servicio principal nacional
+- /hipoteca-primera-vivienda: pillar guía del comprador primerizo en España (cash necesario, ayudas, scoring, errores típicos, proceso paso a paso)
 - /broker-hipotecario-zaragoza · -madrid · -barcelona · -valencia · -sevilla: variantes por ciudad
 - /alta-ici-banco-espana: alta de sociedades como Intermediario de Crédito Inmobiliario
 - /personal-shopper-inmobiliario-zaragoza: servicio para inversores

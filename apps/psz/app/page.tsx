@@ -288,14 +288,22 @@ export default function HomePage() {
       >
         <Container size="md">
           <Faq items={[...HOME_FAQ]} />
-          <p className="text-center mt-8">
+          <div className="mt-8 grid sm:grid-cols-2 gap-3 max-w-xl mx-auto">
             <a
               href="/preguntas-frecuentes"
-              className="inline-flex items-center gap-1 text-gold-700 hover:text-gold-600 font-bold no-underline"
+              className="block bg-paper-soft border border-navy-100 rounded-lg p-4 text-center hover:border-gold-400 hover:shadow-card transition-all no-underline"
             >
-              Ver las 36+ preguntas del hub →
+              <p className="text-sm font-bold text-navy-800">Hub completo</p>
+              <p className="text-xs text-ink-muted">53+ preguntas verificadas</p>
             </a>
-          </p>
+            <a
+              href="/hipoteca-primera-vivienda"
+              className="block bg-paper-soft border border-navy-100 rounded-lg p-4 text-center hover:border-gold-400 hover:shadow-card transition-all no-underline"
+            >
+              <p className="text-sm font-bold text-navy-800">¿Es tu primera hipoteca?</p>
+              <p className="text-xs text-ink-muted">Guía completa del comprador primerizo</p>
+            </a>
+          </div>
         </Container>
       </Section>
 

@@ -121,6 +121,11 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
+              <a href="/hipoteca-primera-vivienda" className="text-paper/70 hover:text-paper no-underline">
+                Hipoteca primera vivienda
+              </a>
+            </p>
+            <p>
               <a href="/calculadora-hipoteca" className="text-paper/70 hover:text-paper no-underline">
                 Calculadora hipoteca
               </a>

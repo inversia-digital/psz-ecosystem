@@ -325,6 +325,18 @@ export default function CalculadoraCapacidadPage() {
               </p>
             </a>
           </div>
+          <div className="mt-4 bg-gold-50 border border-gold-300 rounded-lg p-4 text-center">
+            <p className="text-sm text-navy-800">
+              ¿Es tu primera vivienda? Lee la{' '}
+              <a
+                href="/hipoteca-primera-vivienda"
+                className="text-navy-700 hover:text-navy-900 underline font-semibold"
+              >
+                guía completa del comprador primerizo
+              </a>{' '}
+              para entender cuánto cash necesitas, qué ayudas aplican y cómo te valora el banco.
+            </p>
+          </div>
         </Container>
       </Section>
 

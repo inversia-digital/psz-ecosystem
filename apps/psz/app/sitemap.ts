@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${SITE_URLS.psz}/hipoteca-primera-vivienda`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URLS.psz}/estructuras-societarias`,
       lastModified: now,
       changeFrequency: 'monthly',
