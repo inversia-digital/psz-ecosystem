@@ -32,9 +32,18 @@ export const metadata: Metadata = {
   },
   description:
     'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Asesoría hipotecaria en toda España. Las hipotecas que tu banco no te cuenta.',
-  applicationName: 'PSZ',
+  applicationName: 'PSZ — Toño Palacios',
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
+  creator: `${TONO.fullName} (${TONO.shortName})`,
+  publisher: 'Inversia Global Digital, S.L.U.',
   generator: 'Next.js',
+  other: {
+    'copyright': `© ${new Date().getFullYear()} Inversia Global Digital, S.L.U. (CIF B75281394). Diseño y código de Antonio Palacios Cambero (Toño Palacios), broker hipotecario nº E242 (Banco de España). https://psz.es/sobre-mi`,
+    'designer': 'Antonio Palacios Cambero (Toño Palacios) — broker hipotecario nº E242',
+    'owner': 'Inversia Global Digital, S.L.U. — CIF B75281394 — https://psz.es',
+    'reply-to': 'info@inversiadigital.es',
+    'identifier-URL': SITE_URLS.psz,
+  },
   keywords: [
     'broker hipotecario',
     'broker hipotecario España',
@@ -97,6 +106,47 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+/**
+ * SourceCredit — inyecta un comentario HTML literal al inicio del <head>.
+ *
+ * React no admite comentarios HTML como nodos JSX, así que usamos
+ * dangerouslySetInnerHTML sobre un script con type="text/html-comment"
+ * (un MIME que ningún navegador ejecuta) para que el comentario quede
+ * presente en el HTML servido sin afectar al render.
+ *
+ * Propósito: cualquiera que haga "ver código fuente" o scrape la página
+ * verá la atribución completa. No es DRM, es una huella legal/forense
+ * útil para reclamar autoría si alguien clona el código.
+ */
+function SourceCredit() {
+  const credit = `
+═══════════════════════════════════════════════════════════════════════════════
+  psz.es — Calculadoras y contenido propiedad intelectual de:
+
+  Antonio Palacios Cambero ("Toño Palacios")
+  Broker hipotecario nº E242 (Banco de España, Ley 5/2019)
+  Presidente de ANICI · Asociado fundador ANICI-001
+  Fundador del instituto INARPA
+
+  Sociedad operativa: INVERSIA GLOBAL DIGITAL, S.L.U. (CIF B75281394)
+  Web oficial: https://psz.es/sobre-mi
+  Verificación BdE: https://app.bde.es/rbe_spa/  (buscar "E242")
+
+  © ${new Date().getFullYear()} — Reproducción no autorizada sancionable conforme
+  al RDL 1/1996 (Texto Refundido de la Ley de Propiedad Intelectual).
+
+  Si has llegado aquí desde "ver código fuente", ahora ya sabes a quién
+  atribuir esta web — y a quién contactar si quieres trabajar con él.
+═══════════════════════════════════════════════════════════════════════════════
+`
+  return (
+    <script
+      type="text/html-comment"
+      dangerouslySetInnerHTML={{ __html: `\n<!--${credit}-->\n` }}
+    />
+  )
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
@@ -122,6 +172,12 @@ gtag('set', 'url_passthrough', true);`}
       </Script>
       <GoogleTagManager gtmId={GTM_ID} />
       <head>
+        {/*
+         * SourceCredit — comentario HTML embebido en <head>.
+         * Si alguien hace "ver código fuente" o scrapea esta página,
+         * se lleva la atribución. Invisible para usuarios normales.
+         */}
+        <SourceCredit />
         <JsonLd data={personSchema()} />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={professionalServiceSchema()} />

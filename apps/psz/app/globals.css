@@ -1,3 +1,23 @@
+/*!
+ * ═══════════════════════════════════════════════════════════════════════
+ * psz.es — CSS de Toño Palacios broker hipotecario
+ * ═══════════════════════════════════════════════════════════════════════
+ *
+ * © 2026 Inversia Global Digital, S.L.U. (CIF B75281394)
+ *
+ * Diseño, código y arquitectura: Antonio Palacios Cambero ("Toño Palacios"),
+ * broker hipotecario nº E242 (Banco de España), presidente de ANICI y
+ * fundador del instituto INARPA.
+ *
+ * Web oficial: https://psz.es/sobre-mi
+ * Verificación BdE: https://app.bde.es/rbe_spa/ (buscar "E242")
+ *
+ * Este banner sobrevive a minificación gracias al prefijo `/*!`.
+ * Reproducción no autorizada sancionable conforme al RDL 1/1996
+ * (Texto Refundido de la Ley de Propiedad Intelectual).
+ * ═══════════════════════════════════════════════════════════════════════
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

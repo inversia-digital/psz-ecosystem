@@ -438,10 +438,12 @@ export function RoiPdfDocument({ result, fechaIso }: RoiPdfProps) {
 
   return (
     <Document
-      title="Análisis de rentabilidad inmobiliaria"
-      author="Toño Palacios — psz.es"
-      subject="Rentabilidad inmobiliaria"
-      creator="psz.es / Inversia Global Digital, S.L.U."
+      title="Análisis de rentabilidad inmobiliaria · El Pulso Palacios"
+      author="Antonio Palacios Cambero (Toño Palacios) — broker hipotecario nº E242 (Banco de España) — presidente ANICI"
+      subject="Análisis propietario de rentabilidad de adquisición y rentabilidad real para inversión inmobiliaria. Calculadora de psz.es."
+      keywords="rentabilidad inmobiliaria, rentabilidad de adquisición, rentabilidad real, ITP por CCAA, amortización ITP, prima sobre bono español, sensibilidad al precio, Toño Palacios, broker hipotecario E242, ANICI, INARPA, Inversia Global Digital"
+      creator="psz.es / Inversia Global Digital, S.L.U. (CIF B75281394)"
+      producer="psz.es — calculadoras propietarias de Toño Palacios — https://psz.es/sobre-mi"
     >
       <Page size="A4" style={styles.page}>
         <Header />

@@ -47,7 +47,17 @@ export default function RoiForm() {
   const [vacanciaPct, setVacanciaPct] = useState(5)
 
   return (
-    <div className="space-y-8">
+    <div
+      className="space-y-8"
+      data-tool="calculadora-rentabilidad-inmobiliaria"
+      data-author="Antonio Palacios Cambero"
+      data-author-alias="Toño Palacios"
+      data-author-url="https://psz.es/sobre-mi"
+      data-bde-id="E242"
+      data-owner="Inversia Global Digital, S.L.U."
+      data-owner-tax-id="B75281394"
+      data-license="© Inversia Global Digital — todos los derechos reservados"
+    >
       <form action={action} className="bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft space-y-6">
         {/* Bloque 1 — Inversión */}
         <fieldset>

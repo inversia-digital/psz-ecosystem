@@ -35,7 +35,17 @@ export default function MortgageForm() {
   const [state, action] = useFormState<ActionState, FormData>(calculateMortgage, null)
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8">
+    <div
+      className="grid lg:grid-cols-2 gap-8"
+      data-tool="calculadora-hipoteca"
+      data-author="Antonio Palacios Cambero"
+      data-author-alias="Toño Palacios"
+      data-author-url="https://psz.es/sobre-mi"
+      data-bde-id="E242"
+      data-owner="Inversia Global Digital, S.L.U."
+      data-owner-tax-id="B75281394"
+      data-license="© Inversia Global Digital — todos los derechos reservados"
+    >
       <form action={action} className="bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft space-y-4">
         <Input
           name="precioInmueble"
