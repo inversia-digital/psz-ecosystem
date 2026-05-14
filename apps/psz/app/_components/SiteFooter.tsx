@@ -15,6 +15,7 @@
 
 import { INVERSIA, SITE_URLS, SOCIAL_LINKS, TONO } from '@psz/seo'
 import { Container, SocialIcon } from '@psz/ui'
+import { HERRAMIENTAS_LIVE } from '../_data/herramientas'
 
 const LEGAL_GROUPS: Array<{ title: string; links: Array<{ label: string; href: string }> }> = [
   {
@@ -103,12 +104,36 @@ export default function SiteFooter() {
                 Contacto
               </a>
             </p>
+
+            <div className="pt-3">
+              <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
+                Herramientas
+              </p>
+              <p>
+                <a
+                  href="/herramientas"
+                  className="inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 font-semibold no-underline"
+                >
+                  🧮 Catálogo completo
+                </a>
+                <span className="block text-xs text-paper/45 mt-0.5">
+                  {HERRAMIENTAS_LIVE.length} calculadoras propietarias
+                </span>
+              </p>
+              {HERRAMIENTAS_LIVE.map((h) => (
+                <p key={h.slug}>
+                  <a href={h.url} className="text-paper/70 hover:text-paper no-underline">
+                    {h.icon} {h.shortName}
+                  </a>
+                </p>
+              ))}
+            </div>
           </div>
 
-          {/* Columna 3 — Recursos y ecosistema (contenido + herramientas + marcas hermanas) */}
+          {/* Columna 3 — Recursos */}
           <div className="text-sm space-y-2">
             <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
-              Recursos y ecosistema
+              Recursos
             </p>
             <p>
               <a href="/blog" className="text-paper/70 hover:text-paper no-underline">
@@ -126,55 +151,52 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
-              <a href="/glosario-hipotecario" className="text-paper/70 hover:text-paper no-underline">
-                Glosario hipotecario
-              </a>
-            </p>
-            <p>
-              <a href="/calculadora-hipoteca" className="text-paper/70 hover:text-paper no-underline">
-                Calculadora hipoteca
-              </a>
-            </p>
-            <p>
-              <a href="/calculadora-rentabilidad-inmobiliaria" className="text-paper/70 hover:text-paper no-underline">
-                Calculadora rentabilidad
-              </a>
-            </p>
-            <p>
-              <a href="/calculadora-capacidad-endeudamiento" className="text-paper/70 hover:text-paper no-underline">
-                Calculadora capacidad endeudamiento
-              </a>
-            </p>
-            <p>
               <a
-                href={SITE_URLS.anici}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-paper/70 hover:text-paper no-underline"
+                href="/glosario-hipotecario"
+                className="inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 font-semibold no-underline"
               >
-                ANICI ↗
+                📖 Glosario hipotecario
               </a>
+              <span className="block text-xs text-paper/45 mt-0.5">
+                30 términos del sector
+              </span>
             </p>
-            <p>
-              <a
-                href={SITE_URLS.inarpa}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-paper/70 hover:text-paper no-underline"
-              >
-                INARPA · Formación ↗
-              </a>
-            </p>
-            <p>
-              <a
-                href={SITE_URLS.hipobrokers}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-paper/70 hover:text-paper no-underline"
-              >
-                Hipobrokers · Podcast ↗
-              </a>
-            </p>
+
+            <div className="pt-3">
+              <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
+                Ecosistema
+              </p>
+              <p>
+                <a
+                  href={SITE_URLS.anici}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  ANICI ↗
+                </a>
+              </p>
+              <p>
+                <a
+                  href={SITE_URLS.inarpa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  INARPA · Formación ↗
+                </a>
+              </p>
+              <p>
+                <a
+                  href={SITE_URLS.hipobrokers}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/70 hover:text-paper no-underline"
+                >
+                  Hipobrokers · Podcast ↗
+                </a>
+              </p>
+            </div>
           </div>
 
           {/* Columna 3 — empresa operativa */}

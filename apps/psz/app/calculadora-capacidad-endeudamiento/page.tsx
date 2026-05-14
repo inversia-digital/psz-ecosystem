@@ -21,13 +21,13 @@ const URL = `${SITE_URLS.psz}/calculadora-capacidad-endeudamiento`
 
 export const metadata: Metadata = {
   title:
-    'Calculadora de capacidad de endeudamiento · ¿Cuánto banco te darían?',
+    'Calculadora capacidad de endeudamiento 2026 · ¿Cuánto te daría el banco? · Toño Palacios',
   description:
-    'Calculadora propietaria de capacidad de endeudamiento hipotecaria. Calcula cuánta hipoteca te concedería un banco según tus ingresos, edad, otras deudas y aporte propio. 3 escenarios (conservador, estándar, agresivo). Diseñada por Toño Palacios, broker hipotecario nº E242 (Banco de España).',
+    'Calculadora propietaria de capacidad de endeudamiento hipotecaria diseñada y programada por Toño Palacios, broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Calcula cuánta hipoteca te concedería realmente un banco español según tus ingresos netos, edad, otras deudas mensuales y aporte propio. 3 escenarios paralelos: conservador (ratio esfuerzo 30%), estándar (35%, tope habitual de la banca minorista) y agresivo (40%, solo con perfiles muy sólidos). Aplica criterios reales de mesa de riesgos (LTV, plazo recortado por edad, ratio deudas). Cálculo server-side, lógica propietaria.',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
-  creator: TONO.fullName,
+  creator: `${TONO.fullName} (${TONO.shortName})`,
   publisher: 'Inversia Global Digital, S.L.U.',
   keywords: [
     'calculadora capacidad endeudamiento',
@@ -174,7 +174,7 @@ export default function CalculadoraCapacidadPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Herramienta propietaria · 3 escenarios paralelos · Cálculo server-side
+            Herramienta propietaria de {TONO.shortName} · 3 escenarios · Cálculo server-side
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
             Calculadora de capacidad de endeudamiento

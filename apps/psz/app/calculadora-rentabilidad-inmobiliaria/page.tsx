@@ -22,13 +22,13 @@ const URL = `${SITE_URLS.psz}/calculadora-rentabilidad-inmobiliaria`
 
 export const metadata: Metadata = {
   title:
-    'Calculadora rentabilidad inmobiliaria 2026 · ITP por CCAA + flujo neto',
+    'Calculadora rentabilidad inmobiliaria 2026 · ITP por CCAA · Toño Palacios broker E242',
   description:
-    'Calcula la rentabilidad real y de adquisición de tu inversión inmobiliaria con 3 escenarios, ITP por comunidad autónoma, vacancia opcional, flujo neto mensual, amortización del ITP, payback y comparativa con el bono del estado. PDF descargable. Por Toño Palacios, broker hipotecario nº E242.',
+    'Calculadora propietaria de rentabilidad inmobiliaria diseñada y programada por Toño Palacios, broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Calcula rentabilidad de adquisición y rentabilidad real con 3 escenarios paralelos (pesimista, probable, optimista), ITP actualizado por comunidad autónoma 2026, vacancia opcional, flujo neto mensual, amortización del ITP en años, payback total y comparativa con el bono español a 10 años. PDF descargable con marca propia. Cálculo server-side, lógica propietaria, sin registro.',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
-  creator: TONO.fullName,
+  creator: `${TONO.fullName} (${TONO.shortName})`,
   publisher: 'Inversia Global Digital, S.L.U.',
   keywords: [
     'calculadora rentabilidad inmobiliaria',
@@ -284,7 +284,7 @@ export default function CalculadoraRentabilidadPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Herramienta propietaria · 3 escenarios paralelos · ITP por CCAA · PDF descargable
+            Herramienta propietaria de {TONO.shortName} · 3 escenarios · ITP por CCAA · PDF descargable
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
             Calculadora de rentabilidad inmobiliaria

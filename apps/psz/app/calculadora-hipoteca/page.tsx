@@ -14,27 +14,40 @@ import MortgageForm from './MortgageForm'
 const URL = `${SITE_URLS.psz}/calculadora-hipoteca`
 
 export const metadata: Metadata = {
-  title: 'Calculadora de hipoteca — Cuota, intereses, LTV y ratio de esfuerzo',
+  title: 'Calculadora de hipoteca 2026 · Cuota, intereses, LTV y ratio de esfuerzo · Toño Palacios',
   description:
-    'Calculadora de hipoteca profesional. Calcula tu cuota mensual estimada, intereses totales, LTV efectivo y ratio de esfuerzo financiero. Con avisos automáticos sobre rangos críticos de scoring bancario. Herramienta de Toño Palacios, broker hipotecario nº E242 y presidente de ANICI.',
+    'Calculadora de hipoteca profesional diseñada y programada por Toño Palacios, broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Calcula cuota mensual estimada por amortización francesa, intereses totales, LTV efectivo y ratio de esfuerzo financiero. Avisos automáticos sobre rangos críticos de scoring bancario (ratio > 35%, LTV > 80%, plazo > 30 años, TIN fuera de mediana) basados en criterios reales de mesa de riesgos de +20 entidades. Cálculo server-side, lógica propietaria, sin registro.',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
-  creator: TONO.fullName,
+  creator: `${TONO.fullName} (${TONO.shortName})`,
   publisher: 'Inversia Global Digital, S.L.U.',
   keywords: [
     'calculadora hipoteca',
+    'calculadora hipoteca 2026',
     'cuota hipoteca mensual',
     'simulador hipoteca',
     'calculadora LTV',
     'ratio esfuerzo hipoteca',
     'TIN hipoteca calculadora',
+    'amortización francesa simulador',
+    'calculadora hipoteca España',
+    'simulador hipoteca Toño Palacios',
+    'scoring bancario calculadora',
   ],
   openGraph: {
     url: URL,
-    title: 'Calculadora de hipoteca profesional',
-    description: 'Calcula tu cuota, intereses, LTV y ratio de esfuerzo. Avisos automáticos sobre rangos críticos de scoring bancario.',
+    type: 'website',
+    siteName: 'psz.es',
     locale: 'es_ES',
+    title: 'Calculadora de hipoteca profesional · Toño Palacios broker E242',
+    description:
+      'Cuota, intereses, LTV y ratio de esfuerzo. Avisos automáticos sobre rangos críticos de scoring bancario. Por Toño Palacios, broker nº E242.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Calculadora de hipoteca · psz.es',
+    description: 'Cuota, intereses, LTV y ratio de esfuerzo con avisos sobre scoring bancario. Por Toño Palacios broker E242.',
   },
 }
 
@@ -94,7 +107,7 @@ export default function CalculadoraHipotecaPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Herramienta propietaria · Cálculo server-side
+            Herramienta propietaria de {TONO.shortName} · Cálculo server-side
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
             Calculadora de hipoteca

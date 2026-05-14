@@ -17,6 +17,7 @@ import { MORTGAGE_FORM_URL, TONO } from '@psz/seo'
 
 const NAV_LINKS = [
   { label: 'Broker hipotecario', href: '/broker-hipotecario' },
+  { label: 'Herramientas', href: '/herramientas' },
   { label: 'Sobre mí', href: '/sobre-mi' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/preguntas-frecuentes' },

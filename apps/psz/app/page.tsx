@@ -316,9 +316,12 @@ export default function HomePage() {
         title="Calcula antes de hablar conmigo"
         lead={
           <span>
-            Dos herramientas propietarias para que entiendas tu operación antes de que hablemos.
+            Tres herramientas propietarias para que entiendas tu operación antes de que hablemos.
             La lógica corre en servidor — los rangos críticos que dispara son trabajo de años de
-            práctica del despacho, no un script genérico.
+            práctica del despacho, no un script genérico.{' '}
+            <a href="/herramientas" className="text-navy-700 underline hover:text-navy-900 font-semibold">
+              Ver catálogo completo →
+            </a>
           </span>
         }
       >
