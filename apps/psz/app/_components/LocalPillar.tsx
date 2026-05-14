@@ -11,6 +11,7 @@ import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/u
 import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import type { CityData } from '../_data/cities'
 import { AnswerCard } from './AnswerCard'
+import { LegalDisclaimer } from './LegalDisclaimer'
 
 /**
  * Template compartido para los 5 pillars locales /broker-hipotecario-[ciudad].
@@ -174,6 +175,13 @@ export function LocalPillar({ city }: { city: CityData }) {
               Caso anonimizado representativo. Cada operación es distinta — habla conmigo y vemos la tuya.
             </p>
           </article>
+        </Container>
+      </Section>
+
+      {/* ADVERTENCIA LEGAL — intermediación de crédito inmobiliario */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>
 

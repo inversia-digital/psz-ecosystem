@@ -10,6 +10,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
+import { LegalDisclaimer } from '../_components/LegalDisclaimer'
 import CapacidadForm from './CapacidadForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-capacidad-endeudamiento`
@@ -191,6 +192,13 @@ export default function CalculadoraCapacidadPage() {
       <Section tone="paper" padding="md">
         <Container size="xl">
           <CapacidadForm />
+        </Container>
+      </Section>
+
+      {/* ADVERTENCIA LEGAL — concesión depende del banco */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>
 

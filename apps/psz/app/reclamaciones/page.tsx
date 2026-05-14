@@ -54,20 +54,25 @@ export default function Page() {
 
             <h2>2. Plazo de respuesta</h2>
             <p>
-              El prestador acusará recibo de la reclamación en un plazo máximo de <strong>diez (10)
-              días hábiles</strong> y responderá de forma motivada en un plazo máximo de{' '}
-              <strong>dos (2) meses</strong> desde la fecha de presentación, conforme a lo previsto
-              en la Orden ECC/2502/2012 y normativa concordante. La respuesta se enviará por la
-              misma vía utilizada para presentar la reclamación, salvo que el reclamante indique
-              expresamente otra preferencia.
+              El Departamento de Atención al Cliente acusará recibo de la reclamación en un plazo
+              máximo de <strong>diez (10) días hábiles</strong> y la resolverá de forma motivada
+              en el plazo máximo de <strong>un (1) mes</strong> desde la fecha de presentación,
+              conforme a lo previsto en la Orden ECC/2502/2012, la Ley 5/2019, de 15 de marzo, y
+              la guía del Banco de España aplicable a los intermediarios de crédito inmobiliario.
+              La respuesta se enviará por la misma vía utilizada para presentar la reclamación,
+              salvo que el reclamante indique expresamente otra preferencia.
             </p>
 
             <h2>3. Reclamación ante el Banco de España</h2>
             <p>
-              Si transcurridos los dos (2) meses no se hubiera recibido respuesta, o si la
-              respuesta recibida no es satisfactoria para el reclamante, este puede presentar su
-              reclamación ante el Servicio de Reclamaciones del Banco de España, organismo
-              supervisor de los intermediarios de crédito inmobiliario.
+              Transcurrido el plazo de un (1) mes sin haber recibido respuesta, o en caso de
+              disconformidad con la respuesta recibida, el reclamante podrá acudir al Servicio de
+              Reclamaciones del Banco de España, organismo supervisor de los intermediarios de
+              crédito inmobiliario, siempre que no haya transcurrido más de <strong>un (1) año</strong>{' '}
+              desde la presentación de la reclamación ante el Departamento de Atención al Cliente
+              de la entidad. La presentación previa de la reclamación ante el Departamento de
+              Atención al Cliente es requisito necesario para poder acudir al Servicio de
+              Reclamaciones del Banco de España.
             </p>
             <ul>
               <li>

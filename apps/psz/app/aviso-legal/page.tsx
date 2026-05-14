@@ -26,8 +26,23 @@ export default function AvisoLegalPage() {
               <li><strong>Domicilio social:</strong> Polígono Alcoz Alto 21, 1-1, 50410 Cuarte de Huerva (Zaragoza), España</li>
               <li><strong>Teléfono:</strong> +34 876 280 545</li>
               <li><strong>Correo electrónico:</strong> info@inversiadigital.es</li>
-              <li><strong>Registro Mercantil de Zaragoza</strong></li>
+              <li>
+                <strong>Registro Mercantil de Zaragoza</strong> — los datos registrales completos
+                (Tomo, Folio, Hoja, Inscripción) pueden solicitarse al responsable o consultarse
+                en la nota simple del Registro Mercantil. Próxima incorporación a este aviso una
+                vez verificada la última inscripción vigente.
+              </li>
             </ul>
+            <p className="text-sm text-ink-muted">
+              <strong>Marca comercial PSZ.</strong> PSZ es la marca comercial utilizada por
+              INVERSIA GLOBAL DIGITAL, S.L.U. para la prestación de servicios relacionados con
+              intermediación hipotecaria, Personal Shopper Inmobiliario, estructuras societarias
+              y formación. Determinados servicios concretos pueden prestarse directamente por
+              INVERSIA GLOBAL DIGITAL, S.L.U. o, en su caso, por sociedades, profesionales o
+              colaboradores vinculados al grupo, lo cual será informado al usuario antes de la
+              contratación cuando resulte aplicable. La marca personal "Toño Palacios" es el
+              nombre profesional de Antonio Palacios Cambero, fundador y administrador del grupo.
+            </p>
 
             <h2>2. Actividad regulada</h2>
             <p>

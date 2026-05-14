@@ -11,6 +11,7 @@ import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/u
 import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import { PILLAR_BROKER } from './content'
 import { AnswerCard } from '../_components/AnswerCard'
+import { LegalDisclaimer } from '../_components/LegalDisclaimer'
 import HonorariosModal from '../_components/HonorariosModal'
 
 /**
@@ -268,6 +269,13 @@ export default function BrokerHipotecarioPage() {
               </article>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      {/* ADVERTENCIA LEGAL — intermediación de crédito inmobiliario */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>
 

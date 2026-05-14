@@ -188,10 +188,12 @@ export default function CondicionesInarpaPage() {
             <h2>9. Reclamaciones y mediación</h2>
             <p>
               El procedimiento general de reclamaciones se describe en{' '}
-              <a href="/reclamaciones">/reclamaciones</a>. Adicionalmente, el alumno consumidor
-              tiene a su disposición la plataforma europea de resolución de litigios en línea
-              de la Comisión Europea (<a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr</a>) y los organismos
-              autonómicos de consumo competentes según el lugar de residencia del alumno.
+              <a href="/reclamaciones">/reclamaciones</a>. En caso de controversia, el alumno
+              consumidor podrá acudir, cuando proceda, a los organismos públicos de consumo
+              competentes de su comunidad autónoma, sin perjuicio de la posibilidad de intentar
+              una mediación civil previa conforme a la Ley 5/2012 o acudir a los Juzgados y
+              Tribunales que legalmente correspondan según la normativa de consumidores y
+              usuarios.
             </p>
 
             <h2>10. Legislación aplicable y jurisdicción</h2>

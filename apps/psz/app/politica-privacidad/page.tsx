@@ -83,12 +83,75 @@ export default function PoliticaPrivacidadPage() {
               <li>Empresas de reforma y técnicos (cuando el servicio incluya estos colaboradores).</li>
               <li>Entidades aseguradoras (tasadoras homologadas y seguros del inmueble).</li>
               <li>Asesorías fiscales y jurídicas externas, en su caso.</li>
+            </ul>
+
+            <h2>5.bis Encargados del tratamiento y proveedores tecnológicos</h2>
+            <p>
+              Para la prestación de los servicios y el correcto funcionamiento de la web, el
+              responsable utiliza proveedores tecnológicos que actúan como{' '}
+              <strong>encargados del tratamiento</strong> en los términos del artículo 28 del RGPD.
+              Estos proveedores solo tratan los datos siguiendo instrucciones documentadas del
+              responsable y mediante los correspondientes contratos de encargo del tratamiento
+              cuando resultan exigibles. Si alguno de ellos se encuentra fuera del Espacio
+              Económico Europeo, se adoptan las garantías previstas por la normativa (decisiones
+              de adecuación, cláusulas contractuales tipo de la Comisión Europea u otros
+              mecanismos legalmente válidos).
+            </p>
+            <p>Categorías de encargados utilizados (relación actualizada a fecha de esta política):</p>
+            <ul>
               <li>
-                Proveedores tecnológicos que actúan como encargados del tratamiento con garantías
-                equivalentes al RGPD: Vercel Inc. (hosting), Resend (email transaccional), PostHog
-                Cloud EU (analítica) y Google Analytics 4 (analítica web).
+                <strong>Hosting y CDN:</strong> Vercel Inc. (EEUU, bajo cláusulas contractuales
+                tipo de la Comisión Europea). Cloudflare cuando aplique como capa de seguridad.
+              </li>
+              <li>
+                <strong>Analítica web:</strong> Google Analytics 4 con IP anonimizada y Consent
+                Mode v2 (Google Ireland Ltd., transferencia bajo cláusulas tipo); PostHog Cloud
+                EU (servidores en Frankfurt, sin transferencia internacional).
+              </li>
+              <li>
+                <strong>Gestor de tags:</strong> Google Tag Manager (Google Ireland Ltd.).
+              </li>
+              <li>
+                <strong>Email transaccional:</strong> Resend (Estados Unidos, cláusulas tipo) para
+                comunicaciones automatizadas relacionadas con la operación.
+              </li>
+              <li>
+                <strong>Firma electrónica:</strong> DocuSign Inc. (Estados Unidos, cláusulas
+                tipo), conforme al Reglamento (UE) 910/2014 (eIDAS).
+              </li>
+              <li>
+                <strong>CRM operativo de expedientes:</strong> CRM Hipobrokers (alojado en
+                infraestructura propia del grupo en territorio español), para la gestión
+                operativa de los expedientes hipotecarios.
+              </li>
+              <li>
+                <strong>Plataforma de formación (INARPA):</strong> proveedor de vídeo on-demand y
+                LMS dedicado para los servicios formativos prestados a través de inarpa.es. Las
+                condiciones específicas de este servicio se detallan en{' '}
+                <a href="/condiciones-inarpa">/condiciones-inarpa</a>.
+              </li>
+              <li>
+                <strong>Pasarela de pago (cuando se usa):</strong> Stripe Payments Europe Ltd.
+                (Irlanda) para la gestión de cobros en operaciones electrónicas con consumidor.
+              </li>
+              <li>
+                <strong>Calendario y citas (cuando se usa):</strong> Calendly o equivalente
+                (Estados Unidos, cláusulas tipo) para la programación de reuniones
+                videoconferenciadas.
+              </li>
+              <li>
+                <strong>Asesoría legal, fiscal, contable o tecnológica externa:</strong> los
+                profesionales colegiados o despachos que asisten al responsable acceden a los
+                datos en lo estrictamente necesario para emitir su dictamen, bajo secreto
+                profesional y contrato de encargo del tratamiento cuando aplique.
               </li>
             </ul>
+            <p>
+              La presente relación tiene carácter dinámico: si se incorporan nuevos encargados
+              relevantes o se descontinúan algunos, esta política se actualizará en consecuencia.
+              El cliente puede solicitar al responsable la información actualizada y los contratos
+              de encargo correspondientes a cualquier proveedor que afecte a sus datos personales.
+            </p>
 
             <h2>6. Plazo de conservación</h2>
             <p>

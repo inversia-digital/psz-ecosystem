@@ -226,6 +226,18 @@ export default function SiteFooter() {
           </div>
         </div>
 
+        {/* Disclosure formal regulatorio (LSSI + Ley 5/2019) */}
+        <div className="border-t border-navy-700 pt-6 pb-4 text-xs text-paper/65 leading-relaxed">
+          <p>
+            <strong className="text-paper/85">{INVERSIA.legalName}</strong> — CIF {INVERSIA.taxId} —
+            Intermediario de Crédito Inmobiliario inscrito en el Banco de España con número{' '}
+            <strong className="text-paper/85">{TONO.credentials.bdeId}</strong>, conforme a la Ley
+            5/2019, de 15 de marzo, reguladora de los contratos de crédito inmobiliario. La
+            intervención como intermediario no garantiza la aprobación de la financiación, que
+            depende del análisis y decisión final de la entidad financiera correspondiente.
+          </p>
+        </div>
+
         {/* Copyright */}
         <div className="border-t border-navy-700 pt-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-paper/55">
           <p>© {year} {INVERSIA.displayName}. Todos los derechos reservados.</p>

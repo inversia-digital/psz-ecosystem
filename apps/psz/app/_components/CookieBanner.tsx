@@ -1,26 +1,24 @@
 'use client'
 
 /**
- * Cookie banner mínimo con wiring a Google Consent Mode v2.
+ * Cookie banner con wiring a Google Consent Mode v2.
+ *
+ * Cumple los requisitos de la AEPD para consentimiento de cookies:
+ *  - Tres opciones claras: aceptar todas / rechazar todas / configurar
+ *  - Panel granular por categoría (técnicas + analíticas + publicidad)
+ *  - Cookies técnicas siempre activas e inmodificables
+ *  - Resto por defecto en denegado (sin casillas premarcadas)
+ *  - Consentimiento persistido en cookie con 365 días
+ *  - Posibilidad de modificar/retirar desde /cookies
  *
  * Comportamiento:
- * 1. Al cargar, lee la cookie `psz_cc`. Si existe (accept-all/reject-all),
- *    el banner no se muestra y NO se vuelve a llamar a gtag (ya lo hizo
- *    cuando el usuario decidió por primera vez — el storage de GTM persiste
- *    su propio estado).
- * 2. Si no existe, se muestra el banner en la parte inferior del viewport.
- * 3. Aceptar todo: gtag('consent','update', {todas las signals granted})
- *    + cookie `psz_cc=accept-all` por 365 días.
- * 4. Rechazar todo: gtag('consent','update', {mantienen denied salvo
- *    functionality+security}) + cookie `psz_cc=reject-all` por 365 días.
- * 5. Botón "Más info" → /cookies
- *
- * Re-apertura: desde /cookies se puede borrar la cookie `psz_cc` y reload
- * para volver a ver el banner (ver botón en /cookies).
- *
- * No bloquea el contenido. No tiene focus trap (decisión consciente: el
- * usuario puede ignorar el banner sin penalización legal porque los
- * defaults de Consent Mode v2 ya son DENIED — no se trackea hasta accept).
+ * 1. Al cargar, lee la cookie `psz_cc`. Si existe, re-aplica decisión
+ *    previa al dataLayer (redundancia explícita aunque Consent Mode ya
+ *    persiste su propio storage).
+ * 2. Si no existe, muestra el banner.
+ * 3. "Aceptar todas": granted en todas las signals.
+ * 4. "Solo necesarias": denied en todas las opcionales.
+ * 5. "Configurar": panel con toggles por categoría.
  */
 
 import { useEffect, useState } from 'react'
@@ -28,10 +26,20 @@ import { useEffect, useState } from 'react'
 const COOKIE_NAME = 'psz_cc'
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 365 días
 
-type Decision = 'accept-all' | 'reject-all'
+type Decision = 'accept-all' | 'reject-all' | 'custom'
 
-// `window.dataLayer` ya está declarado por @next/third-parties/google.
-// Aquí evitamos redeclarar el tipo y accedemos vía cast puntual.
+interface CategoryConsent {
+  analytics: boolean
+  advertising: boolean
+  personalization: boolean
+}
+
+const DEFAULT_CUSTOM: CategoryConsent = {
+  analytics: false,
+  advertising: false,
+  personalization: false,
+}
+
 function gtag(..._args: unknown[]) {
   if (typeof window === 'undefined') return
   const w = window as unknown as { dataLayer?: unknown[] }
@@ -53,45 +61,67 @@ function writeCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; Path=/; Max-Age=${COOKIE_MAX_AGE}; SameSite=Lax${secure}`
 }
 
-function applyConsent(decision: Decision) {
-  if (decision === 'accept-all') {
-    gtag('consent', 'update', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      analytics_storage: 'granted',
-      personalization_storage: 'granted',
-    })
-  } else {
-    gtag('consent', 'update', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      personalization_storage: 'denied',
-    })
+function applyConsent(consent: CategoryConsent, decision: Decision) {
+  gtag('consent', 'update', {
+    ad_storage: consent.advertising ? 'granted' : 'denied',
+    ad_user_data: consent.advertising ? 'granted' : 'denied',
+    ad_personalization: consent.advertising ? 'granted' : 'denied',
+    analytics_storage: consent.analytics ? 'granted' : 'denied',
+    personalization_storage: consent.personalization ? 'granted' : 'denied',
+  })
+  const payload = JSON.stringify({ d: decision, c: consent })
+  writeCookie(COOKIE_NAME, payload)
+}
+
+function parseStoredConsent(raw: string | null): { decision: Decision; consent: CategoryConsent } | null {
+  if (!raw) return null
+  // Backward-compat con cookies antiguas de 1 string ("accept-all" / "reject-all")
+  if (raw === 'accept-all') {
+    return { decision: 'accept-all', consent: { analytics: true, advertising: true, personalization: true } }
   }
-  writeCookie(COOKIE_NAME, decision)
+  if (raw === 'reject-all') {
+    return { decision: 'reject-all', consent: { analytics: false, advertising: false, personalization: false } }
+  }
+  try {
+    const obj = JSON.parse(raw)
+    if (obj && typeof obj === 'object' && obj.d && obj.c) {
+      return { decision: obj.d as Decision, consent: obj.c as CategoryConsent }
+    }
+  } catch {
+    /* ignore */
+  }
+  return null
 }
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const [configOpen, setConfigOpen] = useState(false)
+  const [custom, setCustom] = useState<CategoryConsent>(DEFAULT_CUSTOM)
 
   useEffect(() => {
-    const existing = readCookie(COOKIE_NAME) as Decision | null
-    if (existing) {
-      // Re-aplicar la decisión previa en cada visita (por si el dataLayer
-      // se reinició — Consent Mode persiste su propio storage pero esto
-      // es redundancia explícita)
-      applyConsent(existing)
+    const stored = parseStoredConsent(readCookie(COOKIE_NAME))
+    if (stored) {
+      // Re-aplicar decisión previa
+      applyConsent(stored.consent, stored.decision)
       return
     }
     setVisible(true)
   }, [])
 
-  function handleDecision(decision: Decision) {
-    applyConsent(decision)
+  function handleAcceptAll() {
+    applyConsent({ analytics: true, advertising: true, personalization: true }, 'accept-all')
     setVisible(false)
+  }
+
+  function handleRejectAll() {
+    applyConsent({ analytics: false, advertising: false, personalization: false }, 'reject-all')
+    setVisible(false)
+  }
+
+  function handleSaveCustom() {
+    applyConsent(custom, 'custom')
+    setVisible(false)
+    setConfigOpen(false)
   }
 
   if (!visible) return null
@@ -103,41 +133,127 @@ export default function CookieBanner() {
       aria-label="Aviso de cookies"
       className="fixed bottom-0 left-0 right-0 z-50 bg-navy-900 text-paper border-t-2 border-gold-400 shadow-card"
     >
-      <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-        <div className="flex-1">
-          <p className="font-semibold text-paper mb-1">Cookies en psz.es</p>
-          <p className="text-sm text-paper/75 leading-relaxed">
-            Usamos cookies técnicas (siempre activas) y, con tu consentimiento, de análisis para
-            mejorar el sitio. No usamos cookies publicitarias.{' '}
-            <a
-              href="/cookies"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold-300 hover:text-gold-200 underline underline-offset-2"
+      <div className="max-w-7xl mx-auto px-6 py-5">
+        {/* Mensaje principal */}
+        <div className="flex flex-col md:flex-row gap-4 md:items-start md:justify-between">
+          <div className="flex-1">
+            <p className="font-semibold text-paper mb-1">Cookies en psz.es</p>
+            <p className="text-sm text-paper/75 leading-relaxed">
+              Utilizamos cookies propias y de terceros para garantizar el funcionamiento de la
+              web, analizar el uso del sitio y mejorar nuestros servicios. Las cookies técnicas
+              son obligatorias para el funcionamiento. Las demás categorías son opcionales y
+              están desactivadas por defecto.{' '}
+              <a
+                href="/cookies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold-300 hover:text-gold-200 underline underline-offset-2"
+              >
+                Más información ↗
+              </a>
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={handleRejectAll}
+              className="px-4 py-2.5 text-sm font-semibold bg-navy-700 hover:bg-navy-600 text-paper rounded-lg border border-navy-600 transition-colors"
             >
-              Más información ↗
-            </a>
-            .
-          </p>
+              Rechazar
+            </button>
+            <button
+              type="button"
+              onClick={() => setConfigOpen((v) => !v)}
+              aria-expanded={configOpen}
+              className="px-4 py-2.5 text-sm font-semibold bg-navy-700 hover:bg-navy-600 text-paper rounded-lg border border-navy-600 transition-colors"
+            >
+              {configOpen ? 'Ocultar ajustes' : 'Configurar'}
+            </button>
+            <button
+              type="button"
+              onClick={handleAcceptAll}
+              className="px-5 py-2.5 text-sm font-bold bg-gold-400 hover:bg-gold-300 text-navy-900 rounded-lg transition-colors"
+            >
+              Aceptar todas
+            </button>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={() => handleDecision('reject-all')}
-            className="px-5 py-2.5 text-sm font-semibold bg-navy-700 hover:bg-navy-600 text-paper rounded-lg border border-navy-600 transition-colors"
-          >
-            Solo necesarias
-          </button>
-          <button
-            type="button"
-            onClick={() => handleDecision('accept-all')}
-            className="px-5 py-2.5 text-sm font-bold bg-gold-400 hover:bg-gold-300 text-navy-900 rounded-lg transition-colors"
-          >
-            Aceptar todas
-          </button>
-        </div>
+
+        {/* Panel de configuración granular */}
+        {configOpen && (
+          <div className="mt-5 pt-5 border-t border-navy-700">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+              <article className="bg-navy-800 rounded-lg p-4">
+                <p className="font-bold text-paper text-sm mb-2">Técnicas</p>
+                <p className="text-xs text-paper/65 leading-relaxed mb-3">
+                  Necesarias para el funcionamiento. Siempre activas.
+                </p>
+                <p className="text-xs text-gold-300 font-semibold">Siempre activas</p>
+              </article>
+
+              <ConsentToggle
+                label="Analíticas"
+                description="Google Analytics y similares para medir uso del sitio."
+                checked={custom.analytics}
+                onChange={(v) => setCustom((c) => ({ ...c, analytics: v }))}
+              />
+              <ConsentToggle
+                label="Publicidad"
+                description="Personalización de anuncios. Ahora mismo no usamos."
+                checked={custom.advertising}
+                onChange={(v) => setCustom((c) => ({ ...c, advertising: v }))}
+              />
+              <ConsentToggle
+                label="Personalización"
+                description="Recordar preferencias entre visitas."
+                checked={custom.personalization}
+                onChange={(v) => setCustom((c) => ({ ...c, personalization: v }))}
+              />
+            </div>
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={handleSaveCustom}
+                className="px-5 py-2.5 text-sm font-bold bg-gold-400 hover:bg-gold-300 text-navy-900 rounded-lg transition-colors"
+              >
+                Guardar mis preferencias
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
+  )
+}
+
+function ConsentToggle({
+  label,
+  description,
+  checked,
+  onChange,
+}: {
+  label: string
+  description: string
+  checked: boolean
+  onChange: (v: boolean) => void
+}) {
+  return (
+    <article className="bg-navy-800 rounded-lg p-4">
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <p className="font-bold text-paper text-sm">{label}</p>
+        <label className="relative inline-flex items-center cursor-pointer shrink-0">
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            checked={checked}
+            onChange={(e) => onChange(e.target.checked)}
+          />
+          <span className="w-9 h-5 bg-navy-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-gold-400 rounded-full peer peer-checked:bg-gold-500 transition-colors" />
+          <span className="absolute left-0.5 top-0.5 w-4 h-4 bg-paper rounded-full transition-transform peer-checked:translate-x-4" />
+        </label>
+      </div>
+      <p className="text-xs text-paper/65 leading-relaxed">{description}</p>
+    </article>
   )
 }
 

@@ -8,6 +8,7 @@ import {
   webApplicationSchema,
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
+import { LegalDisclaimer } from '../_components/LegalDisclaimer'
 import MortgageForm from './MortgageForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-hipoteca`
@@ -110,6 +111,13 @@ export default function CalculadoraHipotecaPage() {
       <Section tone="paper" padding="md">
         <Container size="xl">
           <MortgageForm />
+        </Container>
+      </Section>
+
+      {/* ADVERTENCIA LEGAL — concesión depende del banco */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>
 

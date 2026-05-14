@@ -11,6 +11,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
+import { LegalDisclaimer } from '../_components/LegalDisclaimer'
 import { PILLAR_PRIMERA_VIVIENDA } from './content'
 
 const URL = `${SITE_URLS.psz}/hipoteca-primera-vivienda`
@@ -401,6 +402,13 @@ export default function HipotecaPrimeraViviendaPage() {
               </li>
             ))}
           </ol>
+        </Container>
+      </Section>
+
+      {/* ADVERTENCIA LEGAL — intermediación de crédito inmobiliario */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>
 

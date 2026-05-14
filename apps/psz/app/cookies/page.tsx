@@ -100,7 +100,85 @@ export default function CookiesPage() {
               entonces empieza la medición consentida.
             </p>
 
-            <h2>5. Cambiar tu decisión en cualquier momento</h2>
+            <h2>5. Tabla técnica de cookies utilizadas</h2>
+            <p>
+              Relación concreta de cookies que pueden instalarse en psz.es e inarpa.es según las
+              opciones del usuario en el banner de consentimiento. La relación puede variar en
+              función de los servicios activos en cada momento; el usuario puede revisar, aceptar
+              o rechazar las cookies no técnicas desde el panel de configuración del banner.
+            </p>
+            <div className="not-prose my-6 overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-navy-50 text-navy-800">
+                    <th className="text-left px-3 py-2 border border-navy-100 font-semibold">Cookie</th>
+                    <th className="text-left px-3 py-2 border border-navy-100 font-semibold">Proveedor</th>
+                    <th className="text-left px-3 py-2 border border-navy-100 font-semibold">Finalidad</th>
+                    <th className="text-left px-3 py-2 border border-navy-100 font-semibold">Tipo</th>
+                    <th className="text-left px-3 py-2 border border-navy-100 font-semibold">Duración</th>
+                    <th className="text-left px-3 py-2 border border-navy-100 font-semibold">Base jurídica</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="px-3 py-2 border border-navy-100"><code>psz_cc</code></td>
+                    <td className="px-3 py-2 border border-navy-100">psz.es</td>
+                    <td className="px-3 py-2 border border-navy-100">Almacenar la decisión del usuario en el banner de consentimiento.</td>
+                    <td className="px-3 py-2 border border-navy-100">Técnica</td>
+                    <td className="px-3 py-2 border border-navy-100">365 días</td>
+                    <td className="px-3 py-2 border border-navy-100">Interés legítimo (art. 22.2 LSSI)</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border border-navy-100"><code>_ga</code></td>
+                    <td className="px-3 py-2 border border-navy-100">Google Analytics 4</td>
+                    <td className="px-3 py-2 border border-navy-100">Identificar al usuario para medición agregada de tráfico.</td>
+                    <td className="px-3 py-2 border border-navy-100">Análisis</td>
+                    <td className="px-3 py-2 border border-navy-100">24 meses</td>
+                    <td className="px-3 py-2 border border-navy-100">Consentimiento</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border border-navy-100"><code>_ga_*</code></td>
+                    <td className="px-3 py-2 border border-navy-100">Google Analytics 4</td>
+                    <td className="px-3 py-2 border border-navy-100">Persistir el estado de la sesión en la propiedad GA4 concreta.</td>
+                    <td className="px-3 py-2 border border-navy-100">Análisis</td>
+                    <td className="px-3 py-2 border border-navy-100">24 meses</td>
+                    <td className="px-3 py-2 border border-navy-100">Consentimiento</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border border-navy-100"><code>ph_*</code></td>
+                    <td className="px-3 py-2 border border-navy-100">PostHog Cloud EU</td>
+                    <td className="px-3 py-2 border border-navy-100">Análisis de producto y eventos. Servidores en Frankfurt (UE).</td>
+                    <td className="px-3 py-2 border border-navy-100">Análisis</td>
+                    <td className="px-3 py-2 border border-navy-100">12 meses</td>
+                    <td className="px-3 py-2 border border-navy-100">Consentimiento</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border border-navy-100"><code>__vercel_*</code></td>
+                    <td className="px-3 py-2 border border-navy-100">Vercel Inc.</td>
+                    <td className="px-3 py-2 border border-navy-100">Distribución de carga en el edge network. No identifica al usuario.</td>
+                    <td className="px-3 py-2 border border-navy-100">Técnica</td>
+                    <td className="px-3 py-2 border border-navy-100">Sesión</td>
+                    <td className="px-3 py-2 border border-navy-100">Interés legítimo (art. 22.2 LSSI)</td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border border-navy-100"><code>_GRECAPTCHA</code></td>
+                    <td className="px-3 py-2 border border-navy-100">Google reCAPTCHA</td>
+                    <td className="px-3 py-2 border border-navy-100">Protección antispam de formularios externos vinculados (CRM Hipobrokers, DocuSign).</td>
+                    <td className="px-3 py-2 border border-navy-100">Técnica</td>
+                    <td className="px-3 py-2 border border-navy-100">6 meses</td>
+                    <td className="px-3 py-2 border border-navy-100">Interés legítimo (seguridad)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-ink-muted">
+              Nota: psz.es e inarpa.es <strong>no instalan a fecha de hoy cookies publicitarias</strong>{' '}
+              propias ni de terceros. Si en el futuro se incorporasen (por ejemplo, Meta Pixel,
+              TikTok Pixel, LinkedIn Insight Tag, Google Ads), esta tabla se actualizaría con el
+              detalle correspondiente y se requeriría consentimiento expreso.
+            </p>
+
+            <h2>6. Cambiar tu decisión en cualquier momento</h2>
             <p>
               Si quieres revocar o modificar tu consentimiento, pulsa el botón siguiente. Se
               borrará tu decisión actual y volverá a aparecer el banner de cookies para que
@@ -110,7 +188,7 @@ export default function CookiesPage() {
               <CookiePrefsButton />
             </p>
 
-            <h2>6. Gestión y desactivación</h2>
+            <h2>7. Gestión y desactivación</h2>
             <p>
               Puedes aceptar, rechazar o configurar las cookies en el banner de consentimiento al
               acceder al sitio. También puedes gestionarlas desde la configuración de tu navegador:
@@ -126,7 +204,7 @@ export default function CookiesPage() {
               nuestra capacidad de mejorarlo.
             </p>
 
-            <h2>7. Más información</h2>
+            <h2>8. Más información</h2>
             <p>
               Para más información sobre el uso de cookies en España, puede consultar la guía oficial
               de la Agencia Española de Protección de Datos:{' '}

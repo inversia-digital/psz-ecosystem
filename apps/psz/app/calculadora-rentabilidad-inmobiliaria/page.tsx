@@ -10,6 +10,7 @@ import {
   webApplicationSchema,
 } from '@psz/seo'
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { LegalDisclaimer } from '../_components/LegalDisclaimer'
 import RoiForm from './RoiForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-rentabilidad-inmobiliaria`
@@ -301,6 +302,13 @@ export default function CalculadoraRentabilidadPage() {
       <Section tone="paper" padding="md">
         <Container size="xl">
           <RoiForm />
+        </Container>
+      </Section>
+
+      {/* ADVERTENCIA LEGAL — inversión inmobiliaria */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <LegalDisclaimer variant="investment" />
         </Container>
       </Section>
 
