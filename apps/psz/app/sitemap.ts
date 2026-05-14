@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URLS.psz}/tipos-de-hipoteca`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URLS.psz}/glosario-hipotecario`,
       lastModified: now,
       changeFrequency: 'monthly',
