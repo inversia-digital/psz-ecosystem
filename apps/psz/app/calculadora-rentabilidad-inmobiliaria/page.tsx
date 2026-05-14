@@ -408,18 +408,18 @@ export default function CalculadoraRentabilidadPage() {
             </a>
 
             <a
-              href="/personal-shopper-inmobiliario-zaragoza"
+              href="/hipoteca-inversor"
               className="block bg-paper-card border border-navy-100 rounded-xl p-6 hover:border-gold-400 hover:shadow-card transition-all no-underline"
             >
               <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-2">
-                Servicio
+                Pillar guía
               </p>
               <h3 className="text-lg font-semibold text-navy-800 mb-2">
-                Personal Shopper Inmobiliario
+                Hipoteca para inversión
               </h3>
               <p className="text-sm text-ink-soft">
-                Localización y negociación de operaciones de inversión no públicas para
-                inversores con perfil definido.
+                LTV reales (60-70%), plazos cortos, fiscalidad alquiler, hipoteca personal vs
+                sociedad. Guía completa.
               </p>
             </a>
 

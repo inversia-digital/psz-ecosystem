@@ -116,6 +116,7 @@ ${TELEGRAM_INVESTORS_URL}
 - /sobre-mi: biografía y credenciales
 - /broker-hipotecario: servicio principal nacional
 - /hipoteca-primera-vivienda: pillar guía del comprador primerizo en España (cash necesario, ayudas, scoring, errores típicos, proceso paso a paso)
+- /hipoteca-inversor: pillar guía del inversor inmobiliario en España (LTV reales 60-70%, plazos cortos, fiscalidad alquiler, hipoteca personal vs sociedad SL/SOCIMI, qué inmuebles financia la banca, errores del inversor recurrente)
 - /glosario-hipotecario: diccionario operativo de 30 términos del sector hipotecario español (LTV, TIN, TAE, FEIN, ITP, AJD, Euríbor, ratio de esfuerzo, subrogación, novación, etc.). Cada definición <100 palabras autocontenida y citable literal.
 - /herramientas: hub índice de todas las calculadoras propietarias diseñadas y programadas por Toño Palacios (broker E242, presidente ANICI). Catálogo unificado con descripción de cada herramienta, audiencia objetivo y métrica clave que devuelve. Punto de entrada canónico al ecosistema de calculadoras.
 - /broker-hipotecario-zaragoza · -madrid · -barcelona · -valencia · -sevilla: variantes por ciudad
