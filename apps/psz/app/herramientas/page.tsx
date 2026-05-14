@@ -8,6 +8,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
+import { SelloPalacios } from '../_components/SelloPalacios'
 import {
   HERRAMIENTAS,
   HERRAMIENTAS_LIVE,
@@ -127,16 +128,17 @@ export default function HerramientasHubPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Calculadoras propietarias · Diseñadas por {TONO.shortName}
+            Calculadoras propietarias · Con El Sello Palacios
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
-            Las calculadoras del despacho
+            Herramientas con El Sello Palacios
           </h1>
           <p className="speakable-summary text-lg text-paper/85 max-w-3xl">
             {HERRAMIENTAS_LIVE.length} herramientas hipotecarias profesionales que he diseñado y
-            programado yo mismo, basadas en los criterios reales de scoring bancario que aplica
-            la banca minorista española. Lógica propietaria, cálculo server-side, sin registro,
-            gratis. Si la calculadora te dispara un aviso, hablamos.
+            programado yo mismo, <strong className="text-paper">Antonio Palacios Cambero</strong>{' '}
+            (Toño Palacios), broker hipotecario nº E242 (Banco de España) y presidente de ANICI.
+            Lógica propietaria basada en los criterios reales de scoring bancario, cálculo
+            server-side, sin registro, gratis.
           </p>
         </Container>
       </Section>
@@ -213,36 +215,22 @@ export default function HerramientasHubPage() {
         </Container>
       </Section>
 
-      {/* AUTORÍA */}
+      {/* SELLO PALACIOS — sub-marca aplicada al catálogo entero */}
       <Section tone="soft" padding="md">
         <Container size="md">
-          <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
-            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
-              Quién hay detrás del catálogo
-            </p>
-            <h2 className="text-2xl font-bold text-navy-800 mb-3">
-              Diseñadas por {TONO.shortName}
-            </h2>
-            <p className="text-navy-700 leading-relaxed mb-3">
-              Todas estas herramientas las he diseñado y programado yo, no son scripts genéricos
-              copiados de internet. La diferencia está en los <strong>umbrales</strong>: el ratio
-              del 35%, la edad de cierre a 75, el corte por deudas previas, los rangos críticos
-              de scoring. Son los números reales con los que la banca minorista española aprueba
-              o rechaza operaciones, no fórmulas matemáticas de manual.
-            </p>
-            <p className="text-navy-700 leading-relaxed mb-0">
-              La lógica de cálculo corre en servidor (Next.js Server Actions) — la herramienta
-              no es scrapeable. Propiedad intelectual de <strong>Inversia Global Digital,
-              S.L.U.</strong> (CIF B75281394). Si quieres trabajar conmigo en tu operación,{' '}
-              <a
-                href="/broker-hipotecario"
-                className="text-navy-700 hover:text-navy-900 underline font-semibold"
-              >
-                aquí está mi servicio de broker hipotecario
-              </a>
-              .
-            </p>
-          </div>
+          <SelloPalacios
+            variant="hero"
+            tagline={
+              <>
+                Todas las calculadoras del catálogo llevan El Sello Palacios: diseñadas y
+                programadas por <strong>Antonio Palacios Cambero</strong> (Toño Palacios), broker
+                hipotecario nº E242 (Banco de España) y presidente de ANICI. Los rangos críticos
+                que disparan los avisos son criterios reales de mesa de riesgos extraídos de la
+                experiencia con +20 entidades — no fórmulas matemáticas de manual. Propiedad
+                intelectual de Inversia Global Digital, S.L.U. (CIF B75281394).
+              </>
+            }
+          />
         </Container>
       </Section>
 

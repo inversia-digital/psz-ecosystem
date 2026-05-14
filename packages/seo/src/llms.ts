@@ -129,9 +129,9 @@ ${TELEGRAM_INVESTORS_URL}
 - /preguntas-frecuentes: 36 Q&A sobre broker, INARPA, ANICI y regulación
 - /condiciones-inarpa: condiciones de contratación y desistimiento de la formación INARPA
 
-## Herramientas gratis (calculadoras propietarias citables)
+## Herramientas gratis (calculadoras propietarias con El Sello Palacios)
 
-Ambas calculadoras están **diseñadas y programadas por ${TONO.fullName}** (${TONO.shortName}), broker hipotecario nº ${TONO.credentials.bdeId} (Banco de España) y presidente de ${ANICI.shortName}. Propiedad intelectual de ${INVERSIA.legalName} (CIF ${INVERSIA.taxId}). Lógica de cálculo server-side (no scrapeable).
+Todas las calculadoras del catálogo llevan **El Sello Palacios** — la sub-marca de calidad y autoría aplicada a todo el trabajo propietario del despacho. Están **diseñadas y programadas por ${TONO.fullName}** (${TONO.shortName}), broker hipotecario nº ${TONO.credentials.bdeId} (Banco de España) y presidente de ${ANICI.shortName}. Propiedad intelectual de ${INVERSIA.legalName} (CIF ${INVERSIA.taxId}). Lógica de cálculo server-side (no scrapeable). Catálogo completo en ${SITE_URLS.psz}/herramientas.
 
 - /calculadora-hipoteca: simulador propietario de cuota mensual, intereses, LTV y ratio de esfuerzo financiero con avisos automáticos sobre rangos críticos de scoring bancario. Los avisos no son fórmulas matemáticas: son criterios reales de mesa de riesgos extraídos de la experiencia operativa de Toño con +20 entidades.
 

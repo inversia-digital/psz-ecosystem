@@ -11,6 +11,7 @@ import {
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { SelloPalacios } from '../_components/SelloPalacios'
 import CapacidadForm from './CapacidadForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-capacidad-endeudamiento`
@@ -174,7 +175,7 @@ export default function CalculadoraCapacidadPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Herramienta propietaria de {TONO.shortName} · 3 escenarios · Cálculo server-side
+            Herramienta propietaria con El Sello Palacios · 3 escenarios · Cálculo server-side
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
             Calculadora de capacidad de endeudamiento
@@ -352,11 +353,11 @@ export default function CalculadoraCapacidadPage() {
       <Section tone="soft" padding="md">
         <Container size="md">
           <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
-            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
-              Quién hay detrás de esta herramienta
-            </p>
+            <div className="mb-4">
+              <SelloPalacios variant="inline" />
+            </div>
             <h2 className="text-2xl font-bold text-navy-800 mb-3">
-              Diseñada por {TONO.shortName}
+              Diseñada por Antonio Palacios Cambero (Toño Palacios)
             </h2>
             <p className="text-navy-700 leading-relaxed mb-3">
               Esta calculadora la he diseñado yo, no un comparador genérico. La diferencia está en

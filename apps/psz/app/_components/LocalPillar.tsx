@@ -12,6 +12,7 @@ import { WHY_TONO_BULLETS } from '../_data/whyTono'
 import type { CityData } from '../_data/cities'
 import { AnswerCard } from './AnswerCard'
 import { LegalDisclaimer } from './LegalDisclaimer'
+import { SelloPalacios } from './SelloPalacios'
 
 /**
  * Template compartido para los 5 pillars locales /broker-hipotecario-[ciudad].

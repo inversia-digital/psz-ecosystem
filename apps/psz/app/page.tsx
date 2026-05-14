@@ -12,7 +12,9 @@ import {
   websiteSchema,
 } from '@psz/seo'
 import { Button, Container, CredentialBadge, Faq, JsonLd, Section, SocialIcon } from '@psz/ui'
+import { SelloPalacios } from './_components/SelloPalacios'
 import { WHY_TONO_BULLETS } from './_data/whyTono'
+import { HERRAMIENTAS_LIVE } from './_data/herramientas'
 
 const PODCAST_URL = 'https://www.youtube.com/@hipobrokers'
 
@@ -23,9 +25,9 @@ const PODCAST_URL = 'https://www.youtube.com/@hipobrokers'
  */
 const HOME_FAQ = [
   {
-    question: '¿Quién es Toño Palacios, el broker hipotecario?',
+    question: '¿Quién es Antonio Palacios Cambero (Toño Palacios)?',
     answer:
-      'Toño Palacios es el nombre profesional de Antonio Palacios Cambero, broker hipotecario en España registrado en el Banco de España con el número E242 y presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario, asociado fundador ANICI-001). Fundador del instituto INARPA. Su actividad profesional es exclusivamente la intermediación de crédito inmobiliario regulada por la Ley 5/2019.',
+      'Antonio Palacios Cambero, conocido profesionalmente como Toño Palacios, es broker hipotecario en España registrado en el Banco de España con el número E242 y presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario, asociado fundador ANICI-001). Fundador del instituto INARPA. Su actividad profesional es exclusivamente la intermediación de crédito inmobiliario regulada por la Ley 5/2019.',
   },
   {
     question: '¿Qué hace un broker hipotecario?',
@@ -60,9 +62,9 @@ const HOME_FAQ = [
 ] as const
 
 export const metadata: Metadata = {
-  title: 'Toño Palacios — Broker hipotecario nº E242 (BdE) · Presidente de ANICI',
+  title: 'Antonio Palacios Cambero (Toño Palacios) — Broker hipotecario nº E242 · Presidente ANICI',
   description:
-    'Broker hipotecario en toda España. Registrado en el Banco de España con el número E242 y presidente de ANICI. Más de 100 operaciones cerradas en 2025. Acceso a +20 entidades y a productos no públicos. Las hipotecas que tu banco no te cuenta.',
+    'Antonio Palacios Cambero (Toño Palacios) — broker hipotecario en toda España, registrado en el Banco de España con el número E242 y presidente de ANICI. Más de 100 operaciones cerradas en 2025, acceso a +20 entidades, productos no públicos y 5 calculadoras propietarias gratuitas con El Sello Palacios. Las hipotecas que tu banco no te cuenta.',
   alternates: { canonical: SITE_URLS.psz },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
@@ -84,15 +86,15 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URLS.psz,
     siteName: 'psz.es',
-    title: 'Toño Palacios — Broker hipotecario nº E242 y presidente de ANICI',
+    title: 'Antonio Palacios Cambero (Toño Palacios) — Broker hipotecario nº E242',
     description:
-      'Broker hipotecario en toda España. Acceso a +20 entidades y productos no públicos. Las hipotecas que tu banco no te cuenta.',
+      'Broker hipotecario en toda España. Presidente de ANICI. Acceso a +20 entidades y 5 calculadoras propietarias con El Sello Palacios. Las hipotecas que tu banco no te cuenta.',
     locale: 'es_ES',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Toño Palacios — Broker hipotecario nº E242',
-    description: 'Broker hipotecario en toda España. Presidente de ANICI. Las hipotecas que tu banco no te cuenta.',
+    title: 'Antonio Palacios Cambero — Broker hipotecario nº E242',
+    description: 'Toño Palacios, broker hipotecario en toda España. Presidente de ANICI. 5 calculadoras con El Sello Palacios.',
   },
 }
 
@@ -206,6 +208,75 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      {/* HERRAMIENTAS — sección protagonista. El Sello Palacios. Va aquí arriba para máxima visibilidad. */}
+      <section id="herramientas" className="bg-paper-soft border-y border-navy-100 py-20 md:py-24">
+        <Container size="xl">
+          <div className="text-center mb-10 max-w-3xl mx-auto">
+            <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gold-700 font-bold mb-3">
+              <span aria-hidden>✦</span> Herramientas con El Sello Palacios <span aria-hidden>✦</span>
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 leading-tight mb-4">
+              {HERRAMIENTAS_LIVE.length} calculadoras propietarias.
+              <br />
+              <span className="text-gold-600">Server-side. Gratis. Sin registro.</span>
+            </h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              Las he diseñado y programado yo, <strong>Antonio Palacios Cambero</strong> (Toño
+              Palacios), broker hipotecario nº E242 y presidente de ANICI. Los rangos críticos
+              que disparan los avisos son criterios reales de mesa de riesgos extraídos de la
+              experiencia con +20 entidades, no fórmulas matemáticas de manual.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+            {HERRAMIENTAS_LIVE.map((h) => (
+              <a
+                key={h.slug}
+                href={h.url}
+                className="group relative bg-paper-card rounded-xl border border-navy-100 p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline overflow-hidden"
+              >
+                <span
+                  aria-hidden
+                  className={`absolute top-0 left-0 right-0 h-1.5 ${h.ribbonClass}`}
+                />
+                <div className="flex items-start justify-between mb-3 mt-1">
+                  <div
+                    aria-hidden
+                    className="text-2xl inline-flex items-center justify-center w-12 h-12 rounded-lg bg-paper-soft border border-navy-100"
+                  >
+                    {h.icon}
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-gold-700 bg-gold-50 border border-gold-300 rounded-md px-2 py-1">
+                    ✦ Sello Palacios
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-navy-800 mb-2 leading-tight">
+                  {h.name}
+                </h3>
+                <p className="text-sm text-ink-soft leading-relaxed mb-4">
+                  {h.description}
+                </p>
+                <span className="inline-flex items-center gap-1 text-gold-700 group-hover:text-gold-600 font-bold text-sm">
+                  Abrir herramienta
+                  <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a
+              href="/herramientas"
+              className="inline-flex items-center gap-2 bg-navy-800 hover:bg-navy-700 text-paper px-6 py-3 rounded-lg font-bold no-underline transition-colors"
+            >
+              Ver catálogo completo con El Sello Palacios →
+            </a>
+          </div>
+        </Container>
+      </section>
+
       {/* SERVICIOS */}
       <Section id="servicios" tone="soft" padding="md" title="Qué hago">
         <Container size="lg">
@@ -303,62 +374,6 @@ export default function HomePage() {
               <p className="text-sm font-bold text-navy-800">¿Es tu primera hipoteca?</p>
               <p className="text-xs text-ink-muted">Guía completa del comprador primerizo</p>
             </a>
-          </div>
-        </Container>
-      </Section>
-
-      {/* HERRAMIENTAS GRATIS — value-give entre Proof y Redes */}
-      <Section
-        id="herramientas"
-        tone="soft"
-        padding="md"
-        eyebrow="Herramientas gratis · Usa sin compromiso"
-        title="Calcula antes de hablar conmigo"
-        lead={
-          <span>
-            Cuatro herramientas propietarias para que entiendas tu operación antes de que hablemos.
-            La lógica corre en servidor — los rangos críticos que dispara son trabajo de años de
-            práctica del despacho, no un script genérico.{' '}
-            <a href="/herramientas" className="text-navy-700 underline hover:text-navy-900 font-semibold">
-              Ver catálogo completo →
-            </a>
-          </span>
-        }
-      >
-        <Container size="lg">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ToolCard
-              icon="🏠"
-              title="Calculadora de hipoteca"
-              description="Cuota mensual, intereses totales, LTV y ratio de esfuerzo con avisos sobre scoring bancario."
-              href="/calculadora-hipoteca"
-              cta="Calcular cuota"
-              ribeteClass="bg-gold-400"
-            />
-            <ToolCard
-              icon="🧮"
-              title="Capacidad de endeudamiento"
-              description="¿Cuánto te daría realmente el banco? 3 escenarios paralelos según ratio de esfuerzo."
-              href="/calculadora-capacidad-endeudamiento"
-              cta="Ver mi capacidad"
-              ribeteClass="bg-emerald-500"
-            />
-            <ToolCard
-              icon="📊"
-              title="Stress test Euríbor"
-              description="¿Cuánto subiría tu cuota si el Euríbor sube 1 o 2 puntos? 5 escenarios paralelos sobre tu variable actual."
-              href="/calculadora-stress-test-euribor"
-              cta="Simular subida"
-              ribeteClass="bg-rose-500"
-            />
-            <ToolCard
-              icon="📈"
-              title="Rentabilidad inmobiliaria"
-              description="Rentabilidad de adquisición y real, flujo neto, amortización ITP en 3 escenarios. Para no enamorarte de la renta."
-              href="/calculadora-rentabilidad-inmobiliaria"
-              cta="Calcular rentabilidad"
-              ribeteClass="bg-sky-500"
-            />
           </div>
         </Container>
       </Section>

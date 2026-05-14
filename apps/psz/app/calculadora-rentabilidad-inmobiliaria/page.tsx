@@ -11,6 +11,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { SelloPalacios } from '../_components/SelloPalacios'
 import RoiForm from './RoiForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-rentabilidad-inmobiliaria`
@@ -284,7 +285,7 @@ export default function CalculadoraRentabilidadPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Herramienta propietaria de {TONO.shortName} · 3 escenarios · ITP por CCAA · PDF descargable
+            Herramienta propietaria con El Sello Palacios · 3 escenarios · ITP por CCAA · PDF
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
             Calculadora de rentabilidad inmobiliaria
@@ -446,11 +447,11 @@ export default function CalculadoraRentabilidadPage() {
       <Section tone="soft" padding="md">
         <Container size="md">
           <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
-            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
-              Quién hay detrás de esta herramienta
-            </p>
+            <div className="mb-4">
+              <SelloPalacios variant="inline" />
+            </div>
             <h2 className="text-2xl font-bold text-navy-800 mb-3">
-              Diseñada por {TONO.shortName}
+              Diseñada por Antonio Palacios Cambero (Toño Palacios)
             </h2>
             <p className="text-ink-soft leading-relaxed mb-3">
               Esta calculadora la he diseñado yo, no una empresa de software inmobiliario genérica.

@@ -106,15 +106,18 @@ export default function SiteFooter() {
             </p>
 
             <div className="pt-3">
-              <p className="text-paper font-semibold mb-3 uppercase text-xs tracking-wider">
+              <p className="text-paper font-semibold mb-1 uppercase text-xs tracking-wider">
                 Herramientas
+              </p>
+              <p className="text-[10px] text-gold-300 uppercase tracking-wider font-bold mb-3">
+                ✦ Con El Sello Palacios
               </p>
               <p>
                 <a
                   href="/herramientas"
                   className="inline-flex items-center gap-1 text-gold-300 hover:text-gold-200 font-semibold no-underline"
                 >
-                  🧮 Catálogo completo
+                  🧮 Catálogo completo →
                 </a>
                 <span className="block text-xs text-paper/45 mt-0.5">
                   {HERRAMIENTAS_LIVE.length} calculadoras propietarias
@@ -123,7 +126,7 @@ export default function SiteFooter() {
               {HERRAMIENTAS_LIVE.map((h) => (
                 <p key={h.slug}>
                   <a href={h.url} className="text-paper/70 hover:text-paper no-underline">
-                    {h.icon} {h.shortName}
+                    {h.icon} {h.name}
                   </a>
                 </p>
               ))}

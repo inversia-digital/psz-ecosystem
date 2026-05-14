@@ -9,6 +9,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { SelloPalacios } from '../_components/SelloPalacios'
 import MortgageForm from './MortgageForm'
 
 const URL = `${SITE_URLS.psz}/calculadora-hipoteca`
@@ -107,7 +108,7 @@ export default function CalculadoraHipotecaPage() {
           </nav>
 
           <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">
-            Herramienta propietaria de {TONO.shortName} · Cálculo server-side
+            Herramienta propietaria con El Sello Palacios · Cálculo server-side
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-paper leading-tight mb-4">
             Calculadora de hipoteca
@@ -252,11 +253,11 @@ export default function CalculadoraHipotecaPage() {
       <Section tone="soft" padding="md">
         <Container size="md">
           <div className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8">
-            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-3">
-              Quién hay detrás de esta herramienta
-            </p>
+            <div className="mb-4">
+              <SelloPalacios variant="inline" />
+            </div>
             <h2 className="text-2xl font-bold text-navy-800 mb-3">
-              Diseñada por {TONO.shortName}
+              Diseñada por Antonio Palacios Cambero (Toño Palacios)
             </h2>
             <p className="text-navy-700 leading-relaxed mb-3">
               Esta calculadora la he diseñado yo, no es un comparador online genérico. La
