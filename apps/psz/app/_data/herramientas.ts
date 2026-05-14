@@ -119,25 +119,26 @@ export const HERRAMIENTAS: Herramienta[] = [
     ribbonClass: 'bg-rose-500',
     status: 'live',
   },
-  // ─── Próximas (Stage 4-5) ───
   {
     slug: 'comparador-hipoteca-fija-variable-mixta',
     url: `${ROOT}comparador-hipoteca-fija-variable-mixta`,
     name: 'Comparador fija vs variable vs mixta',
     shortName: 'Comparador',
     description:
-      'A/B/C con el mismo importe y plazo en tres modalidades. Cuota mensual, intereses totales y exposición al Euríbor para que decidas con números, no por intuición.',
+      'Las tres modalidades en paralelo con el mismo importe y plazo en 3 escenarios de evolución del Euríbor (estable, +1pp, +2pp). Simulación año a año para que decidas con números, no por intuición.',
     features: [
       'Cuota inicial en las 3 modalidades',
+      'Cuota promedio proyectada año a año',
       'Intereses totales proyectados',
-      'Exposición al Euríbor',
-      'Recomendación según horizonte',
+      '3 escenarios de Euríbor: estable, +1pp, +2pp',
+      'Modalidad ganadora destacada en cada escenario',
+      'Avisos sobre robustez de tu decisión',
     ],
     audience: 'Comprador eligiendo modalidad hipotecaria',
     keyFigure: 'Coste total comparado',
     icon: '⚖️',
     ribbonClass: 'bg-purple-500',
-    status: 'coming',
+    status: 'live',
   },
 ]
 
