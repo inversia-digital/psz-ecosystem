@@ -1,6 +1,7 @@
 'use server'
 
 import { BONO_10Y_ES } from './benchmarks'
+import { forensicSignature } from '../_lib/signature'
 
 /**
  * Server Action: calculateRoi
@@ -92,7 +93,7 @@ export interface RoiResult {
 }
 
 export type ActionState =
-  | { ok: true; result: RoiResult }
+  | { ok: true; result: RoiResult; _psz_sig: string; _psz_ts: string }
   | { ok: false; error: string }
   | null
 
@@ -350,29 +351,27 @@ export async function calculateRoi(
     )
   })
 
-  return {
-    ok: true,
-    result: {
-      inputs: {
-        precioCompra,
-        itpPct,
-        itpImporte: round2(itpImporte),
-        gastosCierre,
-        reformas,
-        ibiAnual,
-        comunidadMensual,
-        residuosAnual,
-        vacanciaPct,
-        inversionTotalAdquisicion: round2(inversionTotalAdquisicion),
-        inversionOperativa: round2(inversionOperativa),
-      },
-      benchmark: {
-        bono10yPct: BONO_10Y_ES.yieldPct,
-        bono10yAsOf: BONO_10Y_ES.asOf,
-      },
-      escenarios,
+  const result: RoiResult = {
+    inputs: {
+      precioCompra,
+      itpPct,
+      itpImporte: round2(itpImporte),
+      gastosCierre,
+      reformas,
+      ibiAnual,
+      comunidadMensual,
+      residuosAnual,
+      vacanciaPct,
+      inversionTotalAdquisicion: round2(inversionTotalAdquisicion),
+      inversionOperativa: round2(inversionOperativa),
     },
+    benchmark: {
+      bono10yPct: BONO_10Y_ES.yieldPct,
+      bono10yAsOf: BONO_10Y_ES.asOf,
+    },
+    escenarios,
   }
+  return { ok: true, result, ...forensicSignature(result) }
 }
 
 // ─────────────────────────────────────────────────────────────────────────

@@ -22,6 +22,7 @@
  */
 
 import { BONO_10Y_ES } from '../calculadora-rentabilidad-inmobiliaria/benchmarks'
+import { forensicSignature } from '../_lib/signature'
 
 // ─────────────────────────────────────────────────────────────────────────
 // Tipos
@@ -60,7 +61,10 @@ export interface StressResult {
   warnings: StressWarning[]
 }
 
-export type ActionState = { ok: true; result: StressResult } | { ok: false; error: string } | null
+export type ActionState =
+  | { ok: true; result: StressResult; _psz_sig: string; _psz_ts: string }
+  | { ok: false; error: string }
+  | null
 
 // ─────────────────────────────────────────────────────────────────────────
 // Helpers
@@ -226,21 +230,19 @@ export async function calculateStressTest(
     })
   }
 
-  return {
-    ok: true,
-    result: {
-      inputs: {
-        capitalPendiente: Math.round(capitalPendiente),
-        plazoRestanteAnios: Number(plazoRestanteAnios.toFixed(1)),
-        euriborActualPct: Number(euriborActualPct.toFixed(2)),
-        diferencialPct: Number(diferencialPct.toFixed(2)),
-        ingresosNetos: Math.round(ingresosNetos),
-      },
-      cuotaBase: Math.round(cuotaBase),
-      tinBasePct: Number(tinBasePct.toFixed(2)),
-      benchmark: { yieldPct: BONO_10Y_ES.yieldPct, asOf: BONO_10Y_ES.asOf },
-      scenarios,
-      warnings,
+  const result: StressResult = {
+    inputs: {
+      capitalPendiente: Math.round(capitalPendiente),
+      plazoRestanteAnios: Number(plazoRestanteAnios.toFixed(1)),
+      euriborActualPct: Number(euriborActualPct.toFixed(2)),
+      diferencialPct: Number(diferencialPct.toFixed(2)),
+      ingresosNetos: Math.round(ingresosNetos),
     },
+    cuotaBase: Math.round(cuotaBase),
+    tinBasePct: Number(tinBasePct.toFixed(2)),
+    benchmark: { yieldPct: BONO_10Y_ES.yieldPct, asOf: BONO_10Y_ES.asOf },
+    scenarios,
+    warnings,
   }
+  return { ok: true, result, ...forensicSignature(result) }
 }

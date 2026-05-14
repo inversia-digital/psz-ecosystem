@@ -176,6 +176,41 @@ export default function PoliticaPrivacidadPage() {
               (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).
             </p>
 
+            <h2>7.bis Trazabilidad forense de descargas de PDF (medidas anti-fraude)</h2>
+            <p>
+              Las descargas de PDFs generados por las calculadoras propietarias del sitio web
+              (por ejemplo, el análisis de rentabilidad inmobiliaria) generan un registro
+              técnico mínimo con la siguiente información: identificador único de la descarga,
+              fecha y hora, dirección IP del solicitante, agente de usuario (navegador) y, si
+              está disponible, página de referencia (referer).
+            </p>
+            <p>
+              <strong>Finalidad:</strong> protección de la propiedad intelectual del responsable
+              y prevención de la reproducción no autorizada de los documentos generados. El
+              registro permite, en caso de aparición pública no autorizada de un PDF generado
+              por el sitio, asociar el documento a su descarga original.
+            </p>
+            <p>
+              <strong>Base jurídica:</strong> interés legítimo del responsable en la protección
+              de su propiedad intelectual (art. 6.1.f del Reglamento (UE) 2016/679, RGPD), tras
+              ponderación con los derechos del interesado. La información recabada es mínima,
+              técnica y se utiliza exclusivamente con fines anti-fraude. No se cruza con datos
+              personales identificativos del usuario (nombre, email, etc.) salvo que existiera
+              un proceso judicial que lo requiriera por orden de autoridad competente.
+            </p>
+            <p>
+              <strong>Conservación:</strong> 12 meses desde la fecha de descarga, salvo que sea
+              necesaria una conservación más amplia por la existencia de actuaciones de defensa
+              de la propiedad intelectual en curso.
+            </p>
+            <p>
+              <strong>Derechos del interesado:</strong> el usuario puede solicitar el acceso a
+              su registro y la supresión de los datos asociados a través de los canales
+              indicados en el apartado 7 de esta política. La supresión se atenderá salvo que
+              exista una excepción legal (deber legal de conservación, intereses legítimos
+              prevalentes, etc.).
+            </p>
+
             <h2>8. Medidas de seguridad</h2>
             <p>
               El responsable ha adoptado las medidas técnicas y organizativas apropiadas para

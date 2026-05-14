@@ -425,9 +425,17 @@ function WarningsList({ escenario }: { escenario: ScenarioResult }) {
 export interface RoiPdfProps {
   result: RoiResult
   fechaIso: string
+  /**
+   * Canary token forense — Capa 4.A.
+   * Identificador único de esta descarga concreta, embebido en metadata
+   * del PDF. Si el documento aparece distribuido en otra web/foro/redes,
+   * podemos asociar el token al beacon registrado en logs de Vercel
+   * (ip + ua + timestamp) y atribuir el origen de la filtración.
+   */
+  canaryToken?: string
 }
 
-export function RoiPdfDocument({ result, fechaIso }: RoiPdfProps) {
+export function RoiPdfDocument({ result, fechaIso, canaryToken }: RoiPdfProps) {
   const fecha = new Date(fechaIso).toLocaleDateString('es-ES', {
     day: 'numeric',
     month: 'long',
@@ -436,14 +444,23 @@ export function RoiPdfDocument({ result, fechaIso }: RoiPdfProps) {
 
   const inputs = result.inputs
 
+  // Embebemos el canary token en keywords + producer + un campo
+  // identificable. Cada descarga lleva un token distinto.
+  const keywordsBase =
+    'rentabilidad inmobiliaria, rentabilidad de adquisición, rentabilidad real, ITP por CCAA, amortización ITP, prima sobre bono español, sensibilidad al precio, Toño Palacios, broker hipotecario E242, ANICI, INARPA, Inversia Global Digital'
+  const keywords = canaryToken ? `${keywordsBase}, doc-id:${canaryToken}` : keywordsBase
+  const producer = canaryToken
+    ? `psz.es — calculadoras propietarias de Toño Palacios — https://psz.es/sobre-mi — ${canaryToken}`
+    : 'psz.es — calculadoras propietarias de Toño Palacios — https://psz.es/sobre-mi'
+
   return (
     <Document
       title="Análisis de rentabilidad inmobiliaria · El Pulso Palacios"
       author="Antonio Palacios Cambero (Toño Palacios) — broker hipotecario nº E242 (Banco de España) — presidente ANICI"
       subject="Análisis propietario de rentabilidad de adquisición y rentabilidad real para inversión inmobiliaria. Calculadora de psz.es."
-      keywords="rentabilidad inmobiliaria, rentabilidad de adquisición, rentabilidad real, ITP por CCAA, amortización ITP, prima sobre bono español, sensibilidad al precio, Toño Palacios, broker hipotecario E242, ANICI, INARPA, Inversia Global Digital"
+      keywords={keywords}
       creator="psz.es / Inversia Global Digital, S.L.U. (CIF B75281394)"
-      producer="psz.es — calculadoras propietarias de Toño Palacios — https://psz.es/sobre-mi"
+      producer={producer}
     >
       <Page size="A4" style={styles.page}>
         <Header />

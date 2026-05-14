@@ -12,6 +12,7 @@ import { renderToBuffer } from '@react-pdf/renderer'
 import { NextRequest, NextResponse } from 'next/server'
 import { RoiPdfDocument } from '@/app/calculadora-rentabilidad-inmobiliaria/pdf/RoiPdfDocument'
 import type { RoiResult } from '@/app/calculadora-rentabilidad-inmobiliaria/actions'
+import { generateCanaryToken, logCanaryBeacon } from '@/app/_lib/canary'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -32,8 +33,35 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Faltan datos del análisis' }, { status: 400 })
   }
 
+  // ─────────────────────────────────────────────────────────────────
+  // Capa 4.A — Canary token forense
+  // Cada PDF descargado lleva un identificador único embebido en
+  // metadata. Capa 4.D — Beacon: registramos en Vercel runtime logs
+  // (consultable desde dashboard).
+  //
+  // Base jurídica: interés legítimo del responsable en la protección
+  // de su propiedad intelectual y la prevención del uso indebido
+  // (art. 6.1.f RGPD). La IP y user-agent se registran sólo con fines
+  // forenses; no se cruzan con datos personales identificativos.
+  // Política: /politica-privacidad sección 8.bis.
+  // ─────────────────────────────────────────────────────────────────
+  const canary = generateCanaryToken('psz-pdf-roi')
+
+  logCanaryBeacon('pdf-rentabilidad', canary, {
+    ip:
+      req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+      req.headers.get('x-real-ip') ??
+      null,
+    userAgent: req.headers.get('user-agent'),
+    referer: req.headers.get('referer'),
+  })
+
   const buffer = await renderToBuffer(
-    <RoiPdfDocument result={body.result} fechaIso={new Date().toISOString()} />,
+    <RoiPdfDocument
+      result={body.result}
+      fechaIso={new Date().toISOString()}
+      canaryToken={canary.token}
+    />,
   )
 
   const fileName = `analisis-rentabilidad-psz-${new Date().toISOString().slice(0, 10)}.pdf`
@@ -44,6 +72,9 @@ export async function POST(req: NextRequest) {
       'Content-Type': 'application/pdf',
       'Content-Disposition': `attachment; filename="${fileName}"`,
       'Cache-Control': 'no-store',
+      // Devolver el canary también como header — útil para auditoría
+      // y para que el cliente pueda referenciar la descarga concreta
+      'X-PSZ-Doc-Id': canary.token,
     },
   })
 }

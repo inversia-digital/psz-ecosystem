@@ -1,5 +1,7 @@
 'use server'
 
+import { forensicSignature } from '../_lib/signature'
+
 /**
  * Server action de la calculadora de capacidad de endeudamiento.
  *
@@ -61,7 +63,10 @@ export interface CapacidadResult {
   warnings: CapacidadWarning[]
 }
 
-export type ActionState = { ok: true; result: CapacidadResult } | { ok: false; error: string } | null
+export type ActionState =
+  | { ok: true; result: CapacidadResult; _psz_sig: string; _psz_ts: string }
+  | { ok: false; error: string }
+  | null
 
 // ─────────────────────────────────────────────────────────────────────────
 // Constantes operativas (banca minorista española, mediana 2026)
@@ -303,20 +308,18 @@ export async function calculateCapacidad(
     })
   }
 
-  return {
-    ok: true,
-    result: {
-      inputs: {
-        ingresosNetos: Math.round(ingresosNetos),
-        edadMaxima,
-        otrasDeudas: Math.round(otrasDeudas),
-        aportePropio: Math.round(aportePropio),
-        tinPct,
-        parejaConTitular,
-      },
-      benchmark: { yieldPct: BONO_10Y_ES.yieldPct, asOf: BONO_10Y_ES.asOf },
-      scenarios,
-      warnings,
+  const result: CapacidadResult = {
+    inputs: {
+      ingresosNetos: Math.round(ingresosNetos),
+      edadMaxima,
+      otrasDeudas: Math.round(otrasDeudas),
+      aportePropio: Math.round(aportePropio),
+      tinPct,
+      parejaConTitular,
     },
+    benchmark: { yieldPct: BONO_10Y_ES.yieldPct, asOf: BONO_10Y_ES.asOf },
+    scenarios,
+    warnings,
   }
+  return { ok: true, result, ...forensicSignature(result) }
 }

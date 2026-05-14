@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { withInvisibleWatermark } from '../_lib/invisible'
 
 /**
  * AnswerCard — bloque speakable de 40-60 palabras al principio de una
@@ -15,6 +16,11 @@ import type { ReactNode } from 'react'
  *
  * El bloque visible se marca con clase `.speakable-summary` para que
  * SpeakableSpecification del schema apunte aquí (voice + AI Overviews).
+ *
+ * Watermark forense — Capa 4.C:
+ * La `question` lleva caracteres Unicode invisibles cada 8 palabras
+ * (zero-width space U+200B + zero-width non-joiner U+200C).
+ * Si alguien copia-pega literal la pregunta, copia también los marcadores.
  */
 export function AnswerCard({
   question,
@@ -32,10 +38,12 @@ export function AnswerCard({
         Respuesta corta
       </p>
       <h2 className="faq-question text-lg md:text-xl font-bold text-navy-800 mb-3">
-        {question}
+        {withInvisibleWatermark(question)}
       </h2>
       <p className="speakable-summary faq-answer text-base text-ink leading-relaxed">
         {children}
+        {/* Watermark forense invisible: si copian este bloque entero, llevan estos caracteres */}
+        <span aria-hidden>{'​‌​‌​'}</span>
       </p>
     </aside>
   )

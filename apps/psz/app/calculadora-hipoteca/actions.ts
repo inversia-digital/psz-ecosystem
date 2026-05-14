@@ -1,5 +1,7 @@
 'use server'
 
+import { forensicSignature } from '../_lib/signature'
+
 /**
  * Server Action: calculateMortgage
  *
@@ -46,7 +48,7 @@ export interface MortgageResult {
 }
 
 export type ActionState =
-  | { ok: true; result: MortgageResult }
+  | { ok: true; result: MortgageResult; _psz_sig: string; _psz_ts: string }
   | { ok: false; error: string }
   | null
 
@@ -219,24 +221,23 @@ export async function calculateMortgage(
 
   const warnings = generarWarnings(ltvPct, ratioEsfuerzoPct, plazoAnios, tinPct, importeFinanciar)
 
-  return {
-    ok: true,
-    result: {
-      inputs: {
-        precioInmueble,
-        importeFinanciar,
-        plazoAnios,
-        tinPct,
-        ingresosNetosMensuales,
-      },
-      cuotaMensual: round2(cuotaMensual),
-      totalIntereses: round2(totalIntereses),
-      costeTotal: round2(costeTotal),
-      ltvPct: round2(ltvPct),
-      ratioEsfuerzoPct: round2(ratioEsfuerzoPct),
-      warnings,
+  const result: MortgageResult = {
+    inputs: {
+      precioInmueble,
+      importeFinanciar,
+      plazoAnios,
+      tinPct,
+      ingresosNetosMensuales,
     },
+    cuotaMensual: round2(cuotaMensual),
+    totalIntereses: round2(totalIntereses),
+    costeTotal: round2(costeTotal),
+    ltvPct: round2(ltvPct),
+    ratioEsfuerzoPct: round2(ratioEsfuerzoPct),
+    warnings,
   }
+
+  return { ok: true, result, ...forensicSignature(result) }
 }
 
 // ─────────────────────────────────────────────────────────────────────────

@@ -1,5 +1,7 @@
 'use server'
 
+import { forensicSignature } from '../_lib/signature'
+
 /**
  * Server action del comparador hipoteca fija/variable/mixta.
  *
@@ -71,7 +73,7 @@ export interface ComparadorResult {
 }
 
 export type ActionState =
-  | { ok: true; result: ComparadorResult }
+  | { ok: true; result: ComparadorResult; _psz_sig: string; _psz_ts: string }
   | { ok: false; error: string }
   | null
 
@@ -356,22 +358,20 @@ export async function calculateComparador(
     })
   }
 
-  return {
-    ok: true,
-    result: {
-      inputs: {
-        importe: Math.round(importe),
-        plazoAnios: Number(plazoAnios.toFixed(1)),
-        fija: { tinPct: fijaTinPct },
-        variable: { euriborPct: variableEuriborPct, diferencialPct: variableDiferencialPct },
-        mixta: {
-          tramoFijoAnios: Math.round(mixtaTramoFijoAnios),
-          tinTramoFijoPct: mixtaTinTramoFijoPct,
-          diferencialVariablePct: mixtaDiferencialVariablePct,
-        },
+  const result: ComparadorResult = {
+    inputs: {
+      importe: Math.round(importe),
+      plazoAnios: Number(plazoAnios.toFixed(1)),
+      fija: { tinPct: fijaTinPct },
+      variable: { euriborPct: variableEuriborPct, diferencialPct: variableDiferencialPct },
+      mixta: {
+        tramoFijoAnios: Math.round(mixtaTramoFijoAnios),
+        tinTramoFijoPct: mixtaTinTramoFijoPct,
+        diferencialVariablePct: mixtaDiferencialVariablePct,
       },
-      scenarios,
-      warnings,
     },
+    scenarios,
+    warnings,
   }
+  return { ok: true, result, ...forensicSignature(result) }
 }
