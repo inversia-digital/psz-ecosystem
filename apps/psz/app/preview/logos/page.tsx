@@ -168,6 +168,144 @@ function LogomarkD({ size = 80, mono = false }: { size?: number; mono?: boolean 
   )
 }
 
+// ════════════════════════════════════════════════════════════
+// HÍBRIDOS A+B — monograma TP de B con el E242 discreto de A
+// ════════════════════════════════════════════════════════════
+
+/**
+ * Helper: el monograma TP interlocked que comparten los 3 híbridos.
+ * Misma estructura que LogomarkB pero parametrizada por escala.
+ */
+function TPMonogram({
+  cx = 50,
+  cy = 50,
+  width = 60,
+  height = 56,
+  tColor,
+  pColor,
+}: {
+  cx?: number
+  cy?: number
+  width?: number
+  height?: number
+  tColor: string
+  pColor: string
+}) {
+  const left = cx - width / 2
+  const top = cy - height / 2
+  const w = width
+  const h = height
+  // T (10/56 = ~18% bar height)
+  const tBarH = h * 0.18
+  const tStemW = w * 0.16
+  return (
+    <>
+      <g fill={tColor}>
+        <rect x={left} y={top} width={w * 0.65} height={tBarH} />
+        <rect x={left + w * 0.27} y={top} width={tStemW} height={h} />
+      </g>
+      {/* P entrelazada — su vertical y bowl están a la derecha */}
+      <g fill={pColor}>
+        <rect x={left + w * 0.55} y={top} width={tStemW} height={h} />
+        <path
+          d={`M ${left + w * 0.55} ${top} h ${w * 0.3} a ${h * 0.29} ${h * 0.29} 0 0 1 0 ${h * 0.57} h ${-w * 0.3} v ${-h * 0.18} h ${w * 0.23} a ${h * 0.11} ${h * 0.11} 0 0 0 0 ${-h * 0.21} h ${-w * 0.23} z`}
+        />
+      </g>
+    </>
+  )
+}
+
+// HÍBRIDO H1 · TP + línea horizontal + E·242 debajo
+function LogomarkH1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const accent = mono ? NAVY : GOLD
+  const showE242 = size >= 40 // a tamaños muy pequeños (favicon), ocultar
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <TPMonogram cy={showE242 ? 38 : 50} tColor={accent} pColor={NAVY} />
+      {showE242 && (
+        <>
+          <line x1="32" y1="72" x2="68" y2="72" stroke={accent} strokeWidth="1.2" />
+          <text
+            x="50"
+            y="86"
+            textAnchor="middle"
+            fontSize="9"
+            fontWeight="700"
+            fontFamily="'Inter', sans-serif"
+            letterSpacing="2"
+            fill={accent}
+          >
+            E·242
+          </text>
+        </>
+      )}
+    </svg>
+  )
+}
+
+// HÍBRIDO H2 · TP + chip "Nº E242" debajo
+function LogomarkH2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const accent = mono ? NAVY : GOLD
+  const showE242 = size >= 40
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <TPMonogram cy={showE242 ? 36 : 50} tColor={accent} pColor={NAVY} />
+      {showE242 && (
+        <g>
+          <rect
+            x="28"
+            y="74"
+            width="44"
+            height="14"
+            rx="2"
+            fill="none"
+            stroke={accent}
+            strokeWidth="1.2"
+          />
+          <text
+            x="50"
+            y="84"
+            textAnchor="middle"
+            fontSize="8"
+            fontWeight="700"
+            fontFamily="'Inter', sans-serif"
+            letterSpacing="1.5"
+            fill={accent}
+          >
+            BdE Nº E242
+          </text>
+        </g>
+      )}
+    </svg>
+  )
+}
+
+// HÍBRIDO H3 · TP con E·242 integrado en una marca de stamp inferior izquierda
+function LogomarkH3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const accent = mono ? NAVY : GOLD
+  const showE242 = size >= 48
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <TPMonogram cy={50} tColor={accent} pColor={NAVY} />
+      {showE242 && (
+        <text
+          x="92"
+          y="92"
+          textAnchor="end"
+          fontSize="7"
+          fontWeight="700"
+          fontFamily="'Inter', sans-serif"
+          letterSpacing="2"
+          fill={accent}
+          opacity="0.85"
+        >
+          E·242
+        </text>
+      )}
+    </svg>
+  )
+}
+
 // ────────────────────────────────────────────────────────────
 // Wordmark (común a todos)
 // ────────────────────────────────────────────────────────────
@@ -197,6 +335,27 @@ const LOGOMARKS = [
   { letter: 'B', name: 'Monograma TP entrelazado', desc: 'Premium contemporáneo. Sin marco. Muy escalable, perfecto para favicon y avatares pequeños.', Component: LogomarkB },
   { letter: 'C', name: 'Escudo heráldico', desc: 'Heráldica española clásica. Comunica linaje, tradición, autoridad institucional.', Component: LogomarkC },
   { letter: 'D', name: 'Sello de lacre 12-puntas', desc: 'Vintage premium. Sugiere "sellado/certificado" — encaja al 100% con el concepto El Sello Palacios.', Component: LogomarkD },
+] as const
+
+const HYBRIDS = [
+  {
+    letter: 'H1',
+    name: 'Híbrido — TP + línea + E·242 debajo',
+    desc: 'El más sobrio de los tres. El TP domina arriba; debajo, una línea fina horizontal separa y aparece "E·242" en pequeño caps. A tamaño favicon (32px) se oculta automáticamente el E242 y queda sólo el monograma.',
+    Component: LogomarkH1,
+  },
+  {
+    letter: 'H2',
+    name: 'Híbrido — TP + chip "BdE Nº E242"',
+    desc: 'Más explícito sobre la autoridad. El TP arriba; debajo, un chip rectangular con borde fino indica "BdE Nº E242". Mejor para tamaños grandes (hero, OG, PDF). En favicon se oculta el chip.',
+    Component: LogomarkH2,
+  },
+  {
+    letter: 'H3',
+    name: 'Híbrido — TP centrado + E·242 firma esquina',
+    desc: 'El más minimalista. El TP ocupa todo el espacio sin perder protagonismo. El "E·242" aparece como firma pequeña en la esquina inferior derecha — como las marcas de pintor. Apenas se nota pero está siempre presente.',
+    Component: LogomarkH3,
+  },
 ] as const
 
 export default function PreviewLogosPage() {
@@ -332,23 +491,123 @@ export default function PreviewLogosPage() {
           </section>
         ))}
 
+        {/* SECCIÓN HÍBRIDOS A+B */}
+        <div style={{ marginTop: 64, marginBottom: 32, padding: '24px 0', borderTop: `3px solid ${GOLD}`, borderBottom: `3px solid ${GOLD}` }}>
+          <p style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 3, color: GOLD, fontWeight: 700, marginBottom: 8 }}>
+            Combinación pedida
+          </p>
+          <h2 style={{ fontSize: 32, fontWeight: 800, color: NAVY, letterSpacing: '-0.03em', margin: 0 }}>
+            Híbridos A + B — TP entrelazado con E·242 discreto
+          </h2>
+          <p style={{ marginTop: 12, fontSize: 15, color: NAVY, opacity: 0.7, maxWidth: 720, lineHeight: 1.5 }}>
+            Tres formas distintas de incorporar el número de registro al monograma TP sin
+            saturar el diseño. En favicon (32px) el E242 se oculta automáticamente — solo
+            queda el monograma reconocible.
+          </p>
+        </div>
+
+        {HYBRIDS.map(({ letter, name, desc, Component }) => (
+          <section
+            key={letter}
+            style={{
+              background: '#fff',
+              borderRadius: 16,
+              padding: 32,
+              marginBottom: 32,
+              boxShadow: '0 4px 24px rgba(15,27,45,0.06)',
+              border: `2px solid ${GOLD}`,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24 }}>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  height: 40,
+                  borderRadius: 8,
+                  background: NAVY,
+                  color: GOLD,
+                  fontWeight: 800,
+                  fontSize: 20,
+                  fontFamily: 'Inter, sans-serif',
+                }}
+              >
+                {letter}
+              </span>
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: NAVY, letterSpacing: '-0.02em', margin: 0 }}>
+                {name}
+              </h2>
+            </div>
+            <p style={{ fontSize: 15, color: NAVY, opacity: 0.7, marginBottom: 28, maxWidth: 680, lineHeight: 1.5 }}>
+              {desc}
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+              <div style={{ background: PAPER, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Favicon 32px (E·242 oculto) + 96px (E·242 visible)
+                </p>
+                <Component size={32} />
+                <div style={{ marginTop: 16 }}>
+                  <Component size={96} />
+                </div>
+              </div>
+              <div style={{ background: NAVY, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: PAPER, opacity: 0.5, marginBottom: 16 }}>
+                  Header del sitio + Hero grande
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={48} />
+                  <Wordmark scale={1} color={PAPER} />
+                </div>
+                <div style={{ marginTop: 24, display: 'inline-flex', alignItems: 'center', gap: 16 }}>
+                  <Component size={80} />
+                  <Wordmark scale={2.2} color={PAPER} />
+                </div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Monocromo (papelería / fax)
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={56} mono />
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.04em', fontSize: 28, color: NAVY, lineHeight: 1 }}>
+                    Toño Palacios
+                  </span>
+                </div>
+                <p style={{ fontSize: 11, color: NAVY, opacity: 0.6, marginTop: 16, fontFamily: "'Inter', sans-serif" }}>
+                  Antonio Palacios Cambero · Broker hipotecario nº E242 · Presidente ANICI
+                </p>
+              </div>
+              <div style={{ background: GOLD_LIGHT, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.7, marginBottom: 16 }}>
+                  Variante "sello dorado" (PDF premium)
+                </p>
+                <Component size={96} />
+              </div>
+            </div>
+          </section>
+        ))}
+
         {/* Footer con instrucciones */}
         <footer style={{ marginTop: 48, padding: '32px', background: '#fff', borderRadius: 16, border: `2px solid ${GOLD}` }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Cómo decidir</h2>
           <p style={{ fontSize: 15, color: NAVY, opacity: 0.8, marginBottom: 16, lineHeight: 1.6 }}>
-            Mira los 4 en los 4 contextos. La pregunta a hacerte: <em>"¿con cuál me identifico
-            cuando la gente vea mi tarjeta, perfil de Instagram, header del sitio, header del PDF
-            de un análisis financiero?"</em>. No hay opción correcta — hay opción tuya.
+            Has pedido una combinación A+B. Las tres opciones <strong>H1, H2, H3</strong> de
+            arriba son tres variantes del híbrido — todas usan el monograma TP entrelazado
+            como elemento principal y varían sólo en cómo aparece el E·242.
           </p>
           <ul style={{ fontSize: 14, color: NAVY, opacity: 0.7, lineHeight: 1.8, paddingLeft: 20 }}>
-            <li><strong>A · Sello clásico</strong>: lo más sobrio. Encaja con "presidente de ANICI / registro BdE".</li>
-            <li><strong>B · Monograma TP</strong>: lo más versátil. Funciona perfectamente desde 16px hasta 500px.</li>
-            <li><strong>C · Escudo heráldico</strong>: lo más "premium tradicional". Si te ves más como despacho señorial.</li>
-            <li><strong>D · Sello de lacre</strong>: lo más coherente con la sub-marca "El Sello Palacios" — pareja natural.</li>
+            <li><strong>H1</strong>: el más equilibrado. Línea + E·242 caps debajo del TP. Recomendado por defecto.</li>
+            <li><strong>H2</strong>: más explícito. Chip con "BdE Nº E242" — útil si quieres reforzar el origen institucional.</li>
+            <li><strong>H3</strong>: el más minimalista. TP grande sin distracciones; E·242 como firma de esquina.</li>
           </ul>
           <p style={{ marginTop: 24, fontSize: 14, color: NAVY }}>
-            Cuando decidas, dime la letra y procedo a implementarlo en: header, SelloPalacios
-            component, favicon (icon.png + apple-icon.png), OG images dinámicas y PDF.
+            Dime <strong>"voy con H1"</strong> (o H2 / H3) y procedo a implementarlo en:
+            header, SelloPalacios, favicon, OG images y PDF.
           </p>
         </footer>
       </div>
