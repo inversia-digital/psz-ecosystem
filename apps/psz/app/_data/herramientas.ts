@@ -99,26 +99,27 @@ export const HERRAMIENTAS: Herramienta[] = [
     ribbonClass: 'bg-sky-500',
     status: 'live',
   },
-  // ─── Próximas (Stage 3-5) ───
   {
     slug: 'calculadora-stress-test-euribor',
     url: `${ROOT}calculadora-stress-test-euribor`,
     name: 'Stress test Euríbor',
     shortName: 'Stress test',
     description:
-      'Si el Euríbor sube X puntos, ¿cuánto subirá tu cuota mensual? Simula 5 escenarios sobre tu hipoteca variable actual para anticipar el impacto en tu economía.',
+      'Si el Euríbor sube X puntos, ¿cuánto subirá tu cuota mensual? Simula 5 escenarios paralelos (+0, +0,5, +1, +1,5, +2 pp) sobre tu hipoteca variable actual para anticipar el impacto en tu economía y decidir si conviene novar a fija.',
     features: [
       'Cuota nueva en 5 escenarios de Euríbor',
-      'Incremento mensual y anual',
+      'TIN aplicado en cada escenario',
+      'Incremento mensual y anual sobre cuota actual',
       'Ratio de esfuerzo proyectado',
-      'Comparativa con tu cuota actual',
+      'Avisos sobre novación, subrogación y amortización anticipada',
     ],
     audience: 'Titular de hipoteca variable o mixta en periodo variable',
     keyFigure: 'Cuota proyectada según Euríbor',
     icon: '📊',
     ribbonClass: 'bg-rose-500',
-    status: 'coming',
+    status: 'live',
   },
+  // ─── Próximas (Stage 4-5) ───
   {
     slug: 'comparador-hipoteca-fija-variable-mixta',
     url: `${ROOT}comparador-hipoteca-fija-variable-mixta`,

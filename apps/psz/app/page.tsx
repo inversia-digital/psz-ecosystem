@@ -316,7 +316,7 @@ export default function HomePage() {
         title="Calcula antes de hablar conmigo"
         lead={
           <span>
-            Tres herramientas propietarias para que entiendas tu operación antes de que hablemos.
+            Cuatro herramientas propietarias para que entiendas tu operación antes de que hablemos.
             La lógica corre en servidor — los rangos críticos que dispara son trabajo de años de
             práctica del despacho, no un script genérico.{' '}
             <a href="/herramientas" className="text-navy-700 underline hover:text-navy-900 font-semibold">
@@ -326,11 +326,11 @@ export default function HomePage() {
         }
       >
         <Container size="lg">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <ToolCard
               icon="🏠"
               title="Calculadora de hipoteca"
-              description="Cuota mensual, intereses totales, LTV y ratio de esfuerzo. Avisos automáticos sobre rangos que afectarían al scoring bancario."
+              description="Cuota mensual, intereses totales, LTV y ratio de esfuerzo con avisos sobre scoring bancario."
               href="/calculadora-hipoteca"
               cta="Calcular cuota"
               ribeteClass="bg-gold-400"
@@ -338,15 +338,23 @@ export default function HomePage() {
             <ToolCard
               icon="🧮"
               title="Capacidad de endeudamiento"
-              description="¿Cuánto te daría realmente el banco? 3 escenarios paralelos según ratio de esfuerzo (30%, 35%, 40%) con avisos sobre scoring bancario."
+              description="¿Cuánto te daría realmente el banco? 3 escenarios paralelos según ratio de esfuerzo."
               href="/calculadora-capacidad-endeudamiento"
               cta="Ver mi capacidad"
               ribeteClass="bg-emerald-500"
             />
             <ToolCard
+              icon="📊"
+              title="Stress test Euríbor"
+              description="¿Cuánto subiría tu cuota si el Euríbor sube 1 o 2 puntos? 5 escenarios paralelos sobre tu variable actual."
+              href="/calculadora-stress-test-euribor"
+              cta="Simular subida"
+              ribeteClass="bg-rose-500"
+            />
+            <ToolCard
               icon="📈"
               title="Rentabilidad inmobiliaria"
-              description="Rentabilidad de adquisición, real, flujo neto mensual y amortización del ITP en 3 escenarios paralelos. Para no enamorarte de la renta del anuncio."
+              description="Rentabilidad de adquisición y real, flujo neto, amortización ITP en 3 escenarios. Para no enamorarte de la renta."
               href="/calculadora-rentabilidad-inmobiliaria"
               cta="Calcular rentabilidad"
               ribeteClass="bg-sky-500"

@@ -122,6 +122,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${SITE_URLS.psz}/calculadora-stress-test-euribor`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${SITE_URLS.psz}/blog`,
       lastModified: now,
       changeFrequency: 'weekly',
