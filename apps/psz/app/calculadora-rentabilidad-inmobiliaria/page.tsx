@@ -366,7 +366,7 @@ export default function CalculadoraRentabilidadPage() {
       {/* INTERNAL LINKING — refuerza autoridad temática */}
       <Section tone="paper" padding="md" title="También te puede interesar">
         <Container size="lg">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <a
               href="/calculadora-hipoteca"
               className="block bg-paper-card border border-navy-100 rounded-xl p-6 hover:border-gold-400 hover:shadow-card transition-all no-underline"
@@ -380,6 +380,22 @@ export default function CalculadoraRentabilidadPage() {
               <p className="text-sm text-ink-soft">
                 Cuota, intereses, LTV y ratio de esfuerzo con avisos sobre rangos críticos de
                 scoring bancario.
+              </p>
+            </a>
+
+            <a
+              href="/calculadora-capacidad-endeudamiento"
+              className="block bg-paper-card border border-navy-100 rounded-xl p-6 hover:border-gold-400 hover:shadow-card transition-all no-underline"
+            >
+              <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-2">
+                Otra herramienta
+              </p>
+              <h3 className="text-lg font-semibold text-navy-800 mb-2">
+                Capacidad de endeudamiento
+              </h3>
+              <p className="text-sm text-ink-soft">
+                ¿Cuánto te daría el banco? 3 escenarios paralelos según ratio de esfuerzo con
+                avisos sobre criterios reales de scoring.
               </p>
             </a>
 

@@ -172,6 +172,61 @@ export default function CalculadoraHipotecaPage() {
         </Container>
       </Section>
 
+      {/* INTERNAL LINKING — cross-link entre las 3 calculadoras */}
+      <Section tone="paper" padding="md" title="También te puede interesar">
+        <Container size="lg">
+          <div className="grid md:grid-cols-3 gap-4">
+            <a
+              href="/calculadora-capacidad-endeudamiento"
+              className="block bg-paper-card border border-navy-100 rounded-xl p-6 hover:border-gold-400 hover:shadow-card transition-all no-underline"
+            >
+              <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-2">
+                Otra herramienta
+              </p>
+              <h3 className="text-lg font-semibold text-navy-800 mb-2">
+                Capacidad de endeudamiento
+              </h3>
+              <p className="text-sm text-ink-soft">
+                Antes de calcular cuota, ¿cuánto te daría realmente el banco? 3 escenarios según
+                ratio de esfuerzo.
+              </p>
+            </a>
+
+            <a
+              href="/calculadora-rentabilidad-inmobiliaria"
+              className="block bg-paper-card border border-navy-100 rounded-xl p-6 hover:border-gold-400 hover:shadow-card transition-all no-underline"
+            >
+              <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-2">
+                Otra herramienta
+              </p>
+              <h3 className="text-lg font-semibold text-navy-800 mb-2">
+                Rentabilidad inmobiliaria
+              </h3>
+              <p className="text-sm text-ink-soft">
+                Si vas a invertir, calcula rentabilidad de adquisición, real, flujo neto y
+                amortización del ITP en 3 escenarios.
+              </p>
+            </a>
+
+            <a
+              href="/broker-hipotecario"
+              className="block bg-paper-card border border-navy-100 rounded-xl p-6 hover:border-gold-400 hover:shadow-card transition-all no-underline"
+            >
+              <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-2">
+                Servicio
+              </p>
+              <h3 className="text-lg font-semibold text-navy-800 mb-2">
+                Servicio de broker hipotecario
+              </h3>
+              <p className="text-sm text-ink-soft">
+                Si la calculadora te dispara un aviso, antes de ir al banco habla conmigo. +20
+                entidades, criterios reales de scoring.
+              </p>
+            </a>
+          </div>
+        </Container>
+      </Section>
+
       {/* AUTORÍA — sin repetir credenciales (ya están en hero, metadata y schema) */}
       <Section tone="soft" padding="md">
         <Container size="md">

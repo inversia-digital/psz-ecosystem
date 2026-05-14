@@ -131,6 +131,11 @@ export default function SiteFooter() {
               </a>
             </p>
             <p>
+              <a href="/calculadora-capacidad-endeudamiento" className="text-paper/70 hover:text-paper no-underline">
+                Calculadora capacidad endeudamiento
+              </a>
+            </p>
+            <p>
               <a
                 href={SITE_URLS.anici}
                 target="_blank"

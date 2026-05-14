@@ -315,7 +315,7 @@ export default function HomePage() {
         }
       >
         <Container size="lg">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <ToolCard
               icon="🏠"
               title="Calculadora de hipoteca"
@@ -325,9 +325,17 @@ export default function HomePage() {
               ribeteClass="bg-gold-400"
             />
             <ToolCard
+              icon="🧮"
+              title="Capacidad de endeudamiento"
+              description="¿Cuánto te daría realmente el banco? 3 escenarios paralelos según ratio de esfuerzo (30%, 35%, 40%) con avisos sobre scoring bancario."
+              href="/calculadora-capacidad-endeudamiento"
+              cta="Ver mi capacidad"
+              ribeteClass="bg-emerald-500"
+            />
+            <ToolCard
               icon="📈"
-              title="Calculadora de rentabilidad inmobiliaria"
-              description="Rentabilidad bruta, neta, flujo neto mensual y payback en 3 escenarios paralelos (pesimista, probable, optimista). Para no enamorarte de la renta del anuncio."
+              title="Rentabilidad inmobiliaria"
+              description="Rentabilidad de adquisición, real, flujo neto mensual y amortización del ITP en 3 escenarios paralelos. Para no enamorarte de la renta del anuncio."
               href="/calculadora-rentabilidad-inmobiliaria"
               cta="Calcular rentabilidad"
               ribeteClass="bg-sky-500"

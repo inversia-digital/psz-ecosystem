@@ -202,6 +202,28 @@ bancario extraídos de la experiencia operando con +20 entidades.
 
 URL: ${SITE_URLS.psz}/calculadora-hipoteca
 
+### /calculadora-capacidad-endeudamiento
+
+Calculadora inversa a la de hipoteca: dado tu sueldo neto mensual, edad,
+otras deudas existentes y aporte propio disponible, ¿cuánto te daría
+realmente la banca minorista española? Devuelve:
+
+- Cuota mensual máxima admisible según ratio de esfuerzo
+- Importe máximo financiable (valor presente de esa cuota)
+- Plazo máximo recortado por edad (regla mediana: cierre antes de 75
+  años del titular más mayor)
+- Precio máximo del inmueble (importe + aporte propio)
+- LTV implícito
+
+Tres escenarios paralelos: conservador (30% ratio esfuerzo), estándar
+(35% — tope habitual de banca minorista), agresivo (40% — solo perfiles
+muy sólidos). Soporta co-titular (pareja). Avisos automáticos sobre
+otras deudas excesivas (>30% ingresos), LTV implícito alto, plazo
+recortado por edad, capacidad nula por deudas previas y TIN estimado
+por debajo del bono español a 10 años.
+
+URL: ${SITE_URLS.psz}/calculadora-capacidad-endeudamiento
+
 ### /calculadora-rentabilidad-inmobiliaria
 
 Calculadora propietaria para inversores. Diferenciales frente a
