@@ -1,0 +1,48 @@
+name: OpenTimestamps Anchor
+
+# Ancla criptográficamente cada commit a main en la blockchain de
+# Bitcoin vía OpenTimestamps. Genera fichero .ots como prueba forense
+# de autoría con fecha cierta, eIDAS-compatible.
+#
+# Vale como prueba en juicio si alguien copia el código y aparece
+# DESPUÉS de la fecha del ancla. La cadena de Bitcoin no se puede
+# manipular retroactivamente.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  timestamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install opentimestamps-client
+        run: pip install opentimestamps-client
+
+      - name: Generate proof
+        run: python scripts/timestamp.py
+
+      - name: Commit and push proof
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add proofs/
+          if git diff --cached --quiet; then
+            echo "No new proofs to commit."
+          else
+            git commit -m "chore(proofs): anchor commit ${{ github.sha }} on Bitcoin via OpenTimestamps"
+            git push
+          fi
