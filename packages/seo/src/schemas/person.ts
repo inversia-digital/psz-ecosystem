@@ -30,13 +30,53 @@ export function personSchema(siteUrl: string = SITE_URLS.psz): WithContext<Perso
     alternateName: [...TONO.alternateNames],
     givenName: 'Antonio',
     familyName: 'Palacios Cambero',
+    additionalName: 'Toño',
     url: `${SITE_URLS.psz}/sobre-mi`,
     mainEntityOfPage: `${SITE_URLS.psz}/sobre-mi`,
     image: TONO.image,
     jobTitle: TONO.jobTitle,
     description: TONO.shortDescription,
+    /**
+     * disambiguatingDescription es la propiedad estándar de schema.org
+     * para resolver homonimia. Google la usa específicamente para
+     * separar entidades distintas que comparten nombre.
+     *
+     * Existe otro "Toño Palacio" (Antoine Palacio, chef aragonés y
+     * maestro cortador de jamón). Aquí dejamos claro qué Toño Palacios
+     * es ESTE.
+     */
+    disambiguatingDescription:
+      `Broker hipotecario en España registrado en el Banco de España con el número ${TONO.credentials.bdeId}, ` +
+      `presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario, ${TONO.credentials.aniciId}) ` +
+      `y fundador del instituto INARPA. ` +
+      `Profesión: intermediación financiera hipotecaria. No relacionado con ` +
+      `otras personas que comparten nombre artístico Toño Palacio o similar en otros sectores.`,
     nationality: { '@type': 'Country', name: 'España' },
     gender: 'https://schema.org/Male',
+    /**
+     * identifier como PropertyValue — formato preferido por Google para
+     * IDs externos verificables. Cada uno apunta a la entidad emisora
+     * y permite a Google reconciliar el entity con registros públicos.
+     */
+    identifier: [
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'Banco de España — Registro de Intermediarios de Crédito Inmobiliario',
+        value: TONO.credentials.bdeId,
+        url: TONO.credentials.bdeUrl,
+      },
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'ANICI — Asociación Nacional de Intermediarios en Crédito Inmobiliario',
+        value: TONO.credentials.aniciId,
+        url: TONO.credentials.aniciVerifierUrl,
+      },
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'INVERSIA GLOBAL DIGITAL, S.L.U. — CIF',
+        value: INVERSIA.taxId,
+      },
+    ],
     worksFor: {
       '@type': 'Organization',
       name: INVERSIA.displayName,

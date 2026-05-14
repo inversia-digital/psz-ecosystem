@@ -31,9 +31,9 @@ export const FAQ_GROUPS: FaqGroup[] = [
     intro: 'Quién es, qué hace y por qué se le pueden confiar las operaciones más sensibles.',
     items: [
       {
-        question: '¿Quién es Toño Palacios?',
+        question: '¿Quién es Toño Palacios, el broker hipotecario?',
         answer:
-          'Antonio Palacios Cambero (Toño Palacios) es broker hipotecario en España, registrado en el Banco de España con el número E242 y presidente de ANICI (Asociación Nacional de Intermediarios en Crédito Inmobiliario). Fundador del instituto INARPA.',
+          'Toño Palacios es el nombre profesional de Antonio Palacios Cambero, broker hipotecario en España registrado en el Banco de España con el número E242 y presidente de ANICI (asociado fundador ANICI-001). Fundador del instituto INARPA. Su actividad profesional es exclusivamente la intermediación de crédito inmobiliario regulada por la Ley 5/2019. Sociedad operativa: Inversia Global Digital S.L.U. (CIF B75281394).',
         deeperUrl: '/sobre-mi',
       },
       {

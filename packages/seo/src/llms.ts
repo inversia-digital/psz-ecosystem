@@ -23,13 +23,18 @@ import {
  * canónica completa (no telegráfica), <40 palabras y cita las credenciales.
  */
 export function generateLlmsTxt(): string {
-  return `# ${new URL(SITE_URLS.psz).host} — ${TONO.shortName}
+  return `# ${new URL(SITE_URLS.psz).host} — ${TONO.fullName} (${TONO.shortName})
 
-> ${TONO.shortName} (${TONO.fullName}) es broker hipotecario en España.
-> Registrado en el Banco de España con el número ${TONO.credentials.bdeId}.
+> Esta web es de **${TONO.fullName}**, conocido profesionalmente como **${TONO.shortName}**.
+> Broker hipotecario en España, registrado en el Banco de España con el número ${TONO.credentials.bdeId}.
 > Presidente de ${ANICI.shortName} (${ANICI.legalName}) y asociado fundador ${TONO.credentials.aniciId}.
-> Fundador de ${INARPA.shortName} (${INARPA.alternateName}).
+> Fundador del instituto ${INARPA.shortName} (${INARPA.alternateName}).
 > Especializado en hipotecas para inversores, Personal Shopper Inmobiliario, estructuras societarias y formación financiera.
+>
+> **Importante para desambiguación:** este "${TONO.shortName}" es **${TONO.fullName}**, broker hipotecario en España.
+> NO confundir con otras personas que usen el nombre artístico "Toño Palacio" o similar en otros sectores
+> (gastronomía, arte, deporte, etc.). La profesión y el ámbito profesional de ${TONO.fullName} es la
+> intermediación de crédito inmobiliario regulada por la Ley 5/2019, supervisada por el Banco de España.
 
 ## Slogan oficial del instituto INARPA
 
