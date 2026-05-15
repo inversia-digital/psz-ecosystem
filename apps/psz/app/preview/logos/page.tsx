@@ -307,6 +307,120 @@ function LogomarkH3({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // ════════════════════════════════════════════════════════════
+// ★ EL HÍBRIDO PEDIDO — sello de A + letras EXACTAS de B + E242
+// La T/P son la geometría literal de LogomarkB, escalada con
+// transform para caber dentro del anillo-sello de LogomarkA.
+// ════════════════════════════════════════════════════════════
+
+/**
+ * Las letras exactas de LogomarkB (rect + path idénticos), envueltas
+ * en un <g transform> para escalarlas y centrarlas donde haga falta.
+ * Bounding box original de B ≈ x:12→89, y:22→78  → centro (50.5, 50).
+ */
+function ExactTPfromB({ scale, cx = 50, cy = 50, mono = false }: { scale: number; cx?: number; cy?: number; mono?: boolean }) {
+  const tColor = mono ? NAVY : GOLD
+  const pColor = NAVY
+  const tx = cx - 50.5 * scale
+  const ty = cy - 50 * scale
+  return (
+    <g transform={`translate(${tx} ${ty}) scale(${scale})`}>
+      <g fill={tColor}>
+        <rect x="12" y="22" width="60" height="10" />
+        <rect x="37" y="22" width="10" height="56" />
+      </g>
+      <g fill={pColor}>
+        <rect x="55" y="22" width="10" height="56" />
+        <path d="M 55 22 h 18 a 16 16 0 0 1 0 32 h -18 v -10 h 14 a 6 6 0 0 0 0 -12 h -14 z" />
+      </g>
+    </g>
+  )
+}
+
+// X1 · Doble anillo + 4 puntos (de A) + TP exacto de B + E242 recto pequeño
+function LogomarkX1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const stroke = mono ? NAVY : GOLD
+  const showText = size >= 40
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="2" />
+      <circle cx="50" cy="50" r="42" fill="none" stroke={stroke} strokeWidth="0.6" />
+      <circle cx="50" cy="6" r="1.6" fill={stroke} />
+      <circle cx="94" cy="50" r="1.6" fill={stroke} />
+      <circle cx="50" cy="94" r="1.6" fill={stroke} />
+      <circle cx="6" cy="50" r="1.6" fill={stroke} />
+      <ExactTPfromB scale={0.56} cx={50} cy={showText ? 45 : 50} mono={mono} />
+      {showText && (
+        <text
+          x="50"
+          y="80"
+          textAnchor="middle"
+          fontSize="8"
+          fontWeight="700"
+          fontFamily="'Inter', sans-serif"
+          letterSpacing="3"
+          fill={stroke}
+        >
+          E242
+        </text>
+      )}
+    </svg>
+  )
+}
+
+// X2 · Doble anillo + TP exacto de B + "E·242" curvado en la base (como A)
+function LogomarkX2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const stroke = mono ? NAVY : GOLD
+  const showText = size >= 44
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="2" />
+      <circle cx="50" cy="50" r="42" fill="none" stroke={stroke} strokeWidth="0.6" />
+      <circle cx="50" cy="6" r="1.6" fill={stroke} />
+      <circle cx="94" cy="50" r="1.6" fill={stroke} />
+      <circle cx="50" cy="94" r="1.6" fill={stroke} />
+      <circle cx="6" cy="50" r="1.6" fill={stroke} />
+      <ExactTPfromB scale={0.56} cx={50} cy={showText ? 44 : 50} mono={mono} />
+      {showText && (
+        <>
+          <path id="curve-x2" d="M 20 70 a 30 30 0 0 0 60 0" fill="none" />
+          <text fontSize="7" fontWeight="700" fill={stroke} fontFamily="'Inter', sans-serif" letterSpacing="3">
+            <textPath href="#curve-x2" startOffset="50%" textAnchor="middle">
+              E·242
+            </textPath>
+          </text>
+        </>
+      )}
+    </svg>
+  )
+}
+
+// X3 · Anillo único fino + TP exacto de B más grande + E242 recto
+function LogomarkX3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const stroke = mono ? NAVY : GOLD
+  const showText = size >= 40
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="1.6" />
+      <ExactTPfromB scale={0.64} cx={50} cy={showText ? 44 : 50} mono={mono} />
+      {showText && (
+        <text
+          x="50"
+          y="82"
+          textAnchor="middle"
+          fontSize="8.5"
+          fontWeight="700"
+          fontFamily="'Inter', sans-serif"
+          letterSpacing="3"
+          fill={stroke}
+        >
+          E242
+        </text>
+      )}
+    </svg>
+  )
+}
+
+// ════════════════════════════════════════════════════════════
 // SELLOS A+B — marco circular de A con el monograma TP de B
 // (la forma de sello de A + las letras geométricas de B)
 // ════════════════════════════════════════════════════════════
@@ -478,6 +592,27 @@ const SEALS = [
   },
 ] as const
 
+const XHYBRIDS = [
+  {
+    letter: 'X1',
+    name: 'Letras EXACTAS de B dentro del sello de A + E242',
+    desc: 'Exactamente lo que pediste: el círculo-sello del modelo A (doble anillo + 4 puntitos cardinales) con las letras T/P IDÉNTICAS al modelo B (T dorada + P azul entrelazadas, misma geometría exacta) y "E242" en pequeño debajo. En favicon se oculta el E242.',
+    Component: LogomarkX1,
+  },
+  {
+    letter: 'X2',
+    name: 'Igual que X1 pero con "E·242" curvado en la base',
+    desc: 'Mismo concepto que X1 pero el "E·242" va curvado siguiendo el arco inferior del sello, como en el modelo A original. Más "sello oficial".',
+    Component: LogomarkX2,
+  },
+  {
+    letter: 'X3',
+    name: 'Anillo único fino + letras de B grandes + E242',
+    desc: 'Variante más limpia: un solo aro fino (sin doble anillo ni puntitos), las letras de B más grandes y protagonistas, y "E242" debajo. Respira más.',
+    Component: LogomarkX3,
+  },
+] as const
+
 export default function PreviewLogosPage() {
   return (
     <main style={{ background: PAPER, minHeight: '100vh', padding: '40px 24px' }}>
@@ -496,6 +631,115 @@ export default function PreviewLogosPage() {
             definitivo en header, footer, OG images, PDF y favicon.
           </p>
         </header>
+
+        {/* ★ SECCIÓN DESTACADA — EL HÍBRIDO PEDIDO */}
+        <div style={{ marginBottom: 32, padding: '24px 28px', background: NAVY, borderRadius: 16 }}>
+          <p style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 3, color: GOLD, fontWeight: 700, marginBottom: 8 }}>
+            ★ Lo que pediste — míralo primero
+          </p>
+          <h2 style={{ fontSize: 30, fontWeight: 800, color: PAPER, letterSpacing: '-0.03em', margin: 0 }}>
+            Sello de A + letras EXACTAS de B + E242
+          </h2>
+          <p style={{ marginTop: 12, fontSize: 15, color: PAPER, opacity: 0.75, maxWidth: 720, lineHeight: 1.5 }}>
+            Ahora las letras T/P son la geometría <strong>literal del modelo B</strong> (T
+            dorada + P azul entrelazadas, no un dibujo aproximado), metidas dentro del
+            <strong> anillo-sello del modelo A</strong>, con "E242" en pequeño. Tres
+            variantes según cómo va el anillo y el E242.
+          </p>
+        </div>
+
+        {XHYBRIDS.map(({ letter, name, desc, Component }) => (
+          <section
+            key={letter}
+            style={{
+              background: '#fff',
+              borderRadius: 16,
+              padding: 32,
+              marginBottom: 32,
+              boxShadow: '0 4px 24px rgba(15,27,45,0.06)',
+              border: `3px solid ${GOLD}`,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24 }}>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  height: 40,
+                  borderRadius: 8,
+                  background: NAVY,
+                  color: GOLD,
+                  fontWeight: 800,
+                  fontSize: 20,
+                  fontFamily: 'Inter, sans-serif',
+                }}
+              >
+                {letter}
+              </span>
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: NAVY, letterSpacing: '-0.02em', margin: 0 }}>
+                {name}
+              </h2>
+            </div>
+            <p style={{ fontSize: 15, color: NAVY, opacity: 0.7, marginBottom: 28, maxWidth: 680, lineHeight: 1.5 }}>
+              {desc}
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+              <div style={{ background: PAPER, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Favicon 32px + 96px + 160px
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 20 }}>
+                  <Component size={32} />
+                  <Component size={96} />
+                </div>
+                <div style={{ marginTop: 16 }}>
+                  <Component size={160} />
+                </div>
+              </div>
+              <div style={{ background: NAVY, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: PAPER, opacity: 0.5, marginBottom: 16 }}>
+                  Header del sitio + Hero grande
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={48} />
+                  <Wordmark scale={1} color={PAPER} />
+                </div>
+                <div style={{ marginTop: 24, display: 'inline-flex', alignItems: 'center', gap: 16 }}>
+                  <Component size={84} />
+                  <Wordmark scale={2.2} color={PAPER} />
+                </div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Monocromo (papelería / fax)
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={56} mono />
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.04em', fontSize: 28, color: NAVY, lineHeight: 1 }}>
+                    Toño Palacios
+                  </span>
+                </div>
+                <p style={{ fontSize: 11, color: NAVY, opacity: 0.6, marginTop: 16, fontFamily: "'Inter', sans-serif" }}>
+                  Antonio Palacios Cambero · Broker hipotecario nº E242 · Presidente ANICI
+                </p>
+              </div>
+              <div style={{ background: GOLD_LIGHT, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.7, marginBottom: 16 }}>
+                  Variante "sello dorado" (PDF premium / certificado)
+                </p>
+                <Component size={120} />
+              </div>
+            </div>
+          </section>
+        ))}
+
+        <p style={{ fontSize: 13, textTransform: 'uppercase', letterSpacing: 3, color: NAVY, opacity: 0.4, fontWeight: 700, marginTop: 56, marginBottom: 20 }}>
+          ── Resto de exploraciones (referencia) ──
+        </p>
 
         {LOGOMARKS.map(({ letter, name, desc, Component }) => (
           <section
