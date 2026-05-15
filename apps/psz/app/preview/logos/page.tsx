@@ -306,6 +306,105 @@ function LogomarkH3({ size = 80, mono = false }: { size?: number; mono?: boolean
   )
 }
 
+// ════════════════════════════════════════════════════════════
+// SELLOS A+B — marco circular de A con el monograma TP de B
+// (la forma de sello de A + las letras geométricas de B)
+// ════════════════════════════════════════════════════════════
+
+// SELLO S1 · Doble anillo + 4 puntos cardinales + TP geométrico + BdE·E242 curvado
+function LogomarkS1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const stroke = mono ? NAVY : GOLD
+  const showText = size >= 44
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      {/* Anillo exterior doble (de A) */}
+      <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="2" />
+      <circle cx="50" cy="50" r="42" fill="none" stroke={stroke} strokeWidth="0.6" />
+      {/* Cuatro puntos cardinales (de A) */}
+      <circle cx="50" cy="6" r="1.6" fill={stroke} />
+      <circle cx="94" cy="50" r="1.6" fill={stroke} />
+      <circle cx="50" cy="94" r="1.6" fill={stroke} />
+      <circle cx="6" cy="50" r="1.6" fill={stroke} />
+      {/* Monograma TP geométrico (de B) */}
+      <TPMonogram cx={50} cy={showText ? 45 : 50} width={42} height={40} tColor={mono ? NAVY : GOLD} pColor={NAVY} />
+      {/* BdE · E242 curvado en la base (de A) */}
+      {showText && (
+        <>
+          <path id="curve-s1" d="M 20 70 a 30 30 0 0 0 60 0" fill="none" />
+          <text fontSize="6.5" fontWeight="700" fill={stroke} fontFamily="'Inter', sans-serif" letterSpacing="3">
+            <textPath href="#curve-s1" startOffset="50%" textAnchor="middle">
+              BdE · E242
+            </textPath>
+          </text>
+        </>
+      )}
+    </svg>
+  )
+}
+
+// SELLO S2 · Moneda/medalla: texto curvado arriba y abajo + TP geométrico centro
+function LogomarkS2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const stroke = mono ? NAVY : GOLD
+  const showText = size >= 56
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="2" />
+      <circle cx="50" cy="50" r="40" fill="none" stroke={stroke} strokeWidth="0.6" />
+      {/* Monograma TP geométrico (de B) */}
+      <TPMonogram cx={50} cy={50} width={40} height={38} tColor={mono ? NAVY : GOLD} pColor={NAVY} />
+      {showText && (
+        <>
+          {/* Arco superior — TOÑO PALACIOS */}
+          <path id="curve-s2-top" d="M 18 50 a 32 32 0 0 1 64 0" fill="none" />
+          <text fontSize="6.5" fontWeight="700" fill={stroke} fontFamily="'Inter', sans-serif" letterSpacing="2.5">
+            <textPath href="#curve-s2-top" startOffset="50%" textAnchor="middle">
+              TOÑO PALACIOS
+            </textPath>
+          </text>
+          {/* Arco inferior — BROKER · E242 */}
+          <path id="curve-s2-bot" d="M 18 50 a 32 32 0 0 0 64 0" fill="none" />
+          <text fontSize="6.5" fontWeight="700" fill={stroke} fontFamily="'Inter', sans-serif" letterSpacing="2.5">
+            <textPath href="#curve-s2-bot" startOffset="50%" textAnchor="middle">
+              BROKER · E242
+            </textPath>
+          </text>
+          {/* Estrellitas separadoras a los lados */}
+          <text x="11" y="52.5" textAnchor="middle" fontSize="6" fill={stroke} fontWeight="700">✦</text>
+          <text x="89" y="52.5" textAnchor="middle" fontSize="6" fill={stroke} fontWeight="700">✦</text>
+        </>
+      )}
+    </svg>
+  )
+}
+
+// SELLO S3 · Anillo único fino + TP geométrico grande + E·242 recto debajo
+function LogomarkS3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const stroke = mono ? NAVY : GOLD
+  const showText = size >= 44
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      {/* Un solo anillo elegante */}
+      <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="1.6" />
+      {/* Monograma TP geométrico grande (de B) */}
+      <TPMonogram cx={50} cy={showText ? 44 : 50} width={48} height={46} tColor={mono ? NAVY : GOLD} pColor={NAVY} />
+      {showText && (
+        <text
+          x="50"
+          y="80"
+          textAnchor="middle"
+          fontSize="9"
+          fontWeight="700"
+          fontFamily="'Inter', sans-serif"
+          letterSpacing="3"
+          fill={stroke}
+        >
+          E·242
+        </text>
+      )}
+    </svg>
+  )
+}
+
 // ────────────────────────────────────────────────────────────
 // Wordmark (común a todos)
 // ────────────────────────────────────────────────────────────
@@ -355,6 +454,27 @@ const HYBRIDS = [
     name: 'Híbrido — TP centrado + E·242 firma esquina',
     desc: 'El más minimalista. El TP ocupa todo el espacio sin perder protagonismo. El "E·242" aparece como firma pequeña en la esquina inferior derecha — como las marcas de pintor. Apenas se nota pero está siempre presente.',
     Component: LogomarkH3,
+  },
+] as const
+
+const SEALS = [
+  {
+    letter: 'S1',
+    name: 'Sello — doble anillo + TP geométrico + BdE·E242 curvado',
+    desc: 'La combinación más directa de lo que pediste: el marco de sello de la A (doble anillo + 4 puntos cardinales + "BdE · E242" curvado en la base) pero con el monograma TP geométrico entrelazado de la B en el centro, en vez del "TP" tipográfico. En favicon se oculta el texto curvado y queda anillo + monograma.',
+    Component: LogomarkS1,
+  },
+  {
+    letter: 'S2',
+    name: 'Sello — moneda/medalla con texto arriba y abajo',
+    desc: 'Tipo moneda conmemorativa o sello notarial completo: "TOÑO PALACIOS" curvado en el arco superior, "BROKER · E242" en el inferior, estrellitas a los lados y el monograma TP geométrico en el centro. El más institucional. Necesita tamaño grande para leerse (se simplifica en favicon).',
+    Component: LogomarkS2,
+  },
+  {
+    letter: 'S3',
+    name: 'Sello — anillo único fino + TP grande + E·242 recto',
+    desc: 'El más limpio de los sellos: un solo aro fino, el monograma TP geométrico grande y protagonista, y "E·242" en texto recto pequeño debajo. Mantiene la forma de sello de A pero con mucho aire. Escala muy bien a tamaños medianos.',
+    Component: LogomarkS3,
   },
 ] as const
 
@@ -592,6 +712,107 @@ export default function PreviewLogosPage() {
           </section>
         ))}
 
+        {/* SECCIÓN SELLOS A+B */}
+        <div style={{ marginTop: 64, marginBottom: 32, padding: '24px 0', borderTop: `3px solid ${NAVY}`, borderBottom: `3px solid ${NAVY}` }}>
+          <p style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 3, color: NAVY, fontWeight: 700, marginBottom: 8 }}>
+            Segunda combinación pedida
+          </p>
+          <h2 style={{ fontSize: 32, fontWeight: 800, color: NAVY, letterSpacing: '-0.03em', margin: 0 }}>
+            Sellos A + B — la forma de sello de A con las letras de B
+          </h2>
+          <p style={{ marginTop: 12, fontSize: 15, color: NAVY, opacity: 0.7, maxWidth: 720, lineHeight: 1.5 }}>
+            Pediste la <strong>forma de sello circular de la A</strong> pero con el
+            <strong> monograma TP geométrico entrelazado de la B</strong> (no el "TP"
+            tipográfico). Aquí tienes tres densidades distintas del mismo concepto.
+          </p>
+        </div>
+
+        {SEALS.map(({ letter, name, desc, Component }) => (
+          <section
+            key={letter}
+            style={{
+              background: '#fff',
+              borderRadius: 16,
+              padding: 32,
+              marginBottom: 32,
+              boxShadow: '0 4px 24px rgba(15,27,45,0.06)',
+              border: `2px solid ${NAVY}`,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24 }}>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  height: 40,
+                  borderRadius: 8,
+                  background: GOLD,
+                  color: NAVY,
+                  fontWeight: 800,
+                  fontSize: 20,
+                  fontFamily: 'Inter, sans-serif',
+                }}
+              >
+                {letter}
+              </span>
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: NAVY, letterSpacing: '-0.02em', margin: 0 }}>
+                {name}
+              </h2>
+            </div>
+            <p style={{ fontSize: 15, color: NAVY, opacity: 0.7, marginBottom: 28, maxWidth: 680, lineHeight: 1.5 }}>
+              {desc}
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+              <div style={{ background: PAPER, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Favicon 32px (simplificado) + 96px (completo)
+                </p>
+                <Component size={32} />
+                <div style={{ marginTop: 16 }}>
+                  <Component size={96} />
+                </div>
+              </div>
+              <div style={{ background: NAVY, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: PAPER, opacity: 0.5, marginBottom: 16 }}>
+                  Header del sitio + Hero grande
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={48} />
+                  <Wordmark scale={1} color={PAPER} />
+                </div>
+                <div style={{ marginTop: 24, display: 'inline-flex', alignItems: 'center', gap: 16 }}>
+                  <Component size={84} />
+                  <Wordmark scale={2.2} color={PAPER} />
+                </div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Monocromo (papelería / fax)
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={56} mono />
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.04em', fontSize: 28, color: NAVY, lineHeight: 1 }}>
+                    Toño Palacios
+                  </span>
+                </div>
+                <p style={{ fontSize: 11, color: NAVY, opacity: 0.6, marginTop: 16, fontFamily: "'Inter', sans-serif" }}>
+                  Antonio Palacios Cambero · Broker hipotecario nº E242 · Presidente ANICI
+                </p>
+              </div>
+              <div style={{ background: GOLD_LIGHT, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.7, marginBottom: 16 }}>
+                  Variante "sello dorado" (PDF premium / certificado)
+                </p>
+                <Component size={96} />
+              </div>
+            </div>
+          </section>
+        ))}
+
         {/* Footer con instrucciones */}
         <footer style={{ marginTop: 48, padding: '32px', background: '#fff', borderRadius: 16, border: `2px solid ${GOLD}` }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Cómo decidir</h2>
@@ -605,9 +826,18 @@ export default function PreviewLogosPage() {
             <li><strong>H2</strong>: más explícito. Chip con "BdE Nº E242" — útil si quieres reforzar el origen institucional.</li>
             <li><strong>H3</strong>: el más minimalista. TP grande sin distracciones; E·242 como firma de esquina.</li>
           </ul>
+          <p style={{ fontSize: 15, color: NAVY, opacity: 0.8, marginTop: 20, marginBottom: 12, lineHeight: 1.6 }}>
+            Y la <strong>segunda combinación</strong> que pediste — forma de sello de A con
+            las letras geométricas de B — está en las opciones <strong>S1, S2, S3</strong>:
+          </p>
+          <ul style={{ fontSize: 14, color: NAVY, opacity: 0.7, lineHeight: 1.8, paddingLeft: 20 }}>
+            <li><strong>S1</strong>: doble anillo + 4 puntos + "BdE·E242" curvado. La traducción más fiel de lo que pediste.</li>
+            <li><strong>S2</strong>: tipo moneda/medalla, con "TOÑO PALACIOS" arriba y "BROKER·E242" abajo. El más institucional.</li>
+            <li><strong>S3</strong>: anillo único fino + TP grande + E·242 recto. El más limpio y moderno.</li>
+          </ul>
           <p style={{ marginTop: 24, fontSize: 14, color: NAVY }}>
-            Dime <strong>"voy con H1"</strong> (o H2 / H3) y procedo a implementarlo en:
-            header, SelloPalacios, favicon, OG images y PDF.
+            Dime <strong>"voy con S1"</strong> (o H1 / H2 / H3 / S2 / S3 / A / B…) y procedo a
+            implementarlo en: header, SelloPalacios, favicon, OG images y PDF.
           </p>
         </footer>
       </div>
