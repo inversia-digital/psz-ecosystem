@@ -307,6 +307,162 @@ function LogomarkH3({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // ════════════════════════════════════════════════════════════
+// DIRECCIÓN PROFESIONAL — banca privada / notarial (bespoke)
+// Monolínea custom + serif fino + microtexto de seguridad.
+// Nada de bloques rectangulares ni estrellitas.
+// ════════════════════════════════════════════════════════════
+
+const SERIF = "'Hoefler Text', 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+
+/**
+ * Ligadura TP monolínea, dibujada a mano (paths, no tipografía).
+ * El asta vertical es compartida por la T y la P — ligadura real.
+ */
+function MonolineTP({ cx = 50, cy = 50, s = 1, navy = NAVY, gold = GOLD }: { cx?: number; cy?: number; s?: number; navy?: string; gold?: string }) {
+  return (
+    <g transform={`translate(${cx} ${cy}) scale(${s}) translate(${-50} ${-50})`} fill="none" strokeLinecap="round">
+      {/* T: travesaño + asta compartida (navy) */}
+      <path d="M 30 32 H 70" stroke={navy} strokeWidth="3.4" />
+      <path d="M 50 32 V 74" stroke={navy} strokeWidth="3.4" />
+      {/* P: ojo a la derecha colgando del asta (oro) */}
+      <path d="M 50 35.5 H 60 A 10.5 10.5 0 0 1 60 56.5 H 50" stroke={gold} strokeWidth="3.4" />
+    </g>
+  )
+}
+
+// P1 · Ligadura TP monolínea, sin marco — marca pura tipo banca privada
+function LogomarkP1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const navy = NAVY
+  const gold = mono ? NAVY : GOLD
+  const showText = size >= 44
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <MonolineTP cx={50} cy={showText ? 46 : 50} s={0.96} navy={navy} gold={gold} />
+      {showText && (
+        <>
+          <line x1="38" y1="78" x2="62" y2="78" stroke={mono ? NAVY : GOLD} strokeWidth="0.8" />
+          <text x="50" y="89" textAnchor="middle" fontSize="7.5" fontWeight={600} fontFamily={SERIF} letterSpacing="4" fill={navy}>
+            E·242
+          </text>
+        </>
+      )}
+    </svg>
+  )
+}
+
+// P2 · Sello intaglio: anillos finos + microtexto de seguridad + ligadura
+function LogomarkP2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const ink = mono ? NAVY : GOLD
+  const showText = size >= 56
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      {/* Anillos concéntricos finos (grabado calcográfico) */}
+      <circle cx="50" cy="50" r="47" fill="none" stroke={ink} strokeWidth="1" />
+      <circle cx="50" cy="50" r="44.5" fill="none" stroke={ink} strokeWidth="0.5" />
+      <circle cx="50" cy="50" r="33" fill="none" stroke={ink} strokeWidth="0.5" />
+      {showText && (
+        <>
+          {/* Microtexto circular de seguridad */}
+          <path id="ring-p2" d="M 50 11 a 39 39 0 1 1 -0.01 0" fill="none" />
+          <text fontSize="4.6" fontWeight={600} fill={ink} fontFamily={SERIF} letterSpacing="1.3">
+            <textPath href="#ring-p2" startOffset="0">
+              ANTONIO PALACIOS CAMBERO · BROKER HIPOTECARIO · Nº E242 BANCO DE ESPAÑA ·&nbsp;
+            </textPath>
+          </text>
+        </>
+      )}
+      {/* Ligadura TP serif fina al centro */}
+      <text x="50" y="64" textAnchor="middle" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={NAVY} letterSpacing="-2">
+        <tspan fill={NAVY}>T</tspan><tspan fill={mono ? NAVY : GOLD}>P</tspan>
+      </text>
+    </svg>
+  )
+}
+
+// P3 · Signet: roundel macizo navy, TP en oro en hueco, keyline fino
+function LogomarkP3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const disc = mono ? PAPER : NAVY
+  const letter = mono ? NAVY : GOLD
+  const ring = mono ? NAVY : GOLD
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <circle cx="50" cy="50" r="47" fill="none" stroke={ring} strokeWidth="1" />
+      <circle cx="50" cy="50" r="43" fill={disc} stroke={mono ? NAVY : 'none'} strokeWidth={mono ? 1 : 0} />
+      <text x="50" y="63" textAnchor="middle" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={letter} letterSpacing="-2">
+        TP
+      </text>
+      <text x="50" y="78" textAnchor="middle" fontSize="6" fontWeight={600} fontFamily={SERIF} letterSpacing="3" fill={letter} opacity={0.85}>
+        E·242
+      </text>
+    </svg>
+  )
+}
+
+// P4 · Logotipo serif (la firma ES el logo) — abogados / asesores premium
+function LogomarkP4({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  // Marca tipográfica; el "size" controla la altura del bloque
+  const accent = mono ? NAVY : GOLD
+  return (
+    <svg width={size * 2.6} height={size} viewBox="0 0 260 100" aria-hidden>
+      <text x="130" y="44" textAnchor="middle" fontSize="38" fontWeight={500} fontFamily={SERIF} fill={NAVY} letterSpacing="0.5">
+        Toño Palacios
+      </text>
+      <line x1="40" y1="58" x2="220" y2="58" stroke={accent} strokeWidth="0.8" />
+      <text x="130" y="74" textAnchor="middle" fontSize="9" fontWeight={600} fontFamily={SERIF} letterSpacing="5" fill={NAVY} opacity={0.75}>
+        BROKER HIPOTECARIO
+      </text>
+      <text x="130" y="88" textAnchor="middle" fontSize="7" fontWeight={600} fontFamily={SERIF} letterSpacing="3" fill={accent}>
+        Nº E242 · BANCO DE ESPAÑA
+      </text>
+    </svg>
+  )
+}
+
+// P5 · Iniciales serif en marco fino con esquinas — suizo / arquitectónico
+function LogomarkP5({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const line = mono ? NAVY : GOLD
+  const showText = size >= 40
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      {/* Marco doble fino */}
+      <rect x="12" y="12" width="76" height="76" fill="none" stroke={line} strokeWidth="1" />
+      <rect x="16" y="16" width="68" height="68" fill="none" stroke={line} strokeWidth="0.5" />
+      {/* Ticks de esquina */}
+      <path d="M 12 24 V 12 H 24 M 88 24 V 12 H 76 M 12 76 V 88 H 24 M 88 76 V 88 H 76" fill="none" stroke={line} strokeWidth="1.4" />
+      <text x="50" y="58" textAnchor="middle" fontSize="34" fontWeight={500} fontFamily={SERIF} fill={NAVY} letterSpacing="-1">
+        <tspan fill={NAVY}>T</tspan><tspan fill={mono ? NAVY : GOLD}>P</tspan>
+      </text>
+      {showText && (
+        <text x="50" y="74" textAnchor="middle" fontSize="6.5" fontWeight={600} fontFamily={SERIF} letterSpacing="3" fill={line}>
+          E·242
+        </text>
+      )}
+    </svg>
+  )
+}
+
+// P6 · Monograma serif partido por filete vertical — heráldico moderno
+function LogomarkP6({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+  const accent = mono ? NAVY : GOLD
+  const showText = size >= 40
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
+      <line x1="50" y1="20" x2="50" y2="62" stroke={accent} strokeWidth="0.8" />
+      <text x="44" y="56" textAnchor="end" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={NAVY}>T</text>
+      <text x="56" y="56" textAnchor="start" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={mono ? NAVY : GOLD}>P</text>
+      {showText && (
+        <>
+          <line x1="26" y1="74" x2="74" y2="74" stroke={accent} strokeWidth="0.8" />
+          <text x="50" y="86" textAnchor="middle" fontSize="7" fontWeight={600} fontFamily={SERIF} letterSpacing="4" fill={NAVY}>
+            E·242
+          </text>
+        </>
+      )}
+    </svg>
+  )
+}
+
+// ════════════════════════════════════════════════════════════
 // ★ EL HÍBRIDO PEDIDO — sello de A + letras EXACTAS de B + E242
 // La T/P son la geometría literal de LogomarkB, escalada con
 // transform para caber dentro del anillo-sello de LogomarkA.
@@ -592,6 +748,45 @@ const SEALS = [
   },
 ] as const
 
+const PRO = [
+  {
+    letter: 'P1',
+    name: 'Ligadura TP monolínea — banca privada',
+    desc: 'Dibujada a mano (paths vectoriales, no una fuente). El asta vertical la comparten la T y la P: es una ligadura real. Trazo fino uniforme, sin marco. Es la referencia de marca personal de banca privada (Lombard Odier, Pictet). El más bespoke y atemporal.',
+    Component: LogomarkP1,
+  },
+  {
+    letter: 'P2',
+    name: 'Sello intaglio — microtexto de seguridad',
+    desc: 'Anillos concéntricos finos (grabado calcográfico, como un billete o un sello notarial) con microtexto circular real: "ANTONIO PALACIOS CAMBERO · BROKER HIPOTECARIO · Nº E242 BANCO DE ESPAÑA". La credibilidad institucional hecha logo. Necesita tamaño; en favicon se simplifica.',
+    Component: LogomarkP2,
+  },
+  {
+    letter: 'P3',
+    name: 'Signet — roundel macizo, TP en hueco',
+    desc: 'Disco navy sólido con la TP en oro reservada en el hueco y un keyline fino exterior. Estética de anillo de sello / signet (Asprey, Coutts). Máximo contraste, lectura instantánea a cualquier tamaño, impecable como favicon.',
+    Component: LogomarkP3,
+  },
+  {
+    letter: 'P4',
+    name: 'Logotipo serif — la firma ES el logo',
+    desc: 'Para un profesional, muchas veces el nombre bien compuesto es la mejor marca (despachos de abogados, family offices). "Toño Palacios" en serif fino, filete, y bajada "BROKER HIPOTECARIO · Nº E242 BANCO DE ESPAÑA". Sobrio, autoritativo, sin iconografía.',
+    Component: LogomarkP4,
+  },
+  {
+    letter: 'P5',
+    name: 'Iniciales serif en marco — suizo',
+    desc: 'TP en serif fino dentro de un marco doble fino con ticks de esquina arquitectónicos. Estética de banca privada suiza. Ordenado, geométrico pero elegante, con "E·242" integrado.',
+    Component: LogomarkP5,
+  },
+  {
+    letter: 'P6',
+    name: 'Monograma serif partido por filete',
+    desc: 'T y P en serif fino separadas/unidas por un filete vertical, y un filete inferior con "E·242". Heráldico moderno y minimalista, mucho aire.',
+    Component: LogomarkP6,
+  },
+] as const
+
 const XHYBRIDS = [
   {
     letter: 'X1',
@@ -631,6 +826,111 @@ export default function PreviewLogosPage() {
             definitivo en header, footer, OG images, PDF y favicon.
           </p>
         </header>
+
+        {/* ███ DIRECCIÓN PROFESIONAL — MIRAR ESTO PRIMERO ███ */}
+        <div style={{ marginBottom: 32, padding: '28px 32px', background: NAVY, borderRadius: 16, border: `2px solid ${GOLD}` }}>
+          <p style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 4, color: GOLD, fontWeight: 700, marginBottom: 8 }}>
+            Nueva dirección · banca privada / notarial
+          </p>
+          <h2 style={{ fontSize: 32, fontWeight: 800, color: PAPER, letterSpacing: '-0.03em', margin: 0 }}>
+            Bespoke, no genérico
+          </h2>
+          <p style={{ marginTop: 12, fontSize: 15, color: PAPER, opacity: 0.78, maxWidth: 760, lineHeight: 1.55 }}>
+            Cambio total de enfoque. Fuera bloques rectangulares y estrellitas. Aquí hay
+            <strong> seis conceptos distintos</strong> con la referencia estética de la banca
+            privada europea (Lombard Odier, Pictet, Coutts) y el sello notarial: ligadura
+            monolínea dibujada a mano, microtexto de seguridad, signet macizo, logotipo
+            serif. Tipografía serif fina — nada que parezca una plantilla.
+          </p>
+        </div>
+
+        {PRO.map(({ letter, name, desc, Component }) => (
+          <section
+            key={letter}
+            style={{
+              background: '#fff',
+              borderRadius: 16,
+              padding: 32,
+              marginBottom: 32,
+              boxShadow: '0 4px 24px rgba(15,27,45,0.06)',
+              border: `3px solid ${NAVY}`,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24 }}>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  height: 40,
+                  borderRadius: 8,
+                  background: NAVY,
+                  color: GOLD,
+                  fontWeight: 800,
+                  fontSize: 20,
+                  fontFamily: 'Inter, sans-serif',
+                }}
+              >
+                {letter}
+              </span>
+              <h2 style={{ fontSize: 22, fontWeight: 700, color: NAVY, letterSpacing: '-0.02em', margin: 0 }}>
+                {name}
+              </h2>
+            </div>
+            <p style={{ fontSize: 15, color: NAVY, opacity: 0.7, marginBottom: 28, maxWidth: 700, lineHeight: 1.55 }}>
+              {desc}
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+              <div style={{ background: PAPER, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Favicon 32px + 96px + 160px
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 20 }}>
+                  <Component size={32} />
+                  <Component size={96} />
+                </div>
+                <div style={{ marginTop: 16 }}>
+                  <Component size={160} />
+                </div>
+              </div>
+              <div style={{ background: NAVY, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: PAPER, opacity: 0.5, marginBottom: 16 }}>
+                  Header del sitio + Hero grande
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={48} />
+                  <Wordmark scale={1} color={PAPER} />
+                </div>
+                <div style={{ marginTop: 24 }}>
+                  <Component size={96} />
+                </div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.5, marginBottom: 16 }}>
+                  Monocromo (papelería / fax)
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <Component size={56} mono />
+                  <span style={{ fontFamily: SERIF, fontWeight: 500, fontSize: 30, color: NAVY, lineHeight: 1 }}>
+                    Toño Palacios
+                  </span>
+                </div>
+                <p style={{ fontSize: 11, color: NAVY, opacity: 0.6, marginTop: 16, fontFamily: SERIF }}>
+                  Antonio Palacios Cambero · Broker hipotecario nº E242 · Presidente ANICI
+                </p>
+              </div>
+              <div style={{ background: GOLD_LIGHT, border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+                <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.7, marginBottom: 16 }}>
+                  Variante dorada (PDF premium / certificado)
+                </p>
+                <Component size={120} />
+              </div>
+            </div>
+          </section>
+        ))}
 
         {/* ★ SECCIÓN DESTACADA — EL HÍBRIDO PEDIDO */}
         <div style={{ marginBottom: 32, padding: '24px 28px', background: NAVY, borderRadius: 16 }}>
