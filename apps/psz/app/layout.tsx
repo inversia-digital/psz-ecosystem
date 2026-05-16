@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Cormorant_Garamond } from 'next/font/google'
 import Script from 'next/script'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -22,6 +22,15 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+})
+
+// Fuente del logotipo (monograma T·P). Se empaqueta para que el logo se
+// renderice IDÉNTICO en todos los navegadores (sin fallback a Times).
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-cormorant',
 })
 
 export const metadata: Metadata = {
@@ -149,7 +158,7 @@ function SourceCredit() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
       {/* CONSENT MODE V2 — defaults DENIED por RGPD + LSSI. Tiene que ir
           ANTES de GoogleTagManager para que el primer hit lleve las señales
           de consentimiento al servidor. Cuando aparezca el banner de

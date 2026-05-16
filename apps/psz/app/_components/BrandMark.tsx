@@ -20,8 +20,15 @@ export const BRAND = { navy: NAVY, gold: GOLD, white: WHITE } as const
 
 export type BrandBg = 'light' | 'dark' | 'gold'
 
+// Para rasterizado (OG/favicon): nombre literal, mejor esfuerzo.
 const SERIF =
-  "'Hoefler Text', 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+  "'Cormorant Garamond', 'Hoefler Text', Georgia, 'Times New Roman', serif"
+
+// Para el DOM: usa la fuente EMPAQUETADA por next/font (variable CSS),
+// así el logo se ve idéntico en todos los navegadores. Las variables CSS
+// solo resuelven vía `style`, no vía atributo SVG font-family.
+const SERIF_DOM =
+  "var(--font-cormorant), 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
 
 /** adapt() EXACTO del original: si el base choca con el fondo → blanco. */
 function adapt(base: string, bg: BrandBg): string {
@@ -162,7 +169,7 @@ export function BrandMark({
         textAnchor="end"
         fontSize="40"
         fontWeight={500}
-        fontFamily={SERIF}
+        style={{ fontFamily: SERIF_DOM }}
         fill={tColor}
       >
         T
@@ -173,7 +180,7 @@ export function BrandMark({
         textAnchor="start"
         fontSize="40"
         fontWeight={500}
-        fontFamily={SERIF}
+        style={{ fontFamily: SERIF_DOM }}
         fill={pColor}
       >
         P
@@ -188,7 +195,7 @@ export function BrandMark({
             fontSize="7"
             fontWeight={600}
             letterSpacing="4"
-            fontFamily={SERIF}
+            style={{ fontFamily: SERIF_DOM }}
             fill={e242}
           >
             E·242
