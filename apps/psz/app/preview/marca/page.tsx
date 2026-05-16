@@ -187,7 +187,7 @@ export default function ManualDeMarcaPage() {
           </Card>
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 18, marginTop: 18 }}>
             <Card pad={32}>
-              <Label>Con firma — desde 72 px (web, papelería, PDF)</Label>
+              <Label>Con firma — desde 40 px (web, papelería, PDF)</Label>
               <div style={{ display: 'flex', alignItems: 'flex-end', gap: 40, justifyContent: 'center' }}>
                 {[96, 140].map((s) => (
                   <div key={s} style={{ textAlign: 'center' }}>
@@ -210,8 +210,8 @@ export default function ManualDeMarcaPage() {
             </Card>
           </div>
           <p style={{ fontSize: 13.5, color: INK_MUTED, marginTop: 14, lineHeight: 1.5 }}>
-            Por debajo de 72 px se omite la firma por legibilidad: queda sólo el monograma,
-            centrado. El componente lo decide solo; forzable con la prop <code>registry</code>.
+            Por debajo de 40 px se omite “E·242” por legibilidad: queda sólo el monograma.
+            El componente lo decide solo; forzable con la prop <code>registry</code>.
           </p>
         </Section>
 
