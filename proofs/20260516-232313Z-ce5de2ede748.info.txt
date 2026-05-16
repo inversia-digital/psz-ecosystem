@@ -1,0 +1,26 @@
+OpenTimestamps proof of authorship
+===================================
+
+Repository: psz-ecosystem
+Commit (full):   ce5de2ede748e9c2fd0d388ed14a6ad709301009
+Commit (short):  ce5de2ede748
+Anchored (UTC):  20260516-232313Z
+SHA-256 (tar.gz of HEAD): 8651aec55eb3d3a6a873b3afc2bf09f84cfb4c99b309afa499e7cb7d58dcccbe
+
+Proof file: 20260516-232313Z-ce5de2ede748.tar.gz.ots
+
+Verification:
+  1. Checkout exactly this commit:  git checkout ce5de2ede748e9c2fd0d388ed14a6ad709301009
+  2. Regenerate the same tarball:   git archive --format=tar HEAD | gzip -n > repo.tar.gz
+  3. Verify the SHA-256 matches the one above.
+  4. Run: ots verify 20260516-232313Z-ce5de2ede748.tar.gz.ots repo.tar.gz
+
+If the OTS proof is anchored in a Bitcoin block (typically after
+1-24 hours), `ots verify` confirms the cryptographic timestamp.
+Before that, the proof is 'pending' but still cryptographically
+committed at the calendar servers.
+
+Legal value: eIDAS-compatible (Reg. UE 910/2014) evidence of
+authorship date. Bitcoin's chain cannot be retroactively modified
+without rewriting thousands of subsequent blocks (computationally
+infeasible).
