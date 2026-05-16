@@ -20,14 +20,12 @@ export const BRAND = { navy: NAVY, gold: GOLD, white: WHITE } as const
 
 export type BrandBg = 'light' | 'dark' | 'gold'
 
-// Para rasterizado (OG/favicon): nombre literal, mejor esfuerzo.
-const SERIF = "Georgia, Gelasio, 'Times New Roman', serif"
-
-// Para el DOM: Georgia primero (el aspecto aprobado en Windows) y, si no
-// existe, Gelasio empaquetada por next/font (métricamente IDÉNTICA a
-// Georgia). Las variables CSS solo resuelven vía `style`, no vía atributo.
-const SERIF_DOM =
-  "Georgia, var(--font-gelasio), Gelasio, 'Times New Roman', serif"
+// EXACTAMENTE la misma font-family que el LogomarkP6 original de
+// /preview/logos. Sin fuentes empaquetadas: se renderiza igual que el
+// P6 aprobado (en Windows → Georgia).
+const SERIF =
+  "'Hoefler Text', 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+const SERIF_DOM = SERIF
 
 /** adapt() EXACTO del original: si el base choca con el fondo → blanco. */
 function adapt(base: string, bg: BrandBg): string {

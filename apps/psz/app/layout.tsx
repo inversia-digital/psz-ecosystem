@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Gelasio } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -22,16 +22,6 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-})
-
-// Fuente del logotipo (monograma T·P). Gelasio es métricamente
-// compatible con Georgia: en máquinas con Georgia se ve Georgia; en el
-// resto, Gelasio (idéntica). Así el logo es IGUAL en todos lados.
-const gelasio = Gelasio({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-gelasio',
 })
 
 export const metadata: Metadata = {
@@ -159,7 +149,7 @@ function SourceCredit() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${gelasio.variable}`}>
+    <html lang="es" className={inter.variable}>
       {/* CONSENT MODE V2 — defaults DENIED por RGPD + LSSI. Tiene que ir
           ANTES de GoogleTagManager para que el primer hit lleve las señales
           de consentimiento al servidor. Cuando aparezca el banner de
