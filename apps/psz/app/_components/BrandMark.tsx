@@ -120,15 +120,35 @@ export function brandMarkSvg(opts: {
   )
 }
 
+// Base64 100% JS — sin Buffer (Node) ni unescape (deprecado). Seguro en
+// Edge Runtime, navegador y Node. El bundler Edge de Vercel rechaza
+// cualquier referencia a Buffer aunque esté guardada por typeof.
+const B64_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+
+function base64FromBytes(bytes: number[]): string {
+  let out = ''
+  for (let i = 0; i < bytes.length; i += 3) {
+    const b0 = bytes[i]!
+    const b1 = i + 1 < bytes.length ? bytes[i + 1]! : 0
+    const b2 = i + 2 < bytes.length ? bytes[i + 2]! : 0
+    out += B64_ALPHABET[b0 >> 2]
+    out += B64_ALPHABET[((b0 & 3) << 4) | (b1 >> 4)]
+    out += i + 1 < bytes.length ? B64_ALPHABET[((b1 & 15) << 2) | (b2 >> 6)] : '='
+    out += i + 2 < bytes.length ? B64_ALPHABET[b2 & 63] : '='
+  }
+  return out
+}
+
 /** data-URI listo para <img src> en Open Graph / favicon / PDF. */
 export function brandMarkDataUri(opts: Parameters<typeof brandMarkSvg>[0] = {}): string {
   const svg = brandMarkSvg(opts)
-  // Edge-safe: btoa existe en edge runtime y navegador; Buffer en Node.
-  const b64 =
-    typeof btoa === 'function'
-      ? btoa(unescape(encodeURIComponent(svg)))
-      : Buffer.from(svg, 'utf-8').toString('base64')
-  return `data:image/svg+xml;base64,${b64}`
+  // UTF-8 → bytes sin APIs de Node
+  const utf8 = encodeURIComponent(svg).replace(/%([0-9A-Fa-f]{2})/g, (_, h) =>
+    String.fromCharCode(parseInt(h, 16)),
+  )
+  const bytes: number[] = []
+  for (let i = 0; i < utf8.length; i++) bytes.push(utf8.charCodeAt(i) & 0xff)
+  return `data:image/svg+xml;base64,${base64FromBytes(bytes)}`
 }
 
 /** Componente React para el DOM. */
