@@ -84,7 +84,7 @@ export function brandMarkSvg(opts: {
   registry?: boolean
 } = {}): string {
   const { size = 80, bg = 'light', mono = false, inverse = false } = opts
-  const registry = opts.registry ?? size >= 40
+  const registry = opts.registry ?? size >= 72
   const { t, p, rule } = resolveColors(bg, mono, inverse)
 
   const tp = (baseline: number, fs: number) =>
@@ -96,8 +96,8 @@ export function brandMarkSvg(opts: {
       tp(56, 40) +
       `<line x1="26" y1="74" x2="74" y2="74" stroke="${rule}" stroke-width="0.8"/>` +
       `<text x="50" y="86" text-anchor="middle" font-family="${SERIF}" font-size="7" font-weight="600" letter-spacing="4" fill="${t}">Nº E242</text>`
-    : `<line x1="50" y1="31" x2="50" y2="69" stroke="${rule}" stroke-width="0.8"/>` +
-      tp(65, 44)
+    : `<line x1="50" y1="28" x2="50" y2="72" stroke="${rule}" stroke-width="0.8"/>` +
+      tp(63, 40)
 
   return (
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 100 100">` +
@@ -146,10 +146,10 @@ export function BrandMark({
   className,
   title = 'Toño Palacios — broker hipotecario nº E242',
 }: BrandMarkProps) {
-  const showRegistry = registry ?? size >= 40
+  const showRegistry = registry ?? size >= 72
   const { t, p, rule } = resolveColors(bg, mono, inverse)
-  const baseline = showRegistry ? 56 : 65
-  const fs = showRegistry ? 40 : 44
+  const baseline = showRegistry ? 56 : 63
+  const fs = 40
   return (
     <svg
       width={size}
@@ -162,9 +162,9 @@ export function BrandMark({
     >
       <line
         x1="50"
-        y1={showRegistry ? 20 : 31}
+        y1={showRegistry ? 20 : 28}
         x2="50"
-        y2={showRegistry ? 62 : 69}
+        y2={showRegistry ? 62 : 72}
         stroke={rule}
         strokeWidth="0.8"
       />

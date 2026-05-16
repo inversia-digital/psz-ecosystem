@@ -177,33 +177,41 @@ export default function ManualDeMarcaPage() {
             centrado. Filete inferior + <strong>Nº E242</strong> es la “firma registral”. Se
             renderiza desde un único componente, idéntico en pantalla, favicon, redes y PDF.
           </p>
-          <Card pad={36}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                justifyContent: 'space-around',
-                gap: 24,
-                flexWrap: 'wrap',
-              }}
-            >
-              {[40, 64, 96, 160].map((s) => (
-                <div key={s} style={{ textAlign: 'center' }}>
-                  <BrandMark size={s} bg="light" />
-                  <p style={{ fontSize: 11, color: INK_MUTED, marginTop: 10 }}>{s}px</p>
-                </div>
-              ))}
-              <div style={{ textAlign: 'center' }}>
-                <BrandMark size={32} bg="light" registry={false} />
-                <p style={{ fontSize: 11, color: INK_MUTED, marginTop: 10 }}>
-                  32px · sin firma
-                </p>
-              </div>
+          <Card pad={44}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <BrandMark size={220} bg="light" />
             </div>
+            <p style={{ fontSize: 12, color: INK_MUTED, marginTop: 16, textAlign: 'center' }}>
+              Marca completa (con firma registral)
+            </p>
           </Card>
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 18, marginTop: 18 }}>
+            <Card pad={32}>
+              <Label>Con firma — desde 72 px (web, papelería, PDF)</Label>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 40, justifyContent: 'center' }}>
+                {[96, 140].map((s) => (
+                  <div key={s} style={{ textAlign: 'center' }}>
+                    <BrandMark size={s} bg="light" />
+                    <p style={{ fontSize: 11, color: INK_MUTED, marginTop: 10 }}>{s}px</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+            <Card pad={32}>
+              <Label>Sin firma — favicon / usos pequeños</Label>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 22, justifyContent: 'center' }}>
+                {[32, 48, 64].map((s) => (
+                  <div key={s} style={{ textAlign: 'center' }}>
+                    <BrandMark size={s} bg="light" registry={false} />
+                    <p style={{ fontSize: 11, color: INK_MUTED, marginTop: 10 }}>{s}px</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
           <p style={{ fontSize: 13.5, color: INK_MUTED, marginTop: 14, lineHeight: 1.5 }}>
-            Por debajo de 40 px se omite “Nº E242” por legibilidad: queda sólo el monograma. El
-            componente lo hace automáticamente; puede forzarse con la prop <code>registry</code>.
+            Por debajo de 72 px se omite la firma por legibilidad: queda sólo el monograma,
+            centrado. El componente lo decide solo; forzable con la prop <code>registry</code>.
           </p>
         </Section>
 
