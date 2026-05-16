@@ -87,17 +87,19 @@ export function brandMarkSvg(opts: {
   const registry = opts.registry ?? size >= 72
   const { t, p, rule } = resolveColors(bg, mono, inverse)
 
+  // T y P separadas con hueco real; barra central DENTRO del hueco,
+  // sin tocar las letras. Trazo ligero (peso 400).
   const tp = (baseline: number, fs: number) =>
-    `<text x="44" y="${baseline}" text-anchor="end" font-family="${SERIF}" font-size="${fs}" font-weight="500" fill="${t}">T</text>` +
-    `<text x="56" y="${baseline}" text-anchor="start" font-family="${SERIF}" font-size="${fs}" font-weight="500" fill="${p}">P</text>`
+    `<text x="42" y="${baseline}" text-anchor="end" font-family="${SERIF}" font-size="${fs}" font-weight="400" fill="${t}">T</text>` +
+    `<text x="58" y="${baseline}" text-anchor="start" font-family="${SERIF}" font-size="${fs}" font-weight="400" fill="${p}">P</text>`
 
   const body = registry
-    ? `<line x1="50" y1="20" x2="50" y2="62" stroke="${rule}" stroke-width="0.8"/>` +
-      tp(56, 40) +
-      `<line x1="26" y1="74" x2="74" y2="74" stroke="${rule}" stroke-width="0.8"/>` +
-      `<text x="50" y="86" text-anchor="middle" font-family="${SERIF}" font-size="7" font-weight="600" letter-spacing="4" fill="${t}">Nº E242</text>`
-    : `<line x1="50" y1="28" x2="50" y2="72" stroke="${rule}" stroke-width="0.8"/>` +
-      tp(63, 40)
+    ? `<line x1="50" y1="30" x2="50" y2="64" stroke="${rule}" stroke-width="0.7"/>` +
+      tp(54, 34) +
+      `<line x1="24" y1="70" x2="76" y2="70" stroke="${rule}" stroke-width="0.7"/>` +
+      `<text x="50" y="83" text-anchor="middle" font-family="${SERIF}" font-size="7" font-weight="500" letter-spacing="4" fill="${t}">Nº E242</text>`
+    : `<line x1="50" y1="32" x2="50" y2="68" stroke="${rule}" stroke-width="0.7"/>` +
+      tp(62, 36)
 
   return (
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 100 100">` +
@@ -148,8 +150,8 @@ export function BrandMark({
 }: BrandMarkProps) {
   const showRegistry = registry ?? size >= 72
   const { t, p, rule } = resolveColors(bg, mono, inverse)
-  const baseline = showRegistry ? 56 : 63
-  const fs = 40
+  const baseline = showRegistry ? 54 : 62
+  const fs = showRegistry ? 34 : 36
   return (
     <svg
       width={size}
@@ -162,44 +164,44 @@ export function BrandMark({
     >
       <line
         x1="50"
-        y1={showRegistry ? 20 : 28}
+        y1={showRegistry ? 30 : 32}
         x2="50"
-        y2={showRegistry ? 62 : 72}
+        y2={showRegistry ? 64 : 68}
         stroke={rule}
-        strokeWidth="0.8"
+        strokeWidth="0.7"
       />
       <text
-        x="44"
+        x="42"
         y={baseline}
         textAnchor="end"
         fontFamily={SERIF}
         fontSize={fs}
-        fontWeight={500}
+        fontWeight={400}
         fill={t}
       >
         T
       </text>
       <text
-        x="56"
+        x="58"
         y={baseline}
         textAnchor="start"
         fontFamily={SERIF}
         fontSize={fs}
-        fontWeight={500}
+        fontWeight={400}
         fill={p}
       >
         P
       </text>
       {showRegistry && (
         <>
-          <line x1="26" y1="74" x2="74" y2="74" stroke={rule} strokeWidth="0.8" />
+          <line x1="24" y1="70" x2="76" y2="70" stroke={rule} strokeWidth="0.7" />
           <text
             x="50"
-            y="86"
+            y="83"
             textAnchor="middle"
             fontFamily={SERIF}
             fontSize="7"
-            fontWeight={600}
+            fontWeight={500}
             letterSpacing="4"
             fill={t}
           >
