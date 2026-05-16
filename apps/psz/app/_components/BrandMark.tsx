@@ -95,9 +95,13 @@ export function brandMarkSvg(opts: {
       `<text x="50" y="86" text-anchor="middle" font-size="7" font-weight="600" letter-spacing="4" font-family="${SERIF}" fill="${e242}">E·242</text>`
     : ''
 
+  // Con firma: la barra vertical baja hasta casi tocar la horizontal
+  // (y=74) → simula una ⊥. Sin firma: se queda como el original (62).
+  const vBottom = showText ? 70 : 62
+
   return (
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 100 100">` +
-    `<line x1="50" y1="20" x2="50" y2="62" stroke="${accent}" stroke-width="0.8"/>` +
+    `<line x1="50" y1="20" x2="50" y2="${vBottom}" stroke="${accent}" stroke-width="0.8"/>` +
     `<text x="44" y="56" text-anchor="end" font-size="40" font-weight="500" font-family="${SERIF}" fill="${tColor}">T</text>` +
     `<text x="56" y="56" text-anchor="start" font-size="40" font-weight="500" font-family="${SERIF}" fill="${pColor}">P</text>` +
     reg +
@@ -148,6 +152,9 @@ export function BrandMark({
 }: BrandMarkProps) {
   const showText = registry ?? size >= 40
   const { tColor, pColor, accent, e242 } = resolveColors(bg, mono, inverse)
+  // Con firma: la barra vertical baja hasta casi tocar la horizontal
+  // (y=74) → simula una ⊥. Sin firma: se queda como el original (62).
+  const vBottom = showText ? 70 : 62
   return (
     <svg
       width={size}
@@ -158,7 +165,7 @@ export function BrandMark({
       aria-label={title ?? undefined}
       aria-hidden={title ? undefined : true}
     >
-      <line x1="50" y1="20" x2="50" y2="62" stroke={accent} strokeWidth="0.8" />
+      <line x1="50" y1="20" x2="50" y2={vBottom} stroke={accent} strokeWidth="0.8" />
       <text
         x="44"
         y="56"
