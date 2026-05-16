@@ -311,7 +311,7 @@ export default function ManualDeMarcaPage() {
                 Monograma serif
               </p>
               <p style={{ fontSize: 13.5, color: NAVY, marginTop: 10, lineHeight: 1.55 }}>
-                T·P en serif clásica (Hoefler / Cormorant / Georgia). Se usa siempre el
+                T·P en <strong>Gelasio</strong> (serif idéntica a Georgia, empaquetada). Se usa siempre el
                 componente <code>BrandMark</code>, nunca se recompone a mano.
               </p>
             </Card>

@@ -66,8 +66,10 @@ favicon, redes, impresión y PDF. Letras en serif clásica; en rasterizado
 
 ## 5. Tipografía
 
-- **Logotipo:** monograma serif T·P (Hoefler / Cormorant / Georgia). Se usa
-  siempre el componente `BrandMark`; nunca se recompone a mano.
+- **Logotipo:** monograma serif T·P en **Gelasio** (empaquetada con
+  next/font; métricamente idéntica a Georgia, idéntica en todos los
+  dispositivos). Se usa siempre el componente `BrandMark`; nunca se
+  recompone a mano.
 - **Sistema (UI, textos, "Nº E242"):** **Inter**. Pesos 400 / 600 / 700 / 800.
   - Nombre "Toño Palacios" junto al símbolo: Inter 700–800, tracking ajustado.
   - Firma "Nº E242": Inter 600, tracking 4.

@@ -20,12 +20,11 @@ export const BRAND = { navy: NAVY, gold: GOLD, white: WHITE } as const
 
 export type BrandBg = 'light' | 'dark' | 'gold'
 
-// EXACTAMENTE la misma font-family que el LogomarkP6 original de
-// /preview/logos. Sin fuentes empaquetadas: se renderiza igual que el
-// P6 aprobado (en Windows → Georgia).
-const SERIF =
-  "'Hoefler Text', 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
-const SERIF_DOM = SERIF
+// Tipografía elegida: Gelasio (empaquetada con next/font). Idéntica a
+// Georgia y estable en todos los dispositivos. Gelasio va primera para
+// que TODO el mundo (incl. el usuario) vea exactamente lo aprobado.
+const SERIF = "Gelasio, Georgia, 'Times New Roman', serif"
+const SERIF_DOM = "var(--font-gelasio), Gelasio, Georgia, 'Times New Roman', serif"
 
 /** adapt() EXACTO del original: si el base choca con el fondo → blanco. */
 function adapt(base: string, bg: BrandBg): string {
