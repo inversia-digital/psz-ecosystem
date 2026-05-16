@@ -173,10 +173,9 @@ export default function ManualDeMarcaPage() {
         {/* 02 · El símbolo */}
         <Section n="02" title="El símbolo">
           <p style={{ fontSize: 16, color: NAVY, lineHeight: 1.65, marginTop: 0, maxWidth: 760 }}>
-            Monograma serif <strong>T·P</strong> partido por un filete vertical. Las letras están
-            trazadas como <strong>vectores</strong> (no texto en una fuente): se reproduce idéntico
-            en pantalla, favicon, redes sociales, impresión y PDF, sin depender de tipografías
-            instaladas. Filete inferior + <strong>Nº E242</strong> es la “firma registral”.
+            Monograma serif <strong>T·P</strong> partido por un filete vertical, limpio y
+            centrado. Filete inferior + <strong>Nº E242</strong> es la “firma registral”. Se
+            renderiza desde un único componente, idéntico en pantalla, favicon, redes y PDF.
           </p>
           <Card pad={36}>
             <div
@@ -301,11 +300,11 @@ export default function ManualDeMarcaPage() {
             <Card>
               <Label>Logotipo (símbolo)</Label>
               <p style={{ fontSize: 28, fontWeight: 800, color: NAVY, margin: 0, letterSpacing: '-0.02em' }}>
-                Serif vectorizado
+                Monograma serif
               </p>
               <p style={{ fontSize: 13.5, color: NAVY, marginTop: 10, lineHeight: 1.55 }}>
-                El monograma T·P es un trazado propio. No se reescribe con una fuente: se usa
-                siempre el componente o los SVG entregados.
+                T·P en serif clásica (Hoefler / Cormorant / Georgia). Se usa siempre el
+                componente <code>BrandMark</code>, nunca se recompone a mano.
               </p>
             </Card>
             <Card>
@@ -428,8 +427,8 @@ export default function ManualDeMarcaPage() {
                 ✕ NUNCA
               </p>
               <ul style={{ margin: 0, paddingLeft: 18, color: NAVY, fontSize: 13.5, lineHeight: 1.9 }}>
-                <li>Rehacer la T·P con una fuente serif cualquiera.</li>
-                <li>Deformar, rotar, añadir sombras o degradados al símbolo.</li>
+                <li>Recomponer la T·P a mano en vez de usar el componente.</li>
+                <li>Deformar, rotar, descentrar, añadir sombras o degradados.</li>
                 <li>Recolorear fuera de la paleta (navy / oro / blanco).</li>
                 <li>Crear una identidad visual separada para “El Sello Palacios”.</li>
                 <li>Dejar una letra del mismo color que el fondo (invisible).</li>

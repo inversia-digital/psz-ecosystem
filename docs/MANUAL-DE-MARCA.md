@@ -27,11 +27,10 @@ y motores de IA.
 
 ## 2. El símbolo
 
-Monograma serif **T·P** partido por un filete vertical. Las letras están
-**trazadas como vectores**, no escritas con una fuente: se reproduce idéntico
-en pantalla, favicon, redes, impresión y PDF sin depender de tipografías
-instaladas. Esto es lo que distingue un logotipo profesional de un texto
-puesto en una fuente.
+Monograma serif **T·P** partido por un filete vertical, limpio y centrado.
+Se renderiza desde un único componente (`BrandMark`), idéntico en pantalla,
+favicon, redes, impresión y PDF. Letras en serif clásica; en rasterizado
+(OG/favicon) puede caer a una serif de sistema, manteniendo dibujo y centrado.
 
 - Filete inferior + **"Nº E242"** = firma registral.
 - Por debajo de **40 px** se omite "Nº E242" (legibilidad): queda sólo el
@@ -67,8 +66,8 @@ puesto en una fuente.
 
 ## 5. Tipografía
 
-- **Logotipo:** trazado serif propio (vectorizado). No se reescribe con
-  ninguna fuente — se usa siempre el componente o los SVG entregados.
+- **Logotipo:** monograma serif T·P (Hoefler / Cormorant / Georgia). Se usa
+  siempre el componente `BrandMark`; nunca se recompone a mano.
 - **Sistema (UI, textos, "Nº E242"):** **Inter**. Pesos 400 / 600 / 700 / 800.
   - Nombre "Toño Palacios" junto al símbolo: Inter 700–800, tracking ajustado.
   - Firma "Nº E242": Inter 600, tracking 4.
@@ -103,8 +102,8 @@ clásico lo aporta el monograma; la UI respira con un sans neutro.
 
 **Nunca**
 
-- Rehacer la T·P con una fuente serif cualquiera.
-- Deformar, rotar, añadir sombras o degradados.
+- Recomponer la T·P a mano en vez de usar el componente.
+- Deformar, rotar, descentrar, añadir sombras o degradados.
 - Recolorear fuera de la paleta (navy / oro / blanco).
 - Crear identidad visual separada para "El Sello Palacios".
 - Dejar una letra del mismo color que el fondo.

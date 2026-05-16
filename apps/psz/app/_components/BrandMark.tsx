@@ -1,17 +1,16 @@
 /**
  * BrandMark — marca gráfica oficial de Toño Palacios (modelo "P6").
  *
- * Monograma serif T·P partido por filete vertical. La T y la P están
- * trazadas como PATHS vectoriales (no texto en una fuente): se renderiza
- * idéntico en web, favicon, Open Graph y PDF sin depender de ninguna
- * tipografía instalada. Esto es lo que distingue un logotipo profesional
- * de un texto puesto en una fuente.
+ * Monograma serif T·P partido por un filete vertical, con filete inferior
+ * y firma registral "Nº E242". Es EXACTAMENTE el P6 aprobado: letras serif
+ * limpias y centradas (no trazados a mano). En contextos de rasterizado
+ * (OG/favicon) la serif puede caer a una serif de sistema, pero el dibujo
+ * permanece nítido y centrado.
  *
  * Arquitectura de marca: ENDOSADA.
- *  - Esta es la marca MAESTRA y única (uso personal + herramientas).
+ *  - Marca MAESTRA y única (uso personal + herramientas).
  *  - "El Sello Palacios" NO es una marca aparte: es el descriptor de la
- *    garantía que esta marca imprime sobre las herramientas. Se expresa
- *    a través de este mismo símbolo + microcopy (ver SelloPalacios.tsx).
+ *    garantía que esta marca imprime sobre las herramientas.
  *
  * Regla de color sobre fondo: la letra cuyo color choca con el fondo
  * pasa a blanco, manteniendo siempre dos tonos legibles.
@@ -32,6 +31,9 @@ export const BRAND = {
 
 export type BrandBg = 'light' | 'dark' | 'gold'
 
+const SERIF =
+  "'Hoefler Text', 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+
 interface BrandColors {
   t: string
   p: string
@@ -48,25 +50,6 @@ function resolveColors(bg: BrandBg, mono: boolean, inverse: boolean): BrandColor
   const p = bg === 'gold' ? BRAND.white : BRAND.gold
   const rule = bg === 'gold' ? BRAND.navy : BRAND.gold
   return { t, p, rule }
-}
-
-// ── Geometría del monograma (viewBox 0 0 100 100) ────────────────────
-// Glifos serif de transición trazados a mano. Caja de mayúsculas y ≈30..70.
-
-const T_PATHS = {
-  bar: 'M12 30 H46 V35 H12 Z',
-  serifL: 'M12.5 35 H16 V38.2 H12.5 Z',
-  serifR: 'M42 35 H45.5 V38.2 H42 Z',
-  stem: 'M26 35 H32 V66 H26 Z',
-  foot: 'M17.5 70 C20.8 70 23.6 68.3 24.6 65.8 H33.4 C34.4 68.3 37.2 70 40.5 70 V70.6 H17.5 Z',
-}
-
-const P_PATHS = {
-  stem: 'M54 30 H60.5 V70 H54 Z',
-  serifTop: 'M50.5 30 H64 V34 H50.5 Z',
-  foot: 'M49.5 70 C52.8 70 55.6 68.3 56.6 65.8 H58.4 C59.4 68.3 62.2 70 65.5 70 V70.6 H49.5 Z',
-  // Anillo del ojo (regla evenodd: contorno externo + contra interior)
-  bowl: 'M60.5 31 H74 A14 14 0 0 1 74 57 H60.5 Z M60.5 37 H70 A8 8 0 0 1 70 51 H60.5 Z',
 }
 
 interface BrandMarkProps {
@@ -88,6 +71,10 @@ interface BrandMarkProps {
 /**
  * Cadena SVG (fuente única de verdad). Se usa tal cual en el DOM y como
  * data-URI en Open Graph / favicon / PDF.
+ *
+ * Dos maquetaciones, ambas perfectamente centradas en el cuadro 100×100:
+ *  - con firma   → P6 completo (TP + filete vertical + filete inf. + Nº E242)
+ *  - sin firma   → solo TP + filete vertical, centrado verticalmente
  */
 export function brandMarkSvg(opts: {
   size?: number
@@ -100,22 +87,21 @@ export function brandMarkSvg(opts: {
   const registry = opts.registry ?? size >= 40
   const { t, p, rule } = resolveColors(bg, mono, inverse)
 
-  const reg = registry
-    ? `<line x1="26" y1="78" x2="74" y2="78" stroke="${rule}" stroke-width="0.8"/>` +
-      `<text x="50" y="89" text-anchor="middle" font-size="7" font-weight="600" letter-spacing="4" ` +
-      `font-family="Inter, ui-sans-serif, system-ui, sans-serif" fill="${t}">Nº E242</text>`
-    : ''
+  const tp = (baseline: number, fs: number) =>
+    `<text x="44" y="${baseline}" text-anchor="end" font-family="${SERIF}" font-size="${fs}" font-weight="500" fill="${t}">T</text>` +
+    `<text x="56" y="${baseline}" text-anchor="start" font-family="${SERIF}" font-size="${fs}" font-weight="500" fill="${p}">P</text>`
+
+  const body = registry
+    ? `<line x1="50" y1="20" x2="50" y2="62" stroke="${rule}" stroke-width="0.8"/>` +
+      tp(56, 40) +
+      `<line x1="26" y1="74" x2="74" y2="74" stroke="${rule}" stroke-width="0.8"/>` +
+      `<text x="50" y="86" text-anchor="middle" font-family="${SERIF}" font-size="7" font-weight="600" letter-spacing="4" fill="${t}">Nº E242</text>`
+    : `<line x1="50" y1="31" x2="50" y2="69" stroke="${rule}" stroke-width="0.8"/>` +
+      tp(65, 44)
 
   return (
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 100 100">` +
-    `<line x1="50" y1="24" x2="50" y2="62" stroke="${rule}" stroke-width="0.8"/>` +
-    `<g fill="${t}">` +
-    `<path d="${T_PATHS.bar}"/><path d="${T_PATHS.serifL}"/><path d="${T_PATHS.serifR}"/>` +
-    `<path d="${T_PATHS.stem}"/><path d="${T_PATHS.foot}"/></g>` +
-    `<g fill="${p}">` +
-    `<path d="${P_PATHS.stem}"/><path d="${P_PATHS.serifTop}"/><path d="${P_PATHS.foot}"/>` +
-    `<path fill-rule="evenodd" d="${P_PATHS.bowl}"/></g>` +
-    reg +
+    body +
     `</svg>`
   )
 }
@@ -142,7 +128,6 @@ function base64FromBytes(bytes: number[]): string {
 /** data-URI listo para <img src> en Open Graph / favicon / PDF. */
 export function brandMarkDataUri(opts: Parameters<typeof brandMarkSvg>[0] = {}): string {
   const svg = brandMarkSvg(opts)
-  // UTF-8 → bytes sin APIs de Node
   const utf8 = encodeURIComponent(svg).replace(/%([0-9A-Fa-f]{2})/g, (_, h) =>
     String.fromCharCode(parseInt(h, 16)),
   )
@@ -163,6 +148,8 @@ export function BrandMark({
 }: BrandMarkProps) {
   const showRegistry = registry ?? size >= 40
   const { t, p, rule } = resolveColors(bg, mono, inverse)
+  const baseline = showRegistry ? 56 : 65
+  const fs = showRegistry ? 40 : 44
   return (
     <svg
       width={size}
@@ -173,31 +160,47 @@ export function BrandMark({
       aria-label={title ?? undefined}
       aria-hidden={title ? undefined : true}
     >
-      <line x1="50" y1="24" x2="50" y2="62" stroke={rule} strokeWidth="0.8" />
-      <g fill={t}>
-        <path d={T_PATHS.bar} />
-        <path d={T_PATHS.serifL} />
-        <path d={T_PATHS.serifR} />
-        <path d={T_PATHS.stem} />
-        <path d={T_PATHS.foot} />
-      </g>
-      <g fill={p}>
-        <path d={P_PATHS.stem} />
-        <path d={P_PATHS.serifTop} />
-        <path d={P_PATHS.foot} />
-        <path fillRule="evenodd" d={P_PATHS.bowl} />
-      </g>
+      <line
+        x1="50"
+        y1={showRegistry ? 20 : 31}
+        x2="50"
+        y2={showRegistry ? 62 : 69}
+        stroke={rule}
+        strokeWidth="0.8"
+      />
+      <text
+        x="44"
+        y={baseline}
+        textAnchor="end"
+        fontFamily={SERIF}
+        fontSize={fs}
+        fontWeight={500}
+        fill={t}
+      >
+        T
+      </text>
+      <text
+        x="56"
+        y={baseline}
+        textAnchor="start"
+        fontFamily={SERIF}
+        fontSize={fs}
+        fontWeight={500}
+        fill={p}
+      >
+        P
+      </text>
       {showRegistry && (
         <>
-          <line x1="26" y1="78" x2="74" y2="78" stroke={rule} strokeWidth="0.8" />
+          <line x1="26" y1="74" x2="74" y2="74" stroke={rule} strokeWidth="0.8" />
           <text
             x="50"
-            y="89"
+            y="86"
             textAnchor="middle"
+            fontFamily={SERIF}
             fontSize="7"
             fontWeight={600}
             letterSpacing="4"
-            fontFamily="Inter, ui-sans-serif, system-ui, sans-serif"
             fill={t}
           >
             Nº E242
