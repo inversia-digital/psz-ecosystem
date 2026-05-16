@@ -18,6 +18,18 @@ const NAVY = '#0F1B2D'
 const GOLD = '#C8A852'
 const GOLD_LIGHT = '#E5D08A'
 const PAPER = '#FAFAF7'
+const WHITE = '#FFFFFF'
+
+// Fondo sobre el que se pinta el logo. La letra cuyo color choca con
+// el fondo pasa a blanco, manteniendo siempre dos tonos legibles.
+type Bg = 'light' | 'dark' | 'gold'
+
+/** Devuelve el color de pintado: si el base choca con el fondo → blanco. */
+function adapt(base: string, bg: Bg): string {
+  if (bg === 'dark' && base === NAVY) return WHITE
+  if (bg === 'gold' && base === GOLD) return WHITE
+  return base
+}
 
 // ────────────────────────────────────────────────────────────
 // LOGOMARK A · Sello clásico circular refinado
@@ -331,7 +343,7 @@ function MonolineTP({ cx = 50, cy = 50, s = 1, navy = NAVY, gold = GOLD }: { cx?
 }
 
 // P1 · Ligadura TP monolínea, sin marco — marca pura tipo banca privada
-function LogomarkP1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkP1({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const navy = NAVY
   const gold = mono ? NAVY : GOLD
   const showText = size >= 44
@@ -351,7 +363,7 @@ function LogomarkP1({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // P2 · Sello intaglio: anillos finos + microtexto de seguridad + ligadura
-function LogomarkP2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkP2({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const ink = mono ? NAVY : GOLD
   const showText = size >= 56
   return (
@@ -380,7 +392,7 @@ function LogomarkP2({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // P3 · Signet: roundel macizo navy, TP en oro en hueco, keyline fino
-function LogomarkP3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkP3({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const disc = mono ? PAPER : NAVY
   const letter = mono ? NAVY : GOLD
   const ring = mono ? NAVY : GOLD
@@ -399,7 +411,7 @@ function LogomarkP3({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // P4 · Logotipo serif (la firma ES el logo) — abogados / asesores premium
-function LogomarkP4({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkP4({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   // Marca tipográfica; el "size" controla la altura del bloque
   const accent = mono ? NAVY : GOLD
   return (
@@ -419,7 +431,7 @@ function LogomarkP4({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // P5 · Iniciales serif en marco fino con esquinas — suizo / arquitectónico
-function LogomarkP5({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkP5({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const line = mono ? NAVY : GOLD
   const showText = size >= 40
   return (
@@ -442,18 +454,22 @@ function LogomarkP5({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // P6 · Monograma serif partido por filete vertical — heráldico moderno
-function LogomarkP6({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
-  const accent = mono ? NAVY : GOLD
+function LogomarkP6({ size = 80, mono = false, bg = 'light' }: { size?: number; mono?: boolean; bg?: Bg }) {
+  // Base: T azul, P oro. La que choca con el fondo → blanco.
+  const tColor = mono ? NAVY : adapt(NAVY, bg)
+  const pColor = mono ? NAVY : adapt(GOLD, bg)
+  const accent = sealInk(mono, bg)       // filete: oro, o navy sobre dorado
+  const e242 = mono ? NAVY : adapt(NAVY, bg)
   const showText = size >= 40
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
       <line x1="50" y1="20" x2="50" y2="62" stroke={accent} strokeWidth="0.8" />
-      <text x="44" y="56" textAnchor="end" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={NAVY}>T</text>
-      <text x="56" y="56" textAnchor="start" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={mono ? NAVY : GOLD}>P</text>
+      <text x="44" y="56" textAnchor="end" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={tColor}>T</text>
+      <text x="56" y="56" textAnchor="start" fontSize="40" fontWeight={500} fontFamily={SERIF} fill={pColor}>P</text>
       {showText && (
         <>
           <line x1="26" y1="74" x2="74" y2="74" stroke={accent} strokeWidth="0.8" />
-          <text x="50" y="86" textAnchor="middle" fontSize="7" fontWeight={600} fontFamily={SERIF} letterSpacing="4" fill={NAVY}>
+          <text x="50" y="86" textAnchor="middle" fontSize="7" fontWeight={600} fontFamily={SERIF} letterSpacing="4" fill={e242}>
             E·242
           </text>
         </>
@@ -473,9 +489,10 @@ function LogomarkP6({ size = 80, mono = false }: { size?: number; mono?: boolean
  * en un <g transform> para escalarlas y centrarlas donde haga falta.
  * Bounding box original de B ≈ x:12→89, y:22→78  → centro (50.5, 50).
  */
-function ExactTPfromB({ scale, cx = 50, cy = 50, mono = false }: { scale: number; cx?: number; cy?: number; mono?: boolean }) {
-  const tColor = mono ? NAVY : GOLD
-  const pColor = NAVY
+function ExactTPfromB({ scale, cx = 50, cy = 50, mono = false, bg = 'light' }: { scale: number; cx?: number; cy?: number; mono?: boolean; bg?: Bg }) {
+  // Base: T dorada, P azul. Si choca con el fondo → blanco.
+  const tColor = mono ? NAVY : adapt(GOLD, bg)
+  const pColor = mono ? NAVY : adapt(NAVY, bg)
   const tx = cx - 50.5 * scale
   const ty = cy - 50 * scale
   return (
@@ -492,9 +509,16 @@ function ExactTPfromB({ scale, cx = 50, cy = 50, mono = false }: { scale: number
   )
 }
 
+/** Color del anillo/E242 del sello: mono→navy, gold-bg→navy (grabado), resto→oro. */
+function sealInk(mono: boolean, bg: Bg): string {
+  if (mono) return NAVY
+  if (bg === 'gold') return NAVY
+  return GOLD
+}
+
 // X1 · Doble anillo + 4 puntos (de A) + TP exacto de B + E242 recto pequeño
-function LogomarkX1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
-  const stroke = mono ? NAVY : GOLD
+function LogomarkX1({ size = 80, mono = false, bg = 'light' }: { size?: number; mono?: boolean; bg?: Bg }) {
+  const stroke = sealInk(mono, bg)
   const showText = size >= 40
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
@@ -504,7 +528,7 @@ function LogomarkX1({ size = 80, mono = false }: { size?: number; mono?: boolean
       <circle cx="94" cy="50" r="1.6" fill={stroke} />
       <circle cx="50" cy="94" r="1.6" fill={stroke} />
       <circle cx="6" cy="50" r="1.6" fill={stroke} />
-      <ExactTPfromB scale={0.56} cx={50} cy={showText ? 45 : 50} mono={mono} />
+      <ExactTPfromB scale={0.56} cx={50} cy={showText ? 45 : 50} mono={mono} bg={bg} />
       {showText && (
         <text
           x="50"
@@ -524,8 +548,8 @@ function LogomarkX1({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // X2 · Doble anillo + TP exacto de B + "E·242" curvado en la base (como A)
-function LogomarkX2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
-  const stroke = mono ? NAVY : GOLD
+function LogomarkX2({ size = 80, mono = false, bg = 'light' }: { size?: number; mono?: boolean; bg?: Bg }) {
+  const stroke = sealInk(mono, bg)
   const showText = size >= 44
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
@@ -535,7 +559,7 @@ function LogomarkX2({ size = 80, mono = false }: { size?: number; mono?: boolean
       <circle cx="94" cy="50" r="1.6" fill={stroke} />
       <circle cx="50" cy="94" r="1.6" fill={stroke} />
       <circle cx="6" cy="50" r="1.6" fill={stroke} />
-      <ExactTPfromB scale={0.56} cx={50} cy={showText ? 44 : 50} mono={mono} />
+      <ExactTPfromB scale={0.56} cx={50} cy={showText ? 44 : 50} mono={mono} bg={bg} />
       {showText && (
         <>
           <path id="curve-x2" d="M 20 70 a 30 30 0 0 0 60 0" fill="none" />
@@ -551,13 +575,13 @@ function LogomarkX2({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // X3 · Anillo único fino + TP exacto de B más grande + E242 recto
-function LogomarkX3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
-  const stroke = mono ? NAVY : GOLD
+function LogomarkX3({ size = 80, mono = false, bg = 'light' }: { size?: number; mono?: boolean; bg?: Bg }) {
+  const stroke = sealInk(mono, bg)
   const showText = size >= 40
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden>
       <circle cx="50" cy="50" r="46" fill="none" stroke={stroke} strokeWidth="1.6" />
-      <ExactTPfromB scale={0.64} cx={50} cy={showText ? 44 : 50} mono={mono} />
+      <ExactTPfromB scale={0.64} cx={50} cy={showText ? 44 : 50} mono={mono} bg={bg} />
       {showText && (
         <text
           x="50"
@@ -582,7 +606,7 @@ function LogomarkX3({ size = 80, mono = false }: { size?: number; mono?: boolean
 // ════════════════════════════════════════════════════════════
 
 // SELLO S1 · Doble anillo + 4 puntos cardinales + TP geométrico + BdE·E242 curvado
-function LogomarkS1({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkS1({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const stroke = mono ? NAVY : GOLD
   const showText = size >= 44
   return (
@@ -613,7 +637,7 @@ function LogomarkS1({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // SELLO S2 · Moneda/medalla: texto curvado arriba y abajo + TP geométrico centro
-function LogomarkS2({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkS2({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const stroke = mono ? NAVY : GOLD
   const showText = size >= 56
   return (
@@ -648,7 +672,7 @@ function LogomarkS2({ size = 80, mono = false }: { size?: number; mono?: boolean
 }
 
 // SELLO S3 · Anillo único fino + TP geométrico grande + E·242 recto debajo
-function LogomarkS3({ size = 80, mono = false }: { size?: number; mono?: boolean }) {
+function LogomarkS3({ size = 80, mono = false }: { size?: number; mono?: boolean; bg?: Bg }) {
   const stroke = mono ? NAVY : GOLD
   const showText = size >= 44
   return (
@@ -901,11 +925,11 @@ export default function PreviewLogosPage() {
                   Header del sitio + Hero grande
                 </p>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <Component size={48} />
+                  <Component size={48} bg="dark" />
                   <Wordmark scale={1} color={PAPER} />
                 </div>
                 <div style={{ marginTop: 24 }}>
-                  <Component size={96} />
+                  <Component size={96} bg="dark" />
                 </div>
               </div>
               <div style={{ background: '#fff', border: '1px solid #E5E5E5', borderRadius: 8, padding: 24, textAlign: 'center' }}>
@@ -926,7 +950,7 @@ export default function PreviewLogosPage() {
                 <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.7, marginBottom: 16 }}>
                   Variante dorada (PDF premium / certificado)
                 </p>
-                <Component size={120} />
+                <Component size={120} bg="gold" />
               </div>
             </div>
           </section>
@@ -1005,11 +1029,11 @@ export default function PreviewLogosPage() {
                   Header del sitio + Hero grande
                 </p>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <Component size={48} />
+                  <Component size={48} bg="dark" />
                   <Wordmark scale={1} color={PAPER} />
                 </div>
                 <div style={{ marginTop: 24, display: 'inline-flex', alignItems: 'center', gap: 16 }}>
-                  <Component size={84} />
+                  <Component size={84} bg="dark" />
                   <Wordmark scale={2.2} color={PAPER} />
                 </div>
               </div>
@@ -1031,7 +1055,7 @@ export default function PreviewLogosPage() {
                 <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: NAVY, opacity: 0.7, marginBottom: 16 }}>
                   Variante "sello dorado" (PDF premium / certificado)
                 </p>
-                <Component size={120} />
+                <Component size={120} bg="gold" />
               </div>
             </div>
           </section>
@@ -1325,11 +1349,11 @@ export default function PreviewLogosPage() {
                   Header del sitio + Hero grande
                 </p>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-                  <Component size={48} />
+                  <Component size={48} bg="dark" />
                   <Wordmark scale={1} color={PAPER} />
                 </div>
                 <div style={{ marginTop: 24, display: 'inline-flex', alignItems: 'center', gap: 16 }}>
-                  <Component size={84} />
+                  <Component size={84} bg="dark" />
                   <Wordmark scale={2.2} color={PAPER} />
                 </div>
               </div>
