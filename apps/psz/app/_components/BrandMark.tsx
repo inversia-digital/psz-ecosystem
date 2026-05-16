@@ -21,14 +21,13 @@ export const BRAND = { navy: NAVY, gold: GOLD, white: WHITE } as const
 export type BrandBg = 'light' | 'dark' | 'gold'
 
 // Para rasterizado (OG/favicon): nombre literal, mejor esfuerzo.
-const SERIF =
-  "'Cormorant Garamond', 'Hoefler Text', Georgia, 'Times New Roman', serif"
+const SERIF = "Georgia, Gelasio, 'Times New Roman', serif"
 
-// Para el DOM: usa la fuente EMPAQUETADA por next/font (variable CSS),
-// así el logo se ve idéntico en todos los navegadores. Las variables CSS
-// solo resuelven vía `style`, no vía atributo SVG font-family.
+// Para el DOM: Georgia primero (el aspecto aprobado en Windows) y, si no
+// existe, Gelasio empaquetada por next/font (métricamente IDÉNTICA a
+// Georgia). Las variables CSS solo resuelven vía `style`, no vía atributo.
 const SERIF_DOM =
-  "var(--font-cormorant), 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+  "Georgia, var(--font-gelasio), Gelasio, 'Times New Roman', serif"
 
 /** adapt() EXACTO del original: si el base choca con el fondo → blanco. */
 function adapt(base: string, bg: BrandBg): string {
