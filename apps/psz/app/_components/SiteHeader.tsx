@@ -14,6 +14,7 @@
 
 import { useEffect, useState } from 'react'
 import { MORTGAGE_FORM_URL, TONO } from '@psz/seo'
+import { BrandMark } from './BrandMark'
 
 const NAV_LINKS = [
   { label: 'Broker hipotecario', href: '/broker-hipotecario' },
@@ -54,10 +55,19 @@ export default function SiteHeader() {
           {/* Logo */}
           <a
             href="/"
-            className="flex items-center gap-2 text-paper no-underline font-bold tracking-tight text-lg"
+            className="flex items-center gap-2.5 text-paper no-underline"
+            aria-label={`${TONO.shortName} — inicio`}
           >
-            <span className="text-gold-400">{TONO.shortName.split(' ')[0]}</span>
-            <span>{TONO.shortName.split(' ')[1]}</span>
+            <BrandMark size={38} bg="dark" registry={false} title={null} className="shrink-0" />
+            <span className="flex flex-col leading-none">
+              <span className="font-bold tracking-tight text-lg">
+                <span className="text-gold-400">{TONO.shortName.split(' ')[0]}</span>{' '}
+                <span>{TONO.shortName.split(' ')[1]}</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-paper/55 mt-0.5">
+                Broker hipotecario · Nº E242
+              </span>
+            </span>
           </a>
 
           {/* Desktop nav */}

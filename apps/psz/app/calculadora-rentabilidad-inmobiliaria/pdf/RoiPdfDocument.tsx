@@ -18,6 +18,10 @@ import {
   StyleSheet,
   Text,
   View,
+  Svg,
+  Path,
+  Line,
+  G,
 } from '@react-pdf/renderer'
 import type { RoiResult, ScenarioResult } from '../actions'
 
@@ -295,14 +299,49 @@ const SC_COLORS = {
 // Componentes
 // ─────────────────────────────────────────────────────────────────────────
 
+/**
+ * Marca maestra P6 vectorial para el PDF (mismos trazados que BrandMark).
+ * Sobre fondo claro: T navy · P oro · filete oro.
+ */
+function PdfBrandMark({ size = 30 }: { size?: number }) {
+  const t = COLORS.navy800
+  const p = COLORS.gold400
+  const rule = COLORS.gold400
+  return (
+    <Svg width={size} height={size} viewBox="0 0 100 100">
+      <Line x1={50} y1={24} x2={50} y2={62} strokeWidth={0.8} stroke={rule} />
+      <G>
+        <Path d="M12 30 H46 V35 H12 Z" fill={t} />
+        <Path d="M12.5 35 H16 V38.2 H12.5 Z" fill={t} />
+        <Path d="M42 35 H45.5 V38.2 H42 Z" fill={t} />
+        <Path d="M26 35 H32 V66 H26 Z" fill={t} />
+        <Path d="M17.5 70 C20.8 70 23.6 68.3 24.6 65.8 H33.4 C34.4 68.3 37.2 70 40.5 70 V70.6 H17.5 Z" fill={t} />
+      </G>
+      <G>
+        <Path d="M54 30 H60.5 V70 H54 Z" fill={p} />
+        <Path d="M50.5 30 H64 V34 H50.5 Z" fill={p} />
+        <Path d="M49.5 70 C52.8 70 55.6 68.3 56.6 65.8 H58.4 C59.4 68.3 62.2 70 65.5 70 V70.6 H49.5 Z" fill={p} />
+        <Path
+          d="M60.5 31 H74 A14 14 0 0 1 74 57 H60.5 Z M60.5 37 H70 A8 8 0 0 1 70 51 H60.5 Z"
+          fill={p}
+          fillRule="evenodd"
+        />
+      </G>
+    </Svg>
+  )
+}
+
 function Header() {
   return (
     <View style={styles.header} fixed>
-      <View style={styles.headerLeft}>
-        <Text style={styles.brandName}>Toño Palacios</Text>
-        <Text style={styles.brandRole}>
-          Broker hipotecario nº E242 · Presidente de ANICI
-        </Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <PdfBrandMark size={30} />
+        <View style={[styles.headerLeft, { marginLeft: 9 }]}>
+          <Text style={styles.brandName}>Toño Palacios</Text>
+          <Text style={styles.brandRole}>
+            Broker hipotecario nº E242 · Presidente de ANICI
+          </Text>
+        </View>
       </View>
       <Text style={styles.headerRight}>Análisis de rentabilidad</Text>
     </View>

@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { brandMarkDataUri } from '../_components/BrandMark'
 
 export const runtime = 'edge'
 export const alt =
@@ -77,6 +78,8 @@ export default async function Image() {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img width={52} height={52} alt="" src={brandMarkDataUri({ size: 52, bg: 'dark', registry: false })} style={{ marginBottom: 14 }} />
             <div style={{ fontSize: 24, fontWeight: 700 }}>Toño Palacios</div>
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)' }}>
               Broker hipotecario nº E242 · Presidente de ANICI

@@ -17,6 +17,7 @@
  */
 
 import type { ReactNode } from 'react'
+import { BrandMark } from './BrandMark'
 
 interface SelloPalaciosProps {
   variant?: 'inline' | 'badge' | 'hero'
@@ -27,7 +28,7 @@ interface SelloPalaciosProps {
 }
 
 const TAGLINE_DEFAULT =
-  'Diseñado y programado por Antonio Palacios Cambero (Toño Palacios) — broker hipotecario nº E242 (Banco de España) y presidente de ANICI.'
+  'Diseñado, programado y firmado por Antonio Palacios Cambero (Toño Palacios) — broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Cálculo verificable e inalterable.'
 
 export function SelloPalacios({
   variant = 'inline',
@@ -40,7 +41,7 @@ export function SelloPalacios({
         className={`inline-flex items-center gap-1.5 rounded-md border border-gold-400 bg-gold-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-navy-900 ${className}`}
         title="El Sello Palacios — diseñado por Toño Palacios, broker hipotecario nº E242"
       >
-        <span aria-hidden className="text-gold-600">✦</span>
+        <BrandMark size={14} bg="light" registry={false} title={null} className="shrink-0" />
         El Sello Palacios
       </span>
     )
@@ -86,62 +87,10 @@ export function SelloPalacios({
 }
 
 /**
- * Sello visual minimalista — círculo dorado con monograma TP estilizado.
- * SVG inline, escalable, sin dependencias. Sustituible por el logotipo
- * definitivo cuando esté listo (solo cambiar este componente).
+ * Sello visual = la marca maestra (BrandMark P6). Modelo endosado: no es
+ * un símbolo distinto del de la cabecera; es EL MISMO. "El Sello Palacios"
+ * es el descriptor de la garantía, no una identidad aparte.
  */
 function SealMark({ large = false }: { large?: boolean }) {
-  const size = large ? 64 : 36
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
-      aria-hidden
-      className="shrink-0"
-      role="presentation"
-    >
-      {/* Anillo exterior */}
-      <circle cx="32" cy="32" r="30" fill="none" stroke="#C8A852" strokeWidth="2" />
-      {/* Anillo interior */}
-      <circle cx="32" cy="32" r="24" fill="none" stroke="#C8A852" strokeWidth="0.8" />
-      {/* Monograma TP */}
-      <text
-        x="32"
-        y="40"
-        textAnchor="middle"
-        fontSize="20"
-        fontWeight="800"
-        fill="#0F1B2D"
-        fontFamily="'Inter', 'Helvetica Neue', sans-serif"
-        letterSpacing="-1"
-      >
-        TP
-      </text>
-      {/* Estrella decorativa arriba */}
-      <text
-        x="32"
-        y="14"
-        textAnchor="middle"
-        fontSize="6"
-        fill="#C8A852"
-        fontFamily="'Inter', sans-serif"
-      >
-        ✦
-      </text>
-      {/* Texto curvado debajo: "E242" */}
-      <text
-        x="32"
-        y="56"
-        textAnchor="middle"
-        fontSize="5"
-        fontWeight="700"
-        fill="#C8A852"
-        fontFamily="'Inter', sans-serif"
-        letterSpacing="1"
-      >
-        E·242
-      </text>
-    </svg>
-  )
+  return <BrandMark size={large ? 64 : 38} bg="light" title={null} className="shrink-0" />
 }
