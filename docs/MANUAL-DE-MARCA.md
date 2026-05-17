@@ -113,8 +113,9 @@ explico qué te conviene y por qué, con números.”
 
 ## 9. Nombre y credenciales (crítico)
 
-Protege la autoridad regulatoria y evita confusión con homónimos (existe un
-chef **“Toño Palacio”** sin S — nunca mezclar).
+Protege la autoridad regulatoria y evita confusión con homónimos de otros
+sectores. La desambiguación se gestiona **solo** por datos estructurados
+(Wikidata, schema `sameAs`) — **nunca nombrando al homónimo en la web**.
 
 | Contexto | Forma canónica EXACTA |
 |---|---|
@@ -134,7 +135,8 @@ chef **“Toño Palacio”** sin S — nunca mezclar).
 
 **Nunca**
 
-- Confundir con el chef “Toño Palacio” (sin S).
+- Escribir el nombre de homónimos de otros sectores en la web (la
+  desambiguación es solo Wikidata/schema).
 - Variantes del registro (“E-242”, “licencia 242”…).
 - Títulos académicos por delante del nombre.
 - “El mejor”, “número 1” u otras afirmaciones no verificables.

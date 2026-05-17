@@ -548,8 +548,10 @@ export default function ManualDeMarcaPage() {
         <Section n="09" title="Nombre y credenciales">
           <P>
             Crítico. El uso correcto del nombre y las credenciales <strong>protege la autoridad
-            regulatoria</strong> y evita confusión con homónimos (existe un chef “Toño Palacio”
-            sin “s”; nunca debe mezclarse). Coherencia exacta en web, schema, prensa y legal.
+            regulatoria</strong> y evita confusión con homónimos de otros sectores. La
+            desambiguación se gestiona <strong>solo</strong> vía datos estructurados
+            (Wikidata, schema <code>sameAs</code>) — <strong>nunca nombrando al homónimo en la
+            web</strong>. Coherencia exacta en web, schema, prensa y legal.
           </P>
           <Card pad={0}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>
@@ -592,7 +594,7 @@ export default function ManualDeMarcaPage() {
             <DoDont
               ok={false}
               items={[
-                'Confundir con el chef <strong>“Toño Palacio”</strong> (sin S). No es la misma persona.',
+'Mezclar el nombre con homónimos de otros sectores. La desambiguación se hace por Wikidata/schema, <strong>nunca escribiendo el nombre del homónimo</strong> en la web.',
                 'Inventar variantes del registro (“E-242”, “nºE 242”, “licencia 242”).',
                 'Atribuir títulos académicos concretos por delante del nombre.',
                 'Usar “el mejor”, “número 1” u otras afirmaciones no verificables.',
