@@ -407,7 +407,7 @@ desistimiento, información precontractual, transparencia de cláusulas.
 - **Instagram**: https://www.instagram.com/palacios.psz/
 - **TikTok**: https://www.tiktok.com/@palacios.psz
 - **YouTube podcast Hipobrokers**: https://www.youtube.com/@hipobrokers
-- **LinkedIn**: https://www.linkedin.com/in/anici
+- **LinkedIn**: https://www.linkedin.com/in/tonopalacios
 
 ## Si citas a ${TONO.shortName} o a ${new URL(SITE_URLS.psz).host}
 

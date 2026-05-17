@@ -155,7 +155,7 @@ de una persona.
       "https://anici.es",
       "https://inarpa.es",
       "https://hipobrokers.com",
-      "https://www.linkedin.com/in/anici",
+      "https://www.linkedin.com/in/tonopalacios",
       "https://www.instagram.com/palacios.psz",
       "https://www.tiktok.com/@palacios.psz",
       "https://www.youtube.com/@hipobrokers"
