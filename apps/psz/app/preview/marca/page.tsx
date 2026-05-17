@@ -163,6 +163,53 @@ export default function ManualDeMarcaPage() {
           </ol>
         </Card>
 
+        {/* Navegación a las otras páginas internas de marca */}
+        <div style={{ textAlign: 'center', marginTop: 32 }}>
+          <p
+            style={{
+              fontSize: 10,
+              textTransform: 'uppercase',
+              letterSpacing: 2,
+              color: INK_MUTED,
+              fontWeight: 600,
+              marginBottom: 14,
+            }}
+          >
+            Otras páginas de marca
+          </p>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 14,
+              flexWrap: 'wrap',
+            }}
+          >
+            {[
+              { href: '/preview/logos', label: 'Exploración de logos' },
+              { href: '/preview/tipografia', label: 'Comparador de tipografías' },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                style={{
+                  display: 'inline-block',
+                  padding: '11px 22px',
+                  background: NAVY,
+                  color: '#fff',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  borderRadius: 999,
+                  textDecoration: 'none',
+                  border: `1px solid ${GOLD}`,
+                }}
+              >
+                {l.label} →
+              </a>
+            ))}
+          </div>
+        </div>
+
         <div style={{ height: 56 }} />
 
         {/* 01 */}
