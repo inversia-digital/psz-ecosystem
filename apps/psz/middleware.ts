@@ -70,6 +70,46 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next()
   }
 
+  // 1.bis Protección de /preview/* (logos, manual de marca, tipografía).
+  // Herramientas internas: en localhost se ven sin clave (verificación);
+  // en cualquier otro host exigen Basic Auth (PREVIEW_USER/PREVIEW_PASS).
+  if (path.startsWith('/preview')) {
+    const host = req.nextUrl.hostname
+    const isLocal =
+      host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0' || host === '::1'
+
+    if (!isLocal) {
+      const expectedUser = process.env.PREVIEW_USER || 'tono'
+      const expectedPass = process.env.PREVIEW_PASS
+
+      if (!expectedPass) {
+        // Sin password configurado → nunca queda abierto.
+        return new NextResponse('No disponible', { status: 404 })
+      }
+
+      const auth = req.headers.get('authorization')
+      if (!auth || !auth.startsWith('Basic ')) {
+        return new NextResponse('Auth required', {
+          status: 401,
+          headers: { 'WWW-Authenticate': 'Basic realm="PSZ Marca"' },
+        })
+      }
+      try {
+        const [user, pass] = atob(auth.slice('Basic '.length)).split(':')
+        if (user !== expectedUser || pass !== expectedPass) {
+          return new NextResponse('Credenciales inválidas', {
+            status: 401,
+            headers: { 'WWW-Authenticate': 'Basic realm="PSZ Marca"' },
+          })
+        }
+      } catch {
+        return new NextResponse('Auth malformada', { status: 400 })
+      }
+    }
+    // Local o autenticado → servir sin loggear (no es página pública).
+    return NextResponse.next()
+  }
+
   // 2. Tracking de visitantes — solo rutas no-api
   if (path.startsWith('/api/')) return NextResponse.next()
 
