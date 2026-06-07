@@ -218,6 +218,37 @@ export default function BrokerHipotecarioPage() {
         </Container>
       </Section>
 
+      {/* CTA CONTEXTUAL — calculadora de seguro de hipoteca (herramienta en activos.psz.es) */}
+      <Section tone="paper" padding="sm">
+        <Container size="md">
+          <div className="bg-paper-card border border-navy-100 border-l-4 border-l-gold-400 rounded-xl p-6 md:p-8">
+            <p className="text-xs uppercase tracking-wider text-gold-600 font-semibold mb-2">
+              Antes de firmar
+            </p>
+            <h2 className="text-2xl font-bold text-navy-800 mb-3">
+              ¿El seguro del banco te compensa, o sale mejor uno privado?
+            </h2>
+            <p className="text-ink-soft mb-4 leading-relaxed">
+              Casi todos los bancos condicionan el tipo de interés a contratar su seguro de vida
+              o de hogar. A veces compensa; muchas veces, no. Con la{' '}
+              <a
+                href="https://activos.psz.es/calculadora-seguro-hipoteca"
+                className="text-gold-700 hover:text-gold-600 font-semibold underline"
+              >
+                calculadora de seguro de hipoteca
+              </a>{' '}
+              compruebas con números si te interesa el del banco o uno privado equivalente.
+            </p>
+            <a
+              href="https://activos.psz.es/calculadora-seguro-hipoteca"
+              className="inline-flex items-center gap-1 text-gold-700 hover:text-gold-600 font-bold no-underline"
+            >
+              Calcula si te compensa el seguro del banco →
+            </a>
+          </div>
+        </Container>
+      </Section>
+
       {/* HONORARIOS */}
       <Section id="honorarios" tone="soft" padding="md" title={PILLAR_BROKER.fees.title}>
         <Container size="md">

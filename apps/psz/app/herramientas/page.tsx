@@ -192,6 +192,60 @@ export default function HerramientasHubPage() {
         </Section>
       )}
 
+      {/* HERRAMIENTAS Y SERVICIOS COMPLEMENTARIOS — en activos.psz.es (área de cliente) */}
+      <Section tone="paper" padding="md" title="Herramientas y servicios complementarios">
+        <Container size="lg">
+          <p className="text-ink-soft mb-6 max-w-prose">
+            Además de las calculadoras propietarias, en mi área de cliente tienes otras
+            herramientas y servicios listos para usar.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <a
+              href="https://activos.psz.es/calculadora-seguro-hipoteca"
+              className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
+            >
+              <div aria-hidden className="text-2xl mb-3">🛡️</div>
+              <h3 className="text-xl font-bold text-navy-800 mb-2">
+                Calculadora del seguro de hipoteca
+              </h3>
+              <p className="text-sm text-ink-soft leading-relaxed mb-4">
+                ¿Te compensa el seguro que te ofrece el banco o sale mejor uno privado?
+                Compruébalo con números.
+              </p>
+              <span className="inline-flex items-center gap-1 text-gold-700 group-hover:text-gold-600 font-bold text-sm">
+                Abrir herramienta <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+            <a
+              href="https://activos.psz.es/seguros"
+              className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
+            >
+              <div aria-hidden className="text-2xl mb-3">📋</div>
+              <h3 className="text-xl font-bold text-navy-800 mb-2">Seguros</h3>
+              <p className="text-sm text-ink-soft leading-relaxed mb-4">
+                Protege tu alquiler y tu vivienda con coberturas a medida.
+              </p>
+              <span className="inline-flex items-center gap-1 text-gold-700 group-hover:text-gold-600 font-bold text-sm">
+                Ver seguros <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+            <a
+              href="https://activos.psz.es/alquileres"
+              className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
+            >
+              <div aria-hidden className="text-2xl mb-3">🔑</div>
+              <h3 className="text-xl font-bold text-navy-800 mb-2">Alquileres</h3>
+              <p className="text-sm text-ink-soft leading-relaxed mb-4">
+                Listado de viviendas en alquiler para inquilinos.
+              </p>
+              <span className="inline-flex items-center gap-1 text-gold-700 group-hover:text-gold-600 font-bold text-sm">
+                Ver alquileres <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+          </div>
+        </Container>
+      </Section>
+
       {/* GLOSARIO PROMINENT LINK */}
       <Section tone="paper" padding="md">
         <Container size="md">
