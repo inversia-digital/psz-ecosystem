@@ -140,6 +140,26 @@ export const HERRAMIENTAS: Herramienta[] = [
     ribbonClass: 'bg-purple-500',
     status: 'live',
   },
+  {
+    slug: 'calculadora-gastos-compra',
+    url: `${ROOT}calculadora-gastos-compra`,
+    name: 'Calculadora de gastos de compra',
+    shortName: 'Gastos de compra',
+    description:
+      '¿Cuánto necesitas ahorrado de verdad para comprar? Calcula impuestos (ITP por comunidad en segunda mano, o IVA + AJD en obra nueva), notaría, registro, gestoría y tasación, y el ahorro total necesario (entrada + gastos).',
+    features: [
+      'ITP por comunidad autónoma (segunda mano)',
+      'IVA + AJD (obra nueva)',
+      'Notaría, registro, gestoría y tasación',
+      'Ahorro necesario = entrada + gastos',
+      'Avisos sobre bonificaciones y regla del 10-12%',
+    ],
+    audience: 'Comprador que quiere saber el ahorro real antes de lanzarse',
+    keyFigure: 'Ahorro necesario para comprar',
+    icon: '🧾',
+    ribbonClass: 'bg-teal-500',
+    status: 'live',
+  },
 ]
 
 export const HERRAMIENTAS_LIVE = HERRAMIENTAS.filter((h) => h.status === 'live')
