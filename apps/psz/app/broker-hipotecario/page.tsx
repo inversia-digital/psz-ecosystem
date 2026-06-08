@@ -233,6 +233,8 @@ export default function BrokerHipotecarioPage() {
               o de hogar. A veces compensa; muchas veces, no. Con la{' '}
               <a
                 href="https://activos.psz.es/calculadora-seguro-hipoteca"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gold-700 hover:text-gold-600 font-semibold underline"
               >
                 calculadora de seguro de hipoteca
@@ -241,6 +243,8 @@ export default function BrokerHipotecarioPage() {
             </p>
             <a
               href="https://activos.psz.es/calculadora-seguro-hipoteca"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-gold-700 hover:text-gold-600 font-bold no-underline"
             >
               Calcula si te compensa el seguro del banco →

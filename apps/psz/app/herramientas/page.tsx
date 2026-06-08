@@ -202,6 +202,8 @@ export default function HerramientasHubPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <a
               href="https://activos.psz.es/calculadora-seguro-hipoteca"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
             >
               <div aria-hidden className="text-2xl mb-3">🛡️</div>
@@ -218,6 +220,8 @@ export default function HerramientasHubPage() {
             </a>
             <a
               href="https://activos.psz.es/seguros"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
             >
               <div aria-hidden className="text-2xl mb-3">📋</div>
@@ -231,6 +235,8 @@ export default function HerramientasHubPage() {
             </a>
             <a
               href="https://activos.psz.es/alquileres"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group block bg-paper-card border border-navy-100 rounded-xl p-6 shadow-soft hover:shadow-card hover:border-gold-400 transition-all no-underline"
             >
               <div aria-hidden className="text-2xl mb-3">🔑</div>

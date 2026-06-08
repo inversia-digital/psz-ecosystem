@@ -16,7 +16,7 @@ export const SITE_URLS = {
 
 /** Formulario de captación de cliente que quiere hipoteca (CRM Hipobrokers) */
 export const MORTGAGE_FORM_URL =
-  'https://crm.hipobrokers.com/users/referer-ici-account/5XsQSB9RBlyqZxX3xvCV'
+  'https://crm.hipobrokers.com/users/referer-ici-account/vJSlhcci94teo8bOYEWc'
 
 /** Canal Telegram de oportunidades para inversores */
 export const TELEGRAM_INVESTORS_URL = 'https://t.me/+SB3qrIEnuScxNjgy'
