@@ -160,6 +160,46 @@ export const HERRAMIENTAS: Herramienta[] = [
     ribbonClass: 'bg-teal-500',
     status: 'live',
   },
+  {
+    slug: 'calculadora-subrogacion-hipoteca',
+    url: `${ROOT}calculadora-subrogacion-hipoteca`,
+    name: 'Calculadora de subrogación de hipoteca',
+    shortName: 'Subrogación',
+    description:
+      '¿Te compensa cambiar tu hipoteca a otro banco? Compara los intereses que te quedan con tu TIN actual frente a un TIN nuevo, descuenta los costes del cambio (comisión, tasación, gestoría) y calcula el ahorro neto, el ahorro mensual y el punto de equilibrio.',
+    features: [
+      'Ahorro neto tras descontar costes del cambio',
+      'Ahorro en la cuota mensual',
+      'Punto de equilibrio (meses para recuperar costes)',
+      'Comparación de intereses restantes (TIN actual vs nuevo)',
+      'Avisos sobre subrogación, novación y Ley 5/2019',
+    ],
+    audience: 'Titular de hipoteca que valora cambiar de banco o renegociar',
+    keyFigure: 'Ahorro neto al cambiar',
+    icon: '🔄',
+    ribbonClass: 'bg-indigo-500',
+    status: 'live',
+  },
+  {
+    slug: 'test-viabilidad-hipotecaria',
+    url: `${ROOT}test-viabilidad-hipotecaria`,
+    name: 'Test de viabilidad hipotecaria',
+    shortName: 'Test de viabilidad',
+    description:
+      '¿Tu operación pasaría el filtro del banco? Con tus ingresos, deudas, precio, ahorro, plazo, edad y tipo de contrato, estima cuota, ratio de esfuerzo, LTV y edad al vencimiento, y devuelve un veredicto VIABLE / AJUSTADA / DIFÍCIL con los motivos.',
+    features: [
+      'Veredicto VIABLE / AJUSTADA / DIFÍCIL',
+      'Ratio de esfuerzo, LTV y edad al vencimiento',
+      'Cuota estimada con TIN de referencia',
+      'Motivos detallados de cada factor',
+      'Criterios reales de mesa de riesgos',
+    ],
+    audience: 'Cualquiera que quiere saber si su caso es financiable antes de buscar',
+    keyFigure: 'Veredicto de viabilidad',
+    icon: '🚦',
+    ribbonClass: 'bg-cyan-500',
+    status: 'live',
+  },
 ]
 
 export const HERRAMIENTAS_LIVE = HERRAMIENTAS.filter((h) => h.status === 'live')
