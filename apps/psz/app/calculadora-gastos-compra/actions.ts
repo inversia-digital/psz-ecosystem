@@ -1,6 +1,7 @@
 'use server'
 
 import { forensicSignature } from '../_lib/signature'
+import { withInvisibleWatermark } from '../_lib/invisible'
 import { ITP_TABLE } from '../calculadora-rentabilidad-inmobiliaria/itpData'
 
 /**
@@ -216,7 +217,8 @@ function generarWarnings(d: {
     }
   }
 
-  return w
+  // Marca de agua invisible en los textos de criterio (forense anti copy-paste).
+  return w.map((x) => ({ ...x, body: withInvisibleWatermark(x.body) }))
 }
 
 // ── Helpers ──
