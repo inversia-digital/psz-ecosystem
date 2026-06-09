@@ -106,14 +106,6 @@ const nextConfig = {
         basePath: false,
       },
 
-      // Formulario hipoteca — redirige al CRM Hipobrokers
-      {
-        source: '/solicitar-hipoteca',
-        destination: 'https://crm.hipobrokers.com/users/referer-ici-account/5XsQSB9RBlyqZxX3xvCV',
-        permanent: true,
-        basePath: false,
-      },
-
       // Página obsoleta de gestión logística — redirige al aviso legal
       { source: '/gestion-logistica', destination: '/aviso-legal', permanent: true },
 
