@@ -9,6 +9,7 @@ import {
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
 import { SelloPalacios } from '../_components/SelloPalacios'
+import { CanalTelegramCTA } from '../_components/CanalTelegramCTA'
 import {
   HERRAMIENTAS,
   HERRAMIENTAS_LIVE,
@@ -173,6 +174,9 @@ export default function HerramientasHubPage() {
           </div>
         </Container>
       </Section>
+
+      {/* CTA · Canal de inversores (enlace rastreable herramientas) */}
+      <CanalTelegramCTA />
 
       {/* PRÓXIMAMENTE */}
       {HERRAMIENTAS_COMING.length > 0 && (

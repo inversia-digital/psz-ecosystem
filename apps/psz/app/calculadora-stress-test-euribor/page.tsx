@@ -11,6 +11,7 @@ import {
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import StressForm from './StressForm'
 
@@ -376,6 +377,7 @@ export default function CalculadoraStressTestEuriborPage() {
           </div>
         </Container>
       </Section>
+      <CanalTelegramBanner />
     </main>
   )
 }

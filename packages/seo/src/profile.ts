@@ -18,8 +18,15 @@ export const SITE_URLS = {
 export const MORTGAGE_FORM_URL =
   'https://crm.hipobrokers.com/users/referer-ici-account/vJSlhcci94teo8bOYEWc'
 
-/** Canal Telegram de oportunidades para inversores */
+/** Canal Telegram de oportunidades para inversores (enlace general del sitio) */
 export const TELEGRAM_INVESTORS_URL = 'https://t.me/+SB3qrIEnuScxNjgy'
+
+/**
+ * Enlace de invitación RASTREABLE del canal de inversores para la sección de
+ * herramientas (hub /herramientas + calculadoras). Telegram atribuye las altas
+ * a la fuente "Web · psz.es Herramientas" — no reutilizar en otras secciones.
+ */
+export const TELEGRAM_INVESTORS_URL_HERRAMIENTAS = 'https://t.me/+C4jYXffNaMw1NzBi'
 
 /**
  * Redes sociales públicas de Toño Palacios.

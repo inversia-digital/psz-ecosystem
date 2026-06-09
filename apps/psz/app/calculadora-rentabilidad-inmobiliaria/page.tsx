@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import {
   SITE_URLS,
-  TELEGRAM_INVESTORS_URL,
+  TELEGRAM_INVESTORS_URL_HERRAMIENTAS,
   TONO,
   breadcrumbSchema,
   faqPageSchema,
@@ -530,7 +530,7 @@ export default function CalculadoraRentabilidadPage() {
             con el perfil, te aviso de las que se ajustan a tu rango de rentabilidad y ubicación.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={TELEGRAM_INVESTORS_URL} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
+            <Button href={TELEGRAM_INVESTORS_URL_HERRAMIENTAS} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
               Canal Telegram de inversores →
             </Button>
             <Button href="/personal-shopper-inmobiliario-zaragoza" variant="primary" size="lg">

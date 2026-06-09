@@ -9,6 +9,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import MortgageForm from './MortgageForm'
 
@@ -305,6 +306,7 @@ export default function CalculadoraHipotecaPage() {
           </div>
         </Container>
       </Section>
+      <CanalTelegramBanner />
     </main>
   )
 }
