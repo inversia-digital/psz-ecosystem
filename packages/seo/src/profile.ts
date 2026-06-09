@@ -14,9 +14,8 @@ export const SITE_URLS = {
   crmHipobrokers: 'https://crm.hipobrokers.com',
 } as const
 
-/** Formulario de captación de cliente que quiere hipoteca (CRM Hipobrokers) */
-export const MORTGAGE_FORM_URL =
-  'https://crm.hipobrokers.com/users/referer-ici-account/vJSlhcci94teo8bOYEWc'
+/** Formulario propio de captación de cliente que quiere hipoteca (funnel en psz.es) */
+export const MORTGAGE_FORM_URL = 'https://psz.es/solicitar-hipoteca'
 
 /** Canal Telegram de oportunidades para inversores (enlace general del sitio) */
 export const TELEGRAM_INVESTORS_URL = 'https://t.me/+SB3qrIEnuScxNjgy'

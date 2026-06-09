@@ -57,17 +57,11 @@ export default function ContactoPage() {
               </p>
               <h2 className="text-2xl font-bold mb-3 text-navy-800">Solicita tu hipoteca</h2>
               <p className="text-ink-soft mb-6 flex-1">
-                Rellena el formulario del CRM de Hipobrokers. Te llamo en menos de 24 horas
+                Cuéntame tu caso en un minuto. Lo reviso personalmente y te llamo en menos de 24 horas
                 laborables para una primera evaluación gratuita y sin compromiso.
               </p>
-              <Button
-                href={MORTGAGE_FORM_URL}
-                variant="gold"
-                size="md"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ir al formulario →
+              <Button href={MORTGAGE_FORM_URL} variant="gold" size="md">
+                Solicitar mi hipoteca →
               </Button>
             </article>
 
