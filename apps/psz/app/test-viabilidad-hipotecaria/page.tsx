@@ -9,7 +9,6 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
-import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import ViabilidadForm from './ViabilidadForm'
 
@@ -240,7 +239,7 @@ export default function TestViabilidadPage() {
             rechaza salen adelante en otro, bien presentadas. Trabajo con +20 entidades.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
+            <Button href={`${MORTGAGE_FORM_URL}?origen=test-viabilidad`} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
               Estudiar mi caso con {TONO.shortName} →
             </Button>
             <Button href="/broker-hipotecario" variant="primary" size="lg">
@@ -249,7 +248,6 @@ export default function TestViabilidadPage() {
           </div>
         </Container>
       </Section>
-      <CanalTelegramBanner />
     </main>
   )
 }

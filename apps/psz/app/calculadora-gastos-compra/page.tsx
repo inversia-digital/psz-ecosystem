@@ -9,7 +9,6 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
-import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import GastosForm from './GastosForm'
 
@@ -229,7 +228,7 @@ export default function CalculadoraGastosCompraPage() {
             compra con los números claros.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
+            <Button href={`${MORTGAGE_FORM_URL}?origen=gastos-compra`} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
               Solicitar mi hipoteca con {TONO.shortName} →
             </Button>
             <Button href="/broker-hipotecario" variant="primary" size="lg">
@@ -238,7 +237,6 @@ export default function CalculadoraGastosCompraPage() {
           </div>
         </Container>
       </Section>
-      <CanalTelegramBanner />
     </main>
   )
 }

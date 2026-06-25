@@ -68,6 +68,7 @@ export async function POST(req: NextRequest) {
     vivienda_libre: bool('vivienda_libre'),
     pignorables: bool('pignorables'),
     mensaje: str('mensaje'),
+    origen: str('origen'),
     ip,
   }
 

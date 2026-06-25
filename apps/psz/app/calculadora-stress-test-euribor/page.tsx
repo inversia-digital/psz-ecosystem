@@ -11,7 +11,6 @@ import {
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
-import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import StressForm from './StressForm'
 
@@ -368,7 +367,7 @@ export default function CalculadoraStressTestEuriborPage() {
             decisión correcta depende de tu caso completo.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
+            <Button href={`${MORTGAGE_FORM_URL}?origen=stress-test-euribor`} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
               Solicitar análisis con {TONO.shortName} →
             </Button>
             <Button href="/broker-hipotecario" variant="primary" size="lg">
@@ -377,7 +376,6 @@ export default function CalculadoraStressTestEuriborPage() {
           </div>
         </Container>
       </Section>
-      <CanalTelegramBanner />
     </main>
   )
 }

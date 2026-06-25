@@ -9,7 +9,6 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
-import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import SubrogacionForm from './SubrogacionForm'
 
@@ -227,7 +226,7 @@ export default function CalculadoraSubrogacionPage() {
             de verdad el mejor de mercado, no solo mejor que el que tienes.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
+            <Button href={`${MORTGAGE_FORM_URL}?origen=subrogacion-hipoteca&tipo=subrogacion`} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
               Solicitar con {TONO.shortName} →
             </Button>
             <Button href="/broker-hipotecario" variant="primary" size="lg">
@@ -236,7 +235,6 @@ export default function CalculadoraSubrogacionPage() {
           </div>
         </Container>
       </Section>
-      <CanalTelegramBanner />
     </main>
   )
 }

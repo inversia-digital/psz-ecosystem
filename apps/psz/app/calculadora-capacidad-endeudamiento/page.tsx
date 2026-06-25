@@ -11,7 +11,6 @@ import {
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
-import { CanalTelegramBanner } from '../_components/CanalTelegramCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import CapacidadForm from './CapacidadForm'
 
@@ -391,7 +390,7 @@ export default function CalculadoraCapacidadPage() {
             banco — la diferencia entre un "no" y un "sí" se decide en el dossier.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={MORTGAGE_FORM_URL} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
+            <Button href={`${MORTGAGE_FORM_URL}?origen=capacidad-endeudamiento`} variant="gold" size="lg" target="_blank" rel="noopener noreferrer">
               Solicitar mi hipoteca con {TONO.shortName} →
             </Button>
             <Button href="/broker-hipotecario" variant="primary" size="lg">
@@ -400,7 +399,6 @@ export default function CalculadoraCapacidadPage() {
           </div>
         </Container>
       </Section>
-      <CanalTelegramBanner />
     </main>
   )
 }
