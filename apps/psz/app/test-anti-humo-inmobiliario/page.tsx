@@ -76,7 +76,7 @@ export async function generateMetadata({ searchParams }: { searchParams?: SP }):
     reforma: parseEsNumber(pick(searchParams, 'reforma')) || 0,
     gastosCompra: Number.isFinite(gcRaw) ? gcRaw : undefined,
     honorarios: Number.isFinite(honRaw) ? honRaw : 0,
-    gastosAnualesPct: Number.isFinite(parseEsNumber(pick(searchParams, 'gastos'))) ? parseEsNumber(pick(searchParams, 'gastos')) : undefined,
+    gastosAnualesEur: Number.isFinite(parseEsNumber(pick(searchParams, 'gastos'))) ? parseEsNumber(pick(searchParams, 'gastos')) : undefined,
     anunciada: Number.isFinite(anunciadaRaw) ? anunciadaRaw : null,
   })
 
@@ -88,7 +88,7 @@ export async function generateMetadata({ searchParams }: { searchParams?: SP }):
   if (r.reforma > 0) q.set('reforma', String(r.reforma))
   q.set('gc', String(r.gastosCompraEur))
   if (r.honorarios > 0) q.set('hon', String(r.honorarios))
-  q.set('gastos', String(r.gastosAnualesPct))
+  q.set('gastos', String(Math.round(r.gastosAnualesEur)))
   const ogUrl = `${SITE_URLS.psz}/api/og-antihumo?${q.toString()}`
 
   const title =

@@ -54,7 +54,7 @@ export default function AntiHumoForm({ initial }: { initial?: FormInitial } = {}
     if (initial!.reforma) fd.set('reforma', initial!.reforma)
     if (initial!.gc) fd.set('gastosCompra', initial!.gc)
     if (initial!.hon) fd.set('honorarios', initial!.hon)
-    if (initial!.gastos) fd.set('gastosAnualesPct', initial!.gastos)
+    if (initial!.gastos) fd.set('gastosAnualesEur', initial!.gastos)
     action(fd)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -113,16 +113,16 @@ export default function AntiHumoForm({ initial }: { initial?: FormInitial } = {}
               label="Honorarios agencia / PSI"
               suffix="€"
               placeholder="0"
-              help="Lo que cobra la inmobiliaria o el personal shopper. Los 'vende humos' suelen cobrar ~4.000 €+IVA, y no lo cuentan."
+              help="Si compras a través de una agencia o un personal shopper, sus honorarios. Es un coste real de la operación que también baja la rentabilidad — el número honesto lo cuenta desde el principio."
               defaultValue={initial?.hon}
             />
             <Input name="reforma" label="Reforma" suffix="€" placeholder="0" defaultValue={initial?.reforma} />
             <Input
-              name="gastosAnualesPct"
-              label="Gastos anuales"
-              suffix="%"
-              placeholder="28"
-              help="% sobre la renta (IBI ~200 €, comunidad ~300 €/año, seguro, mantenimiento, vacíos, gestión)."
+              name="gastosAnualesEur"
+              label="Gastos anuales (€/año)"
+              suffix="€"
+              placeholder="Vacío = estimar"
+              help="Suma tu cifra real: IBI (~200) + comunidad (~300) + seguro + mantenimiento + vacíos + gestión. Si lo dejas vacío, estimamos ~28% de la renta."
               defaultValue={initial?.gastos}
             />
           </div>
@@ -234,7 +234,7 @@ function resultUrl(r: AntiHumoResult): string {
   if (r.reforma > 0) q.set('reforma', String(r.reforma))
   q.set('gc', String(r.gastosCompraEur))
   if (r.honorarios > 0) q.set('hon', String(r.honorarios))
-  q.set('gastos', String(r.gastosAnualesPct))
+  q.set('gastos', String(Math.round(r.gastosAnualesEur)))
   return `https://psz.es/test-anti-humo-inmobiliario?${q.toString()}`
 }
 
@@ -314,7 +314,7 @@ function Result({ r }: { r: AntiHumoResult }) {
           {r.reforma > 0 && <Row label="Reforma" value={eur(r.reforma)} />}
           {r.honorarios > 0 && <Row label="Honorarios agencia / PSI" value={eur(r.honorarios)} />}
           <Row label="Inversión real total" value={eur(r.inversionReal)} />
-          <Row label={`Gastos anuales (${r.gastosAnualesPct}% de la renta)`} value={`${eur(r.gastosAnualesEur)}/año`} />
+          <Row label={r.gastosAnualesEstimado ? 'Gastos anuales (estimados ~28% renta)' : 'Gastos anuales'} value={`${eur(r.gastosAnualesEur)}/año`} />
           <Row label="Renta neta anual" value={`${eur(r.rentaNetaAnual)}/año`} />
         </div>
       </details>

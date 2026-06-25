@@ -24,7 +24,7 @@ export async function testAntiHumo(_prev: ActionState, formData: FormData): Prom
   if (!Number.isFinite(alquiler) || alquiler <= 0) return { ok: false, error: 'Introduce el alquiler mensual estimado.' }
 
   const reforma = parseEsNumber(formData.get('reforma'))
-  const gastos = parseEsNumber(formData.get('gastosAnualesPct'))
+  const gastosAnualesEur = parseEsNumber(formData.get('gastosAnualesEur'))
   const gastosCompra = parseEsNumber(formData.get('gastosCompra'))
   const honorarios = parseEsNumber(formData.get('honorarios'))
   const anunciada = parseEsNumber(formData.get('anunciada'))
@@ -36,7 +36,7 @@ export async function testAntiHumo(_prev: ActionState, formData: FormData): Prom
     reforma: Number.isFinite(reforma) ? reforma : 0,
     gastosCompra: Number.isFinite(gastosCompra) ? gastosCompra : undefined,
     honorarios: Number.isFinite(honorarios) ? honorarios : 0,
-    gastosAnualesPct: Number.isFinite(gastos) ? gastos : undefined,
+    gastosAnualesEur: Number.isFinite(gastosAnualesEur) ? gastosAnualesEur : undefined,
     anunciada: Number.isFinite(anunciada) ? anunciada : null,
   })
   return { ok: true, result }

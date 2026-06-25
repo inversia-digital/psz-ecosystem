@@ -23,7 +23,6 @@ export interface AntiHumoResult {
   ccaaName: string
   itpPct: number
   reforma: number
-  gastosAnualesPct: number
   anunciada: number | null
   rentaAnual: number
   itpEur: number
@@ -31,6 +30,8 @@ export interface AntiHumoResult {
   honorarios: number
   inversionReal: number
   gastosAnualesEur: number
+  /** true si los gastos anuales se estimaron (% de la renta), false si los puso el usuario */
+  gastosAnualesEstimado: boolean
   rentaNetaAnual: number
   brutaPct: number
   netaPct: number
@@ -52,7 +53,9 @@ export interface AntiHumoInput {
   gastosCompra?: number
   /** Honorarios de la agencia / personal shopper. Por defecto 0. */
   honorarios?: number
-  gastosAnualesPct?: number
+  /** Gastos anuales TOTALES en €/año (IBI + comunidad + seguro + …). Si no se
+   *  da, se estima como un % de la renta (GASTOS_ANUALES_PCT_DEFAULT). */
+  gastosAnualesEur?: number
   anunciada?: number | null
 }
 
@@ -69,16 +72,14 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
   const gastosCompraEur =
     inp.gastosCompra != null && inp.gastosCompra >= 0 ? inp.gastosCompra : GASTOS_COMPRA_DEFAULT
   const honorarios = inp.honorarios && inp.honorarios > 0 ? inp.honorarios : 0
-  const gastosAnualesPct =
-    inp.gastosAnualesPct != null && inp.gastosAnualesPct >= 0 && inp.gastosAnualesPct <= 90
-      ? inp.gastosAnualesPct
-      : GASTOS_ANUALES_PCT_DEFAULT
   const anunciada = inp.anunciada != null && inp.anunciada > 0 ? inp.anunciada : null
 
   const rentaAnual = alquiler * 12
   const itpEur = (precio * itpPct) / 100
   const inversionReal = precio + itpEur + gastosCompraEur + reforma + honorarios
-  const gastosAnualesEur = (rentaAnual * gastosAnualesPct) / 100
+  const gastosAnualesProvided = inp.gastosAnualesEur != null && inp.gastosAnualesEur > 0
+  const gastosAnualesEur = gastosAnualesProvided ? inp.gastosAnualesEur! : (rentaAnual * GASTOS_ANUALES_PCT_DEFAULT) / 100
+  const gastosAnualesEstimado = !gastosAnualesProvided
   const rentaNetaAnual = rentaAnual - gastosAnualesEur
 
   const brutaPct = (rentaAnual / precio) * 100
@@ -135,9 +136,9 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
   }
 
   if (honorarios > 0) {
-    veredictoCuerpo += ` (Y ojo: aquí ya van metidos ${fmtEur(
+    veredictoCuerpo += ` (Aquí están contados también los ${fmtEur(
       honorarios,
-    )} de honorarios de agencia/PSI — un gasto que muchos de los que inflan la cifra te cobran y tampoco te cuentan.)`
+    )} de honorarios de la agencia/PSI: un coste real de la operación que el número honesto incluye desde el principio.)`
   }
 
   return {
@@ -147,7 +148,7 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
     ccaaName: ccaa.name,
     itpPct,
     reforma,
-    gastosAnualesPct,
+    gastosAnualesEstimado,
     anunciada,
     rentaAnual,
     itpEur,
