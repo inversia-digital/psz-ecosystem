@@ -213,15 +213,21 @@ function Results({ r }: { r: import('./actions').MortgageResult }) {
           tin: r.inputs.tinPct,
           origen: 'calculadora-hipoteca',
         })}
-        className="block rounded-xl bg-gold-400 hover:bg-gold-300 transition-colors p-4 text-center"
+        className="group block rounded-2xl bg-gradient-to-br from-gold-300 to-gold-500 p-5 text-center shadow-lg shadow-gold-500/30 ring-1 ring-gold-600/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gold-500/50 focus:outline-none focus:ring-2 focus:ring-navy-900"
       >
-        <span className="block font-bold text-navy-900">
+        <span className="block text-lg font-extrabold leading-snug text-navy-900">
           {r.warnings.some((w) => w.severity === 'danger' || w.severity === 'warning')
-            ? 'Tu caso necesita estudio — lo veo contigo →'
-            : 'Tu operación encaja — solicítala conmigo →'}
+            ? 'Tu caso necesita estudio — lo veo contigo'
+            : 'Tu operación encaja — solicítala conmigo'}
         </span>
-        <span className="mt-0.5 block text-sm text-navy-900/80">
+        <span className="mt-1 block text-sm text-navy-900/80">
           Llevo estos datos al formulario y te llamo en menos de 24 h. Gratis y sin compromiso.
+        </span>
+        <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-2.5 text-sm font-bold text-gold-300 shadow-md transition-transform duration-200 group-hover:scale-105">
+          Solicitar mi hipoteca
+          <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden>
+            →
+          </span>
         </span>
       </a>
 
