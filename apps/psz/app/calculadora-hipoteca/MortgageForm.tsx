@@ -14,6 +14,7 @@
 
 import { useFormState, useFormStatus } from 'react-dom'
 import { calculateMortgage, type ActionState, type MortgageWarning } from './actions'
+import { solicitarHref } from '../_lib/solicitar'
 
 const eur = (n: number) =>
   new Intl.NumberFormat('es-ES', {
@@ -201,6 +202,28 @@ function Results({ r }: { r: import('./actions').MortgageResult }) {
           para tu perfil — para eso está el broker.
         </div>
       )}
+
+      {/* CTA del embudo: lleva los datos ya calculados a /solicitar-hipoteca */}
+      <a
+        href={solicitarHref({
+          precio: r.inputs.precioInmueble,
+          financiacion: r.inputs.importeFinanciar,
+          ingresos: r.inputs.ingresosNetosMensuales,
+          plazo: r.inputs.plazoAnios,
+          tin: r.inputs.tinPct,
+          origen: 'calculadora-hipoteca',
+        })}
+        className="block rounded-xl bg-gold-400 hover:bg-gold-300 transition-colors p-4 text-center"
+      >
+        <span className="block font-bold text-navy-900">
+          {r.warnings.some((w) => w.severity === 'danger' || w.severity === 'warning')
+            ? 'Tu caso necesita estudio — lo veo contigo →'
+            : 'Tu operación encaja — solicítala conmigo →'}
+        </span>
+        <span className="mt-0.5 block text-sm text-navy-900/80">
+          Llevo estos datos al formulario y te llamo en menos de 24 h. Gratis y sin compromiso.
+        </span>
+      </a>
 
       <p className="text-xs text-ink-muted italic leading-relaxed">
         © Inversia Global Digital S.L. — Calculadora propietaria. Los rangos críticos y las

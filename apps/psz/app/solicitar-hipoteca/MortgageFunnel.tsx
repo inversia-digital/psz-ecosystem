@@ -38,6 +38,8 @@ type FormState = {
   telefono: string
   mensaje: string
   acepto: boolean
+  /** de qué herramienta llega el lead (tracking del embudo) */
+  origen: string
 }
 
 const EMPTY: FormState = {
@@ -59,6 +61,34 @@ const EMPTY: FormState = {
   telefono: '',
   mensaje: '',
   acepto: false,
+  origen: '',
+}
+
+/** Prefill que llega por la URL desde las herramientas (calculadora, etc.). */
+export type FunnelPrefill = {
+  tipo_operacion?: string
+  precio?: string
+  financiacion?: string
+  ingresos?: string
+  plazo?: string
+  tin?: string
+  origen?: string
+}
+
+function seedFromPrefill(initial?: FunnelPrefill): FormState {
+  const base: FormState = { ...EMPTY }
+  if (!initial) return base
+  const NEED_VALUES = new Set(NEEDS.map((n) => n.value))
+  if (initial.tipo_operacion && NEED_VALUES.has(initial.tipo_operacion)) base.tipo_operacion = initial.tipo_operacion
+  if (initial.precio) base.precio = initial.precio
+  if (initial.financiacion) base.financiacion = initial.financiacion
+  if (initial.ingresos) base.ingresos = initial.ingresos
+  if (initial.origen) base.origen = initial.origen
+  const extras: string[] = []
+  if (initial.plazo) extras.push(`plazo ${initial.plazo} años`)
+  if (initial.tin) extras.push(`TIN ${initial.tin}%`)
+  if (extras.length) base.mensaje = `Vengo de la calculadora de hipoteca (${extras.join(', ')}).`
+  return base
 }
 
 const labelCls = 'block text-sm font-semibold text-navy-800 mb-1'
@@ -79,9 +109,11 @@ function Info({ text }: { text: string }) {
   )
 }
 
-export function MortgageFunnel() {
-  const [step, setStep] = useState(0) // 0,1,2
-  const [f, setF] = useState<FormState>(EMPTY)
+export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
+  // Si llega un tipo de operación válido por la URL, saltamos el paso 0.
+  const startStep = initial?.tipo_operacion && NEEDS.some((n) => n.value === initial.tipo_operacion) ? 1 : 0
+  const [step, setStep] = useState(startStep) // 0,1,2
+  const [f, setF] = useState<FormState>(() => seedFromPrefill(initial))
   const [sending, setSending] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState<string | null>(null)

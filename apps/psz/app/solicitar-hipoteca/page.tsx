@@ -19,7 +19,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function SolicitarHipotecaPage() {
+export default function SolicitarHipotecaPage({
+  searchParams,
+}: {
+  searchParams?: { [k: string]: string | string[] | undefined }
+}) {
+  const pick = (k: string) => {
+    const v = searchParams?.[k]
+    return (Array.isArray(v) ? v[0] : v) ?? ''
+  }
+  const initial = {
+    tipo_operacion: pick('tipo'),
+    precio: pick('precio'),
+    financiacion: pick('financiacion'),
+    ingresos: pick('ingresos'),
+    plazo: pick('plazo'),
+    tin: pick('tin'),
+    origen: pick('origen'),
+  }
   return (
     <main>
       <JsonLd
@@ -42,7 +59,7 @@ export default function SolicitarHipotecaPage() {
 
       <Section tone="paper" padding="md">
         <Container size="lg">
-          <MortgageFunnel />
+          <MortgageFunnel initial={initial} />
           <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-ink-muted">
             {TONO.shortName} · Intermediario de crédito inmobiliario nº {TONO.credentials.bdeId} (Banco de
             España). Tus datos se tratan de forma confidencial y solo para evaluar tu solicitud.
