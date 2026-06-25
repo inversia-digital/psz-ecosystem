@@ -11,10 +11,18 @@ import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import AntiHumoForm from './AntiHumoForm'
+import { computeAntiHumo, parseEsNumber } from './calc'
 
 const URL = `${SITE_URLS.psz}/test-anti-humo-inmobiliario`
 
-export const metadata: Metadata = {
+type SP = { [k: string]: string | string[] | undefined }
+const pick = (sp: SP | undefined, k: string) => {
+  const v = sp?.[k]
+  return (Array.isArray(v) ? v[0] : v) ?? ''
+}
+const fmtPct = (n: number) => `${n.toFixed(2).replace('.', ',')} %`
+
+const BASE_META: Metadata = {
   title: 'El test anti-humo inmobiliario · ¿te dan la bruta o la neta? | Toño Palacios',
   description:
     'El 10% que ves en los anuncios casi nunca es el 10% que cobras. Mete precio, alquiler y "lo que te anuncian" y este test te dice si te están enseñando la rentabilidad bruta, si te la inflan o si es coherente con la neta real. Por Toño Palacios, broker hipotecario nº E242.',
@@ -50,6 +58,48 @@ export const metadata: Metadata = {
   },
 }
 
+// Metadata DINÁMICA: si el enlace lleva el resultado (precio+alquiler+…), el
+// título y la imagen social muestran EL CASO CONCRETO → la previsualización en
+// redes destapa "te anuncian X% pero cobras Y%". Es el mecanismo viral.
+export async function generateMetadata({ searchParams }: { searchParams?: SP }): Promise<Metadata> {
+  const precio = parseEsNumber(pick(searchParams, 'precio'))
+  const alquiler = parseEsNumber(pick(searchParams, 'alquiler'))
+  if (!(Number.isFinite(precio) && precio > 0 && Number.isFinite(alquiler) && alquiler > 0)) return BASE_META
+
+  const anunciadaRaw = parseEsNumber(pick(searchParams, 'anunciada'))
+  const r = computeAntiHumo({
+    precio,
+    alquiler,
+    ccaaCode: pick(searchParams, 'ccaa') || 'VC',
+    reforma: parseEsNumber(pick(searchParams, 'reforma')) || 0,
+    gastosAnualesPct: Number.isFinite(parseEsNumber(pick(searchParams, 'gastos'))) ? parseEsNumber(pick(searchParams, 'gastos')) : undefined,
+    anunciada: Number.isFinite(anunciadaRaw) ? anunciadaRaw : null,
+  })
+
+  const q = new URLSearchParams()
+  q.set('precio', String(precio))
+  q.set('alquiler', String(alquiler))
+  if (r.anunciada != null) q.set('anunciada', String(r.anunciada))
+  q.set('ccaa', r.ccaaCode)
+  if (r.reforma > 0) q.set('reforma', String(r.reforma))
+  q.set('gastos', String(r.gastosAnualesPct))
+  const ogUrl = `${SITE_URLS.psz}/api/og-antihumo?${q.toString()}`
+
+  const title =
+    r.anunciada != null
+      ? `Me anuncian ${fmtPct(r.anunciada)} pero la rentabilidad real es ${fmtPct(r.netaPct)} · Test anti-humo`
+      : `Bruta ${fmtPct(r.brutaPct)} vs neta real ${fmtPct(r.netaPct)} · Test anti-humo inmobiliario`
+  const description = `${r.veredictoTitulo}. ${r.veredictoCuerpo}`
+
+  return {
+    ...BASE_META,
+    title,
+    description,
+    openGraph: { ...BASE_META.openGraph, title, description, images: [{ url: ogUrl, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title, description, images: [ogUrl] },
+  }
+}
+
 const FAQ = [
   {
     question: '¿Qué diferencia hay entre rentabilidad bruta y neta?',
@@ -78,7 +128,15 @@ const FAQ = [
   },
 ] as const
 
-export default function TestAntiHumoPage() {
+export default function TestAntiHumoPage({ searchParams }: { searchParams?: SP }) {
+  const initial = {
+    precio: pick(searchParams, 'precio'),
+    alquiler: pick(searchParams, 'alquiler'),
+    anunciada: pick(searchParams, 'anunciada'),
+    ccaa: pick(searchParams, 'ccaa'),
+    reforma: pick(searchParams, 'reforma'),
+    gastos: pick(searchParams, 'gastos'),
+  }
   return (
     <main>
       <JsonLd
@@ -129,7 +187,7 @@ export default function TestAntiHumoPage() {
 
       <Section tone="paper" padding="md">
         <Container size="lg">
-          <AntiHumoForm />
+          <AntiHumoForm initial={initial} />
         </Container>
       </Section>
 
