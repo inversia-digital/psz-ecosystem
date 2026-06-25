@@ -26,6 +26,8 @@ export async function GET(req: NextRequest) {
         alquiler,
         ccaaCode: sp.get('ccaa') || 'VC',
         reforma: parseEsNumber(sp.get('reforma')) || 0,
+        gastosCompra: Number.isFinite(parseEsNumber(sp.get('gc'))) ? parseEsNumber(sp.get('gc')) : undefined,
+        honorarios: Number.isFinite(parseEsNumber(sp.get('hon'))) ? parseEsNumber(sp.get('hon')) : 0,
         gastosAnualesPct: Number.isFinite(parseEsNumber(sp.get('gastos'))) ? parseEsNumber(sp.get('gastos')) : undefined,
         anunciada: Number.isFinite(parseEsNumber(sp.get('anunciada'))) ? parseEsNumber(sp.get('anunciada')) : null,
       })

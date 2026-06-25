@@ -25,6 +25,8 @@ export async function testAntiHumo(_prev: ActionState, formData: FormData): Prom
 
   const reforma = parseEsNumber(formData.get('reforma'))
   const gastos = parseEsNumber(formData.get('gastosAnualesPct'))
+  const gastosCompra = parseEsNumber(formData.get('gastosCompra'))
+  const honorarios = parseEsNumber(formData.get('honorarios'))
   const anunciada = parseEsNumber(formData.get('anunciada'))
 
   const result = computeAntiHumo({
@@ -32,6 +34,8 @@ export async function testAntiHumo(_prev: ActionState, formData: FormData): Prom
     alquiler,
     ccaaCode: String(formData.get('ccaa') || 'VC'),
     reforma: Number.isFinite(reforma) ? reforma : 0,
+    gastosCompra: Number.isFinite(gastosCompra) ? gastosCompra : undefined,
+    honorarios: Number.isFinite(honorarios) ? honorarios : 0,
     gastosAnualesPct: Number.isFinite(gastos) ? gastos : undefined,
     anunciada: Number.isFinite(anunciada) ? anunciada : null,
   })

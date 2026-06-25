@@ -35,6 +35,8 @@ export type FormInitial = {
   ccaa?: string
   reforma?: string
   gastos?: string
+  gc?: string
+  hon?: string
 }
 
 export default function AntiHumoForm({ initial }: { initial?: FormInitial } = {}) {
@@ -50,6 +52,8 @@ export default function AntiHumoForm({ initial }: { initial?: FormInitial } = {}
     if (initial!.anunciada) fd.set('anunciada', initial!.anunciada)
     fd.set('ccaa', initial!.ccaa || 'VC')
     if (initial!.reforma) fd.set('reforma', initial!.reforma)
+    if (initial!.gc) fd.set('gastosCompra', initial!.gc)
+    if (initial!.hon) fd.set('honorarios', initial!.hon)
     if (initial!.gastos) fd.set('gastosAnualesPct', initial!.gastos)
     action(fd)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,11 +94,37 @@ export default function AntiHumoForm({ initial }: { initial?: FormInitial } = {}
           <span className="block text-xs text-ink-muted mt-1">El ITP es un coste real de compra que la rentabilidad bruta ignora.</span>
         </label>
 
-        <details className="rounded-lg bg-paper-soft border border-navy-100 p-3" open={!!(initial?.reforma || initial?.gastos)}>
+        <details
+          className="rounded-lg bg-paper-soft border border-navy-100 p-3"
+          open={!!(initial?.reforma || initial?.gastos || initial?.gc || initial?.hon)}
+        >
           <summary className="cursor-pointer text-sm font-semibold text-navy-700">Ajustar supuestos (transparencia total)</summary>
           <div className="grid grid-cols-2 gap-3 mt-3">
+            <Input
+              name="gastosCompra"
+              label="Gastos de compra"
+              suffix="€"
+              placeholder="1300"
+              help="Notaría + registro + gestoría, fijo (~1.300 € fuera de Madrid/Barcelona)."
+              defaultValue={initial?.gc}
+            />
+            <Input
+              name="honorarios"
+              label="Honorarios agencia / PSI"
+              suffix="€"
+              placeholder="0"
+              help="Lo que cobra la inmobiliaria o el personal shopper. Los 'vende humos' suelen cobrar ~4.000 €+IVA, y no lo cuentan."
+              defaultValue={initial?.hon}
+            />
             <Input name="reforma" label="Reforma" suffix="€" placeholder="0" defaultValue={initial?.reforma} />
-            <Input name="gastosAnualesPct" label="Gastos anuales" suffix="%" placeholder="28" help="% sobre la renta (IBI, comunidad, seguro, mantenimiento, vacíos, gestión)" defaultValue={initial?.gastos} />
+            <Input
+              name="gastosAnualesPct"
+              label="Gastos anuales"
+              suffix="%"
+              placeholder="28"
+              help="% sobre la renta (IBI ~200 €, comunidad ~300 €/año, seguro, mantenimiento, vacíos, gestión)."
+              defaultValue={initial?.gastos}
+            />
           </div>
         </details>
 
@@ -202,6 +232,8 @@ function resultUrl(r: AntiHumoResult): string {
   if (r.anunciada != null) q.set('anunciada', String(r.anunciada))
   q.set('ccaa', r.ccaaCode)
   if (r.reforma > 0) q.set('reforma', String(r.reforma))
+  q.set('gc', String(r.gastosCompraEur))
+  if (r.honorarios > 0) q.set('hon', String(r.honorarios))
   q.set('gastos', String(r.gastosAnualesPct))
   return `https://psz.es/test-anti-humo-inmobiliario?${q.toString()}`
 }
@@ -278,8 +310,9 @@ function Result({ r }: { r: AntiHumoResult }) {
         <summary className="cursor-pointer font-semibold text-navy-800">Cómo sale (supuestos a la vista)</summary>
         <div className="mt-3 space-y-1 text-ink-soft">
           <Row label={`ITP ${r.ccaaName}`} value={`${pct(r.itpPct)} · ${eur(r.itpEur)}`} />
-          <Row label="Gastos de compra (notaría, registro, AJD, gestoría)" value={`${eur(r.gastosCompraEur)}`} />
+          <Row label="Gastos de compra (notaría, registro, gestoría)" value={`${eur(r.gastosCompraEur)}`} />
           {r.reforma > 0 && <Row label="Reforma" value={eur(r.reforma)} />}
+          {r.honorarios > 0 && <Row label="Honorarios agencia / PSI" value={eur(r.honorarios)} />}
           <Row label="Inversión real total" value={eur(r.inversionReal)} />
           <Row label={`Gastos anuales (${r.gastosAnualesPct}% de la renta)`} value={`${eur(r.gastosAnualesEur)}/año`} />
           <Row label="Renta neta anual" value={`${eur(r.rentaNetaAnual)}/año`} />

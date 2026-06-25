@@ -9,8 +9,10 @@
 
 import { ITP_TABLE } from '../calculadora-rentabilidad-inmobiliaria/itpData'
 
-const GASTOS_COMPRA_PCT = 2 // notaría + registro + AJD + gestoría
-const GASTOS_ANUALES_PCT_DEFAULT = 28 // IBI + comunidad + seguro/impago + mantenimiento + vacíos + gestión
+// Gastos de compra FIJOS (notaría ~800-1.000 + registro ~300 + gestoría). No
+// escalan con el precio: en zonas fuera de Madrid/Barcelona rondan los 1.300 €.
+const GASTOS_COMPRA_DEFAULT = 1300
+const GASTOS_ANUALES_PCT_DEFAULT = 28 // IBI (~200) + comunidad (~300) + seguro/impago + mantenimiento + vacíos + gestión, sobre la renta
 
 export type Veredicto = 'bruta' | 'inflada' | 'intermedia' | 'coherente' | 'sin_anunciada'
 
@@ -26,6 +28,7 @@ export interface AntiHumoResult {
   rentaAnual: number
   itpEur: number
   gastosCompraEur: number
+  honorarios: number
   inversionReal: number
   gastosAnualesEur: number
   rentaNetaAnual: number
@@ -45,6 +48,10 @@ export interface AntiHumoInput {
   alquiler: number
   ccaaCode?: string
   reforma?: number
+  /** Gastos de compra fijos (notaría + registro + gestoría). Por defecto 1.300 €. */
+  gastosCompra?: number
+  /** Honorarios de la agencia / personal shopper. Por defecto 0. */
+  honorarios?: number
   gastosAnualesPct?: number
   anunciada?: number | null
 }
@@ -59,6 +66,9 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
   const ccaa = ITP_TABLE.find((c) => c.code === (inp.ccaaCode || 'VC')) || ITP_TABLE.find((c) => c.code === 'VC')!
   const itpPct = ccaa.rate
   const reforma = inp.reforma && inp.reforma > 0 ? inp.reforma : 0
+  const gastosCompraEur =
+    inp.gastosCompra != null && inp.gastosCompra >= 0 ? inp.gastosCompra : GASTOS_COMPRA_DEFAULT
+  const honorarios = inp.honorarios && inp.honorarios > 0 ? inp.honorarios : 0
   const gastosAnualesPct =
     inp.gastosAnualesPct != null && inp.gastosAnualesPct >= 0 && inp.gastosAnualesPct <= 90
       ? inp.gastosAnualesPct
@@ -67,8 +77,7 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
 
   const rentaAnual = alquiler * 12
   const itpEur = (precio * itpPct) / 100
-  const gastosCompraEur = (precio * GASTOS_COMPRA_PCT) / 100
-  const inversionReal = precio + itpEur + gastosCompraEur + reforma
+  const inversionReal = precio + itpEur + gastosCompraEur + reforma + honorarios
   const gastosAnualesEur = (rentaAnual * gastosAnualesPct) / 100
   const rentaNetaAnual = rentaAnual - gastosAnualesEur
 
@@ -125,6 +134,12 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
     )}): te enseñan algunos gastos y se callan otros. Pide el desglose completo antes de firmar nada.`
   }
 
+  if (honorarios > 0) {
+    veredictoCuerpo += ` (Y ojo: aquí ya van metidos ${fmtEur(
+      honorarios,
+    )} de honorarios de agencia/PSI — un gasto que muchos de los que inflan la cifra te cobran y tampoco te cuentan.)`
+  }
+
   return {
     precio,
     alquilerMensual: alquiler,
@@ -137,6 +152,7 @@ export function computeAntiHumo(inp: AntiHumoInput): AntiHumoResult {
     rentaAnual,
     itpEur,
     gastosCompraEur,
+    honorarios,
     inversionReal,
     gastosAnualesEur,
     rentaNetaAnual,

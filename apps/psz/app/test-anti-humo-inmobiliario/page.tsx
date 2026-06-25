@@ -67,11 +67,15 @@ export async function generateMetadata({ searchParams }: { searchParams?: SP }):
   if (!(Number.isFinite(precio) && precio > 0 && Number.isFinite(alquiler) && alquiler > 0)) return BASE_META
 
   const anunciadaRaw = parseEsNumber(pick(searchParams, 'anunciada'))
+  const gcRaw = parseEsNumber(pick(searchParams, 'gc'))
+  const honRaw = parseEsNumber(pick(searchParams, 'hon'))
   const r = computeAntiHumo({
     precio,
     alquiler,
     ccaaCode: pick(searchParams, 'ccaa') || 'VC',
     reforma: parseEsNumber(pick(searchParams, 'reforma')) || 0,
+    gastosCompra: Number.isFinite(gcRaw) ? gcRaw : undefined,
+    honorarios: Number.isFinite(honRaw) ? honRaw : 0,
     gastosAnualesPct: Number.isFinite(parseEsNumber(pick(searchParams, 'gastos'))) ? parseEsNumber(pick(searchParams, 'gastos')) : undefined,
     anunciada: Number.isFinite(anunciadaRaw) ? anunciadaRaw : null,
   })
@@ -82,6 +86,8 @@ export async function generateMetadata({ searchParams }: { searchParams?: SP }):
   if (r.anunciada != null) q.set('anunciada', String(r.anunciada))
   q.set('ccaa', r.ccaaCode)
   if (r.reforma > 0) q.set('reforma', String(r.reforma))
+  q.set('gc', String(r.gastosCompraEur))
+  if (r.honorarios > 0) q.set('hon', String(r.honorarios))
   q.set('gastos', String(r.gastosAnualesPct))
   const ogUrl = `${SITE_URLS.psz}/api/og-antihumo?${q.toString()}`
 
@@ -136,6 +142,8 @@ export default function TestAntiHumoPage({ searchParams }: { searchParams?: SP }
     ccaa: pick(searchParams, 'ccaa'),
     reforma: pick(searchParams, 'reforma'),
     gastos: pick(searchParams, 'gastos'),
+    gc: pick(searchParams, 'gc'),
+    hon: pick(searchParams, 'hon'),
   }
   return (
     <main>
