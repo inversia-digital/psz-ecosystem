@@ -36,6 +36,26 @@ const ROOT = '/'
 
 export const HERRAMIENTAS: Herramienta[] = [
   {
+    slug: 'test-anti-humo-inmobiliario',
+    url: `${ROOT}test-anti-humo-inmobiliario`,
+    name: 'El test anti-humo inmobiliario',
+    shortName: 'Test anti-humo',
+    description:
+      'El 10% que ves en los anuncios casi nunca es el 10% que cobras. Mete precio, alquiler y "lo que te anuncian" y el test te dice si te dan la rentabilidad bruta, si te la inflan o si es coherente con la neta real, con el desfase en puntos y en euros al año.',
+    features: [
+      'Veredicto directo: bruta / inflada / coherente',
+      'Rentabilidad bruta vs neta real',
+      'ITP por comunidad autónoma',
+      'Desfase en puntos y en euros al año',
+      'Tarjeta de resultado compartible',
+    ],
+    audience: 'Quien ve una rentabilidad anunciada y quiere saber si es real',
+    keyFigure: 'Bruta vs neta real',
+    icon: '🕵️',
+    ribbonClass: 'bg-gold-400',
+    status: 'live',
+  },
+  {
     slug: 'calculadora-hipoteca',
     url: `${ROOT}calculadora-hipoteca`,
     name: 'Calculadora de hipoteca',

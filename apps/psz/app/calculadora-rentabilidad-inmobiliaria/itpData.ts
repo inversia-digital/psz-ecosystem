@@ -108,9 +108,9 @@ export const ITP_TABLE: ItpRate[] = [
   {
     code: 'VC',
     name: 'Comunidad Valenciana',
-    rate: 10,
-    range: '10% → 9% (jun 2026)',
-    notes: 'Cambio confirmado: desde el 1 de junio de 2026 el tipo general baja del 10% al 9% para inmuebles hasta 1.000.000 €. 11% para inmuebles por encima de 1.000.000 €. AJD baja del 1,5% al 1,4%. Operaciones cerradas antes del 1 jun 2026 mantienen el 10%.',
+    rate: 9,
+    range: '9% (desde jun 2026)',
+    notes: 'Vigente desde el 1 de junio de 2026: tipo general del 9% para inmuebles hasta 1.000.000 € (antes 10%). 11% para inmuebles por encima de 1.000.000 €. AJD del 1,4%. Operaciones cerradas antes del 1 jun 2026 mantuvieron el 10%.',
   },
   {
     code: 'EX',
