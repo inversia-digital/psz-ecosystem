@@ -292,14 +292,6 @@ function Result({ r }: { r: AntiHumoResult }) {
           >
             WhatsApp
           </a>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-navy-800 hover:bg-navy-900 text-white text-sm font-semibold px-4 py-2 no-underline"
-          >
-            X / Twitter
-          </a>
           <CopyButton text={`${shareText} ${url}`} />
         </div>
         <p className="text-xs text-navy-900/60 mt-2">Al compartir, la previsualización muestra tu caso: “te anuncian {r.anunciada != null ? pct(r.anunciada) : pct(r.brutaPct)}, real {pct(r.netaPct)}”.</p>
