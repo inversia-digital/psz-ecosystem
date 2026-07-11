@@ -1,0 +1,488 @@
+<title>PSZ · Dirección creativa de campaña</title>
+<style>
+  :root{
+    /* light is the base; dark + data-theme override below */
+    --ink:#E8E6DE;          /* page ground */
+    --surface:#F5F3EC;      /* cards */
+    --surface-2:#FBFAF4;    /* raised */
+    --line:rgba(24,26,30,.14);
+    --text:#181B1F;
+    --muted:#5B6167;
+    --faint:#8A8F95;
+    --brass:#8A6A2E;        /* accent, restrained */
+    --brass-soft:rgba(138,106,46,.12);
+    --good:#2F7D5B;
+    --shadow:0 1px 0 rgba(24,26,30,.04), 0 18px 44px -30px rgba(24,26,30,.4);
+
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+
+    --maxw:1120px;
+    --r:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ink:#0F1215;
+      --surface:#161A1F;
+      --surface-2:#1D2228;
+      --line:rgba(233,228,216,.12);
+      --text:#E9E4D8;
+      --muted:#9AA0A6;
+      --faint:#6C7076;
+      --brass:#CBA363;
+      --brass-soft:rgba(203,163,99,.14);
+      --good:#57B98B;
+      --shadow:0 1px 0 rgba(0,0,0,.4), 0 30px 60px -40px rgba(0,0,0,.9);
+    }
+  }
+  :root[data-theme="light"]{
+    --ink:#E8E6DE; --surface:#F5F3EC; --surface-2:#FBFAF4;
+    --line:rgba(24,26,30,.14); --text:#181B1F; --muted:#5B6167; --faint:#8A8F95;
+    --brass:#8A6A2E; --brass-soft:rgba(138,106,46,.12); --good:#2F7D5B;
+    --shadow:0 1px 0 rgba(24,26,30,.04), 0 18px 44px -30px rgba(24,26,30,.4);
+  }
+  :root[data-theme="dark"]{
+    --ink:#0F1215; --surface:#161A1F; --surface-2:#1D2228;
+    --line:rgba(233,228,216,.12); --text:#E9E4D8; --muted:#9AA0A6; --faint:#6C7076;
+    --brass:#CBA363; --brass-soft:rgba(203,163,99,.14); --good:#57B98B;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 30px 60px -40px rgba(0,0,0,.9);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+  .muted{color:var(--muted)}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;line-height:1.08;margin:0}
+  strong{color:inherit}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);
+    background:color-mix(in oklab,var(--ink) 82%,transparent);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:58px}
+  .brand{font-family:var(--serif);font-weight:600;letter-spacing:.02em;font-size:18px}
+  .brand b{color:var(--brass)}
+  .navlinks{display:flex;gap:20px;margin-left:auto;flex-wrap:wrap}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:13.5px;font-family:var(--mono);letter-spacing:.03em}
+  .navlinks a:hover{color:var(--text)}
+  .navlinks a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+  @media(max-width:720px){.navlinks{display:none}}
+
+  /* HERO */
+  header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  header.hero::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 15% -10%,var(--brass-soft),transparent 55%),
+      radial-gradient(90% 80% at 100% 120%,color-mix(in oklab,var(--brass) 10%,transparent),transparent 60%);
+    pointer-events:none}
+  .hero .wrap{padding:74px 24px 60px;position:relative}
+  .hero .kicker{display:flex;gap:12px;align-items:center;margin-bottom:26px;flex-wrap:wrap}
+  .hero h1{font-size:clamp(38px,7vw,74px);letter-spacing:-.015em}
+  .hero h1 .em{color:var(--brass);font-style:italic}
+  .hero .lede{max-width:60ch;margin-top:26px;font-size:clamp(17px,2.1vw,20px);color:var(--muted)}
+  .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:16px 20px;min-width:150px;box-shadow:var(--shadow)}
+  .stat .n{font-family:var(--serif);font-size:30px;color:var(--brass);font-variant-numeric:tabular-nums}
+  .stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  /* SECTION */
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px;flex-wrap:wrap}
+  .sec-head .idx{font-family:var(--mono);color:var(--faint);font-size:13px;letter-spacing:.2em}
+  .sec-head h2{font-size:clamp(26px,4vw,40px);letter-spacing:-.01em}
+  .sec-head p{margin:8px 0 0;color:var(--muted);max-width:64ch;flex-basis:100%}
+
+  /* HOOKS */
+  .hooks{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .hook{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:20px 20px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;
+    transition:transform .18s ease,border-color .18s ease}
+  .hook:hover{transform:translateY(-3px);border-color:color-mix(in oklab,var(--brass) 45%,var(--line))}
+  .hook .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .hook .num{font-family:var(--serif);font-size:22px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass);background:var(--brass-soft);border:1px solid color-mix(in oklab,var(--brass) 30%,transparent);
+    padding:3px 9px;border-radius:100px;white-space:nowrap}
+  .hook .q{font-family:var(--serif);font-size:20px;line-height:1.25}
+
+  /* SCRIPTS */
+  .script{background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:26px;margin-bottom:22px;box-shadow:var(--shadow);scroll-margin-top:76px}
+  .script > .head{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+  .script .no{font-family:var(--serif);font-size:40px;color:var(--brass);line-height:1;font-variant-numeric:tabular-nums}
+  .script .title{flex:1;min-width:220px}
+  .script .title h3{font-size:25px;margin-bottom:6px}
+  .script .angle{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .chip{font-size:12.5px;border:1px solid var(--line);border-radius:100px;padding:5px 12px;color:var(--muted);
+    background:var(--surface-2)}
+  .chip b{color:var(--text);font-weight:600}
+  .chip.emo{color:var(--brass);border-color:color-mix(in oklab,var(--brass) 35%,transparent)}
+
+  .twrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:6px}
+  table{border-collapse:collapse;width:100%;min-width:760px;font-size:14.5px}
+  thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);text-align:left;padding:11px 14px;background:var(--surface-2);
+    border-bottom:1px solid var(--line);position:sticky;top:0;white-space:nowrap}
+  tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  td.t{font-family:var(--mono);color:var(--brass);white-space:nowrap;font-variant-numeric:tabular-nums;font-size:13px}
+  td.screen b{color:var(--text)}
+  .big{display:inline-block;font-family:var(--serif);font-size:20px;line-height:1.1;color:var(--text)}
+  td.vo{color:var(--text)}
+  td.img,td.emo,td.trans{color:var(--muted);font-size:13.5px}
+  td.emo{color:var(--brass)}
+
+  .foot{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+  .foot div{flex:1;min-width:200px}
+  .foot .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+
+  .callout{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brass);
+    border-radius:12px;padding:20px 22px;margin:18px 0}
+  .callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
+
+  .winner{background:linear-gradient(180deg,var(--brass-soft),transparent);border:1px solid color-mix(in oklab,var(--brass) 40%,var(--line))}
+
+  ul.clean{list-style:none;padding:0;margin:14px 0;display:grid;gap:10px}
+  ul.clean li{padding-left:26px;position:relative;color:var(--muted)}
+  ul.clean li::before{content:"—";position:absolute;left:0;color:var(--brass)}
+  ul.clean li b{color:var(--text)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+
+  .cta{text-align:center;padding:70px 24px}
+  .cta h2{font-size:clamp(28px,5vw,46px)}
+  .cta .url{font-family:var(--mono);font-size:clamp(15px,2.4vw,20px);color:var(--brass);margin-top:18px;
+    display:inline-block;border:1px solid color-mix(in oklab,var(--brass) 40%,var(--line));
+    padding:12px 22px;border-radius:100px;background:var(--brass-soft)}
+
+  footer.end{padding:34px 24px 60px;text-align:center;color:var(--faint);font-size:13px;font-family:var(--mono);letter-spacing:.04em}
+
+  .toggle{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:100px;
+    width:34px;height:34px;cursor:pointer;font-size:15px;display:grid;place-items:center}
+  .toggle:hover{color:var(--text);border-color:var(--brass)}
+  .toggle:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+</style>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">PSZ<b>·</b> Dirección creativa</span>
+    <div class="navlinks">
+      <a href="#ganchos">Ganchos</a>
+      <a href="#guiones">10 guiones</a>
+      <a href="#ganadora">Ganadora CTR</a>
+      <a href="#plan">Plan de testing</a>
+    </div>
+    <button class="toggle" id="tg" aria-label="Cambiar tema">◐</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="eyebrow">Campaña · TikTok / Meta / YouTube Shorts</span>
+      <span class="tag">Objetivo CTR 3–5%</span>
+    </div>
+    <h1>No vendo pisos.<br>Diseño <span class="em">resultados</span>.</h1>
+    <p class="lede">Un sistema de creatividades pensado para detener el scroll en 3 segundos, transmitir autoridad sin parecer publicidad, y llevar al inversor a descubrir el escaparate de oportunidades de PSZ. Documental de Netflix con la calma de un anuncio de Apple.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="n">22</div><div class="l">Ganchos de 3 s</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">Guiones completos</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">Especialistas por deal</div></div>
+      <div class="stat"><div class="n">20–25″</div><div class="l">Duración por pieza</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- PRINCIPIO -->
+<section id="principio">
+  <div class="sec-head">
+    <span class="idx">00</span>
+    <div>
+      <h2>El principio rector de toda la campaña</h2>
+      <p>Todo lo que sigue obedece a una sola idea. Si una escena la contradice, se corta.</p>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="callout">
+      <div class="k">La tesis</div>
+      <p style="margin:0;font-family:var(--serif);font-size:21px;line-height:1.35">El protagonista nunca es el piso, ni el equipo. El protagonista es el <strong>resultado</strong> que el inversor obtiene <em>porque</em> hay un equipo trabajando por él.</p>
+    </div>
+    <div class="callout">
+      <div class="k">Traducción visual</div>
+      <p style="margin:0;color:var(--muted)">No enseñamos fachadas. Enseñamos <strong style="color:var(--text)">manos trabajando</strong>: un dedo recorriendo una columna de Excel, un plano de reforma, una firma, un contrato, un cashflow que crece. La vivienda aparece al final, ya resuelta.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="k">Vocabulario prohibido</div>
+    <p style="margin:0;color:var(--muted)">“Invierte con nosotros” · “Compra tu vivienda” · “La mejor oportunidad” · “Gran inversión” · superlativos · signos de exclamación gritados · stock de gente dándose la mano con casco. Sustituimos <em>venta</em> por <strong style="color:var(--text)">demostración</strong>.</p>
+  </div>
+</section>
+
+<!-- GANCHOS -->
+<section id="ganchos">
+  <div class="sec-head">
+    <span class="idx">01</span>
+    <div>
+      <h2>22 ganchos para los primeros 3 segundos</h2>
+      <p>Ninguno empieza con “Hola”, ni nombrando PSZ, ni enseñando un piso. Todos abren con un dato, una pregunta o una ruptura de patrón. La etiqueta indica el resorte psicológico para que puedas rotarlos en A/B.</p>
+    </div>
+  </div>
+  <div class="hooks" id="hookgrid"></div>
+</section>
+
+<!-- GUIONES -->
+<section id="guiones">
+  <div class="sec-head">
+    <span class="idx">02</span>
+    <div>
+      <h2>10 guiones · segundo a segundo</h2>
+      <p>Cada guion es una estructura psicológica distinta. Para cada uno tienes: texto exacto en pantalla (la <span class="big" style="font-size:15px">palabra grande</span> es la que se amplía), voz en off, imagen, emoción y transición — más música, palabras clave y CTR estimado relativo.</p>
+    </div>
+  </div>
+  <div id="scripts"></div>
+</section>
+
+<!-- GANADORA -->
+<section id="ganadora">
+  <div class="sec-head">
+    <span class="idx">03</span>
+    <div><h2>La versión que ganaría en TikTok Ads</h2></div>
+  </div>
+  <div class="script winner">
+    <div class="head">
+      <div class="no">01</div>
+      <div class="title">
+        <h3>“El equipo invisible” — curiosidad + prueba</h3>
+        <div class="angle">Mayor CTR estimado · 4–6%</div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:0">Gana porque combina los tres disparadores que más rinden en frío en TikTok: una <b style="color:var(--text)">pregunta de curiosidad</b> en el segundo 0 (“¿Qué pasa antes de que veas una oportunidad?”), una <b style="color:var(--text)">revelación de proceso</b> que da autoridad sin presumir, y un <b style="color:var(--text)">CTA de acceso</b>, no de compra. No pide dinero; ofrece descubrir. El coste psicológico del clic es casi cero.</p>
+    <ul class="clean">
+      <li><b>Por qué detiene el scroll:</b> abre con una pregunta que el espectador no sabía que tenía. Genera un “gap” de curiosidad que solo se cierra viendo el vídeo.</li>
+      <li><b>Por qué convierte:</b> muestra 7 especialistas en 8 segundos → el usuario siente “hay muchísima gente trabajando para que esto salga bien” sin que se lo digamos.</li>
+      <li><b>Por qué el CTA funciona:</b> “Descubre todas las oportunidades” vende <b>acceso y variedad</b>, no un piso. Encaja con el intento de bajo compromiso del que hace scroll.</li>
+      <li><b>Formato ganador:</b> ritmo de corte cada 1,5–2 s, texto grande siempre en pantalla (85% ve sin sonido), voz en off grave y pausada de fondo.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section id="plan">
+  <div class="sec-head">
+    <span class="idx">04</span>
+    <div>
+      <h2>Cómo convertir esto en una campaña que rinde</h2>
+      <p>Un guion no es una campaña. Esto es el plan de testing para superar el 3–5% de CTR y maximizar registros en el escaparate.</p>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="callout"><div class="k">Fase 1 · Test de ganchos</div><p class="muted" style="margin:0">Rota 6–8 ganchos sobre el <b style="color:var(--text)">mismo cuerpo</b> de vídeo (el guion 01). El 90% del CTR se decide en el segundo 3: aísla la variable. Mata todo lo que baje del 20% de retención a 3 s.</p></div>
+    <div class="callout"><div class="k">Fase 2 · Test de estructura</div><p class="muted" style="margin:0">Con el gancho ganador, enfrenta 3 estructuras: <b style="color:var(--text)">curiosidad</b> (01), <b style="color:var(--text)">datos</b> (07) y <b style="color:var(--text)">storytelling</b> (06). Mide CTR al escaparate, no solo views.</p></div>
+    <div class="callout"><div class="k">Fase 3 · Escalar y renovar</div><p class="muted" style="margin:0">El creativo ganador se “quema” en 7–14 días. Ten 3 variantes de gancho listas para refrescar sin tocar el cuerpo. Mantén 1 pieza de <b style="color:var(--text)">autoridad</b> como respaldo de marca.</p></div>
+    <div class="callout"><div class="k">Reglas de oro del formato</div><p class="muted" style="margin:0">9:16 · texto siempre visible · subtítulos quemados · primer frame = titular (no logo) · CTA en pantalla los últimos 4 s · misma tipografía en toda la campaña · audio en tendencia añadido en la app.</p></div>
+  </div>
+  <div class="callout">
+    <div class="k">Métrica que importa</div>
+    <p class="muted" style="margin:0">No optimices por views ni por likes. Optimiza por <strong style="color:var(--text)">CTR al escaparate</strong> y por <strong style="color:var(--text)">coste por registro en Telegram</strong>. Un vídeo con menos views pero mayor CTR e intención gana siempre. El escaparate es el filtro; Telegram es la conversión.</p>
+  </div>
+</section>
+
+</main>
+
+<div class="cta">
+  <span class="eyebrow">La única llamada a la acción</span>
+  <h2 style="margin-top:16px">Descubre todas las oportunidades.</h2>
+  <p class="muted" style="max-width:48ch;margin:14px auto 0">Sin vender una vivienda concreta. Vendemos el acceso a un escaparate ya analizado.</p>
+  <div class="url">activos.psz.es/escaparate</div>
+</div>
+
+<footer class="end">Dirección creativa · PSZ — Toño Palacios · Documento de rodaje y testing</footer>
+
+<script>
+  // theme toggle
+  const tg=document.getElementById('tg');
+  tg.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    const isDark = cur ? cur==='dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+    document.documentElement.setAttribute('data-theme', isDark?'light':'dark');
+  });
+
+  const HOOKS=[
+    ["Contraste","El 90% cree que invertir en vivienda es comprar un piso. Se equivocan."],
+    ["Dato","¿Y si una vivienda pudiera generar cerca de un 10% anual de rentabilidad estimada?"],
+    ["Pregunta","¿Cuánto dinero necesita realmente un inversor para empezar?"],
+    ["Curiosidad","¿Qué hay detrás de una inversión rentable?"],
+    ["Contraste","Comprar barato no te hace rico. Comprar bien, sí."],
+    ["Autoridad","Nadie se hace rico eligiendo el piso. Se hace rico eligiendo el sistema."],
+    ["Equipo","Antes de que veas una sola oportunidad, siete personas ya han trabajado en ella."],
+    ["Curiosidad","La diferencia entre un piso y una inversión son las horas que no ves."],
+    ["Pregunta","¿Sabes qué separa a un inversor de alguien que solo compró un piso?"],
+    ["Autoridad","Un buen inversor no busca el precio más bajo. Busca el número correcto."],
+    ["Proceso","Cada oportunidad que publico ha pasado por seis filtros antes de llegar a ti."],
+    ["Resultado","El descuento se olvida. El cashflow llega todos los meses."],
+    ["Curiosidad","Invertir en vivienda no es difícil. Hacerlo bien, y solo, sí lo es."],
+    ["Pregunta","¿Por qué la mayoría compra vivienda con miedo… y unos pocos con datos?"],
+    ["Autoridad","No necesitas suerte para invertir en inmobiliario. Necesitas un equipo."],
+    ["Exclusividad","Hay una razón por la que estas oportunidades no llegan al portal inmobiliario."],
+    ["Provocación","Las malas inversiones tienen algo en común: nadie hizo los números antes."],
+    ["Pregunta","¿Cuánto valdría tu decisión si alguien ya hubiera hecho el análisis por ti?"],
+    ["Autoridad","La rentabilidad no se improvisa. Se calcula."],
+    ["FOMO","Mientras tú duermes, tu inversión debería trabajar. ¿La tuya lo hace?"],
+    ["Equipo","Detrás de cada número que ves, hay un equipo que no ves."],
+    ["Ruptura","No vendo pisos. Y precisamente por eso deberías seguir viendo esto."]
+  ];
+  const hg=document.getElementById('hookgrid');
+  HOOKS.forEach((h,i)=>{
+    const d=document.createElement('div');d.className='hook';
+    d.innerHTML=`<div class="top"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="tag">${h[0]}</span></div><div class="q">${h[1]}</div>`;
+    hg.appendChild(d);
+  });
+
+  const SCRIPTS=[
+    {no:"01",t:"El equipo invisible",angle:"Curiosidad + prueba de proceso",
+     emo:"Intriga → respeto",pub:"28–45, racional",mus:"Piano minimalista + pulso grave in crescendo (tipo Hans Zimmer suave)",
+     words:"ANTES · SIETE · TÚ SOLO DECIDES",ctr:"4–6% (ganadora)",
+     rows:[
+      ["0–3 s","¿Qué pasa <b>ANTES</b> de que veas una oportunidad?","(silencio 1s) — voz grave: “Antes de que tú la veas…”","Primer plano de un dedo bajando por una columna de Excel","Intriga","Corte seco a negro 2 frames"],
+      ["3–8 s","<span class='big'>7 personas</span> ya trabajaron en ella","“…siete personas ya han hecho el trabajo difícil.”","Montaje rápido: analista, plano de reforma, firma, calculadora fiscal","Sorpresa","Cortes al ritmo (1,5s)"],
+      ["8–14 s","Análisis · Hipoteca · Fiscalidad · Reforma","“Rentabilidad, financiación, impuestos, obra… todo resuelto.”","Cada palabra entra sincronizada con una mano trabajando","Confianza","Whip-pan lateral"],
+      ["14–20 s","Tú solo tienes que <b>DECIDIR</b>","“Cuando llega a ti, solo queda una cosa por hacer.”","Una persona serena mirando una tablet, asiente","Alivio / control","Fundido lento"],
+      ["20–24 s","<span class='big'>Descúbrelas todas</span>","“Descubre todas las oportunidades en PSZ.”","Escaparate en pantalla, scroll suave de deals","Deseo de explorar","Corte a URL"]
+     ]},
+    {no:"02",t:"Los números no mienten",angle:"Autoridad + datos",
+     emo:"Respeto → seguridad",pub:"35–60, patrimonio",mus:"Cuerdas contenidas, tempo lento, sin percusión",
+     words:"CALCULA · CASHFLOW · NO SE IMPROVISA",ctr:"3–4%",
+     rows:[
+      ["0–3 s","La rentabilidad <b>NO se improvisa</b>","“La rentabilidad no se improvisa.”","Pizarra/tablet con una fórmula escribiéndose sola","Autoridad","Corte a negro"],
+      ["3–9 s","Se <span class='big'>CALCULA</span>","“Se calcula. Antes de comprar, no después.”","Números apareciendo: precio, alquiler, gastos, neto","Rigor","Números que se ensamblan"],
+      ["9–15 s","Rentabilidad estimada ~<b>10%</b>","“Cada oportunidad llega con su análisis de rentabilidad.”","Gráfico de cashflow ascendente, limpio","Ambición serena","Zoom lento"],
+      ["15–21 s","Y detrás, un <b>equipo</b> que lo firma","“Analistas, fiscalistas, broker hipotecario. Todo verificado.”","Retratos de perfil, tono documental b/n","Confianza","Fundido cruzado"],
+      ["21–25 s","<span class='big'>Ve los números</span>","“Ve los números tú mismo en el escaparate.”","URL sobre fondo oscuro premium","Curiosidad racional","Corte a URL"]
+     ]},
+    {no:"03",t:"Seis filtros",angle:"Prueba social / proceso",
+     emo:"Escepticismo → confianza",pub:"30–50, cautelosos",mus:"Ticking rítmico + bajo cálido",
+     words:"SEIS FILTROS · UNA LLEGA A TI",ctr:"3–4,5%",
+     rows:[
+      ["0–3 s","De cada <b>100</b> oportunidades…","“De cada cien oportunidades que analizamos…”","Contador rápido 100 → bajando","Curiosidad","Corte"],
+      ["3–10 s","…pasan <span class='big'>6 filtros</span>","“…solo unas pocas superan nuestros seis filtros.”","Sellos que caen: Análisis, Due Diligence, Fiscal, Reforma…","Rigor","Sellos con impacto sonoro"],
+      ["10–16 s","Descartamos lo que no <b>renta</b>","“Descartamos todo lo que no genera rentabilidad real.”","Documentos apartándose, uno queda en el centro","Alivio","Corte limpio"],
+      ["16–21 s","Solo <b>una</b> llega a ti","“Lo que ves en el escaparate ya pasó el filtro.”","Una única ficha iluminada","Exclusividad","Zoom in"],
+      ["21–25 s","<span class='big'>Mira las que pasaron</span>","“Descubre las que superaron el filtro.”","Escaparate + URL","Confianza / deseo","Corte a URL"]
+     ]},
+    {no:"04",t:"Lo que no llega al portal",angle:"Exclusividad",
+     emo:"Curiosidad → sensación de acceso",pub:"32–55, buscan ventaja",mus:"Sintetizador oscuro, atmósfera, sub-bass",
+     words:"NO ESTÁN · ESCAPARATE PRIVADO",ctr:"3,5–5%",
+     rows:[
+      ["0–3 s","Hay una razón por la que <b>no</b> las ves","“Hay una razón por la que estas oportunidades no aparecen en los portales.”","Pantalla de portal inmobiliario cerrándose","Intriga","Glitch / corte"],
+      ["3–9 s","Estas oportunidades <span class='big'>no están ahí</span>","“No están en Idealista. No están en el escaparate público.”","Mano cerrando un portátil, luz tenue","Exclusividad","Corte a oscuro"],
+      ["9–16 s","Se analizan <b>antes</b> de publicarse","“Se estudian una a una antes de llegar a nadie.”","Reunión, planos, café, ambiente documental","Autoridad discreta","Paneo lento"],
+      ["16–21 s","En un <b>escaparate</b> propio","“Y se publican en un único sitio.”","Interfaz del escaparate PSZ apareciendo","Deseo de acceso","Fundido"],
+      ["21–25 s","<span class='big'>Entra a verlas</span>","“Entra al escaparate y descúbrelas.”","URL","FOMO controlado","Corte a URL"]
+     ]},
+    {no:"05",t:"Mientras decides",angle:"FOMO",
+     emo:"Tensión → urgencia",pub:"28–45, procrastinadores",mus:"Reloj + pulso electrónico creciente",
+     words:"HOY · ALGUIEN YA DECIDIÓ",ctr:"3–4,5%",
+     rows:[
+      ["0–3 s","Mientras tú lo <b>piensas</b>…","“Mientras tú lo piensas…”","Reloj, persona dudando frente a una pantalla","Tensión","Corte rápido"],
+      ["3–9 s","…otro ya <span class='big'>decidió</span>","“…otro inversor ya movió su dinero.”","Split screen: uno duda / otro firma","Urgencia","Corte dividido"],
+      ["9–15 s","La diferencia no fue el <b>dinero</b>","“La diferencia no fue tener más dinero.”","Cashflow de uno crece, del otro plano","Reflexión","Zoom"],
+      ["15–21 s","Fue tener el <b>análisis</b> hecho","“Fue tener el análisis ya hecho, y un equipo detrás.”","Equipo trabajando, documentos listos","Claridad","Fundido"],
+      ["21–25 s","<span class='big'>No lo pienses más</span>","“Las oportunidades están en el escaparate. Ve a verlas.”","URL con pulso suave","Impulso","Corte a URL"]
+     ]},
+    {no:"06",t:"La decisión de Marta",angle:"Storytelling",
+     emo:"Identificación → aspiración",pub:"30–50, ahorradores",mus:"Piano narrativo cálido, sube al final",
+     words:"AHORRABA · HOY COBRA · SIN OBSESIONARSE",ctr:"3,5–5%",
+     rows:[
+      ["0–3 s","Marta <b>ahorraba</b>. No sabía en qué invertir.","“Marta ahorraba cada mes. Pero el banco no le daba nada.”","Manos guardando dinero, gesto de duda","Identificación","Corte suave"],
+      ["3–9 s","No quería ser <span class='big'>experta</span>","“No quería estudiar el mercado. No tenía tiempo.”","Persona ocupada, vida normal, trabajo","Empatía","Paneo"],
+      ["9–16 s","Solo quería <b>decidir bien</b>","“Solo quería que alguien hiciera bien los números.”","Tablet con una ficha analizada, ella asiente","Alivio","Corte"],
+      ["16–21 s","Hoy <b>cobra</b> un alquiler cada mes","“Hoy su inversión le paga todos los meses. Sin que ella la gestione.”","Notificación de ingreso, ella tranquila","Aspiración","Zoom cálido"],
+      ["21–25 s","<span class='big'>Empieza como Marta</span>","“Descubre las oportunidades en el escaparate.”","URL","Deseo","Corte a URL"]
+     ]},
+    {no:"07",t:"Anatomía de una oportunidad",angle:"Datos / demostración",
+     emo:"Curiosidad → confianza técnica",pub:"33–55, analíticos",mus:"Electrónica limpia, precisa, tipo tech-doc",
+     words:"COMPRA · ALQUILER · NETO · 10%",ctr:"3–4%",
+     rows:[
+      ["0–3 s","Así se ve una inversión <b>por dentro</b>","“Esto es lo que hay dentro de una oportunidad.”","Ficha abriéndose como un plano técnico","Curiosidad","Corte"],
+      ["3–9 s","Precio · Reforma · <span class='big'>Alquiler</span>","“Precio de compra, coste de reforma, alquiler estimado.”","Cada dato aparece etiquetado sobre el inmueble","Rigor","Datos que entran"],
+      ["9–15 s","Impuestos y gastos <b>ya restados</b>","“Impuestos, comunidad, seguros: ya está todo restado.”","Tabla que se autocompleta, cifras netas","Transparencia","Scroll de tabla"],
+      ["15–21 s","Resultado: ~<b>10%</b> estimado","“El número que importa: la rentabilidad neta estimada.”","Gráfico final, cifra grande destacada","Satisfacción","Zoom a la cifra"],
+      ["21–25 s","<span class='big'>Analiza las demás</span>","“Cada oportunidad, con su análisis, en el escaparate.”","URL","Confianza","Corte a URL"]
+     ]},
+    {no:"08",t:"De comprador a inversor",angle:"Contraste / transformación",
+     emo:"Toma de conciencia → aspiración",pub:"30–50",mus:"Dos capas: sencilla → rica al girar",
+     words:"COMPRADOR ↔ INVERSOR · SISTEMA",ctr:"3,5–4,5%",
+     rows:[
+      ["0–3 s","Un <b>comprador</b> elige con el corazón","“Un comprador se enamora de un piso.”","Persona mirando una fachada bonita","Reconocimiento","Corte"],
+      ["3–9 s","Un <span class='big'>inversor</span> elige con datos","“Un inversor mira el número, no la fachada.”","La misma escena, ahora con datos superpuestos","Cambio de marco","Transición espejo"],
+      ["9–16 s","No compra un piso. Compra un <b>sistema</b>","“No compra una vivienda. Compra rentabilidad, cashflow, tranquilidad.”","3 iconos-palabra encadenados","Claridad","Cortes rítmicos"],
+      ["16–21 s","Y un <b>equipo</b> que lo sostiene","“Con un equipo que analiza, financia y gestiona por él.”","Manos coordinadas, montaje breve","Confianza","Fundido"],
+      ["21–25 s","<span class='big'>Piensa como inversor</span>","“Empieza en el escaparate de PSZ.”","URL","Aspiración","Corte a URL"]
+     ]},
+    {no:"09",t:"No vendo pisos",angle:"Provocación / pattern-interrupt",
+     emo:"Desconcierto → interés",pub:"Amplio, frío",mus:"Silencio → un solo golpe grave → ambiente",
+     words:"NO VENDO PISOS · CREO OPORTUNIDADES",ctr:"4–5,5%",
+     rows:[
+      ["0–3 s","<span class='big'>No vendo pisos.</span>","(directo a cámara, calmado) “No vendo pisos.”","Toño mirando a cámara, fondo oscuro, luz suave","Desconcierto","Corte a negro 3 frames"],
+      ["3–9 s","Y por eso deberías seguir <b>viendo</b>","“Y precisamente por eso deberías seguir viendo esto.”","Se sienta, tono cercano pero serio","Interés","Ninguna (plano fijo)"],
+      ["9–16 s","Creo <b>oportunidades</b> de inversión","“Creo oportunidades. Analizadas, financiables, rentables.”","B-roll: equipo, documentos, cashflow","Autoridad","Cortes suaves"],
+      ["16–21 s","Detrás de cada una, un <b>equipo</b>","“Detrás de cada oportunidad hay siete especialistas.”","Montaje del equipo trabajando","Confianza","Paneo"],
+      ["21–25 s","<span class='big'>Míralas tú mismo</span>","“Están en el escaparate. Míralas tú mismo.”","URL","Curiosidad","Corte a URL"]
+     ]},
+    {no:"10",t:"Que trabaje por ti",angle:"Aspiracional / libertad financiera",
+     emo:"Deseo → calma",pub:"35–55, ingresos pasivos",mus:"Ambient cálido, expansivo, cinematográfico",
+     words:"TU DINERO · TRABAJA · TÚ VIVES",ctr:"3,5–4,5%",
+     rows:[
+      ["0–3 s","¿Tu dinero <b>trabaja</b> mientras duermes?","“¿Tu dinero trabaja mientras tú duermes?”","Ciudad de noche, ventanas encendidas","Reflexión","Corte lento"],
+      ["3–9 s","El de un inversor, <span class='big'>sí</span>","“El de un inversor, sí. Cada mes.”","Notificación de ingreso, amanecer","Deseo","Fundido a luz"],
+      ["9–16 s","Sin gestionar. Sin <b>obras</b>. Sin líos","“Sin buscar inquilino, sin gestionar la reforma, sin papeleo.”","Equipo de PSZ haciéndolo por él","Alivio","Cortes tranquilos"],
+      ["16–21 s","Tú solo <b>vives</b>. Ellos trabajan","“Un equipo lo hace por ti. Tú solo decides y vives.”","Persona serena, café, vistas","Calma aspiracional","Zoom lento"],
+      ["21–25 s","<span class='big'>Empieza aquí</span>","“Descubre las oportunidades en el escaparate.”","URL","Deseo sereno","Corte a URL"]
+     ]}
+  ];
+
+  const sc=document.getElementById('scripts');
+  SCRIPTS.forEach(s=>{
+    const rows=s.rows.map(r=>`<tr>
+      <td class="t">${r[0]}</td>
+      <td class="screen">${r[1]}</td>
+      <td class="vo">${r[2]}</td>
+      <td class="img">${r[3]}</td>
+      <td class="emo">${r[4]}</td>
+      <td class="trans">${r[5]}</td></tr>`).join('');
+    const el=document.createElement('div');el.className='script';el.id='g'+s.no;
+    el.innerHTML=`
+      <div class="head">
+        <div class="no">${s.no}</div>
+        <div class="title">
+          <h3>${s.t}</h3>
+          <div class="angle">${s.angle}</div>
+          <div class="meta">
+            <span class="chip emo">Emoción · ${s.emo}</span>
+            <span class="chip">Público · <b>${s.pub}</b></span>
+            <span class="chip">CTR est. · <b>${s.ctr}</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="twrap"><table>
+        <thead><tr><th>Tiempo</th><th>En pantalla</th><th>Voz en off</th><th>Imagen</th><th>Emoción</th><th>Transición</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
+      <div class="foot">
+        <div><div class="k">Música</div>${s.mus}</div>
+        <div><div class="k">Palabras en grande</div>${s.words}</div>
+      </div>`;
+    sc.appendChild(el);
+  });
+</script>
