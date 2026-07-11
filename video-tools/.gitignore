@@ -1,0 +1,6 @@
+# Videos generados y previews (no versionar binarios)
+output/
+*.mp4
+*.mov
+*.png
+*.jpg

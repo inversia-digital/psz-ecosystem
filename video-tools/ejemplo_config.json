@@ -1,0 +1,33 @@
+{
+  "duration": 8,
+  "fps": 30,
+  "bg_color": [12, 20, 38],
+  "music": null,
+  "music_volume": 0.25,
+  "texts": [
+    {
+      "text": "🔥 OPORTUNIDAD DEL DÍA",
+      "y": 200,
+      "font_size": 84,
+      "color": "#FACC15",
+      "start": 0,
+      "duration": 8
+    },
+    {
+      "text": "Apartamento en zona premium\npor debajo del precio de mercado",
+      "y": 780,
+      "font_size": 64,
+      "color": "white",
+      "start": 1,
+      "duration": 5
+    },
+    {
+      "text": "Únete al grupo de oportunidades 👇",
+      "y": 1560,
+      "font_size": 60,
+      "color": "#22D3EE",
+      "start": 3,
+      "duration": 5
+    }
+  ]
+}
