@@ -220,6 +220,26 @@ export const HERRAMIENTAS: Herramienta[] = [
     ribbonClass: 'bg-cyan-500',
     status: 'live',
   },
+  {
+    slug: 'calculadora-seguro-vida-hipoteca',
+    url: `${ROOT}calculadora-seguro-vida-hipoteca`,
+    name: 'Calculadora de seguro de vida de hipoteca',
+    shortName: 'Seguro de vida',
+    description:
+      'El seguro de vida firmado con la hipoteca suele costar 2-3 veces más que el mismo seguro contratado fuera. Estima tu banda de prima de mercado por edad, capital y coberturas, compárala con lo que pagas hoy y descubre si te compensa desvincular aunque pierdas la bonificación de TIN (Ley 5/2019).',
+    features: [
+      'Banda de prima de mercado (mín-media-máx) por tu perfil',
+      'Referencia típica de póliza bancaria (2-3× mercado)',
+      'Sobreprecio anual y proyección a 10 años',
+      'Sobreprecio vs bonificación de TIN: la cuenta completa',
+      'Veredicto: compensa desvincular / mantener / ajustado',
+    ],
+    audience: 'Titular de hipoteca con seguro de vida vinculado al banco',
+    keyFigure: 'Veredicto de desvinculación',
+    icon: '🛡️',
+    ribbonClass: 'bg-rose-500',
+    status: 'live',
+  },
 ]
 
 export const HERRAMIENTAS_LIVE = HERRAMIENTAS.filter((h) => h.status === 'live')

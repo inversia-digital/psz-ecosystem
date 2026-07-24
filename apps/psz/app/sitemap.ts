@@ -158,6 +158,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${SITE_URLS.psz}/calculadora-seguro-vida-hipoteca`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${SITE_URLS.psz}/comparador-hipoteca-fija-variable-mixta`,
       lastModified: now,
       changeFrequency: 'monthly',
