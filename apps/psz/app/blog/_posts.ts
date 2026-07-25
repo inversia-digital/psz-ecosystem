@@ -18,6 +18,24 @@ export interface PostMeta {
 
 export const POSTS: PostMeta[] = [
   {
+    slug: 'cuanto-ahorro-necesito-comprar-primera-vivienda',
+    title: 'Cuánto ahorro necesitas para comprar tu primera vivienda en España',
+    description:
+      'Cuánto dinero hay que tener ahorrado para comprar la primera vivienda: la entrada, los gastos de compraventa y la regla del 30%, con ejemplos por precio y las excepciones que permiten financiar el 90-100%.',
+    category: 'Primera vivienda',
+    datePublished: '2026-07-25',
+    readingTime: '6 min',
+  },
+  {
+    slug: 'minipisos-dividir-vivienda-mas-rentabilidad',
+    title: 'Minipisos: cómo un piso grande puede rentar como varios',
+    description:
+      'Qué son los minipisos, en qué se diferencian del alquiler por habitaciones, por qué elevan la rentabilidad y qué requisitos legales y técnicos hay que cumplir antes de meterse. Con la rentabilidad en tres escenarios y las cautelas de un profesional.',
+    category: 'Inversión inmobiliaria',
+    datePublished: '2026-07-25',
+    readingTime: '8 min',
+  },
+  {
     slug: 'contrato-arras-penitenciales',
     title: 'Contrato de arras penitenciales: cómo te protege antes de la hipoteca',
     description:
