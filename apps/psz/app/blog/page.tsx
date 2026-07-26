@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { SITE_URLS, breadcrumbSchema } from '@psz/seo'
 import { Container, JsonLd, Section } from '@psz/ui'
-import { POSTS } from './_posts'
+import { POSTS, isLive } from './_posts'
+
+export const revalidate = 21600
 
 const URL = `${SITE_URLS.psz}/blog`
 
@@ -46,13 +48,13 @@ export default function BlogIndexPage() {
 
       <Section tone="paper" padding="md">
         <Container size="lg">
-          {POSTS.length === 0 ? (
+          {POSTS.filter((x) => isLive(x.datePublished)).length === 0 ? (
             <p className="text-center text-ink-muted py-10">
               No hay artículos publicados todavía.
             </p>
           ) : (
             <ul className="space-y-6">
-              {POSTS.map((p) => (
+              {POSTS.filter((x) => isLive(x.datePublished)).map((p) => (
                 <li key={p.slug}>
                   <article className="bg-paper-card border border-navy-100 rounded-xl p-6 md:p-8 shadow-soft hover:shadow-card transition-shadow">
                     <div className="flex flex-wrap items-center gap-3 mb-3 text-sm">

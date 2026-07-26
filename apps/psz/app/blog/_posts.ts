@@ -42,7 +42,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué opciones de hipoteca tiene un menor de 35 años en España: avales públicos, financiación ampliada, ayudas por comunidad autónoma y cómo presentar el perfil joven para que el banco diga sí.',
     category: 'Primera vivienda',
-    datePublished: '2026-07-27',
+    datePublished: '2026-07-30',
     readingTime: '7 min',
   },
   {
@@ -51,7 +51,7 @@ export const POSTS: PostMeta[] = [
     description:
       'La hoja de ruta completa para comprar tu primera casa: del ahorro previo a la firma en notaría, con los tiempos, los documentos y los errores que veo cada semana.',
     category: 'Primera vivienda',
-    datePublished: '2026-07-28',
+    datePublished: '2026-07-27',
     readingTime: '9 min',
   },
   {
@@ -60,7 +60,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Impuestos, gastos, financiación y plazos: en qué se diferencia comprar (e hipotecar) una vivienda de segunda mano frente a una de obra nueva en España.',
     category: 'Primera vivienda',
-    datePublished: '2026-07-29',
+    datePublished: '2026-07-28',
     readingTime: '7 min',
   },
   {
@@ -69,7 +69,7 @@ export const POSTS: PostMeta[] = [
     description:
       'ITP, IVA, AJD, notaría, registro y gestoría: cuánto suma comprar una vivienda según la comunidad autónoma, con la horquilla real y cómo reducir la factura.',
     category: 'Primera vivienda',
-    datePublished: '2026-07-30',
+    datePublished: '2026-07-29',
     readingTime: '7 min',
   },
   // ── Inversión inmobiliaria ────────────────────────────────────────
@@ -88,7 +88,7 @@ export const POSTS: PostMeta[] = [
     description:
       'La diferencia entre la rentabilidad bruta que ves en los anuncios y la neta que de verdad cobras, con el desglose de todos los gastos y un ejemplo real de mi cartera.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-07-31',
+    datePublished: '2026-07-19',
     readingTime: '8 min',
   },
   {
@@ -97,7 +97,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué operación real puedes montar con 100.000 € de inversión en vivienda para alquilar: apalancamiento, gastos, reforma y rentabilidad neta en tres escenarios, con casos reales.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-01',
+    datePublished: '2026-07-24',
     readingTime: '9 min',
   },
   {
@@ -106,7 +106,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Cómo elegir, financiar y calcular un piso para alquilar que de verdad rente: ubicación, números, fiscalidad y los errores que arruinan la rentabilidad. Con operaciones reales.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-02',
+    datePublished: '2026-07-23',
     readingTime: '9 min',
   },
   {
@@ -115,7 +115,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué ciudades y zonas ofrecen mejor rentabilidad neta del alquiler en España y por qué, con el matiz que casi nadie hace: la rentabilidad neta en tres escenarios, no la bruta del titular.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-03',
+    datePublished: '2026-07-31',
     readingTime: '8 min',
   },
   {
@@ -124,7 +124,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Cuándo una reforma aumenta de verdad la rentabilidad de una inversión y cuándo se come el margen, con el criterio para presupuestarla y casos reales de compra + reforma.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-04',
+    datePublished: '2026-08-01',
     readingTime: '8 min',
   },
   {
@@ -133,7 +133,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Cómo tributa el alquiler de vivienda en el IRPF, qué gastos puedes deducir y cómo funciona la reducción del rendimiento neto (del 50% al 90%) tras la Ley de Vivienda. Con ejemplos.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-05',
+    datePublished: '2026-08-02',
     readingTime: '8 min',
   },
   {
@@ -142,7 +142,7 @@ export const POSTS: PostMeta[] = [
     description:
       '"Rentabilidad garantizada", cifras infladas y letra pequeña: las señales de alarma de una oportunidad de inversión que no es lo que parece, y cómo comprobar los números tú mismo.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-06',
+    datePublished: '2026-08-03',
     readingTime: '7 min',
   },
   {
@@ -151,7 +151,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué hace un personal shopper inmobiliario enfocado a inversión, en qué se diferencia del que busca vivienda habitual, cuánto cobra y cuándo su trabajo se paga solo con la operación.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-07',
+    datePublished: '2026-08-04',
     readingTime: '7 min',
   },
   {
@@ -160,7 +160,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Ventajas, inconvenientes y fiscalidad de comprar inmuebles mediante una sociedad frente a hacerlo como particular, y en qué perfil de inversor compensa de verdad.',
     category: 'Inversión inmobiliaria',
-    datePublished: '2026-08-08',
+    datePublished: '2026-08-05',
     readingTime: '8 min',
   },
   // ── Normativa / broker ────────────────────────────────────────────
@@ -180,7 +180,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Requisitos, formación LCCI, seguro de responsabilidad civil y alta en el Banco de España para ejercer legalmente como intermediario de crédito inmobiliario (broker hipotecario).',
     category: 'Verificación y normativa',
-    datePublished: '2026-08-09',
+    datePublished: '2026-07-17',
     readingTime: '9 min',
   },
   {
@@ -189,7 +189,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué cambió la Ley 5/2019 de crédito inmobiliario para quien pide una hipoteca: transparencia, reparto de gastos, comisiones limitadas y el papel del notario. En lenguaje claro.',
     category: 'Verificación y normativa',
-    datePublished: '2026-08-10',
+    datePublished: '2026-08-07',
     readingTime: '8 min',
   },
   {
@@ -198,7 +198,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Ventajas y límites de contratar tu hipoteca a través de un broker frente a negociar tú directamente con los bancos, con números de cuándo compensa cada opción.',
     category: 'Verificación y normativa',
-    datePublished: '2026-08-11',
+    datePublished: '2026-08-08',
     readingTime: '7 min',
   },
   {
@@ -207,7 +207,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Los modelos de cobro de un broker hipotecario —a éxito, honorarios fijos, del banco— con cifras orientativas, y cómo saber si lo que pagas está justificado.',
     category: 'Verificación y normativa',
-    datePublished: '2026-08-12',
+    datePublished: '2026-08-09',
     readingTime: '6 min',
   },
   // ── No residentes ─────────────────────────────────────────────────
@@ -217,7 +217,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué financiación puede conseguir un no residente para comprar en España, qué documentación necesita, hasta qué porcentaje financian los bancos y los errores más habituales.',
     category: 'No residentes',
-    datePublished: '2026-08-13',
+    datePublished: '2026-07-21',
     readingTime: '8 min',
   },
   {
@@ -226,7 +226,7 @@ export const POSTS: PostMeta[] = [
     description:
       'El proceso completo para que un extranjero compre vivienda en España: NIE, cuenta bancaria, impuestos, financiación y firma, con los pasos en orden y los plazos reales.',
     category: 'No residentes',
-    datePublished: '2026-08-14',
+    datePublished: '2026-08-10',
     readingTime: '9 min',
   },
   {
@@ -235,7 +235,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué es el NIE, cómo obtenerlo y qué otros documentos necesita un no residente o extranjero para comprar e hipotecar una vivienda en España.',
     category: 'No residentes',
-    datePublished: '2026-08-15',
+    datePublished: '2026-08-11',
     readingTime: '6 min',
   },
   // ── Perfiles y producto ───────────────────────────────────────────
@@ -245,7 +245,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué mira el banco cuando un autónomo pide hipoteca, qué documentación e ingresos demostrar y cómo presentar la operación para superar el scoring. Con casos reales.',
     category: 'Perfiles y producto',
-    datePublished: '2026-08-16',
+    datePublished: '2026-07-15',
     readingTime: '8 min',
   },
   {
@@ -254,7 +254,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Cómo elegir entre hipoteca fija, variable y mixta según tu perfil y el momento del Euríbor, con el criterio para decidir y una simulación en tres escenarios.',
     category: 'Perfiles y producto',
-    datePublished: '2026-08-17',
+    datePublished: '2026-07-12',
     readingTime: '8 min',
   },
   {
@@ -263,7 +263,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Qué es subrogar la hipoteca, cuánto cuesta por la Ley 5/2019, cuándo compensa frente a la novación y cómo calcular el ahorro real antes de moverte.',
     category: 'Perfiles y producto',
-    datePublished: '2026-08-18',
+    datePublished: '2026-08-12',
     readingTime: '7 min',
   },
   {
@@ -272,7 +272,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Reducir cuota o reducir plazo, coste de oportunidad frente al Euríbor y ventajas fiscales: cuándo amortizar anticipadamente tu hipoteca tiene sentido y cuándo no.',
     category: 'Perfiles y producto',
-    datePublished: '2026-08-19',
+    datePublished: '2026-08-13',
     readingTime: '7 min',
   },
   {
@@ -281,7 +281,7 @@ export const POSTS: PostMeta[] = [
     description:
       'Por qué el seguro de vida del banco suele costar el doble, qué dice la Ley 5/2019 sobre las pólizas alternativas y cómo calcular si compensa desvincularlo aunque pierdas la bonificación.',
     category: 'Perfiles y producto',
-    datePublished: '2026-08-20',
+    datePublished: '2026-08-06',
     readingTime: '7 min',
   },
   {
@@ -294,6 +294,10 @@ export const POSTS: PostMeta[] = [
     readingTime: '7 min',
   },
 ]
+
+export function isLive(datePublished: string): boolean {
+  return new Date(datePublished).getTime() <= Date.now()
+}
 
 export function getPostBySlug(slug: string): PostMeta | undefined {
   return POSTS.find((p) => p.slug === slug)

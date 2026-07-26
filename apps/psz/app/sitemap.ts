@@ -1,10 +1,12 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URLS } from '@psz/seo'
-import { POSTS } from './blog/_posts'
+import { POSTS, isLive } from './blog/_posts'
+
+export const revalidate = 21600
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  const blogPosts: MetadataRoute.Sitemap = POSTS.map((p) => ({
+  const blogPosts: MetadataRoute.Sitemap = POSTS.filter((p) => isLive(p.datePublished)).map((p) => ({
     url: `${SITE_URLS.psz}/blog/${p.slug}`,
     lastModified: new Date(p.datePublished),
     changeFrequency: 'monthly' as const,
