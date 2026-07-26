@@ -1,0 +1,22 @@
+name: Blog drip · IndexNow ping diario
+
+# Cada día notifica a Bing/IndexNow las URLs vivas del sitemap de psz.es.
+# El sitemap ya filtra por fecha (isLive), así que a medida que se van
+# revelando los artículos programados, el nuevo del día entra en el ping.
+# No necesita secretos: la clave IndexNow es pública (public/<key>.txt).
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 07:00 UTC cada día
+  workflow_dispatch: {}
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Enviar URLs del sitemap a IndexNow
+        run: node apps/psz/scripts/indexnow-submit.mjs
