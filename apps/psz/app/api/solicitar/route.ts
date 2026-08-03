@@ -14,7 +14,7 @@ import crypto from 'node:crypto'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-const CRM_URL = 'https://crm.anici.es/capta/ingest'
+const CRM_URL = 'https://crm.psz.es/capta/ingest'
 const FUENTE = 'WEBPSZ'
 
 export async function POST(req: NextRequest) {
