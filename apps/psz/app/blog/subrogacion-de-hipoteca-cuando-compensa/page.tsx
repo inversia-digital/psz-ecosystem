@@ -7,7 +7,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'subrogacion-de-hipoteca-cuando-compensa'
@@ -280,6 +280,8 @@ export default function ArticlePage() {
               <a href="/broker-hipotecario">cómo funciona mi servicio</a>.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 

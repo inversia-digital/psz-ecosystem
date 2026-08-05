@@ -7,7 +7,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'rehabilitar-para-alquilar-reforma-rentable'
@@ -293,6 +293,8 @@ export default function ArticlePage() {
               números. Si el margen está en la obra, adelante; si no, alquila tal cual.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 

@@ -7,7 +7,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'cuanto-ahorro-necesito-comprar-primera-vivienda'
@@ -223,6 +223,8 @@ export default function ArticlePage() {
               de forma realista.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 

@@ -8,7 +8,7 @@ import {
   faqPageSchema,
   howToSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'como-verificar-broker-hipotecario-banco-de-espana'
@@ -394,6 +394,8 @@ export default function ArticlePage() {
               <strong>E242</strong> y puedes comprobarlo en cualquier momento.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 

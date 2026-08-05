@@ -7,7 +7,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'hipoteca-fija-variable-o-mixta'
@@ -250,6 +250,8 @@ export default function ArticlePage() {
               conviene —y a qué bancos presentarla—, cuéntame tu situación en la primera llamada.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 

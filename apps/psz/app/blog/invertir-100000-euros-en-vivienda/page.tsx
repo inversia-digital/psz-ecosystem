@@ -7,7 +7,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'invertir-100000-euros-en-vivienda'
@@ -263,6 +263,8 @@ export default function ArticlePage() {
               la inversión total, en tres escenarios. Haz los números primero. Siempre.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 

@@ -8,7 +8,7 @@ import {
   faqPageSchema,
   howToSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
+import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
 import { getPostBySlug } from '../_posts'
 
 const SLUG = 'como-hacerse-intermediario-credito-inmobiliario-ici'
@@ -326,6 +326,8 @@ export default function ArticlePage() {
               trabajar con alguien que ya ha recorrido todo esto, hablamos cuando quieras.
             </p>
           </article>
+
+          <TelegramCta className="mt-10" />
         </Container>
       </Section>
 
