@@ -322,6 +322,21 @@ function Result({ r }: { r: AntiHumoResult }) {
         </span>
       </a>
 
+      {/* Canal de Telegram — oportunidades que SÍ pasan este filtro */}
+      <a
+        href="https://t.me/+e9QeHphLs61iNDJi"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block rounded-xl border-2 border-navy-800 bg-navy-900 p-4 text-center no-underline hover:border-gold-400 transition-colors"
+      >
+        <span className="block text-sm font-bold text-gold-300">
+          📲 Las oportunidades que SÍ pasan este test, las publico en Telegram
+        </span>
+        <span className="block text-xs text-white/75 mt-1">
+          Canal PSZ 360 · cada operación con sus 3 rentabilidades netas (pesimista · realista · optimista) →
+        </span>
+      </a>
+
       <p className="text-xs text-ink-muted italic leading-relaxed">
         © Inversia Global Digital S.L. — Test propietario. La fórmula es pública; el criterio sobre qué enseñar (y qué esconden otros) es trabajo del broker.
       </p>
