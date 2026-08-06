@@ -327,8 +327,10 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
                 He leído y acepto la{' '}
                 <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer" className="font-medium text-gold-600 underline">
                   política de privacidad
-                </a>
-                .
+                </a>{' '}
+                y el tratamiento de mis datos para gestionar mi solicitud, incluida su posible
+                comunicación a un intermediario colaborador registrado cuando la operación
+                corresponda a su zona o especialidad.
               </span>
             </label>
           </div>

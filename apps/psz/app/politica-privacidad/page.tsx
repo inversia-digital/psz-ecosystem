@@ -83,6 +83,20 @@ export default function PoliticaPrivacidadPage() {
               <li>Empresas de reforma y técnicos (cuando el servicio incluya estos colaboradores).</li>
               <li>Entidades aseguradoras (tasadoras homologadas y seguros del inmueble).</li>
               <li>Asesorías fiscales y jurídicas externas, en su caso.</li>
+              <li>
+                <strong>Intermediarios de crédito inmobiliario colaboradores.</strong> Trabajamos con
+                una red de intermediarios de crédito inmobiliario, todos ellos registrados en el Banco
+                de España, que colaboran con nosotros de forma habitual y dan cobertura en determinadas
+                zonas geográficas y especialidades de producto. Cuando su operación se desarrolle en una
+                zona o requiera una especialidad atendida por uno de estos colaboradores, podremos
+                comunicarle sus datos identificativos, de contacto y los relativos a la operación que
+                usted nos haya facilitado, con la única finalidad de que pueda estudiarla y atenderle
+                con la cercanía y el conocimiento que ese ámbito requiere. Esta comunicación se limita
+                a los datos estrictamente necesarios, se realiza bajo las mismas obligaciones de
+                confidencialidad que asumimos nosotros y <strong>le será informada</strong>. Puede
+                oponerse a ella en cualquier momento, sin que ello afecte a la atención de su
+                solicitud.
+              </li>
             </ul>
 
             <h2>5.bis Encargados del tratamiento y proveedores tecnológicos</h2>
