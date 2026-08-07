@@ -84,18 +84,27 @@ export default function PoliticaPrivacidadPage() {
               <li>Entidades aseguradoras (tasadoras homologadas y seguros del inmueble).</li>
               <li>Asesorías fiscales y jurídicas externas, en su caso.</li>
               <li>
-                <strong>Intermediarios de crédito inmobiliario colaboradores.</strong> Trabajamos con
-                una red de intermediarios de crédito inmobiliario, todos ellos registrados en el Banco
-                de España, que colaboran con nosotros de forma habitual y dan cobertura en determinadas
-                zonas geográficas y especialidades de producto. Cuando su operación se desarrolle en una
-                zona o requiera una especialidad atendida por uno de estos colaboradores, podremos
-                comunicarle sus datos identificativos, de contacto y los relativos a la operación que
-                usted nos haya facilitado, con la única finalidad de que pueda estudiarla y atenderle
-                con la cercanía y el conocimiento que ese ámbito requiere. Esta comunicación se limita
-                a los datos estrictamente necesarios, se realiza bajo las mismas obligaciones de
-                confidencialidad que asumimos nosotros y <strong>le será informada</strong>. Puede
-                oponerse a ella en cualquier momento, sin que ello afecte a la atención de su
-                solicitud.
+                <strong>Intermediarios de crédito inmobiliario colaboradores.</strong> Para tramitar
+                su operación podemos apoyarnos en una red de intermediarios de crédito inmobiliario,
+                todos ellos inscritos en el Registro de Intermediarios de Crédito Inmobiliario del
+                Banco de España, que dan cobertura en determinadas zonas geográficas y especialidades
+                de producto. Cuando su operación se desarrolle en una zona o requiera una especialidad
+                atendida por uno de ellos, le asignaremos su expediente y le facilitaremos sus datos
+                identificativos, de contacto y los relativos a la operación que usted nos haya
+                proporcionado.{' '}
+                <strong>
+                  Estos colaboradores actúan como encargados del tratamiento en los términos del
+                  artículo 28 del RGPD
+                </strong>
+                : tratan sus datos únicamente siguiendo nuestras instrucciones documentadas y con la
+                exclusiva finalidad de estudiar y tramitar su operación, en virtud del correspondiente
+                contrato de encargo. <strong>No pueden utilizarlos para fines propios ni incorporarlos
+                a sus ficheros de captación</strong>, y al terminar el encargo deben devolverlos o
+                suprimirlos. La dirección del expediente y la responsabilidad frente a usted siguen
+                siendo nuestras en todo momento. La asignación se limita a los datos estrictamente
+                necesarios y <strong>le será comunicada</strong>, indicándole quién se ocupará de su
+                expediente. Si prefiere que lo tramitemos directamente nosotros, puede indicárnoslo
+                sin que ello afecte a la atención de su solicitud.
               </li>
             </ul>
 

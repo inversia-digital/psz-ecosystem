@@ -328,9 +328,9 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
                 <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer" className="font-medium text-gold-600 underline">
                   política de privacidad
                 </a>{' '}
-                y el tratamiento de mis datos para gestionar mi solicitud, incluida su posible
-                comunicación a un intermediario colaborador registrado cuando la operación
-                corresponda a su zona o especialidad.
+                y el tratamiento de mis datos para gestionar mi solicitud, incluida su tramitación
+                por uno de los intermediarios colaboradores registrados que trabajan por cuenta de
+                PSZ cuando la operación corresponda a su zona o especialidad.
               </span>
             </label>
           </div>
