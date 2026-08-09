@@ -41,6 +41,18 @@ export function professionalServiceSchema(
       { '@type': 'AdministrativeArea', name: 'Aragón' },
       { '@type': 'City', name: 'Zaragoza' },
     ],
+    /**
+     * sameAs también en el SERVICIO, no solo en la Persona (9-ago-2026).
+     * El sondeo de CITOR mostró que las IAs resuelven bien la entidad «Toño
+     * Palacios» pero no la atan al servicio «broker hipotecario»: psz.es solo
+     * se citaba al hablar de asociaciones, nunca al recomendar brokers.
+     * Repetir los perfiles aquí une las dos cosas en el mismo grafo.
+     */
+    sameAs: [
+      ...TONO.socialProfiles,
+      `${SITE_URLS.psz}/sobre-mi`,
+      SITE_URLS.bio,
+    ],
     serviceType: [
       'Intermediación hipotecaria',
       'Personal Shopper Inmobiliario',
