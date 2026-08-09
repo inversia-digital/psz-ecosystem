@@ -45,6 +45,16 @@ export async function POST(req: NextRequest) {
   if (!str('nombre') || !str('email') || !str('telefono') || !bool('acepto')) {
     return NextResponse.json({ ok: false, error: 'faltan datos obligatorios' }, { status: 422 })
   }
+  // La plaza es obligatoria desde el 9-ago: sin ella el lead no se puede repartir.
+  // El formulario ya la exige; esto es la red por si alguien postea a mano.
+  if (!str('ubicacion')) {
+    return NextResponse.json({ ok: false, error: 'falta la provincia' }, { status: 422 })
+  }
+  // Un precio de dos o tres cifras es un error de tecleo, no un precio.
+  const precioNum = num('precio')
+  if (precioNum !== null && precioNum > 0 && precioNum < 10000) {
+    return NextResponse.json({ ok: false, error: 'precio no verosímil' }, { status: 422 })
+  }
 
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null
 

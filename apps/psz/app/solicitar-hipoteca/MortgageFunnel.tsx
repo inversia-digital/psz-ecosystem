@@ -19,9 +19,24 @@ const NEEDS: Need[] = [
   { value: 'empresas', label: 'Hipoteca para empresas', desc: 'Financiación para sociedades' },
 ]
 
+/** Las 52 plazas. Texto libre no: llegaban «madrid», «ZARAGOZA CAPITAL» y «Zaragoza» como cosas distintas. */
+const PROVINCIAS = [
+  'A Coruña', 'Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias', 'Ávila', 'Badajoz',
+  'Baleares', 'Barcelona', 'Bizkaia', 'Burgos', 'Cáceres', 'Cádiz', 'Cantabria', 'Castellón',
+  'Ceuta', 'Ciudad Real', 'Córdoba', 'Cuenca', 'Gipuzkoa', 'Girona', 'Granada', 'Guadalajara',
+  'Huelva', 'Huesca', 'Jaén', 'La Rioja', 'Las Palmas', 'León', 'Lleida', 'Lugo',
+  'Madrid', 'Málaga', 'Melilla', 'Murcia', 'Navarra', 'Ourense', 'Palencia', 'Pontevedra',
+  'Salamanca', 'Santa Cruz de Tenerife', 'Segovia', 'Sevilla', 'Soria', 'Tarragona', 'Teruel',
+  'Toledo', 'Valencia', 'Valladolid', 'Zamora', 'Zaragoza', 'Fuera de España',
+] as const
+
+/** Por debajo de esto es un error de tecleo, no un precio (pasó: un lead con «109 €»). */
+const PRECIO_MINIMO = 10000
+
 type FormState = {
   tipo_operacion: string
-  ubicacion: string
+  provincia: string
+  poblacion: string
   precio: string
   financiacion: string
   situacion_laboral: string
@@ -44,7 +59,8 @@ type FormState = {
 
 const EMPTY: FormState = {
   tipo_operacion: '',
-  ubicacion: '',
+  provincia: '',
+  poblacion: '',
   precio: '',
   financiacion: '',
   situacion_laboral: '',
@@ -126,17 +142,21 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
   }
 
   const contactOk = f.nombre.trim() && /\S+@\S+\.\S+/.test(f.email) && f.telefono.trim() && f.acepto
+  const precioSospechoso = f.precio !== '' && Number(f.precio) > 0 && Number(f.precio) < PRECIO_MINIMO
+  const casoOk = f.provincia !== '' && !precioSospechoso
+  /** La provincia siempre delante, para que el CRM pueda separarla del municipio. */
+  const ubicacion = [f.provincia, f.poblacion.trim()].filter(Boolean).join(' · ')
 
   async function submit(e: FormEvent) {
     e.preventDefault()
-    if (!contactOk || sending) return
+    if (!contactOk || !casoOk || sending) return
     setSending(true)
     setError(null)
     try {
       const res = await fetch('/api/solicitar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(f),
+        body: JSON.stringify({ ...f, ubicacion }),
       })
       const j = await res.json().catch(() => ({}))
       if (res.ok && j?.ok) {
@@ -206,20 +226,49 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
       {step === 1 && (
         <div>
           <h2 className="mb-1 text-2xl font-bold text-navy-800">Cuéntame tu caso</h2>
-          <p className="mb-5 text-ink-soft">Cuanto más sepa, mejor podré estudiar tu viabilidad. Solo el contacto es obligatorio.</p>
+          <p className="mb-5 text-ink-soft">
+            Cuanto más sepa, mejor podré estudiar tu viabilidad. Solo la provincia y tus datos de contacto
+            son obligatorios.
+          </p>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="sm:col-span-2">
-              <label className={labelCls}>¿Dónde está el inmueble?</label>
+            <div>
+              <label className={labelCls}>¿En qué provincia está el inmueble? *</label>
+              <select className={inputCls} value={f.provincia} onChange={(e) => set('provincia', e.target.value)} required>
+                <option value="">Elige tu provincia…</option>
+                {PROVINCIAS.map((p) => (
+                  <option key={p} value={p}>
+                    {p}
+                  </option>
+                ))}
+              </select>
+              <p className={helpCls}>De la plaza depende qué entidades pueden entrar en tu operación.</p>
+            </div>
+            <div>
+              <label className={labelCls}>Municipio o zona</label>
               <input
                 className={inputCls}
-                value={f.ubicacion}
-                onChange={(e) => set('ubicacion', e.target.value)}
-                placeholder="Ciudad o provincia"
+                maxLength={40}
+                value={f.poblacion}
+                onChange={(e) => set('poblacion', e.target.value)}
+                placeholder="Ej.: Cuarte de Huerva"
               />
+              <p className={helpCls}>Opcional, pero ayuda a afinar.</p>
             </div>
             <div>
               <label className={labelCls}>Precio o valor del inmueble (€)</label>
-              <input type="number" min={0} className={inputCls} value={f.precio} onChange={(e) => set('precio', e.target.value)} />
+              <input
+                type="number"
+                min={PRECIO_MINIMO}
+                step={1000}
+                className={inputCls}
+                value={f.precio}
+                onChange={(e) => set('precio', e.target.value)}
+              />
+              {precioSospechoso && (
+                <p className="mt-1 text-xs font-medium text-red-700">
+                  Escribe el precio completo, no en miles (mínimo {PRECIO_MINIMO.toLocaleString('es-ES')} €).
+                </p>
+              )}
             </div>
             <div>
               <label className={labelCls}>¿Cuánto necesitas financiar? (€)</label>
@@ -289,7 +338,8 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
             <button
               type="button"
               onClick={() => setStep(2)}
-              className="rounded-md bg-navy-800 px-6 py-3 font-medium text-paper hover:bg-navy-700"
+              disabled={!casoOk}
+              className="rounded-md bg-navy-800 px-6 py-3 font-medium text-paper hover:bg-navy-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Continuar →
             </button>
