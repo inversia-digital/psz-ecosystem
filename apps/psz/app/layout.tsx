@@ -157,14 +157,30 @@ function SourceCredit() {
   )
 }
 
+/**
+ * OJO con la forma de este árbol: `<html>` solo puede tener `<head>` y `<body>`
+ * como hijos. Antes colgaban de él un `<Script>` y `<GoogleTagManager>`, y había
+ * además un `<head>` escrito a mano. El navegador reubica esos nodos al parsear,
+ * así que el DOM real (head, body) no coincidía con el árbol que React esperaba
+ * al hidratar → error #418 en todas las páginas y, al ocurrir fuera de un
+ * Suspense, #423: React tiraba el HTML del servidor y repintaba TODA la página
+ * en el cliente. Todo va ahora dentro de `<body>`; el `<head>` lo gestiona Next
+ * con la Metadata API, que es lo que documenta el App Router.
+ *
+ * El orden entre el consent mode y GoogleTagManager SE MANTIENE: es requisito
+ * de RGPD/LSSI y está auditado.
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${inter.variable} ${gelasio.variable}`}>
-      {/* CONSENT MODE V2 — defaults DENIED por RGPD + LSSI. Tiene que ir
-          ANTES de GoogleTagManager para que el primer hit lleve las señales
-          de consentimiento al servidor. Cuando aparezca el banner de
-          cookies, en accept se llamará a gtag('consent','update',{...}). */}
-      <Script id="consent-mode-default" strategy="beforeInteractive">
+      <body>
+        {/* CONSENT MODE V2 — defaults DENIED por RGPD + LSSI. Tiene que ir
+            ANTES de GoogleTagManager para que el primer hit lleve las señales
+            de consentimiento al servidor. Cuando aparezca el banner de
+            cookies, en accept se llamará a gtag('consent','update',{...}).
+            Con strategy="beforeInteractive" Next lo iza al HTML inicial, así que
+            sigue ejecutándose antes que GTM aunque viva dentro de <body>. */}
+        <Script id="consent-mode-default" strategy="beforeInteractive">
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent', 'default', {
@@ -179,11 +195,10 @@ gtag('consent', 'default', {
 });
 gtag('set', 'ads_data_redaction', true);
 gtag('set', 'url_passthrough', true);`}
-      </Script>
-      <GoogleTagManager gtmId={GTM_ID} />
-      <head>
+        </Script>
+        <GoogleTagManager gtmId={GTM_ID} />
         {/*
-         * SourceCredit — comentario HTML embebido en <head>.
+         * SourceCredit — comentario HTML embebido en el documento.
          * Si alguien hace "ver código fuente" o scrapea esta página,
          * se lleva la atribución. Invisible para usuarios normales.
          */}
@@ -191,8 +206,6 @@ gtag('set', 'url_passthrough', true);`}
         <JsonLd data={personSchema()} />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={professionalServiceSchema()} />
-      </head>
-      <body>
         <SiteHeader />
         {children}
         <SiteFooter />
