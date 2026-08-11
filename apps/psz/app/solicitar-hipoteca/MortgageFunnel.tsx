@@ -49,6 +49,7 @@ type FormState = {
   no_residente: boolean
   vivienda_libre: boolean
   nombre: string
+  apellidos: string
   email: string
   telefono: string
   mensaje: string
@@ -73,6 +74,7 @@ const EMPTY: FormState = {
   no_residente: false,
   vivienda_libre: false,
   nombre: '',
+  apellidos: '',
   email: '',
   telefono: '',
   mensaje: '',
@@ -141,7 +143,14 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
     setStep(1)
   }
 
-  const contactOk = f.nombre.trim() && /\S+@\S+\.\S+/.test(f.email) && f.telefono.trim() && f.acepto
+  const contactOk =
+    f.nombre.trim() && f.apellidos.trim() && /\S+@\S+\.\S+/.test(f.email) && f.telefono.trim() && f.acepto
+  /**
+   * El CRM guarda el nombre en un solo campo, así que se envía compuesto. Se
+   * piden por separado porque en una sola caja llegaba solo el nombre de pila
+   * («Esmeralda», «Cristina») y el contrato necesita el nombre completo.
+   */
+  const nombreCompleto = `${f.nombre.trim()} ${f.apellidos.trim()}`.trim()
   const precioSospechoso = f.precio !== '' && Number(f.precio) > 0 && Number(f.precio) < PRECIO_MINIMO
   const casoOk = f.provincia !== '' && !precioSospechoso
   /** La provincia siempre delante, para que el CRM pueda separarla del municipio. */
@@ -156,7 +165,7 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
       const res = await fetch('/api/solicitar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...f, ubicacion }),
+        body: JSON.stringify({ ...f, ubicacion, nombre: nombreCompleto }),
       })
       const j = await res.json().catch(() => ({}))
       if (res.ok && j?.ok) {
@@ -353,9 +362,15 @@ export function MortgageFunnel({ initial }: { initial?: FunnelPrefill } = {}) {
           <h2 className="mb-1 text-2xl font-bold text-navy-800">¿Cómo te contacto?</h2>
           <p className="mb-5 text-ink-soft">Te llamo en menos de 24&nbsp;horas laborables, sin compromiso.</p>
           <div className="grid gap-4">
-            <div>
-              <label className={labelCls}>Nombre y apellidos *</label>
-              <input className={inputCls} value={f.nombre} onChange={(e) => set('nombre', e.target.value)} required />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label className={labelCls}>Nombre *</label>
+                <input className={inputCls} value={f.nombre} onChange={(e) => set('nombre', e.target.value)} required />
+              </div>
+              <div>
+                <label className={labelCls}>Apellidos *</label>
+                <input className={inputCls} value={f.apellidos} onChange={(e) => set('apellidos', e.target.value)} required />
+              </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
