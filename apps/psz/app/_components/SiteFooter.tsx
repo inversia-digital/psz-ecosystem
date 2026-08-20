@@ -16,6 +16,7 @@
 import { INVERSIA, SITE_URLS, SOCIAL_LINKS, TONO } from '@psz/seo'
 import { Container, SocialIcon } from '@psz/ui'
 import { HERRAMIENTAS_LIVE } from '../_data/herramientas'
+import NewsletterSignup from './NewsletterSignup'
 
 const LEGAL_GROUPS: Array<{ title: string; links: Array<{ label: string; href: string }> }> = [
   {
@@ -51,6 +52,20 @@ export default function SiteFooter() {
   return (
     <footer className="bg-navy-900 text-paper/80 pt-14 pb-8">
       <Container size="xl">
+        {/* Boletín — una sola newsletter para todo el ecosistema */}
+        <div className="mb-12 rounded-2xl border border-paper/15 bg-navy-800/60 px-6 py-7 md:flex md:items-center md:gap-10">
+          <div className="mb-4 md:mb-0 md:max-w-sm">
+            <p className="text-gold-300 text-xs uppercase tracking-wider mb-1">El boletín</p>
+            <p className="text-paper font-bold text-lg leading-snug">
+              Un correo al mes para preparar tu financiación e invertir con números netos.
+            </p>
+            <p className="text-sm text-paper/60 mt-1">Sin humo y sin spam. De {TONO.shortName}.</p>
+          </div>
+          <div className="flex-1">
+            <NewsletterSignup origen="psz.es-footer" />
+          </div>
+        </div>
+
         {/* Bloque superior: identidad + servicios + recursos + empresa */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 mb-12">
           {/* Columna 1 — identidad */}
