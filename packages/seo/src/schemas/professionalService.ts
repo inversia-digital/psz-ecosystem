@@ -52,6 +52,7 @@ export function professionalServiceSchema(
       ...TONO.socialProfiles,
       `${SITE_URLS.psz}/sobre-mi`,
       SITE_URLS.bio,
+      SITE_URLS.brokerdeguardia,
     ],
     serviceType: [
       'Intermediación hipotecaria',

@@ -134,6 +134,7 @@ export function personSchema(siteUrl: string = SITE_URLS.psz): WithContext<Perso
       SITE_URLS.anici,
       SITE_URLS.inarpa,
       SITE_URLS.hipobrokers,
+      SITE_URLS.brokerdeguardia,
     ],
     subjectOf: [
       { '@type': 'WebPage', url: `${SITE_URLS.psz}/sobre-mi`, name: `Sobre ${TONO.shortName}` },

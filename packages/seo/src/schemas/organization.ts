@@ -33,6 +33,6 @@ export function organizationSchema(siteUrl: string = SITE_URLS.psz): WithContext
       identifier: PALANTIO.taxId,
     },
     areaServed: { '@type': 'Country', name: 'España' },
-    sameAs: [SITE_URLS.anici, SITE_URLS.inarpa, SITE_URLS.hipobrokers],
+    sameAs: [SITE_URLS.anici, SITE_URLS.inarpa, SITE_URLS.hipobrokers, SITE_URLS.brokerdeguardia],
   }
 }

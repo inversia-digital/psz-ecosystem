@@ -12,6 +12,8 @@ export const SITE_URLS = {
   hipobrokers: 'https://hipobrokers.com',
   activosPsz: 'https://activos.psz.es',
   crmHipobrokers: 'https://crm.hipobrokers.com',
+  /** Broker de Guardia™ — preparación previa a la hipoteca (Inversia, marca solicitada OEPM) */
+  brokerdeguardia: 'https://brokerdeguardia.es',
 } as const
 
 /** Formulario propio de captación de cliente que quiere hipoteca (funnel en psz.es) */

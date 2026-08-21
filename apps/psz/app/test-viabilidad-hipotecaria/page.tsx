@@ -9,6 +9,7 @@ import {
 } from '@psz/seo'
 import { Button, Container, JsonLd, Section } from '@psz/ui'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { BdGPuenteBanner } from '../_components/BdGPuenteCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import ViabilidadForm from './ViabilidadForm'
 
@@ -124,6 +125,7 @@ export default function TestViabilidadPage() {
       {/* ADVERTENCIA LEGAL */}
       <Section tone="paper" padding="sm">
         <Container size="md">
+          <BdGPuenteBanner />
           <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>

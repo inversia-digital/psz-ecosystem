@@ -11,6 +11,7 @@ import {
 import { Button, Container, Faq, JsonLd, Section } from '@psz/ui'
 import { AnswerCard } from '../_components/AnswerCard'
 import { LegalDisclaimer } from '../_components/LegalDisclaimer'
+import { BdGPuenteBanner } from '../_components/BdGPuenteCTA'
 import { SelloPalacios } from '../_components/SelloPalacios'
 import CapacidadForm from './CapacidadForm'
 
@@ -199,6 +200,7 @@ export default function CalculadoraCapacidadPage() {
       {/* ADVERTENCIA LEGAL — concesión depende del banco */}
       <Section tone="paper" padding="sm">
         <Container size="md">
+          <BdGPuenteBanner />
           <LegalDisclaimer variant="mortgage" />
         </Container>
       </Section>
