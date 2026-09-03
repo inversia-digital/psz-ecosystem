@@ -13,6 +13,7 @@ const NEEDS: Need[] = [
   { value: 'segunda_residencia', label: 'Segunda residencia', desc: 'Playa, montaña, pueblo…' },
   { value: 'inversion', label: 'Vivienda de inversión', desc: 'Para alquilar o revender' },
   { value: 'subrogacion', label: 'Cambiar mi hipoteca', desc: 'Subrogación: mejorar condiciones' },
+  { value: 'reunificacion_deudas', label: 'Reunificar mis deudas', desc: 'Una sola cuota, con la hipoteca' },
   { value: 'eliminar_avalistas', label: 'Eliminar avalistas', desc: 'Sacar a un avalista del préstamo' },
   { value: 'extincion_condominio', label: 'Extinción de condominio', desc: 'Quedarme la vivienda compartida' },
   { value: 'local', label: 'Local comercial', desc: 'Financiar un local' },

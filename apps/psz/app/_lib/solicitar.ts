@@ -8,7 +8,7 @@
  */
 export type SolicitarPrefill = {
   /** tipo_operacion del funnel: vivienda_habitual | segunda_residencia | inversion |
-   *  subrogacion | eliminar_avalistas | extincion_condominio | local | empresas */
+   *  subrogacion | reunificacion_deudas | eliminar_avalistas | extincion_condominio | local | empresas */
   tipo?: string
   precio?: number | string
   financiacion?: number | string
