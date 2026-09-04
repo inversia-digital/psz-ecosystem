@@ -37,7 +37,8 @@ const nextConfig = {
 
     return [
       {
-        source: '/calculadora-rentabilidad-inmobiliaria',
+        // Las cuatro calculadoras del kit de viabilidad del campus de INARPA.
+        source: '/:path(calculadora-(?:rentabilidad-inmobiliaria|capacidad-endeudamiento|stress-test-euribor|gastos-compra))',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
@@ -48,7 +49,7 @@ const nextConfig = {
       {
         // Todo menos la calculadora de rentabilidad, que se embebe en el campus de
         // INARPA y en activos.psz.es (una sola calculadora para el grupo, 4-sep-2026).
-        source: '/:path((?!calculadora-rentabilidad-inmobiliaria).*)',
+        source: '/:path((?!calculadora-(?:rentabilidad-inmobiliaria|capacidad-endeudamiento|stress-test-euribor|gastos-compra)).*)',
         headers: [
           // Seguridad básica (ya existían)
           { key: 'X-Content-Type-Options', value: 'nosniff' },
