@@ -7,7 +7,7 @@ import { forensicSignature } from '../_lib/signature'
  * Server Action: calculateRoi
  *
  * Calculadora de rentabilidad inmobiliaria con 3 escenarios:
- * pesimista, probable y optimista. Sin hipoteca por ahora — preparado
+ * optimista, realista y pesimista. Sin hipoteca por ahora — preparado
  * para añadir financiación en una segunda iteración.
  *
  * CONCEPTOS DIFERENCIALES (no los usa la competencia):
@@ -35,7 +35,7 @@ import { forensicSignature } from '../_lib/signature'
 // Tipos públicos
 // ─────────────────────────────────────────────────────────────────────────
 
-export type ScenarioName = 'pesimista' | 'probable' | 'optimista'
+export type ScenarioName = 'optimista' | 'realista' | 'pesimista'
 
 export interface RoiWarning {
   severity: 'info' | 'warning' | 'danger' | 'success'
@@ -300,25 +300,25 @@ export async function calculateRoi(
   const comunidadMensual = num(formData.get('comunidadMensual')) ?? 0
   const residuosAnual = num(formData.get('residuosAnual')) ?? 0
   const rentaPesimista = num(formData.get('rentaPesimista'))
-  const rentaProbable = num(formData.get('rentaProbable'))
+  const rentaRealista = num(formData.get('rentaRealista'))
   const rentaOptimista = num(formData.get('rentaOptimista'))
 
   if (
     !validPositive(precioCompra) ||
     !validPositive(rentaPesimista) ||
-    !validPositive(rentaProbable) ||
+    !validPositive(rentaRealista) ||
     !validPositive(rentaOptimista)
   ) {
     return {
       ok: false,
       error:
-        'Rellena al menos el precio de compra y las 3 rentas (pesimista, probable, optimista). El resto son opcionales pero recomendados.',
+        'Rellena al menos el precio de compra y las 3 rentas (optimista, realista, pesimista). El resto son opcionales pero recomendados.',
     }
   }
-  if (rentaPesimista > rentaProbable || rentaProbable > rentaOptimista) {
+  if (rentaPesimista > rentaRealista || rentaRealista > rentaOptimista) {
     return {
       ok: false,
-      error: 'Las rentas deben estar ordenadas: pesimista ≤ probable ≤ optimista.',
+      error: 'Las rentas deben estar ordenadas: pesimista ≤ realista ≤ optimista.',
     }
   }
   if (itpPct < 0 || itpPct > 25) {
@@ -335,9 +335,10 @@ export async function calculateRoi(
   const inversionOperativa = precioCompra + gastosCierre + reformas
 
   const escenarios: ScenarioResult[] = (
-    ['pesimista', 'probable', 'optimista'] as const
+    // Orden de la casa: optimista · realista · pesimista (regla de Toño, 18-ago-2026).
+    ['optimista', 'realista', 'pesimista'] as const
   ).map((name, idx) => {
-    const renta = [rentaPesimista, rentaProbable, rentaOptimista][idx]!
+    const renta = [rentaOptimista, rentaRealista, rentaPesimista][idx]!
     return calcEscenario(
       name,
       renta,

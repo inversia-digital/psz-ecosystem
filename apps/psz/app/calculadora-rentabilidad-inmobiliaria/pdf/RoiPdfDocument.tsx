@@ -275,19 +275,19 @@ const pct = (n: number) => `${n.toFixed(2).replace('.', ',')}%`
 
 const SC_LABELS = {
   pesimista: 'Pesimista',
-  probable: 'Probable',
+  realista: 'Realista',
   optimista: 'Optimista',
 } as const
 
 const SC_STYLES = {
   pesimista: styles.scPesimista,
-  probable: styles.scProbable,
+  realista: styles.scProbable,
   optimista: styles.scOptimista,
 }
 
 const SC_COLORS = {
   pesimista: COLORS.red,
-  probable: COLORS.amber,
+  realista: COLORS.amber,
   optimista: COLORS.emerald,
 }
 

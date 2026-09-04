@@ -30,9 +30,25 @@ const nextConfig = {
       'upgrade-insecure-requests',
     ].join('; ')
 
+    const cspEmbebible = csp.replace(
+      "frame-ancestors 'none'",
+      "frame-ancestors 'self' https://campus.inarpa.es https://activos.psz.es https://beta.activos.psz.es",
+    )
+
     return [
       {
-        source: '/(.*)',
+        source: '/calculadora-rentabilidad-inmobiliaria',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+          { key: 'Content-Security-Policy', value: cspEmbebible },
+        ],
+      },
+      {
+        // Todo menos la calculadora de rentabilidad, que se embebe en el campus de
+        // INARPA y en activos.psz.es (una sola calculadora para el grupo, 4-sep-2026).
+        source: '/:path((?!calculadora-rentabilidad-inmobiliaria).*)',
         headers: [
           // Seguridad básica (ya existían)
           { key: 'X-Content-Type-Options', value: 'nosniff' },

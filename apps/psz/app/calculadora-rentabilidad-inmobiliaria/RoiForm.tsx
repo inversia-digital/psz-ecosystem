@@ -3,7 +3,7 @@
 /**
  * Form de la calculadora de rentabilidad inmobiliaria.
  *
- * Renderiza 3 columnas de resultados (pesimista/probable/optimista) cuando
+ * Renderiza 3 columnas de resultados (optimista/realista/pesimista) cuando
  * el server action devuelve éxito. Toda la lógica está en actions.ts (server).
  */
 
@@ -35,9 +35,9 @@ const eurDec = (n: number) =>
 const pct = (n: number) => `${n.toFixed(2).replace('.', ',')}%`
 
 const ESCENARIO_META = {
-  pesimista: { label: 'Pesimista', color: 'bg-red-50 border-red-200 text-red-900', kpiClass: 'text-red-900' },
-  probable:  { label: 'Probable',  color: 'bg-amber-50 border-amber-200 text-amber-900', kpiClass: 'text-amber-900' },
   optimista: { label: 'Optimista', color: 'bg-emerald-50 border-emerald-200 text-emerald-900', kpiClass: 'text-emerald-900' },
+  realista:  { label: 'Realista',  color: 'bg-amber-50 border-amber-200 text-amber-900', kpiClass: 'text-amber-900' },
+  pesimista: { label: 'Pesimista', color: 'bg-red-50 border-red-200 text-red-900', kpiClass: 'text-red-900' },
 }
 
 export default function RoiForm() {
@@ -216,7 +216,7 @@ export default function RoiForm() {
               Calcular con una sola renta es engañarte. El mercado del alquiler oscila — y la
               renta que pone el vendedor o el portal inmobiliario suele ser la optimista. Esta
               calculadora te obliga a pensar qué pasa si el mercado se ablanda (pesimista), si
-              encaja con la media de la zona (probable) o si todo sale a tu favor (optimista).
+              encaja con la media de la zona (realista) o si todo sale a tu favor (optimista).
               Toma decisiones con el rango, no con un único número.
             </InfoTooltip>
           </legend>
@@ -230,8 +230,8 @@ export default function RoiForm() {
               required
             />
             <Input
-              name="rentaProbable"
-              label="Renta probable"
+              name="rentaRealista"
+              label="Renta realista"
               suffix="€/mes"
               placeholder="750"
               help="Mediana de la zona"

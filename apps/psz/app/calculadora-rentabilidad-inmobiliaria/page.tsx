@@ -192,7 +192,7 @@ const HOWTO_STEPS = [
   {
     name: 'Introduce los 3 escenarios de renta mensual',
     text:
-      'Pesimista (mercado se ablanda), probable (mediana de la zona) y optimista (todo a tu favor). Tomar decisiones con un rango es más prudente que con un solo número.',
+      'Optimista (todo a tu favor), realista (mediana de la zona) y pesimista (mercado se ablandaor). Tomar decisiones con un rango es más prudente que con un solo número.',
   },
   {
     name: 'Calcula y lee los resultados',
@@ -234,7 +234,7 @@ export default function CalculadoraRentabilidadPage() {
           features: [
             'Rentabilidad de adquisición (sobre inversión total con ITP)',
             'Rentabilidad real (sobre inversión operativa sin ITP, largo plazo)',
-            '3 escenarios paralelos: pesimista, probable, optimista',
+            '3 escenarios paralelos: optimista, realista, pesimista',
             'ITP por comunidad autónoma con tabla actualizada y cambios próximos',
             'Flujo neto mensual descontando comunidad, IBI y residuos',
             'Amortización del ITP en años de flujo neto',
