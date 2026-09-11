@@ -79,13 +79,13 @@ export default function Page() {
                 href={FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-xl bg-navy px-5 py-3 font-semibold text-paper no-underline"
+                className="inline-block rounded-xl bg-navy-900 px-5 py-3 font-semibold !text-paper no-underline hover:bg-navy-800"
               >
                 Presentar reclamación en línea
               </a>{' '}
               <a
                 href="/docs/formulario-reclamacion.pdf"
-                className="inline-block rounded-xl border-2 border-navy px-5 py-3 font-semibold text-navy no-underline"
+                className="inline-block rounded-xl border-2 border-navy-900 px-5 py-3 font-semibold !text-navy-900 no-underline hover:bg-navy-50"
               >
                 Descargar formulario (PDF)
               </a>
