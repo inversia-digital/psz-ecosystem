@@ -53,7 +53,7 @@ export default function Page() {
                 </a>
               </li>
               <li>
-                <strong>Horario de atención:</strong> de lunes a viernes, de 9:00 a 18:00 h (excepto
+                <strong>Horario de atención:</strong> de lunes a viernes, de 9:00 a 15:00 h (excepto
                 festivos). Las quejas presentadas fuera de ese horario se registran con la fecha y hora
                 de su recepción.
               </li>
