@@ -33,7 +33,7 @@ const LEGAL_GROUPS: Array<{ title: string; links: Array<{ label: string; href: s
     links: [
       { label: 'Tarifas y comisiones',     href: '/tarifas-y-comisiones' },
       { label: 'Información pre-contractual', href: '/informacion-pre-contractual' },
-      { label: 'Reclamaciones',            href: '/reclamaciones' },
+      { label: 'Atención a la clientela y reclamaciones', href: '/reclamaciones' },
       { label: 'Código de conducta',       href: '/codigo-de-conducta' },
     ],
   },
