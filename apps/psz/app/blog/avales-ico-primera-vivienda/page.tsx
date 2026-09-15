@@ -115,6 +115,13 @@ export default function ArticlePage() {
               quien puede pagar una hipoteca pero no tiene el ahorro de la entrada pueda comprar—. Te
               explico qué es, quién puede pedirlo y, sobre todo, qué mirar antes de contar con él.
             </p>
+            <p className="rounded-xl border border-gold-400 bg-paper-card p-4 text-base">
+              <strong>Actualización de septiembre de 2026:</strong> la línea se reactivó con
+              requisitos nuevos (residencia legal, 150.000 € de patrimonio, ingresos por provincia,
+              precio máximo por comunidad y vigencia hasta el 31-12-2027). Los tienes al detalle en{' '}
+              <a href="/blog/aval-ico-2026-requisitos-precio-maximo">aval ICO 2026: requisitos,
+              precio máximo y errores que lo tumban</a>.
+            </p>
 
             <h2 id="que-es">Qué es (y qué no es) el aval ICO</h2>
             <p>

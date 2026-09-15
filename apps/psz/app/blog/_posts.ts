@@ -17,6 +17,61 @@ export interface PostMeta {
 }
 
 export const POSTS: PostMeta[] = [
+  // ── Serie septiembre 2026 (publicación escalonada: isLive decide) ───
+  {
+    slug: 'aval-ico-2026-requisitos-precio-maximo',
+    title: 'Aval ICO 2026: requisitos, precio máximo por comunidad y los errores que lo tumban',
+    description:
+      'La línea de avales ICO reactivada en 2026, con la letra pequeña: residencia legal, 150.000 € de patrimonio, ingresos por provincia, precio máximo por comunidad, aval del 20 o 25 %, vigencia hasta el 31-12-2027 y los diez detalles que tumban un expediente.',
+    category: 'Primera vivienda',
+    datePublished: '2026-09-15',
+    readingTime: '10 min',
+  },
+  {
+    slug: 'avales-autonomicos-hipoteca-comunidades',
+    title: 'Avales autonómicos para comprar vivienda: los siete programas, explicados',
+    description:
+      'Comunitat Valenciana, Madrid, Cataluña, Andalucía, Castilla y León, Murcia y País Vasco tienen su propio aval para llegar al 95-100 % de la hipoteca. Edad, precio máximo, qué permite cada uno, sus trampas y cómo se combinan con el aval ICO.',
+    category: 'Primera vivienda',
+    datePublished: '2026-09-17',
+    readingTime: '9 min',
+  },
+  {
+    slug: 'hipoteca-para-funcionarios',
+    title: 'Hipoteca para funcionarios: por qué el banco aprueba en 24 horas y hasta dónde llega',
+    description:
+      'El mejor perfil hipotecario de España, y el que peor negocia. Quién cuenta como funcionario para el banco, qué consigue (porcentaje, tipo, velocidad), qué documentación piden, los «100 %» que son 95 % y los errores que veo repetirse.',
+    category: 'Perfiles y producto',
+    datePublished: '2026-09-19',
+    readingTime: '8 min',
+  },
+  {
+    slug: 'ratio-de-endeudamiento-hipoteca-como-lo-calcula-el-banco',
+    title: 'Ratio de endeudamiento: cómo lo calcula cada banco y qué hacer cuando no te da',
+    description:
+      'Qué ingresos computa el banco y cuáles no, qué deudas restan, por qué unos aceptan el 30 % y otros el 40 %, y las siete vías legales para encajar una operación que se queda corta. Con un ejemplo con números.',
+    category: 'Perfiles y producto',
+    datePublished: '2026-09-21',
+    readingTime: '8 min',
+  },
+  {
+    slug: 'tasacion-hipoteca-por-que-decide-tu-financiacion',
+    title: 'La tasación decide tu hipoteca: cómo funciona, qué la baja y cómo reutilizarla',
+    description:
+      'El banco financia sobre el menor entre precio y tasación. Quién puede hacerla, cuánto dura, por qué tasar para la entidad más exigente y usarla en varias, qué la hunde y qué hacer si sale baja. Con lo que dice la Ley 5/2019.',
+    category: 'Perfiles y producto',
+    datePublished: '2026-09-23',
+    readingTime: '8 min',
+  },
+  {
+    slug: 'pedir-hipoteca-en-varios-bancos-a-la-vez-cirbe',
+    title: 'Pedir la hipoteca en varios bancos a la vez: qué ven, qué no y dónde está el límite',
+    description:
+      'Comparar tres bancos es legal y es lo correcto; firmar dos hipotecas ocultando una es fraude. Qué consulta cada banco en la CIRBE, por qué la vuelven a mirar antes de firmar y las diez cosas que comprueba un analista de riesgos.',
+    category: 'Regulación y cumplimiento',
+    datePublished: '2026-09-25',
+    readingTime: '8 min',
+  },
   // ── Primera vivienda ──────────────────────────────────────────────
   {
     slug: 'cuanto-ahorro-necesito-comprar-primera-vivienda',

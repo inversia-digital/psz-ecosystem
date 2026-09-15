@@ -122,6 +122,28 @@ export const CITIES: CityData[] = [
     ],
     workMode:
       'Digital al 100%. Visita a Madrid para firma de notaría si me la pides (incluida en honorarios).',
+    sections: [
+      {
+        title: 'Comprar la primera vivienda en Madrid: ICO y «Mi Primera Vivienda»',
+        paragraphs: [
+          'Madrid es la comunidad con el precio máximo más alto del aval ICO, 325.000 €, y tiene además su propio programa, «Mi Primera Vivienda», que permite financiar el 100 % del menor entre precio y tasación hasta 390.000 € a jóvenes con contrato indefinido o plaza de funcionario y dos años de residencia en la comunidad. Los dos programas no se combinan: se elige el que encaja con la edad, los ingresos y el precio.',
+          'El programa madrileño va por fondos asignados a cada entidad y se ha agotado más de una vez: hay meses en los que no existe y meses en los que vuelve. Por eso nunca doy por hecho un aval hasta la semana en que presento el expediente, y nunca firmo arras contando con él sin confirmarlo.',
+        ],
+      },
+      {
+        title: 'No residentes y operaciones de alto importe',
+        paragraphs: [
+          'Madrid concentra las compras de no residentes y las operaciones por encima de 400.000 €. Para un no residente el porcentaje habitual está entre el 50 y el 65 %, con los ingresos del país de origen documentados y una cuenta en España; hay entidades especializadas por país y perfil. En importes altos, la mayoría de bancos limita al 80 %, y en zona prime al 75 %, y la negociación pasa a ser de tipo, vinculaciones y plazo más que de porcentaje.',
+          'En estas operaciones la tasación manda: en distritos con precios muy dispares, una tasación por debajo del precio es frecuente y cambia el importe. La encargo pensando en todas las entidades a las que va el expediente, para presentar una sola.',
+        ],
+      },
+      {
+        title: 'Impuestos y gastos en la Comunidad de Madrid',
+        paragraphs: [
+          'Madrid es de las comunidades con menor carga fiscal en la compra: el Impuesto sobre Transmisiones Patrimoniales general es del 6 % en vivienda de segunda mano, con bonificaciones para vivienda habitual, familias numerosas y jóvenes según la normativa vigente; en obra nueva, IVA del 10 % más Actos Jurídicos Documentados. Desde la Ley 5/2019, el AJD del préstamo lo paga el banco. En el dossier de cada operación calculo el coste total antes de las arras, para que el ahorro necesario sea el real.',
+        ],
+      },
+    ],
   },
   {
     slug: 'barcelona',
@@ -257,6 +279,28 @@ export const CITIES: CityData[] = [
       },
     ],
     workMode: 'Digital al 100%. Visita a Valencia para firma si la pides (sin coste adicional).',
+    sections: [
+      {
+        title: 'El aval del IVF: la ventaja de comprar en la Comunitat Valenciana',
+        paragraphs: [
+          'La Comunitat Valenciana tiene el programa autonómico más generoso de España para la primera vivienda: el aval del Institut Valencià de Finances cubre el 20 % de la entrada y permite llegar al 100 % del precio a compradores de hasta 45 años, sin el límite de ingresos de la línea estatal del ICO. Sirve para obra nueva, segunda mano y vivienda protegida, siempre que sea vivienda habitual y no tengas otra en propiedad.',
+          'Dos matices que decido con cada cliente: el aval del IVF y el aval ICO no se pueden combinar, así que hay que elegir el que mejor encaja; y no todas las entidades lo dan en todas las modalidades (alguna solo en hipoteca mixta). Con el tope del ICO en 250.000 € en la Comunitat, para muchas viviendas de Valencia el IVF es simplemente la mejor vía.',
+        ],
+      },
+      {
+        title: 'Comprar en Valencia siendo extranjero o no residente',
+        paragraphs: [
+          'Valencia recibe cada año más compradores europeos, y el banco los trata según lo que son para él: residente con NIE, residente en la UE o no residente. Con residencia consolidada el porcentaje puede llegar al 80 % como el de cualquier español; sin ella, la mayoría se queda entre el 60 y el 70 % del menor entre precio y tasación, con los ingresos del país de origen documentados y traducidos y una cuenta en un banco español.',
+          'Preparo el expediente para que no falte nada en la primera presentación, elijo las entidades que sí trabajan el perfil y coordino la firma en una notaría de Valencia.',
+        ],
+      },
+      {
+        title: 'Inversión en Valencia: alquiler tradicional, no turístico',
+        paragraphs: [
+          'La licencia turística en Valencia está restringida en buena parte de la ciudad y el banco, en cualquier caso, financia una inversión sobre el 70 % y computa el alquiler previsto con prudencia. Donde sigue habiendo recorrido es en el alquiler de larga duración en barrios con demanda estable y en viviendas para reformar. Analizo cada operación con tres escenarios de rentabilidad neta, pesimista, realista y optimista, y solo entro en las que salen también en el pesimista.',
+        ],
+      },
+    ],
   },
   {
     slug: 'sevilla',
@@ -305,6 +349,27 @@ export const CITIES: CityData[] = [
       },
     ],
     workMode: 'Digital al 100%. Visita a Sevilla o cualquier ciudad andaluza para firma si la pides.',
+    sections: [
+      {
+        title: 'Primera vivienda en Andalucía: el aval de la Junta y el tope del ICO',
+        paragraphs: [
+          'Andalucía tiene el precio máximo más bajo del aval ICO después de Extremadura: 225.000 €. Para muchas viviendas de Sevilla capital eso deja fuera la línea estatal, y ahí entra la garantía de la Junta de Andalucía para menores de 40 años empadronados en la comunidad, sin otra vivienda y con compromiso de vivienda habitual, con un precio máximo en torno a 295.000 €. En la mayoría de entidades permite llegar al 95 % del menor entre precio y tasación, y en alguna al 100 %.',
+          'Los dos avales no se combinan. Y una advertencia que repito en Sevilla más que en ningún sitio: varios productos que se anuncian como «100 %» son en realidad un 95 %. El 5 % restante y los gastos son del comprador. Se pide por escrito antes de las arras.',
+        ],
+      },
+      {
+        title: 'Autónomos y profesionales andaluces: cómo se presenta el expediente',
+        paragraphs: [
+          'Es el perfil que más trabajo en Sevilla y el que más rechaza el scoring automático de las oficinas: el banco computa el rendimiento neto de las dos últimas rentas, no la facturación, y a menudo pide tres ejercicios. Un expediente de autónomo se presenta con los modelos 100, 130 y 303, los extractos ordenados y una explicación de la evolución del negocio, a las entidades que tienen criterio real con este perfil. Así es como una operación rechazada tres veces en oficina acaba aprobada.',
+        ],
+      },
+      {
+        title: 'Impuestos y gastos de comprar vivienda en Andalucía',
+        paragraphs: [
+          'Andalucía aplica un Impuesto sobre Transmisiones Patrimoniales del 7 % en vivienda de segunda mano, con tipos reducidos para menores de 35 años, familias numerosas y personas con discapacidad en vivienda habitual, con límites de precio; en obra nueva, IVA del 10 % más Actos Jurídicos Documentados. En el dossier calculo el coste total de compra e hipoteca antes de las arras.',
+        ],
+      },
+    ],
   },
 ]
 
