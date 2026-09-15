@@ -17,7 +17,7 @@ import { PILLAR_TIPOS_HIPOTECA } from './content'
 const URL = `${SITE_URLS.psz}/tipos-de-hipoteca`
 
 export const metadata: Metadata = {
-  title: 'Tipos de hipoteca 2026: fija, variable o mixta · Toño Palacios E242',
+  title: 'Tipos de hipoteca 2026: fija, variable o mixta · broker E242',
   description:
     'Fija, variable o mixta: cuál conviene a cada perfil en 2026, con las bonificaciones que compensan y los errores que cuestan dinero. Por un broker registrado en el Banco de España (E242) y presidente de ANICI.',
   alternates: { canonical: URL },

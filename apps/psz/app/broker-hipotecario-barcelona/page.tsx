@@ -7,7 +7,7 @@ const city = getCityBySlug('barcelona')!
 const url = `${SITE_URLS.psz}/broker-hipotecario-${city.slug}`
 
 export const metadata: Metadata = {
-  title: 'Broker hipotecario en Barcelona · Toño Palacios E242',
+  title: 'Broker hipotecario en Barcelona · registrado E242',
   description:
     'Broker hipotecario para clientes en Barcelona. Registrado en Banco de España E242, presidente de ANICI. Especializado en expats, inversión y segunda residencia. Conocimiento del marco fiscal catalán.',
   alternates: { canonical: url },

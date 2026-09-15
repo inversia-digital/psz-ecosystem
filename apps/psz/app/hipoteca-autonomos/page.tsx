@@ -17,7 +17,7 @@ import { PILLAR_AUTONOMOS } from './content'
 const URL = `${SITE_URLS.psz}/hipoteca-autonomos`
 
 export const metadata: Metadata = {
-  title: 'Hipoteca para autónomos 2026: qué bancos sí y qué piden · Toño Palacios E242',
+  title: 'Hipoteca para autónomos 2026: qué bancos sí y qué piden · broker E242',
   description:
     'Qué exigen los bancos a un autónomo (dos ejercicios de IRPF, rendimiento neto, modelos 100, 130 y 303), qué entidades son receptivas y cómo presentar la renta para que aprueben. Broker registrado en el Banco de España (E242).',
   alternates: { canonical: URL },
