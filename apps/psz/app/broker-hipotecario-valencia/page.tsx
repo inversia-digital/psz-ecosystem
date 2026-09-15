@@ -7,7 +7,7 @@ const city = getCityBySlug('valencia')!
 const url = `${SITE_URLS.psz}/broker-hipotecario-${city.slug}`
 
 export const metadata: Metadata = {
-  title: 'Broker hipotecario en Valencia · Toño Palacios E242',
+  title: 'Broker hipotecario en Valencia · registrado E242',
   description:
     'Broker hipotecario para clientes en Valencia. Registrado en Banco de España E242, presidente de ANICI. Especializado en inversión, alquiler vacacional regulado y compradores extranjeros.',
   alternates: { canonical: url },

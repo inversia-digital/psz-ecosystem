@@ -7,7 +7,7 @@ const city = getCityBySlug('sevilla')!
 const url = `${SITE_URLS.psz}/broker-hipotecario-${city.slug}`
 
 export const metadata: Metadata = {
-  title: 'Broker hipotecario en Sevilla · Toño Palacios E242',
+  title: 'Broker hipotecario en Sevilla · registrado E242',
   description:
     'Broker hipotecario para clientes en Sevilla y Andalucía Occidental. Registrado en Banco de España E242, presidente de ANICI. Trabajo con Unicaja y los principales bancos andaluces.',
   alternates: { canonical: url },
