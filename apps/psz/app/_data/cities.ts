@@ -19,6 +19,8 @@ export interface CityData {
   typicalCase: { title: string; body: string }
   faq: { question: string; answer: string }[]
   workMode: string // Cómo trabajo desde/para esta ciudad
+  /** Secciones específicas de la plaza (fiscalidad, extranjeros, avales…). Opcional: solo las ciudades con contenido propio. */
+  sections?: { title: string; paragraphs: string[] }[]
 }
 
 export const CITIES: CityData[] = [
@@ -166,8 +168,47 @@ export const CITIES: CityData[] = [
         answer:
           'Sí, pero con un aviso importante: la regulación del alquiler turístico en Barcelona (y en toda Cataluña) está cada vez más restringida. Antes de plantear una hipoteca con esa finalidad, te explico el marco legal actualizado y los riesgos. No te vendo una operación que no me dejaría comprar a mí mismo.',
       },
+      {
+        question: '¿Puedo llegar al 100 % de financiación en Barcelona con un aval público?',
+        answer:
+          'Depende de tu perfil. El aval estatal del ICO para menores de 35 años y familias con menores a cargo permite financiar hasta el 100 % del menor entre precio y tasación, con un precio máximo de vivienda de 300.000 € en Cataluña, un límite de patrimonio y de ingresos, dos años de residencia legal y formalización hasta el 31 de diciembre de 2027. La Generalitat tiene además su propia línea a través del ICF. Cada entidad aplica sus propios topes sobre el aval: te digo cuáles lo tienen operativo en el momento de tu operación, no el que salió en prensa.',
+      },
+      {
+        question: '¿Cuánto tarda una hipoteca en Barcelona y qué documentos me van a pedir?',
+        answer:
+          'Entre cuatro y ocho semanas desde que el expediente está completo hasta la firma, según la entidad y la tasación. Para un residente: DNI o NIE, vida laboral, últimas nóminas o dos ejercicios de IRPF si eres autónomo, extractos de seis meses, justificación del ahorro y la documentación del inmueble. Para un no residente, además, documentación de ingresos de tu país traducida y una cuenta en un banco español para domiciliar la cuota. Preparo el expediente para que el banco no tenga que pedir nada dos veces.',
+      },
     ],
     workMode: 'Digital al 100%. Visita a Barcelona para firma si la pides (sin coste adicional).',
+    sections: [
+      {
+        title: 'Comprar en Barcelona siendo extranjero: NIE, residencia y porcentaje',
+        paragraphs: [
+          'Barcelona es la plaza donde más expedientes de compradores extranjeros gestiono. La primera pregunta no es qué banco, sino qué eres para el banco: residente fiscal en España, residente en la UE o no residente. Con NIE y residencia consolidada, el porcentaje de financiación puede llegar al 80 % o más, como el de cualquier español. Sin residencia, la mayoría de entidades se queda entre el 60 % y el 70 % del menor entre precio y tasación, exige justificar los ingresos del país de origen y domiciliar la cuota en una cuenta española.',
+          'Lo que decide la operación no es la nacionalidad, sino el expediente: ingresos demostrables, ahorro justificado y una tasación que acompañe al precio. Con un comprador de Lyon, Milán o Ámsterdam preparo la documentación traducida antes de presentarla, elijo las entidades que sí trabajan el perfil y coordino la firma en una notaría de Barcelona.',
+        ],
+      },
+      {
+        title: 'Impuestos y gastos de comprar vivienda en Cataluña',
+        paragraphs: [
+          'En vivienda de segunda mano, Cataluña aplica un Impuesto sobre Transmisiones Patrimoniales del 10 % con carácter general, con tipos reducidos para compradores jóvenes, familias numerosas o monoparentales y personas con discapacidad, siempre con requisitos de renta y de vivienda habitual. En obra nueva se paga el IVA del 10 % y el impuesto de Actos Jurídicos Documentados de la compraventa. Desde la Ley 5/2019, el AJD del préstamo lo paga el banco, no tú.',
+          'A eso se suman notaría, registro, gestoría y tasación. En el dossier de cada operación calculo el coste total de la compra y de la hipoteca antes de que firmes las arras, para que el ahorro que necesitas sea el real y no el del anuncio.',
+        ],
+      },
+      {
+        title: 'Inversión y alquiler en Barcelona: lo que cambia en 2026',
+        paragraphs: [
+          'El alquiler turístico en Barcelona está en retirada: el Ayuntamiento ha anunciado la extinción de las licencias de uso turístico en 2028 y Cataluña regula los precios en zonas tensionadas. Eso no cierra la inversión, la reorienta: alquiler de larga duración en barrios con demanda estable, viviendas para reformar en distritos en alza y operaciones de segunda residencia para compradores europeos.',
+          'Para una inversión, el banco computará el alquiler previsto con prudencia y financiará normalmente hasta el 70 %. Con una segunda vivienda libre de cargas como garantía adicional se puede ir más lejos. Analizo la rentabilidad neta en tres escenarios, pesimista, realista y optimista, y no financio operaciones que solo salen en el optimista.',
+        ],
+      },
+      {
+        title: 'Cómo trabajo con los bancos en Cataluña',
+        paragraphs: [
+          'No todas las entidades trabajan igual con intermediarios en Cataluña, y las condiciones de una misma entidad cambian según la oficina y el momento. Mi trabajo es saber, en la semana en que presento tu expediente, qué bancos son receptivos a tu perfil en esta plaza, presentarlo a los que sí y negociar el diferencial, el plazo y las vinculaciones. Sin acuerdos ocultos: no cobro de los bancos y mis honorarios te los explico por escrito antes de empezar.',
+        ],
+      },
+    ],
   },
   {
     slug: 'valencia',

@@ -27,15 +27,15 @@ const HONORARIOS_AMOUNT_PATTERN =
 const URL = `${SITE_URLS.psz}/broker-hipotecario`
 
 export const metadata: Metadata = {
-  title: 'Broker hipotecario · Toño Palacios nº E242',
+  title: 'Broker hipotecario E242 y presidente de ANICI · Toño Palacios',
   description:
-    'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Negocio tu hipoteca con +20 bancos en toda España. Honorarios a éxito y transparentes.',
+    'Registrado en el Banco de España (E242) y presidente de la asociación nacional de brokers. Negocio tu hipoteca con más de 20 bancos en toda España y te digo en la primera llamada si es viable. Honorarios a éxito.',
   alternates: { canonical: URL },
   openGraph: {
     url: URL,
-    title: 'Broker hipotecario en España · Toño Palacios nº E242',
+    title: 'Broker hipotecario E242 y presidente de ANICI · Toño Palacios',
     description:
-      'Broker hipotecario registrado en Banco de España (E242) y presidente de ANICI. Negocio tu hipoteca con +20 bancos en toda España.',
+      'Registrado en el Banco de España (E242) y presidente de la asociación nacional de brokers. Negocio tu hipoteca con más de 20 bancos en toda España. Honorarios a éxito.',
     type: 'article',
     locale: 'es_ES',
   },

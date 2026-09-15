@@ -17,10 +17,9 @@ import { PILLAR_AUTONOMOS } from './content'
 const URL = `${SITE_URLS.psz}/hipoteca-autonomos`
 
 export const metadata: Metadata = {
-  title:
-    'Hipoteca para autónomos 2026 · Bancos receptivos · Antonio Palacios Cambero broker E242',
+  title: 'Hipoteca para autónomos 2026: qué bancos sí y qué piden · Toño Palacios E242',
   description:
-    'Guía operativa de hipoteca para autónomo español en 2026 por Antonio Palacios Cambero (Toño Palacios), broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Por qué los bancos son más estrictos contigo, requisitos mínimos (2 ejercicios IRPF, rendimiento neto), documentación específica (modelos 100, 130, 303), bancos realmente receptivos al perfil autónomo, trucos para presentar el IRPF (anti-optimización), módulos vs estimación directa, errores que cuestan caro.',
+    'Qué exigen los bancos a un autónomo (dos ejercicios de IRPF, rendimiento neto, modelos 100, 130 y 303), qué entidades son receptivas y cómo presentar la renta para que aprueben. Broker registrado en el Banco de España (E242).',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],

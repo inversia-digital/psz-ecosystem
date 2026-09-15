@@ -17,10 +17,9 @@ import { PILLAR_TIPOS_HIPOTECA } from './content'
 const URL = `${SITE_URLS.psz}/tipos-de-hipoteca`
 
 export const metadata: Metadata = {
-  title:
-    'Tipos de hipoteca en España 2026 · Fija, variable, mixta · Antonio Palacios Cambero broker E242',
+  title: 'Tipos de hipoteca 2026: fija, variable o mixta · Toño Palacios E242',
   description:
-    'Guía completa de los tipos de hipoteca en España 2026 por Antonio Palacios Cambero (Toño Palacios), broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Las 3 modalidades principales (fija, variable, mixta) con criterios de elección por perfil, modalidades menos habituales (IRPH, multidivisa, hipoteca inversa, verde), bonificaciones por vinculaciones, errores típicos al elegir modalidad y FAQ operativa. Diferencial vs guías genéricas: cada modalidad pareada con perfil de cliente y gotcha contractual.',
+    'Fija, variable o mixta: cuál conviene a cada perfil en 2026, con las bonificaciones que compensan y los errores que cuestan dinero. Por un broker registrado en el Banco de España (E242) y presidente de ANICI.',
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],

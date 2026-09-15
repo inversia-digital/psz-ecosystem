@@ -179,6 +179,19 @@ export function LocalPillar({ city }: { city: CityData }) {
         </Container>
       </Section>
 
+      {/* SECCIONES PROPIAS DE LA PLAZA (solo ciudades con contenido específico en cities.ts) */}
+      {city.sections?.map((s) => (
+        <Section key={s.title} tone="paper" padding="md" title={s.title}>
+          <Container size="md">
+            <div className="prose-lg space-y-4 text-ink-soft">
+              {s.paragraphs.map((p, i) => (
+                <p key={i} className="text-lg">{p}</p>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      ))}
+
       {/* ADVERTENCIA LEGAL — intermediación de crédito inmobiliario */}
       <Section tone="paper" padding="sm">
         <Container size="md">
