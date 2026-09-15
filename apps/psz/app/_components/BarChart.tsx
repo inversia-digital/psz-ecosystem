@@ -35,7 +35,10 @@ export function BarChart({
   const W = 720
   const rowH = 34
   const labelW = 250
-  const barMaxW = W - labelW - 110
+  // Hueco a la derecha proporcional al texto más largo, para que no se corte en pantallas estrechas
+  const longest = Math.max(...data.map((d) => (d.display ?? fmt(d.value, unit)).length))
+  const valueW = Math.min(300, Math.max(90, Math.round(longest * 7.4) + 16))
+  const barMaxW = W - labelW - valueW
   const top = 8
   const H = top + data.length * rowH + 8
   const scale = max ?? Math.max(...data.map((d) => d.value))
