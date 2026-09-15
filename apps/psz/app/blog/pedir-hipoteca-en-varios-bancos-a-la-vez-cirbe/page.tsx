@@ -8,7 +8,8 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { Button, Container, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { ArticleFaq } from '../../_components/ArticleFaq'
 import { getPostBySlug, isLive } from '../_posts'
 
 export const revalidate = 21600
@@ -213,6 +214,8 @@ export default function ArticlePage() {
               hipoteca, la casa y las arras.
             </p>
 
+            <ArticleFaq items={FAQ_ITEMS} />
+
             <h2 id="cierre">En resumen</h2>
             <p>
               Compara todo lo que quieras: los bancos no ven tus solicitudes, ven tus deudas. Y las
@@ -226,11 +229,6 @@ export default function ArticlePage() {
         </Container>
       </Section>
 
-      <Section tone="soft" padding="md" title="Preguntas frecuentes sobre pedir la hipoteca en varios bancos">
-        <Container size="md">
-          <Faq items={FAQ_ITEMS} />
-        </Container>
-      </Section>
 
       <Section tone="navy" padding="lg">
         <Container size="md" className="text-center">

@@ -8,7 +8,9 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { Button, Container, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { ArticleFaq } from '../../_components/ArticleFaq'
+import { BarChart } from '../../_components/BarChart'
 import { getPostBySlug, isLive } from '../_posts'
 
 export const revalidate = 21600
@@ -244,6 +246,34 @@ export default function ArticlePage() {
               de «lo sentimos» a aprobada.
             </p>
 
+            <BarChart
+              title="El ejemplo en cifras: ratio de endeudamiento antes y después de preparar el expediente"
+              unit="%"
+              max={45}
+              data={[
+                { label: 'Máximo que admiten las entidades flexibles', value: 40 },
+                { label: 'Máximo habitual', value: 35 },
+                { label: 'La pareja, tal como llegó', value: 34, display: '33-35 %' },
+                { label: 'Tras cancelar tarjeta y coche, a 30 años', value: 22, highlight: true },
+              ]}
+              note="Ingresos netos de 4.200 €/mes, hipoteca de 210.000 €. Cuota estimada de 1.050 € a 25 años y de 940 € a 30 años."
+            />
+
+            <BarChart
+              title="Qué parte de cada ingreso computa el banco (criterio habitual)"
+              unit="%"
+              max={100}
+              data={[
+                { label: 'Nómina fija', value: 100 },
+                { label: 'Alquileres declarados', value: 65, display: '50-80 %' },
+                { label: 'Variable y horas extra', value: 50, display: 'media de 2 años, a menudo parcial' },
+                { label: 'Ingresos futuros (contrato aún no iniciado)', value: 5, display: 'casi nunca' },
+                { label: 'Alquileres sin declarar', value: 1, display: '0 %' },
+              ]}
+            />
+
+            <ArticleFaq items={FAQ_ITEMS} />
+
             <h2 id="cierre">En resumen</h2>
             <p>
               El ratio de endeudamiento no es un número tuyo: es un número que calcula cada banco con
@@ -258,11 +288,6 @@ export default function ArticlePage() {
         </Container>
       </Section>
 
-      <Section tone="soft" padding="md" title="Preguntas frecuentes sobre el ratio de endeudamiento">
-        <Container size="md">
-          <Faq items={FAQ_ITEMS} />
-        </Container>
-      </Section>
 
       <Section tone="navy" padding="lg">
         <Container size="md" className="text-center">

@@ -8,7 +8,9 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { Button, Container, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { ArticleFaq } from '../../_components/ArticleFaq'
+import { BarChart } from '../../_components/BarChart'
 import { getPostBySlug, isLive } from '../_posts'
 
 export const revalidate = 21600
@@ -194,6 +196,19 @@ export default function ArticlePage() {
               </li>
             </ul>
 
+            <BarChart
+              title="Porcentaje de financiación habitual según el perfil laboral (orientativo, 2026)"
+              unit="%"
+              max={100}
+              data={[
+                { label: 'Funcionario con plaza', value: 100, display: '90-100 %', highlight: true },
+                { label: 'Indefinido con antigüedad', value: 90, display: '80-90 %' },
+                { label: 'Autónomo consolidado', value: 80, display: '70-80 %' },
+                { label: 'Contrato temporal', value: 60, display: 'hasta 60 % o denegación' },
+              ]}
+              note="Sobre el menor entre precio y tasación, sin avales públicos. Cada entidad aplica su propio criterio; es el orden que veo en los expedientes."
+            />
+
             <h2 id="documentacion">Lo que te van a pedir</h2>
             <ul>
               <li>Nombramiento, toma de posesión o certificado de la plaza.</li>
@@ -247,6 +262,8 @@ export default function ArticlePage() {
               funcionario y el otro entre como avalista.
             </p>
 
+            <ArticleFaq items={FAQ_ITEMS} />
+
             <h2 id="cierre">En resumen</h2>
             <p>
               Ser funcionario es el mejor perfil hipotecario de España, y la mayoría lo desaprovecha
@@ -262,11 +279,6 @@ export default function ArticlePage() {
         </Container>
       </Section>
 
-      <Section tone="soft" padding="md" title="Preguntas frecuentes sobre la hipoteca para funcionarios">
-        <Container size="md">
-          <Faq items={FAQ_ITEMS} />
-        </Container>
-      </Section>
 
       <Section tone="navy" padding="lg">
         <Container size="md" className="text-center">

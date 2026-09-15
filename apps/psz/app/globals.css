@@ -60,6 +60,22 @@
     @apply text-2xl mt-8 mb-3;
   }
   .prose-psz p {
-    @apply mb-4;
+    @apply mb-6;
+  }
+  .prose-psz ul,
+  .prose-psz ol {
+    @apply mb-8 pl-6 space-y-3;
+  }
+  .prose-psz li {
+    @apply leading-relaxed;
+  }
+  .prose-psz table {
+    @apply w-full my-6 text-sm;
+  }
+  .prose-psz th {
+    @apply text-left bg-navy-800 text-paper px-3 py-2 font-semibold;
+  }
+  .prose-psz td {
+    @apply px-3 py-2 border-b border-navy-100 align-top;
   }
 }

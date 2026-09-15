@@ -8,7 +8,9 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { Button, Container, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { ArticleFaq } from '../../_components/ArticleFaq'
+import { BarChart } from '../../_components/BarChart'
 import { getPostBySlug, isLive } from '../_posts'
 
 export const revalidate = 21600
@@ -157,6 +159,18 @@ export default function ArticlePage() {
               </li>
             </ul>
 
+            <BarChart
+              title="Compra de 200.000 €: cuánto presta el banco al 80 % según lo que diga la tasación"
+              unit="€"
+              max={200000}
+              data={[
+                { label: 'Tasación 180.000 €', value: 144000, display: '144.000 € (faltan 16.000 €)' },
+                { label: 'Tasación 200.000 €', value: 160000, display: '160.000 €', highlight: true },
+                { label: 'Tasación 220.000 €', value: 160000, display: '160.000 € (el tope es el precio)' },
+              ]}
+              note="El banco calcula sobre el menor entre precio y tasación. Solo en productos concretos que financian sobre tasación una valoración alta cubre más precio."
+            />
+
             <h2 id="reutilizar">La regla que más dinero ahorra: tasar para el más exigente y reutilizar</h2>
             <p>
               Cada banco tiene su cuadro de tasadoras. Unas entidades aceptan cualquier sociedad
@@ -229,6 +243,8 @@ export default function ArticlePage() {
               </li>
             </ul>
 
+            <ArticleFaq items={FAQ_ITEMS} />
+
             <h2 id="cierre">En resumen</h2>
             <p>
               La tasación no es un trámite: es el número sobre el que se calcula tu hipoteca. Elegir
@@ -244,11 +260,6 @@ export default function ArticlePage() {
         </Container>
       </Section>
 
-      <Section tone="soft" padding="md" title="Preguntas frecuentes sobre la tasación hipotecaria">
-        <Container size="md">
-          <Faq items={FAQ_ITEMS} />
-        </Container>
-      </Section>
 
       <Section tone="navy" padding="lg">
         <Container size="md" className="text-center">

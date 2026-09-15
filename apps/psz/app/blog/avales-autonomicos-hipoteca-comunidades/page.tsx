@@ -8,7 +8,9 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { Button, Container, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { ArticleFaq } from '../../_components/ArticleFaq'
+import { BarChart } from '../../_components/BarChart'
 import { getPostBySlug, isLive } from '../_posts'
 
 export const revalidate = 21600
@@ -214,6 +216,35 @@ export default function ArticlePage() {
               </small>
             </p>
 
+            <BarChart
+              title="Hasta dónde llega cada programa (porcentaje máximo del precio, 2026)"
+              unit="%"
+              max={100}
+              data={[
+                { label: 'Comunitat Valenciana · IVF', value: 100, highlight: true },
+                { label: 'Comunidad de Madrid · Mi Primera Vivienda', value: 100 },
+                { label: 'País Vasco · GazteAval', value: 100 },
+                { label: 'Castilla y León · SomaCyL', value: 97.5, display: '97,5 %' },
+                { label: 'Andalucía · garantía de la Junta', value: 95, display: '95 % (100 % en alguna entidad)' },
+                { label: 'Cataluña · préstamo ICF', value: 95, display: '95 % en la práctica' },
+                { label: 'Aval ICO (estatal)', value: 100, display: '100 % (tope de precio por comunidad)' },
+              ]}
+              note="Porcentaje sobre el menor entre precio y tasación. Los gastos e impuestos no entran en ningún programa."
+            />
+
+            <BarChart
+              title="Edad máxima del comprador en cada programa"
+              unit="años"
+              max={50}
+              data={[
+                { label: 'Comunitat Valenciana · IVF', value: 45, highlight: true },
+                { label: 'Andalucía · Junta', value: 40 },
+                { label: 'Madrid · Mi Primera Vivienda', value: 36, display: '36 (40 en alguna entidad)' },
+                { label: 'Aval ICO (sin menores a cargo)', value: 35 },
+              ]}
+              note="Con menores a cargo, el aval ICO no tiene límite de edad."
+            />
+
             <h2 id="ico-o-autonomico">¿ICO o aval autonómico? Cómo decidirlo</h2>
             <p>
               La decisión es una tabla de dos columnas: lo que tú cumples y lo que la vivienda
@@ -268,6 +299,8 @@ export default function ArticlePage() {
               </li>
             </ol>
 
+            <ArticleFaq items={FAQ_ITEMS} />
+
             <h2 id="cierre">En resumen</h2>
             <p>
               Los avales autonómicos son la vía al 100 % que menos se conoce y, para muchos perfiles,
@@ -282,11 +315,6 @@ export default function ArticlePage() {
         </Container>
       </Section>
 
-      <Section tone="soft" padding="md" title="Preguntas frecuentes sobre los avales autonómicos">
-        <Container size="md">
-          <Faq items={FAQ_ITEMS} />
-        </Container>
-      </Section>
 
       <Section tone="navy" padding="lg">
         <Container size="md" className="text-center">

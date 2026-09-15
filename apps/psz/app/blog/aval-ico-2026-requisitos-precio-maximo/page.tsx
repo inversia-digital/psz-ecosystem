@@ -8,7 +8,9 @@ import {
   breadcrumbSchema,
   faqPageSchema,
 } from '@psz/seo'
-import { Button, Container, Faq, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { Button, Container, JsonLd, Section, TelegramCta } from '@psz/ui'
+import { ArticleFaq } from '../../_components/ArticleFaq'
+import { BarChart } from '../../_components/BarChart'
 import { getPostBySlug, isLive } from '../_posts'
 
 export const revalidate = 21600
@@ -238,6 +240,32 @@ export default function ArticlePage() {
               </small>
             </p>
 
+            <BarChart
+              title="Precio máximo de la vivienda con aval ICO, por comunidad (2026)"
+              unit="€"
+              data={[
+                { label: 'Comunidad de Madrid', value: 325000, highlight: true },
+                { label: 'Cataluña · Navarra · País Vasco', value: 300000 },
+                { label: 'Aragón · Illes Balears', value: 275000 },
+                { label: 'Resto de comunidades', value: 250000 },
+                { label: 'Andalucía', value: 225000 },
+                { label: 'Extremadura', value: 200000 },
+              ]}
+              note="Sobre el precio de compraventa sin impuestos ni gastos. Fuente: convocatoria de la línea, verificada en ico.es (septiembre de 2026)."
+            />
+
+            <BarChart
+              title="Cuánto cubre el aval y cuánto puede financiar el banco"
+              unit="%"
+              max={100}
+              data={[
+                { label: 'Hipoteca habitual sin aval', value: 80 },
+                { label: 'Con aval ICO del 20 %', value: 100, display: '100 % (aval 20 %)' },
+                { label: 'Con certificado energético A-D', value: 100, display: '100 % (aval 25 %)', highlight: true },
+              ]}
+              note="Siempre sobre el menor entre precio y tasación. Algunas entidades limitan al 95 % de la tasación por criterio propio."
+            />
+
             <h2 id="tumban">Los diez detalles que tumban un expediente con aval ICO</h2>
             <p>
               Todos son reales. Los he visto caer, en expedientes míos o de compañeros, por cada uno
@@ -344,6 +372,8 @@ export default function ArticlePage() {
               tiene operativa.
             </p>
 
+            <ArticleFaq items={FAQ_ITEMS} />
+
             <h2 id="cierre">En resumen</h2>
             <p>
               El aval ICO de 2026 es más generoso en patrimonio y más ajustado en precio y en
@@ -359,11 +389,6 @@ export default function ArticlePage() {
         </Container>
       </Section>
 
-      <Section tone="soft" padding="md" title="Preguntas frecuentes sobre el aval ICO 2026">
-        <Container size="md">
-          <Faq items={FAQ_ITEMS} />
-        </Container>
-      </Section>
 
       <Section tone="navy" padding="lg">
         <Container size="md" className="text-center">
