@@ -17,6 +17,16 @@ export interface PostMeta {
 }
 
 export const POSTS: PostMeta[] = [
+  // ── Octubre 2026 ───────────────────────────────────────────────────
+  {
+    slug: 'fija-mixta-o-variable-euribor-octubre-2026',
+    title: 'Hipoteca fija, mixta o variable con el euríbor al 3,26 %: cómo decidir sin adivinar el futuro',
+    description:
+      '¿Hipoteca fija, mixta o variable con el euríbor al 3,26 %? Test de estrés en euros y tres preguntas para decidir sin adivinar el futuro.',
+    category: 'Euríbor y tipos de interés',
+    datePublished: '2026-10-26',
+    readingTime: '6 min',
+  },
   // ── Serie septiembre 2026 (publicación escalonada: isLive decide) ───
   {
     slug: 'aval-ico-2026-requisitos-precio-maximo',
