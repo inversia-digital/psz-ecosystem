@@ -8,13 +8,13 @@ export const revalidate = 21600
 const URL = `${SITE_URLS.psz}/blog`
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Blog de hipotecas e inversión inmobiliaria',
   description:
-    'Artículos sobre hipotecas, inversión inmobiliaria y regulación del crédito inmobiliario, firmados por Toño Palacios (broker hipotecario nº E242, presidente de ANICI).',
+    'Artículos sobre hipotecas, euríbor, inversión inmobiliaria y regulación del crédito, firmados por Toño Palacios, broker hipotecario nº E242 y presidente de ANICI.',
   alternates: { canonical: URL },
   openGraph: {
     url: URL,
-    title: 'Blog · Toño Palacios broker hipotecario',
+    title: 'Blog de hipotecas e inversión inmobiliaria | Toño Palacios',
     description:
       'Hipotecas, inversión inmobiliaria y regulación del crédito inmobiliario, sin promesas vacías.',
     type: 'website',

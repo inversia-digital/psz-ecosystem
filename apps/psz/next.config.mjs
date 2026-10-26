@@ -26,7 +26,9 @@ const nextConfig = {
       "frame-ancestors 'none'",
       "object-src 'none'",
       "base-uri 'self'",
-      "form-action 'self' https://crm.hipobrokers.com",
+      // Solo el propio dominio: el funnel envía a /api/solicitar y este reenvía en
+      // servidor al CRM (crm.psz.es/capta/ingest). crm.hipobrokers.com ya no recibe nada.
+      "form-action 'self'",
       'upgrade-insecure-requests',
     ].join('; ')
 
@@ -98,6 +100,13 @@ const nextConfig = {
   // Importantes para preservar SEO al hacer el cutover DNS.
   async redirects() {
     return [
+      // Servicio de Atención a la Clientela (Ley 10/2025): la página es /reclamaciones;
+      // estos alias evitan 404 a quien busque la ruta habitual.
+      { source: '/atencion-al-cliente', destination: '/reclamaciones', permanent: true },
+      { source: '/atencion-a-la-clientela', destination: '/reclamaciones', permanent: true },
+      { source: '/atencion-clientela', destination: '/reclamaciones', permanent: true },
+      { source: '/sac', destination: '/reclamaciones', permanent: true },
+
       // Servicios — redirigen al pillar nacional o a su sección
       { source: '/psi', destination: '/sobre-mi#equipo', permanent: true },
       { source: '/reunificar-deudas', destination: '/broker-hipotecario#tipos', permanent: true },
