@@ -9,6 +9,7 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "lastmod": "node scripts/lastmod.mjs",
+    "euribor": "node scripts/euribor.mjs",
     "clean": "rimraf .next .turbo"
   },
   "dependencies": {
