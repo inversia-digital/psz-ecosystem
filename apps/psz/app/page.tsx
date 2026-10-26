@@ -62,9 +62,9 @@ const HOME_FAQ = [
 ] as const
 
 export const metadata: Metadata = {
-  title: 'Antonio Palacios Cambero (Toño Palacios) — Broker hipotecario nº E242 · Presidente ANICI',
+  title: { absolute: 'Broker hipotecario nº E242 en España | Toño Palacios' },
   description:
-    'Antonio Palacios Cambero (Toño Palacios) — broker hipotecario en toda España, registrado en el Banco de España con el número E242 y presidente de ANICI. Más de 100 operaciones cerradas en 2025, acceso a +20 entidades, productos no públicos y 5 calculadoras propietarias gratuitas con El Sello Palacios. Las hipotecas que tu banco no te cuenta.',
+    'Broker hipotecario registrado en el Banco de España con el nº E242 y presidente de ANICI. Estudio gratuito de tu hipoteca en toda España, con acceso a más de 20 bancos.',
   alternates: { canonical: SITE_URLS.psz },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
@@ -86,15 +86,15 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URLS.psz,
     siteName: 'psz.es',
-    title: 'Antonio Palacios Cambero (Toño Palacios) — Broker hipotecario nº E242',
+    title: 'Broker hipotecario nº E242 en España | Toño Palacios',
     description:
-      'Broker hipotecario en toda España. Presidente de ANICI. Acceso a +20 entidades y 5 calculadoras propietarias con El Sello Palacios. Las hipotecas que tu banco no te cuenta.',
+      'Broker hipotecario registrado en el Banco de España con el nº E242 y presidente de ANICI. Estudio gratuito de tu hipoteca en toda España, con acceso a más de 20 bancos.',
     locale: 'es_ES',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Antonio Palacios Cambero — Broker hipotecario nº E242',
-    description: 'Toño Palacios, broker hipotecario en toda España. Presidente de ANICI. 5 calculadoras con El Sello Palacios.',
+    title: 'Broker hipotecario nº E242 en España | Toño Palacios',
+    description: 'Estudio gratuito de tu hipoteca en toda España, con acceso a más de 20 bancos. Presidente de ANICI.',
   },
 }
 

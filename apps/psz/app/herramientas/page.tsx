@@ -24,8 +24,8 @@ const URL = `${SITE_URLS.psz}/herramientas`
 // ─────────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: `Calculadoras y herramientas hipotecarias propietarias · Toño Palacios broker E242`,
-  description: `Catálogo completo de las ${HERRAMIENTAS_LIVE.length} calculadoras y herramientas hipotecarias propietarias diseñadas y programadas por Toño Palacios, broker hipotecario nº E242 (Banco de España) y presidente de ANICI. Calculadora de hipoteca, capacidad de endeudamiento, rentabilidad inmobiliaria y más. Cálculo server-side, lógica propietaria basada en criterios reales de mesa de riesgos de la banca minorista española. Todas gratuitas y sin registro.`,
+  title: `${HERRAMIENTAS_LIVE.length} calculadoras hipotecarias propias`,
+  description: `${HERRAMIENTAS_LIVE.length} calculadoras hipotecarias gratuitas y sin registro, programadas por Toño Palacios, broker hipotecario nº E242: cuota, capacidad de endeudamiento, rentabilidad, euríbor y más.`,
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   authors: [{ name: TONO.fullName, url: `${SITE_URLS.psz}/sobre-mi` }],
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     url: URL,
     siteName: 'psz.es',
     locale: 'es_ES',
-    title: `Calculadoras propietarias · Toño Palacios broker E242`,
-    description: `${HERRAMIENTAS_LIVE.length} calculadoras gratuitas diseñadas por un broker hipotecario en activo. Lógica propietaria, server-side, sin registro.`,
+    title: `${HERRAMIENTAS_LIVE.length} calculadoras hipotecarias propias | Toño Palacios`,
+    description: `${HERRAMIENTAS_LIVE.length} calculadoras gratuitas diseñadas por un broker hipotecario en activo (nº E242). Lógica propia, cálculo en servidor, sin registro.`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Calculadoras propietarias · Toño Palacios broker E242`,
-    description: `${HERRAMIENTAS_LIVE.length} calculadoras hipotecarias profesionales. Gratis, server-side, sin registro.`,
+    title: `${HERRAMIENTAS_LIVE.length} calculadoras hipotecarias propias | Toño Palacios`,
+    description: `${HERRAMIENTAS_LIVE.length} calculadoras hipotecarias profesionales. Gratis, cálculo en servidor, sin registro.`,
   },
 }
 
