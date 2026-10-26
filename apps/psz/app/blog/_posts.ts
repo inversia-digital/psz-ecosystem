@@ -17,6 +17,16 @@ export interface PostMeta {
 }
 
 export const POSTS: PostMeta[] = [
+  // ── Noviembre 2026 (isLive decide: sale sola el 3-nov) ─────────────
+  {
+    slug: 'revision-euribor-noviembre-2026',
+    title: 'Revisión de euríbor en noviembre: qué mirar y qué ignorar',
+    description:
+      'Revisión del euríbor en noviembre: cuánto sube tu cuota por cada décima en una hipoteca de 150.000 € y qué comprobar antes de que se fije.',
+    category: 'Euríbor y tipos de interés',
+    datePublished: '2026-11-03',
+    readingTime: '5 min',
+  },
   // ── Octubre 2026 ───────────────────────────────────────────────────
   {
     slug: 'fija-mixta-o-variable-euribor-octubre-2026',
