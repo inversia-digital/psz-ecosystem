@@ -24,7 +24,7 @@ export const POSTS: PostMeta[] = [
     description:
       '¿Hipoteca fija, mixta o variable con el euríbor al 3,26 %? Test de estrés en euros y tres preguntas para decidir sin adivinar el futuro.',
     category: 'Euríbor y tipos de interés',
-    datePublished: '2026-10-27',
+    datePublished: '2026-10-26',
     readingTime: '6 min',
   },
   // ── Serie septiembre 2026 (publicación escalonada: isLive decide) ───
