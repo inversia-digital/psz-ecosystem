@@ -93,8 +93,8 @@ export default function ContactoPage() {
               <h2 className="text-2xl font-bold mb-3 text-navy-800">Escríbeme</h2>
               <p className="text-ink-soft mb-6 flex-1">
                 Email general para consultas profesionales, prensa, colaboraciones o cualquier
-                asunto que no encaje en las opciones anteriores. Para hablar por teléfono, concertamos
-                cita previa por email.
+                asunto que no encaje en las opciones anteriores. Si prefieres llamar, el teléfono es
+                el {INVERSIA.phoneDisplay}.
               </p>
               <Button
                 href={`mailto:${INVERSIA.email}?subject=Consulta%20desde%20psz.es`}
@@ -136,8 +136,11 @@ export default function ContactoPage() {
                     {INVERSIA.email}
                   </a>
                 </p>
-                <p className="text-sm text-ink-muted mt-3">
-                  Para hablar por teléfono, concertamos cita previa por email.
+                <p className="text-ink-soft mt-2">
+                  Teléfono{' '}
+                  <a href={`tel:${INVERSIA.phone}`} className="font-medium">
+                    {INVERSIA.phoneDisplay}
+                  </a>
                 </p>
               </div>
             </div>

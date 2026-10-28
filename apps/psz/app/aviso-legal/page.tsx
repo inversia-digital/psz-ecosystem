@@ -24,7 +24,7 @@ export default function AvisoLegalPage() {
               <li><strong>Denominación social:</strong> INVERSIA GLOBAL DIGITAL, S.L.U.</li>
               <li><strong>CIF:</strong> B-75281394</li>
               <li><strong>Domicilio social:</strong> Polígono Alcoz Alto 21, 1-1, 50410 Cuarte de Huerva (Zaragoza), España</li>
-              <li><strong>Teléfono:</strong> +34 876 280 545</li>
+              <li><strong>Teléfono:</strong> +34 876 15 02 80</li>
               <li><strong>Correo electrónico:</strong> info@inversiadigital.es</li>
               <li>
                 <strong>Registro Mercantil de Zaragoza</strong> — los datos registrales completos

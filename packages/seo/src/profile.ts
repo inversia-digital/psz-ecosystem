@@ -136,7 +136,9 @@ export const INVERSIA = {
   alternateNames: ['Inversia Digital', 'PSZ'],
   taxId: 'B75281394',
   bdeId: 'E242',
-  phone: '+34876280545',
+  // Línea de Grupo Inversia (hipotecas e inversión), atendida por la recepcionista Carmen (Toño, 28-oct-2026).
+  phone: '+34876150280',
+  phoneDisplay: '876 15 02 80',
   email: 'info@inversiadigital.es',
   iban: 'ES19 0049 5485 5829 1634 4067',
   address: {
